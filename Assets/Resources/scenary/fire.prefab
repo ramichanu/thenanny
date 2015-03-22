@@ -13,6 +13,7 @@ GameObject:
   - 23: {fileID: 2397440}
   - 54: {fileID: 5497440}
   - 114: {fileID: 11437576}
+  - 114: {fileID: 11478892}
   m_Layer: 0
   m_Name: fire
   m_TagString: fire
@@ -87,6 +88,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20508d30450fb774db8642202b3e563c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parent: {fileID: 0}
+--- !u!114 &11478892
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 197440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff3fd2d223395bd44a308a30a0679e94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}

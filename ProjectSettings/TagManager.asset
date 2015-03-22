@@ -17,6 +17,7 @@ TagManager:
   - brokenGlass
   - fire
   - heater
+  - fires
   layers:
   - Default
   - TransparentFX

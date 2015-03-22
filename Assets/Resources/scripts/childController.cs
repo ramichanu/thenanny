@@ -32,6 +32,7 @@ public class childController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		notLivesThenDie ();
 		danger = getDangerElements ();
 
 		if (isRandomState) {
@@ -116,10 +117,6 @@ public class childController : MonoBehaviour {
 			isRandomState = false;
 			state = BURNING;
 		}
-
-		if (lives <= 0) {
-			goToMenu("mainMenu");
-		}	
 	}
 
 	void goToMenu(string menuName){
@@ -180,6 +177,11 @@ public class childController : MonoBehaviour {
 		StartCoroutine(painEffect());
 		StopCoroutine(painEffect());
 		childRandomMovement ();
+	}
+	void notLivesThenDie() {
+		if (lives <= 0) {
+			goToMenu("mainMenu");
+		}	
 	}
 
 }

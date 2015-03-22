@@ -11,7 +11,7 @@ public class catController : MonoBehaviour {
 	bool agentHasPath;
 	Vector3 randomPosition;
 	bool isRunning = false;
-	int state = -1;
+	public int state = -1;
 	GameObject[] dangerFurniDestinations;
 	GameObject dangerFurniDestination;
 
@@ -22,9 +22,9 @@ public class catController : MonoBehaviour {
 	}
 
 	void Update () {
-		Debug.DrawRay(transform.position, transform.forward*0.5f, Color.blue);
-		Debug.DrawRay(transform.position, transform.right*0.5f, Color.blue);
-		Debug.DrawRay(transform.position, transform.right*-0.5f, Color.blue);
+		Debug.DrawRay(transform.position, transform.forward*0.3f, Color.blue);
+		Debug.DrawRay(transform.position, transform.right*0.3f, Color.blue);
+		Debug.DrawRay(transform.position, transform.right*-0.3f, Color.blue);
 		buildSphereCast ();
 
 		if (!isRunning) {
@@ -45,8 +45,11 @@ public class catController : MonoBehaviour {
 			break;
 		case HUIDA:
 			int stateFollow = 2;
-			if (target.GetComponent<dogController>().state != stateFollow) {
-				target.GetComponent<dogController>().state = stateFollow;
+			int targetState = target.GetComponent<dogController>().state;
+			if (targetState != stateFollow) {
+				targetState = stateFollow;
+				target.GetComponent<dogController>().state = 2;
+				target.GetComponent<dogController>().isRunning = true;
 			}
 
 			isRunning = true;
@@ -121,30 +124,36 @@ public class catController : MonoBehaviour {
 				StopCoroutine(returnToOriginalState());
 				isRunning = true;
 			}
-		}else if(state == HUIDA){
-			if (Physics.Raycast (transform.position, transform.forward*0.5f, out hit, 1)
-			    || Physics.Raycast (transform.position, transform.right*0.5f, out hit, 1)
-			    || Physics.Raycast (transform.position, transform.right*-0.5f, out hit, 1)) {
-
-				if ((hit.transform.name == "glasses" || hit.transform.name == "glasses2")) {
-
-					bool dangerDropped = hit.transform.gameObject.GetComponent<dangerFurni>().dangerDropped;
-					if(!dangerDropped){
-						hit.transform.gameObject.GetComponent<dangerFurni>().dangerDropped = true;
-						GameObject brokenGlass = Instantiate(Resources.Load("scenary/brokenGlass")) as GameObject;
-						brokenGlass.name = "brokenGlass";
-						brokenGlass.transform.position = hit.transform.position + hit.transform.right *0.7f;
-						brokenGlass.GetComponent<dangerItem>().parent = hit.transform.gameObject;
-					}
-
-				} else if(hit.transform.name == "heater"){
-					bool dangerDropped = hit.transform.gameObject.GetComponent<dangerFurni>().dangerDropped;
-					if(!dangerDropped){
-						hit.transform.gameObject.GetComponent<dangerFurni>().dangerDropped = true;
-						GameObject fire = Instantiate(Resources.Load("scenary/fire")) as GameObject;
-						fire.name = "fire";
-						fire.transform.position = hit.transform.position + hit.transform.right *0.7f;
-						fire.GetComponent<dangerItem>().parent = hit.transform.gameObject;
+		}
+		if(state == HUIDA){
+			ArrayList hits = new ArrayList();
+			hits.Add(Physics.RaycastAll (transform.position, transform.forward*0.5f, 0.3f));
+			hits.Add(Physics.RaycastAll (transform.position, transform.right*0.5f, 0.3f));
+			hits.Add(Physics.RaycastAll (transform.position, transform.right*-0.5f, 0.3f));
+			if (hits.Count > 0) {
+				foreach(RaycastHit[] raycastArray in hits){
+					foreach(RaycastHit hitItem in raycastArray){
+						if ((hitItem.transform.name == "glasses" || hitItem.transform.name == "glasses2")) {
+							bool dangerDropped = hitItem.transform.gameObject.GetComponent<dangerFurni>().dangerDropped;
+							if(!dangerDropped){
+								hitItem.transform.gameObject.GetComponent<dangerFurni>().dangerDropped = true;
+								GameObject brokenGlass = Instantiate(Resources.Load("scenary/brokenGlass")) as GameObject;
+								brokenGlass.name = "brokenGlass";
+								brokenGlass.transform.position = hitItem.transform.position + hitItem.transform.right *0.7f;
+								brokenGlass.GetComponent<dangerItem>().parent = hitItem.transform.gameObject;
+							}
+							
+						} else if(hitItem.transform.name == "heater"){
+							bool dangerDropped = hitItem.transform.gameObject.GetComponent<dangerFurni>().dangerDropped;
+							if(!dangerDropped){
+								hitItem.transform.gameObject.GetComponent<dangerFurni>().dangerDropped = true;
+								GameObject fires = Instantiate(Resources.Load("scenary/fires")) as GameObject;
+								fires.name = "fires";
+								Vector3 firePosition = hitItem.transform.position + hitItem.transform.right *0.7f;
+								StartCoroutine(fires.GetComponent<fires>().addFire(firePosition));
+								fires.GetComponent<fires>().startFireBehaviour();
+							}
+						}
 					}
 				}
 			}

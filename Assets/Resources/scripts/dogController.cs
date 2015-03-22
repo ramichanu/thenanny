@@ -5,11 +5,11 @@ public class dogController : MonoBehaviour {
 	const int WALK = 0;
 	const int STOP = 1;
 	const int FOLLOW = 2;
-	
+
 	NavMeshAgent agent;
 	bool agentHasPath;
 	Vector3 randomPosition;
-	bool isRunning = false;
+	public bool isRunning = false;
 	public Transform target;
 	public int state = -1;
 	
@@ -36,8 +36,15 @@ public class dogController : MonoBehaviour {
 			}
 			break;
 		case FOLLOW:
-			isRunning = true;
-			agent.destination = target.position;
+			int huidaState = 2;
+			if(target.GetComponent<catController>().state == huidaState)
+			{
+				agent.SetDestination(target.position);
+				isRunning = true;
+			} else {
+				isRunning = false;
+			}
+
 			break;
 		}
 	}

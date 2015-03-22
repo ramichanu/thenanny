@@ -75,11 +75,13 @@ public class playerMovement : MonoBehaviour {
 
 		switch (collision.transform.name) {
 			case "child":
-			if (hit.transform.tag == "child" && babbyBottle) {
-				babbyBottle = false;
-				GameObject hungerBar = GameObject.Find("hungerBar");
-				hungerBar.GetComponent<Image> ().fillAmount = 0;
-				hit.transform.gameObject.GetComponent<childController>().hunger = 0;
+			if(hit.transform != null){
+				if (hit.transform.tag == "child" && babbyBottle) {
+					babbyBottle = false;
+					GameObject hungerBar = GameObject.Find("hungerBar");
+					hungerBar.GetComponent<Image> ().fillAmount = 0;
+					hit.transform.gameObject.GetComponent<childController>().hunger = 0;
+				}
 			}
 			break;
 		}
