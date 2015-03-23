@@ -161,7 +161,7 @@ public class catController : MonoBehaviour {
 	}
 
 	IEnumerator returnToOriginalState(){
-		int seconds = Random.Range (10, 15);
+		int seconds = Random.Range (20, 35);
 		yield return new WaitForSeconds(seconds);
 		NavMeshAgent hitAgent = target.gameObject.GetComponent<NavMeshAgent> ();
 		hitAgent.speed -= 2;
