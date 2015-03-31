@@ -6,18 +6,19 @@ public class childController : MonoBehaviour {
 	const int WALK = 0;
 	const int STOP = 1;
 	const int BURNING = 2;
+	const int WAITING = 3;
 
 	int lives;
 	public int hunger;
 
-	NavMeshAgent agent;
+	public NavMeshAgent agent;
 	bool agentHasPath;
 	Vector3 randomPosition;
 	public Text live;
 	GameObject[] danger;
-	bool isRunning = false;
-	int state = 0;
-	bool isRandomState = true;
+	public bool isRunning = false;
+	public int state = 0;
+	public bool isRandomState = true;
 
 
 	// Use this for initialization
@@ -56,6 +57,10 @@ public class childController : MonoBehaviour {
 				isRunning = true;
 				setBurningChild(2);
 			}
+			break;
+			case WAITING:
+			int hola = 1;
+				Debug.Log ("waiting");
 			break;
 		}
 	}
@@ -113,7 +118,7 @@ public class childController : MonoBehaviour {
 			StopCoroutine(painEffect());
 		}
 
-		if (collision.transform.name == "fire") {
+		if (collision.transform.tag == "fire") {
 			isRandomState = false;
 			state = BURNING;
 		}
@@ -138,11 +143,20 @@ public class childController : MonoBehaviour {
 
 	GameObject[] getDangerElements() {
 		GameObject[] brokenGlassElements = GameObject.FindGameObjectsWithTag("brokenGlass");
-		GameObject[] fireElements = GameObject.FindGameObjectsWithTag("fire");
-		GameObject[] dangerElements = new GameObject[brokenGlassElements.Length + fireElements.Length];
+		GameObject[] fireElements = null;
+
+		int fireElementsCount = 0;
+		if (state != BURNING) {
+			fireElements = GameObject.FindGameObjectsWithTag("fire");
+			fireElementsCount = fireElements.Length;
+		}
+		GameObject[] dangerElements = new GameObject[brokenGlassElements.Length + fireElementsCount];
 
 		brokenGlassElements.CopyTo(dangerElements, 0);
-		fireElements.CopyTo(dangerElements, brokenGlassElements.Length);
+		if (state != BURNING) {
+			fireElements.CopyTo(dangerElements, brokenGlassElements.Length);
+		}
+
 		return dangerElements;
 	}
 	void setDangerPosition() {
@@ -163,25 +177,33 @@ public class childController : MonoBehaviour {
 		hungerBar.GetComponent<Image> ().fillAmount = hunger*(float)0.015;
 		
 		if (hungerBar.GetComponent<Image> ().fillAmount == 1) {
-			goToMenu("mainMenu");
+			lives -= 1;
+			live.text = lives.ToString();
 		}
 		
 	}
 	void setBurningChild(int seconds) {
 		InvokeRepeating("burningChild", 2, seconds);
 	}
+
+	public void unsetBurningChild() {
+		CancelInvoke("burningChild");
+	}
+
 	void burningChild(){
 		isRunning = true;
 		lives -= 1;
 		live.text = lives.ToString();
 		StartCoroutine(painEffect());
 		StopCoroutine(painEffect());
-		childRandomMovement ();
+		if (state != WAITING) {
+			childRandomMovement ();
+		}
+
 	}
 	void notLivesThenDie() {
 		if (lives <= 0) {
 			goToMenu("mainMenu");
 		}	
 	}
-
 }

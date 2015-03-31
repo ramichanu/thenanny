@@ -70,8 +70,8 @@ public class catController : MonoBehaviour {
 			agentHasPath = false;
 			agent.ResetPath();
 			if (state == HUIDA) {
-				int randomNum = Random.Range(0, 3);
-				if (randomNum > 0) {
+				int randomNum = Random.Range(0, 6);
+				if (randomNum > 2) {
 					setDangerFurniPosition();
 				} else {
 					setRandomPosition();
@@ -161,7 +161,7 @@ public class catController : MonoBehaviour {
 	}
 
 	IEnumerator returnToOriginalState(){
-		int seconds = Random.Range (20, 35);
+		int seconds = Random.Range (8, 12);
 		yield return new WaitForSeconds(seconds);
 		NavMeshAgent hitAgent = target.gameObject.GetComponent<NavMeshAgent> ();
 		hitAgent.speed -= 2;

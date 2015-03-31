@@ -18,6 +18,7 @@ TagManager:
   - fire
   - heater
   - fires
+  - menuButton
   layers:
   - Default
   - TransparentFX

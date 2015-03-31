@@ -36,6 +36,8 @@ public class dogController : MonoBehaviour {
 			}
 			break;
 		case FOLLOW:
+			agent.Resume ();
+			isRunning = false;
 			int huidaState = 2;
 			if(target.GetComponent<catController>().state == huidaState)
 			{
