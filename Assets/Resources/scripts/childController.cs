@@ -8,7 +8,7 @@ public class childController : MonoBehaviour {
 	const int BURNING = 2;
 	const int WAITING = 3;
 
-	int lives;
+	public int lives;
 	public int hunger;
 
 	public NavMeshAgent agent;
@@ -59,8 +59,6 @@ public class childController : MonoBehaviour {
 			}
 			break;
 			case WAITING:
-			int hola = 1;
-				Debug.Log ("waiting");
 			break;
 		}
 	}

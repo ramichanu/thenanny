@@ -124,6 +124,10 @@ public class fires : MonoBehaviour {
 		}else if (fireObjects.Count == 0){
 			GameObject heater = GameObject.Find("heater");
 			heater.GetComponent<dangerFurni>().dangerDropped = false;
+			if (GameObject.FindGameObjectsWithTag ("fire").Length == 0) {
+				CancelInvoke("removeFirstFireItem");
+				Destroy (GameObject.Find ("fires"));
+			}
 		}
 	}
 	Vector3[] randomizeArray(Vector3[] arrayItems)

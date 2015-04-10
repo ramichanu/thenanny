@@ -7,7 +7,8 @@ public class catController : MonoBehaviour {
 	const int HUIDA = 2;
 
 	public Transform target;
-	NavMeshAgent agent;
+	public NavMeshAgent agent;
+	public bool ignoreDog = false;
 	bool agentHasPath;
 	Vector3 randomPosition;
 	bool isRunning = false;
@@ -110,19 +111,12 @@ public class catController : MonoBehaviour {
 	}
 
 	void buildSphereCast() {
-		RaycastHit hit;
 		CharacterController charCtrl = GetComponent<CharacterController>();
 		Vector3 p1 = transform.position + charCtrl.center;
-		if (Physics.SphereCast (p1, charCtrl.height/2, transform.forward, out hit, 10)) {
-			if (hit.transform.tag == "dog" && !isRunning) {
-				state = HUIDA;
-				agent.speed += 2;
-				NavMeshAgent hitAgent = hit.transform.gameObject.GetComponent<NavMeshAgent> ();
-				hitAgent.speed += 2;
-
-				StartCoroutine(returnToOriginalState());
-				StopCoroutine(returnToOriginalState());
-				isRunning = true;
+		RaycastHit[] aroundHits = Physics.SphereCastAll (p1, charCtrl.height / 2, transform.forward, 10);
+		foreach(RaycastHit aroundHit in aroundHits) {
+			if (aroundHit.transform.tag == "dog" && !isRunning && !ignoreDog) {
+				launchHuida(aroundHit.transform.gameObject);
 			}
 		}
 		if(state == HUIDA){
@@ -167,6 +161,9 @@ public class catController : MonoBehaviour {
 		hitAgent.speed -= 2;
 		agent.speed -= 2;
 		isRunning = false;
+
+		StartCoroutine(ignoreDogFewSeconds());
+		StopCoroutine(ignoreDogFewSeconds());
 	}
 
 	void setDangerFurniDestinations() {
@@ -178,5 +175,22 @@ public class catController : MonoBehaviour {
 		dangerFurniDestination = dangerFurniDestinations [DangerFurniPosition];
 		agent.SetDestination (dangerFurniDestination.transform.position);
 
+	}
+
+	public void launchHuida(GameObject hitObject){
+		state = HUIDA;
+		agent.speed += 2;
+		NavMeshAgent hitAgent = hitObject.GetComponent<NavMeshAgent> ();
+		hitAgent.speed += 2;
+		
+		StartCoroutine(returnToOriginalState());
+		StopCoroutine(returnToOriginalState());
+		isRunning = true;
+	}
+
+	IEnumerator ignoreDogFewSeconds(){
+		ignoreDog = true;
+		yield return new WaitForSeconds(10);
+		ignoreDog = false;
 	}
 }

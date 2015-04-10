@@ -9,3 +9,5 @@ EditorBuildSettings:
     path: Assets/mainMenu.unity
   - enabled: 1
     path: Assets/home1.unity
+  - enabled: 1
+    path: Assets/endMenu.unity

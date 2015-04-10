@@ -28,6 +28,7 @@ public class playerMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
 		if (Input.GetMouseButtonDown (0)) {
 			if(isNotRefreshingDestination == false)
 			{
@@ -219,7 +220,6 @@ public class playerMovement : MonoBehaviour {
 		button.GetComponent<Button> ().onClick.AddListener (() => {
 			Destroy (GameObject.Find ("characterMenu"));
 			lastChildButtonClick = buttonType;
-			int stateWaiting = 3;
 
 			GameObject canvas = GameObject.Find ("Canvas");
 			canvas.GetComponent<gameFunctions> ().pauseGame ();
@@ -230,7 +230,7 @@ public class playerMovement : MonoBehaviour {
 
 	}
 
-	void OnCollisionEnter(Collision collision) {
+	void OnCollisionStay(Collision collision) {
 		switch (collision.transform.name) {
 		case "child":
 			if(hit.transform != null){

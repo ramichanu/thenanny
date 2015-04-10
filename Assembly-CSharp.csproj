@@ -54,6 +54,7 @@
      <Compile Include="Assets\Resources\scripts\playerMovement.cs" />
      <Compile Include="Assets\dangerFurni.cs" />
      <Compile Include="Assets\dangerItem.cs" />
+     <Compile Include="Assets\dangerStrategy.cs" />
      <Compile Include="Assets\fire.cs" />
      <Compile Include="Assets\fires.cs" />
      <Compile Include="Assets\gameFunctions.cs" />

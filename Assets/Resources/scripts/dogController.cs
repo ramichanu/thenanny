@@ -6,7 +6,7 @@ public class dogController : MonoBehaviour {
 	const int STOP = 1;
 	const int FOLLOW = 2;
 
-	NavMeshAgent agent;
+	public NavMeshAgent agent;
 	bool agentHasPath;
 	Vector3 randomPosition;
 	public bool isRunning = false;
@@ -66,7 +66,7 @@ public class dogController : MonoBehaviour {
 		randomPosition = getRandomMeshPosition ();
 		agent.SetDestination (randomPosition);
 	}
-	private Vector3 getRandomMeshPosition () {
+	public Vector3 getRandomMeshPosition () {
 		GameObject terrain = GameObject.FindWithTag ("terrain");
 		float xTerrainMin = terrain.GetComponent<Renderer>().bounds.min.x;
 		float xTerrainMax = terrain.GetComponent<Renderer>().bounds.max.x;
