@@ -20,6 +20,8 @@ public class childController : MonoBehaviour {
 	public int state = 0;
 	public bool isRandomState = true;
 
+	public bool isOutside = false;
+
 
 	// Use this for initialization
 	void Start () {
@@ -59,6 +61,7 @@ public class childController : MonoBehaviour {
 			}
 			break;
 			case WAITING:
+
 			break;
 		}
 	}
@@ -86,7 +89,18 @@ public class childController : MonoBehaviour {
 		agent.SetDestination (randomPosition);
 	}
 	private Vector3 getRandomMeshPosition () {
-		GameObject terrain = GameObject.FindWithTag ("terrain");
+		int insideOutsideHomeRandom = Random.Range (1, 10);
+		string walkableTerrain = "terrainHome";
+
+		int number = 5;
+		bool isStormLightningActive = Camera.main.GetComponent<dangerStrategy> ().isLightningStormEnabled;
+		if (isStormLightningActive) {
+			number = 2;
+		}
+		if (insideOutsideHomeRandom > number) {
+			walkableTerrain = "terrain";
+		}
+		GameObject terrain = GameObject.FindWithTag (walkableTerrain);
 		float xTerrainMin = terrain.GetComponent<Renderer>().bounds.min.x;
 		float xTerrainMax = terrain.GetComponent<Renderer>().bounds.max.x;
 		float zTerrainMin = terrain.GetComponent<Renderer>().bounds.min.z;
@@ -110,10 +124,7 @@ public class childController : MonoBehaviour {
 
 	void OnTriggerEnter(Collider collision) {
 		if (collision.transform.name == "brokenGlass") {
-			lives -= 5;
-			live.text = lives.ToString();
-			StartCoroutine(painEffect());
-			StopCoroutine(painEffect());
+			hitAndPain(5);
 		}
 
 		if (collision.transform.tag == "fire") {
@@ -126,7 +137,7 @@ public class childController : MonoBehaviour {
 		Application.LoadLevel(menuName);
 	}
 
-	IEnumerator painEffect() {
+	public IEnumerator painEffect() {
 		Material painMaterial = Resources.Load("materials/painEffect", typeof(Material)) as Material;
 		Material oldMaterial = GetComponent<Renderer>().material;
 
@@ -190,10 +201,7 @@ public class childController : MonoBehaviour {
 
 	void burningChild(){
 		isRunning = true;
-		lives -= 1;
-		live.text = lives.ToString();
-		StartCoroutine(painEffect());
-		StopCoroutine(painEffect());
+		hitAndPain (1);
 		if (state != WAITING) {
 			childRandomMovement ();
 		}
@@ -203,5 +211,30 @@ public class childController : MonoBehaviour {
 		if (lives <= 0) {
 			goToMenu("mainMenu");
 		}	
+	}
+
+	public void hitAndPain(int damage){
+		lives -= damage;
+		live.text = lives.ToString();
+		StartCoroutine(painEffect());
+		StopCoroutine(painEffect());
+	}
+
+	void OnCollisionEnter(Collision collision) {
+		if (collision.transform.tag == "terrain") {
+			isOutside = true;
+		}
+
+		if (collision.transform.name == "lightning") {
+			hitAndPain(10);
+		}
+		
+	}
+	
+	void OnCollisionExit(Collision collision) {
+		if (collision.transform.tag == "terrain") {
+			isOutside = false;
+		}
+		
 	}
 }

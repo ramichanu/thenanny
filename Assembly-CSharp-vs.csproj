@@ -58,6 +58,8 @@
      <Compile Include="Assets\fire.cs" />
      <Compile Include="Assets\fires.cs" />
      <Compile Include="Assets\gameFunctions.cs" />
+     <Compile Include="Assets\lightningStorm.cs" />
+     <Compile Include="Assets\madLady.cs" />
      <None Include="Assets\Resources\imgs\sketches\black.shader" />
      <None Include="Assets\Resources\imgs\sketches\pink.shader" />
  <Reference Include="UnityEngine.UI">

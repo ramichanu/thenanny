@@ -19,6 +19,8 @@ TagManager:
   - heater
   - fires
   - menuButton
+  - terrainHome
+  - madLady
   layers:
   - Default
   - TransparentFX
@@ -28,8 +30,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - ignoreLayer
+  - blockRaycast
   - 
   - 
   - 

@@ -67,7 +67,7 @@ public class dogController : MonoBehaviour {
 		agent.SetDestination (randomPosition);
 	}
 	public Vector3 getRandomMeshPosition () {
-		GameObject terrain = GameObject.FindWithTag ("terrain");
+		GameObject terrain = GameObject.FindWithTag ("terrainHome");
 		float xTerrainMin = terrain.GetComponent<Renderer>().bounds.min.x;
 		float xTerrainMax = terrain.GetComponent<Renderer>().bounds.max.x;
 		float zTerrainMin = terrain.GetComponent<Renderer>().bounds.min.z;

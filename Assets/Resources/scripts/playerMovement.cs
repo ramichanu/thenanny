@@ -8,7 +8,7 @@ public class playerMovement : MonoBehaviour {
 	public bool babbyBottle;
 	public bool isExtinguishFire = false;
 	public GameObject currentFireToRemove;
-	public string lastChildButtonClick = null;
+	public string lastButtonClick = null;
 	public GameObject characterMenu = null;
 	bool isNotRefreshingDestination = false;
 
@@ -33,10 +33,21 @@ public class playerMovement : MonoBehaviour {
 			if(isNotRefreshingDestination == false)
 			{
 				Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-				if (Physics.Raycast(ray, out hit)){
+				int layerMask = 1 << 8;
+				layerMask = ~layerMask;
+				bool isOverUI = UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject();
+
+				if(Input.touchCount > 0)
+				{
+					isOverUI = UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId);
+				}
+
+				if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask) && !isOverUI){
 						isExtinguishFire = true;
+
 						switch(hit.transform.tag) {
 						case "terrain":
+						case "terrainHome":
 						case "brokenGlass":
 						case "babyBottle":
 							agent.SetDestination(new Vector3(hit.point.x, transform.position.y, hit.point.z));
@@ -51,6 +62,10 @@ public class playerMovement : MonoBehaviour {
 							agent.SetDestination(new Vector3(hit.point.x, transform.position.y, hit.point.z));
 							createChildClickMenu();
 							break;
+						case "madLady":
+							agent.SetDestination(new Vector3(hit.point.x, transform.position.y, hit.point.z) + hit.transform.forward * -0.2f);
+							createMadLadyClickMenu();
+						break;
 						}
 
 				}
@@ -140,15 +155,24 @@ public class playerMovement : MonoBehaviour {
 
 		switch (collision.transform.name) {
 		case "brokenGlass":
-			if (hit.transform.tag == "brokenGlass") {
-				collision.gameObject.GetComponent<dangerItem>().parent.GetComponent<dangerFurni>().dangerDropped = false;
-				Destroy(collision.transform.gameObject);
+			if(hit.transform != null) {
+				if (hit.transform.tag == "brokenGlass") {
+					collision.gameObject.GetComponent<dangerItem>().parent.GetComponent<dangerFurni>().dangerDropped = false;
+					Destroy(collision.transform.gameObject);
+				}
 			}
-			
 			break;
 		case "babyBottle":
 			if (hit.transform.tag == "babyBottle") {
 				babbyBottle = true;
+
+				Sprite withBabyBottle =  Resources.Load <Sprite>("imgs/hub/babyBottle");
+				if (withBabyBottle){
+					GameObject.Find ("babyBottleIcon").GetComponent<Image>().sprite = withBabyBottle;
+				} else {
+					Debug.LogError("Sprite not found", this);
+				};
+				GameObject.Find ("babyBottleIcon").GetComponent<Image>().sprite = withBabyBottle;
 			}
 			break;
 			
@@ -219,7 +243,7 @@ public class playerMovement : MonoBehaviour {
 
 		button.GetComponent<Button> ().onClick.AddListener (() => {
 			Destroy (GameObject.Find ("characterMenu"));
-			lastChildButtonClick = buttonType;
+			lastButtonClick = buttonType;
 
 			GameObject canvas = GameObject.Find ("Canvas");
 			canvas.GetComponent<gameFunctions> ().pauseGame ();
@@ -230,31 +254,127 @@ public class playerMovement : MonoBehaviour {
 
 	}
 
+	void createMadLadyClickMenu(){
+		if(hit.transform != null){
+			ArrayList buttonOptions = new ArrayList();
+			if (hit.transform.tag == "madLady") {
+				buttonOptions.Add("attackMadLady");
+			}	
+			Vector3 buttonPos = Camera.main.WorldToScreenPoint(hit.transform.position);
+			
+			if(buttonOptions.Count > 0){
+				//to stop madLady
+				int stopMadLadyState = -1;
+				GameObject.Find("madLady").GetComponent<madLady>().agent.Stop ();
+				GameObject.Find("madLady").GetComponent<madLady>().agent.ResetPath ();
+				GameObject.Find("madLady").GetComponent<madLady>().state = stopMadLadyState;
+				GameObject.Find("madLady").GetComponent<madLady>().isRunning = false;
+				
+				isNotRefreshingDestination = true;
+				GameObject canvas = GameObject.Find ("Canvas");
+				canvas.GetComponent<gameFunctions> ().pauseGame ();
+				
+				characterMenu = new GameObject();
+				characterMenu.transform.name = "characterMenu";
+				characterMenu.transform.SetParent(canvas.transform, false);
+			}
+			foreach(string buttonOption in buttonOptions)
+			{
+				showMadLadyMenuByPositionAndButtonType(buttonPos, buttonOption);
+				buttonPos.y += 30;
+				
+			}
+			
+			
+		}
+	}
+
+	void showMadLadyMenuByPositionAndButtonType(Vector3 position, string buttonType) {
+		
+		OrderedDictionary buttonStringType = new OrderedDictionary ();
+		buttonStringType.Add("attackMadLady", "¡Fuera!");
+		
+		GameObject button = Instantiate(Resources.Load("hub/button")) as GameObject;
+		string buttonText = (string)buttonStringType[buttonType];
+		button.name = buttonType;
+		button.transform.FindChild("Text").GetComponent<Text>().text = buttonText;
+		button.transform.SetParent (characterMenu.transform, false); 
+		
+		button.GetComponent<Button> ().onClick.AddListener (() => {
+			Destroy (GameObject.Find ("characterMenu"));
+			lastButtonClick = buttonType;
+			
+			GameObject canvas = GameObject.Find ("Canvas");
+			canvas.GetComponent<gameFunctions> ().pauseGame ();
+			
+		});
+		
+		button.transform.position = new Vector2 (position.x, position.y);
+		
+	}
+
+	
+
+
 	void OnCollisionStay(Collision collision) {
 		switch (collision.transform.name) {
 		case "child":
 			if(hit.transform != null){
-				if (hit.transform.tag == "child" && lastChildButtonClick != null) {
-					switch(lastChildButtonClick){
+				if (hit.transform.tag == "child" && lastButtonClick != null) {
+					switch(lastButtonClick){
 						case "feed":
 						case "helpBurning":
 				
 						isNotRefreshingDestination = false;
 						GameObject.Find ("child").GetComponent<childController>().isRunning = false;
 						GameObject.Find ("child").GetComponent<childController>().isRandomState = true;
-						Invoke(lastChildButtonClick, 0);
-						lastChildButtonClick = null;
+						Invoke(lastButtonClick, 0);
+						lastButtonClick = null;
 							break;
 					}
 				}
 			}
 			break;
+
+		case "madLady":
+			if(hit.transform != null){
+				if (hit.transform.tag == "madLady" && lastButtonClick != null) {
+					switch(lastButtonClick){
+					case "attackMadLady":
+						
+
+						int madLadyStateFollowChild = 1;
+						GameObject.Find ("madLady").GetComponent<madLady>().isRunning = false;
+						GameObject.Find ("madLady").GetComponent<madLady>().state = madLadyStateFollowChild;
+						Invoke(lastButtonClick, 0);
+						lastButtonClick = null;
+						break;
+					}
+				}
+
+			}
+			isNotRefreshingDestination = false;
+			break;
+
+		case "lightning":
+			Debug.Log ("RAYO!!!");
+			break;
 		}
+
 
 	}
 
 	void feed(){
 		babbyBottle = false;
+
+		Sprite withBabyBottle =  Resources.Load <Sprite>("imgs/hub/babyBottleNOT");
+		if (withBabyBottle){
+			GameObject.Find ("babyBottleIcon").GetComponent<Image>().sprite = withBabyBottle;
+		} else {
+			Debug.LogError("Sprite not found", this);
+		};
+		GameObject.Find ("babyBottleIcon").GetComponent<Image>().sprite = withBabyBottle;
+
 		GameObject hungerBar = GameObject.Find("hungerBar");
 		hungerBar.GetComponent<Image> ().fillAmount = 0;
 		hit.transform.gameObject.GetComponent<childController>().hunger = 0;
@@ -267,6 +387,11 @@ public class playerMovement : MonoBehaviour {
 		GameObject.Find ("child").GetComponent<childController> ().state = childWalkState;
 		GameObject.Find ("child").GetComponent<childController> ().isRunning = false;
 		GameObject.Find ("child").GetComponent<childController> ().isRandomState = false;
+	}
+
+	void attackMadLady(){
+		int runawayState = 4;
+		GameObject.Find("madLady").GetComponent<madLady>().state = runawayState;
 	}
 
 }
