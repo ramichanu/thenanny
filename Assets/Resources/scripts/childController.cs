@@ -8,6 +8,7 @@ public class childController : MonoBehaviour {
 	const int BURNING = 2;
 	const int WAITING = 3;
 
+	public int initialLives = 50;
 	public int lives;
 	public int hunger;
 
@@ -25,7 +26,7 @@ public class childController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		lives = 50;
+		lives = initialLives;
 		agentHasPath = false;
 		agent = GetComponent<NavMeshAgent> ();
 		hunger = 0;
@@ -95,7 +96,7 @@ public class childController : MonoBehaviour {
 		int number = 5;
 		bool isStormLightningActive = Camera.main.GetComponent<dangerStrategy> ().isLightningStormEnabled;
 		if (isStormLightningActive) {
-			number = 2;
+			number = 1;
 		}
 		if (insideOutsideHomeRandom > number) {
 			walkableTerrain = "terrain";
@@ -187,9 +188,10 @@ public class childController : MonoBehaviour {
 		
 		if (hungerBar.GetComponent<Image> ().fillAmount == 1) {
 			lives -= 1;
-			live.text = lives.ToString();
-		}
-		
+			if(lives >= 0){
+				live.text = lives.ToString();
+			}
+		}	
 	}
 	void setBurningChild(int seconds) {
 		InvokeRepeating("burningChild", 2, seconds);
@@ -200,6 +202,9 @@ public class childController : MonoBehaviour {
 	}
 
 	void burningChild(){
+		if (state != BURNING) {
+			unsetBurningChild();
+		}
 		isRunning = true;
 		hitAndPain (1);
 		if (state != WAITING) {
@@ -225,7 +230,7 @@ public class childController : MonoBehaviour {
 			isOutside = true;
 		}
 
-		if (collision.transform.name == "lightning") {
+		if (collision.transform.tag == "lightning") {
 			hitAndPain(10);
 		}
 		

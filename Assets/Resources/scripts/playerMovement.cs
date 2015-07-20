@@ -32,6 +32,11 @@ public class playerMovement : MonoBehaviour {
 		if (Input.GetMouseButtonDown (0)) {
 			if(isNotRefreshingDestination == false)
 			{
+				if (!gameObject.GetComponent<Animation>().isPlaying) {
+					gameObject.GetComponent<Animation>()["nanny_walking"].speed = 3f;
+					gameObject.GetComponent<Animation>().Play();
+				}
+
 				Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 				int layerMask = 1 << 8;
 				layerMask = ~layerMask;
@@ -63,7 +68,7 @@ public class playerMovement : MonoBehaviour {
 							createChildClickMenu();
 							break;
 						case "madLady":
-							agent.SetDestination(new Vector3(hit.point.x, transform.position.y, hit.point.z) + hit.transform.forward * -0.2f);
+							agent.SetDestination(new Vector3(hit.point.x, transform.position.y, hit.point.z));
 							createMadLadyClickMenu();
 						break;
 						}
@@ -141,6 +146,7 @@ public class playerMovement : MonoBehaviour {
 			agentHasPath = true;
 		}
 		if (agent.remainingDistance <= float.Epsilon && agent.pathStatus == NavMeshPathStatus.PathComplete && agentHasPath) {
+			gameObject.GetComponent<Animation>().Stop();
 			//Debug.Log ("You have reached your destination");
 			agentHasPath = false;
 			if (hit.transform != null) {
@@ -342,7 +348,7 @@ public class playerMovement : MonoBehaviour {
 					switch(lastButtonClick){
 					case "attackMadLady":
 						
-
+						isNotRefreshingDestination = false;
 						int madLadyStateFollowChild = 1;
 						GameObject.Find ("madLady").GetComponent<madLady>().isRunning = false;
 						GameObject.Find ("madLady").GetComponent<madLady>().state = madLadyStateFollowChild;
@@ -357,7 +363,7 @@ public class playerMovement : MonoBehaviour {
 			break;
 
 		case "lightning":
-			Debug.Log ("RAYO!!!");
+
 			break;
 		}
 

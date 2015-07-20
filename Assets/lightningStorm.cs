@@ -14,7 +14,7 @@ public class lightningStorm : MonoBehaviour {
 		GameObject directionalLight = GameObject.Find ("directionalLight");
 		GameObject playerLight = GameObject.Find ("playerLight");
 
-		directionalLight.GetComponent<Light> ().intensity = 0.1f;
+		directionalLight.GetComponent<Light> ().intensity = 0.2f;
 		playerLight.GetComponent<Light> ().enabled = true;
 		InvokeRepeating("launchLightning", 1, 1f);
 	}
@@ -29,27 +29,31 @@ public class lightningStorm : MonoBehaviour {
 		public List<int> connections = new List<int>();
 	}
 	void launchLightning() {
-		Mesh mesh = (Mesh)GameObject.Find ("lightningTerrain").GetComponent<MeshFilter> ().mesh;
-		mesh.RecalculateBounds();
-		Vector3[] vertices = mesh.vertices;
-		GameObject lightning = Instantiate(Resources.Load("scenary/lightning"), Vector3.zero, Quaternion.identity) as GameObject;
-		Vector3 randomVertice = vertices[Random.Range (0, vertices.Length)];
-		lightning.transform.name = "lightning";
-		bool playerFuera = isPlayerOutside ();
-		if (isPlayerOutside() && Random.Range (1, 25) == 5) {
-			lightning.transform.position = GameObject.Find ("child").transform.TransformPoint (randomVertice);
+		GameObject[] lightnings = GameObject.FindGameObjectsWithTag("lightning");
+		if (lightnings.Length < 1) {
+			Mesh mesh = (Mesh)GameObject.Find ("lightningTerrain").GetComponent<MeshFilter> ().mesh;
+			mesh.RecalculateBounds ();
+			Vector3[] vertices = mesh.vertices;
+			GameObject lightning = Instantiate (Resources.Load ("scenary/lightning"), Vector3.zero, Quaternion.identity) as GameObject;
+			Vector3 randomVertice = vertices [Random.Range (0, vertices.Length)];
+			lightning.transform.name = "lightning" + Random.Range (1, 50);
+			bool playerFuera = isPlayerOutside ();
+			if (isPlayerOutside () && Random.Range (1, 15) == 5) {
+				lightning.transform.position = GameObject.Find ("child").transform.TransformPoint (randomVertice);
 
-		} else {
-			lightning.transform.position = GameObject.Find ("lightningTerrain").transform.TransformPoint (randomVertice);
+			} else {
+				lightning.transform.position = GameObject.Find ("lightningTerrain").transform.TransformPoint (randomVertice);
+			}
+
+
+			lightning.transform.SetParent (transform);
+			StartCoroutine (removeLightning (lightning));
 		}
-
-
-		lightning.transform.SetParent (transform);
-		StartCoroutine (removeLightning(lightning));
 	}
 
 	IEnumerator removeLightning(GameObject lightning) {
 		yield return new WaitForSeconds (0.5f);
+		Debug.Log("NO Rayito");
 		Destroy (lightning);
 	}
 

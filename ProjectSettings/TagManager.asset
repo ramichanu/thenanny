@@ -21,6 +21,7 @@ TagManager:
   - menuButton
   - terrainHome
   - madLady
+  - lightning
   layers:
   - Default
   - TransparentFX
