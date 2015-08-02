@@ -16,13 +16,13 @@ public class dogController : MonoBehaviour {
 	void Start () {
 		agentHasPath = false;
 		agent = GetComponent<NavMeshAgent> ();
+
 	}
 	
 	void Update () {
 		if (!isRunning) {
 			state = Random.Range (0, 2);
 		}
-		
 		switch (state) {
 		case WALK:
 			if (!isRunning) {
@@ -39,11 +39,15 @@ public class dogController : MonoBehaviour {
 			agent.Resume ();
 			isRunning = false;
 			int huidaState = 2;
+
 			if(target.GetComponent<catController>().state == huidaState)
 			{
+				playAnimation("dog_running", 1.5f);
+
 				agent.SetDestination(target.position);
 				isRunning = true;
 			} else {
+				playAnimation("dog_idle", 1.5f);
 				isRunning = false;
 			}
 
@@ -53,9 +57,11 @@ public class dogController : MonoBehaviour {
 	
 	void randomMovement() {
 		if (agent.pathStatus == NavMeshPathStatus.PathComplete && !agentHasPath) {
+			playAnimation("dog_walking", 1.5f);
 			agentHasPath = true;
 		}
 		if (agent.remainingDistance <= float.Epsilon && agent.pathStatus == NavMeshPathStatus.PathComplete && agentHasPath) {
+			playAnimation("dog_idle", 0.6f);
 			agentHasPath = false;
 			agent.ResetPath();
 			setRandomPosition();
@@ -66,6 +72,12 @@ public class dogController : MonoBehaviour {
 		randomPosition = getRandomMeshPosition ();
 		agent.SetDestination (randomPosition);
 	}
+
+	void playAnimation(string animation, float speed){
+		gameObject.GetComponent<Animation>()[animation].speed = speed;
+		gameObject.GetComponent<Animation>().Play(animation);
+	}
+
 	public Vector3 getRandomMeshPosition () {
 		GameObject terrain = GameObject.FindWithTag ("terrainHome");
 		float xTerrainMin = terrain.GetComponent<Renderer>().bounds.min.x;

@@ -28,15 +28,10 @@ public class playerMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+	
 		if (Input.GetMouseButtonDown (0)) {
 			if(isNotRefreshingDestination == false)
 			{
-				if (!gameObject.GetComponent<Animation>().isPlaying) {
-					gameObject.GetComponent<Animation>()["nanny_walking"].speed = 3f;
-					gameObject.GetComponent<Animation>().Play();
-				}
-
 				Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 				int layerMask = 1 << 8;
 				layerMask = ~layerMask;
@@ -143,10 +138,13 @@ public class playerMovement : MonoBehaviour {
 	
 	void destinationReachedLogic () {
 		if (agent.hasPath && !agentHasPath) {
+			playAnimation("nanny_walking", 3f);
 			agentHasPath = true;
 		}
 		if (agent.remainingDistance <= float.Epsilon && agent.pathStatus == NavMeshPathStatus.PathComplete && agentHasPath) {
-			gameObject.GetComponent<Animation>().Stop();
+
+			playAnimation("nanny_idle", 0.3f);
+
 			//Debug.Log ("You have reached your destination");
 			agentHasPath = false;
 			if (hit.transform != null) {
@@ -154,6 +152,19 @@ public class playerMovement : MonoBehaviour {
 					Destroy(hit.transform.gameObject);
 				}
 			}
+		}
+	}
+
+	void playAnimation(string animation, float speed){
+		switch(animation){
+		case "nanny_idle":
+			gameObject.GetComponent<Animation>()[animation].speed = speed;
+			gameObject.GetComponent<Animation>().Play(animation);
+			break;
+		case "nanny_walking":
+			gameObject.GetComponent<Animation>()[animation].speed = speed;
+			gameObject.GetComponent<Animation>().Play(animation);
+			break;
 		}
 	}
 	

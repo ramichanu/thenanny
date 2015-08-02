@@ -45,13 +45,15 @@ public class childController : MonoBehaviour {
 		switch (state) {
 			case WALK:
 			if (!isRunning) {
+				playAnimation("child_walking", 3f);
 				childRandomMovement ();
 			}
 			break;
 			case STOP:
 			if (!agentHasPath && !isRunning) {
-					StartCoroutine(stopFewSeconds());
-					StopCoroutine(stopFewSeconds());
+				playAnimation("child_idle", 0.6f);
+				StartCoroutine(stopFewSeconds());
+				StopCoroutine(stopFewSeconds());
 			}
 			break;
 			case BURNING:
@@ -62,12 +64,24 @@ public class childController : MonoBehaviour {
 			}
 			break;
 			case WAITING:
-
+				playAnimation("child_idle", 0.6f);
 			break;
 		}
 	}
 
 
+	void playAnimation(string animation, float speed){
+		switch(animation){
+		case "child_idle":
+			gameObject.GetComponent<Animation>()[animation].speed = speed;
+			gameObject.GetComponent<Animation>().Play(animation);
+			break;
+		case "child_walking":
+			gameObject.GetComponent<Animation>()[animation].speed = speed;
+			gameObject.GetComponent<Animation>().Play(animation);
+			break;
+		}
+	}
 
 	void childRandomMovement() {
 		if (agent.pathStatus == NavMeshPathStatus.PathComplete && !agentHasPath) {
@@ -139,7 +153,7 @@ public class childController : MonoBehaviour {
 	}
 
 	public IEnumerator painEffect() {
-		Material painMaterial = Resources.Load("materials/painEffect", typeof(Material)) as Material;
+		/*Material painMaterial = Resources.Load("materials/painEffect", typeof(Material)) as Material;
 		Material oldMaterial = GetComponent<Renderer>().material;
 
 		GetComponent<Renderer>().material = painMaterial;
@@ -148,7 +162,8 @@ public class childController : MonoBehaviour {
 		yield return new WaitForSeconds(0.2f);
 		GetComponent<Renderer>().material = painMaterial;
 		yield return new WaitForSeconds(0.2f);
-		GetComponent<Renderer>().material = oldMaterial;
+		GetComponent<Renderer>().material = oldMaterial;*/
+		yield return new WaitForSeconds(0.2f);
 	}
 
 	GameObject[] getDangerElements() {

@@ -51,7 +51,8 @@ public class dangerStrategy : MonoBehaviour {
 		
 		cat.GetComponent<catController>().agent.ResetPath();
 		dog.GetComponent<dogController>().agent.ResetPath();
-		
+
+		cat.GetComponent<catController> ().playAnimation ("cat_walking", 2f);
 		cat.GetComponent<catController>().agent.SetDestination(position);
 		dog.GetComponent<dogController>().agent.SetDestination(position);
 	}

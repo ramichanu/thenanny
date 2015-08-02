@@ -20,6 +20,7 @@ public class catController : MonoBehaviour {
 		agentHasPath = false;
 		agent = GetComponent<NavMeshAgent> ();
 		setDangerFurniDestinations ();
+
 	}
 
 	void Update () {
@@ -35,16 +36,19 @@ public class catController : MonoBehaviour {
 		switch (state) {
 		case WALK:
 			if (!isRunning) {
+				playAnimation ("cat_walking", 2f);
 				randomMovement ();
 			}
 			break;
 		case STOP:
 			if (!agentHasPath && !isRunning) {
+				playAnimation ("cat_idle", 1f);
 				StartCoroutine(stopFewSeconds());
 				StopCoroutine(stopFewSeconds());
 			}
 			break;
 		case HUIDA:
+			playAnimation ("cat_running", 3f);
 			int stateFollow = 2;
 			int targetState = target.GetComponent<dogController>().state;
 			if (targetState != stateFollow) {
@@ -71,6 +75,7 @@ public class catController : MonoBehaviour {
 			agentHasPath = false;
 			agent.ResetPath();
 			if (state == HUIDA) {
+				playAnimation ("cat_running", 3f);
 				int randomNum = Random.Range(0, 6);
 				if (randomNum > 2) {
 					setDangerFurniPosition();
@@ -78,6 +83,7 @@ public class catController : MonoBehaviour {
 					setRandomPosition();
 				}
 			} else {
+				playAnimation ("cat_walking", 2f);
 				setRandomPosition();
 			}
 		}
@@ -182,6 +188,7 @@ public class catController : MonoBehaviour {
 		agent.speed += 2;
 		NavMeshAgent hitAgent = hitObject.GetComponent<NavMeshAgent> ();
 		hitAgent.speed += 2;
+		playAnimation ("cat_running", 3f);
 		
 		StartCoroutine(returnToOriginalState());
 		StopCoroutine(returnToOriginalState());
@@ -192,5 +199,10 @@ public class catController : MonoBehaviour {
 		ignoreDog = true;
 		yield return new WaitForSeconds(10);
 		ignoreDog = false;
+	}
+
+	public void playAnimation(string animation, float speed){
+		gameObject.GetComponent<Animation>()[animation].speed = speed;
+		gameObject.GetComponent<Animation>().Play(animation);
 	}
 }

@@ -32,6 +32,7 @@ public class madLady : MonoBehaviour {
 
 		switch (state) {
 		case FOLLOW_CHILD:
+			playAnimation("madlady_walking", 1.5f);
 			followChild();
 			break;
 		case YELLING:
@@ -46,6 +47,7 @@ public class madLady : MonoBehaviour {
 
 			break;
 		case RUNAWAY:
+			playAnimation("madlady_walking", 1.5f);
 			if(!isRunning){
 				agent.SetDestination(startPoint);
 				isRunning = true;
@@ -68,6 +70,7 @@ public class madLady : MonoBehaviour {
 		case "child":
 			if(state == FOLLOW_CHILD && !isRunning)
 			{
+				playAnimation("madlady_idle", 0.5f);
 				int[] randomChildCollisionActions = new int[] {YELLING, HIT_CHILD, HIT_CHILD, HIT_CHILD};
 				int actionAgainsChild = randomChildCollisionActions[Random.Range(0, randomChildCollisionActions.Length)];
 				switch(actionAgainsChild){
@@ -133,5 +136,10 @@ public class madLady : MonoBehaviour {
 
 	void stopMadLady(){
 		agent.ResetPath ();
+	}
+
+	public void playAnimation(string animation, float speed){
+		gameObject.GetComponent<Animation>()[animation].speed = speed;
+		gameObject.GetComponent<Animation>().Play(animation);
 	}
 }

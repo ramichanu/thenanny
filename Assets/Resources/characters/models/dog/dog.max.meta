@@ -1,0 +1,374 @@
+fileFormatVersion: 2
+guid: 79722445ce3ea1942a0d4964405f9f38
+timeCreated: 1437782813
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Bone001
+    100002: Bone002
+    100004: Bone003
+    100006: Bone004
+    100008: Bone005
+    100010: Bone006
+    100012: Bone007
+    100014: Bone008
+    100016: Bone009
+    100018: Bone012
+    100020: Bone013
+    100022: Bone014
+    100024: Bone015
+    100026: Bone016
+    100028: Bone017
+    100030: Bone018
+    100032: Bone019
+    100034: Bone021
+    100036: Bone022
+    100038: Bone023
+    100040: //RootNode
+    100042: IK Chain001
+    100044: IK Chain002
+    100046: IK Chain003
+    100048: IK Chain004
+    100050: IK Chain005
+    100052: IK Chain006
+    100054: Plane002
+    400000: Bone001
+    400002: Bone002
+    400004: Bone003
+    400006: Bone004
+    400008: Bone005
+    400010: Bone006
+    400012: Bone007
+    400014: Bone008
+    400016: Bone009
+    400018: Bone012
+    400020: Bone013
+    400022: Bone014
+    400024: Bone015
+    400026: Bone016
+    400028: Bone017
+    400030: Bone018
+    400032: Bone019
+    400034: Bone021
+    400036: Bone022
+    400038: Bone023
+    400040: //RootNode
+    400042: IK Chain001
+    400044: IK Chain002
+    400046: IK Chain003
+    400048: IK Chain004
+    400050: IK Chain005
+    400052: IK Chain006
+    400054: Plane002
+    4300000: Plane002
+    7400000: dog_walking
+    7400002: dog_idle
+    7400004: dog_running
+    9500000: //RootNode
+    11100000: //RootNode
+    13700000: Plane002
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 2
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: dog_walking
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 13
+      wrapMode: 2
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Bone001
+        weight: 1
+      - path: Bone001/Bone002
+        weight: 1
+      - path: Bone001/Bone002/Bone003
+        weight: 1
+      - path: Bone004
+        weight: 1
+      - path: Bone004/Bone005
+        weight: 1
+      - path: Bone004/Bone005/Bone006
+        weight: 1
+      - path: Bone007
+        weight: 1
+      - path: Bone007/Bone008
+        weight: 1
+      - path: Bone007/Bone008/Bone009
+        weight: 1
+      - path: Bone012
+        weight: 1
+      - path: Bone012/Bone013
+        weight: 1
+      - path: Bone018
+        weight: 1
+      - path: Bone018/Bone015
+        weight: 1
+      - path: Bone018/Bone015/Bone017
+        weight: 1
+      - path: Bone019
+        weight: 1
+      - path: Bone019/Bone014
+        weight: 1
+      - path: Bone019/Bone014/Bone016
+        weight: 1
+      - path: Bone021
+        weight: 1
+      - path: Bone021/Bone022
+        weight: 1
+      - path: Bone021/Bone022/Bone023
+        weight: 1
+      - path: IK Chain001
+        weight: 1
+      - path: IK Chain002
+        weight: 1
+      - path: IK Chain003
+        weight: 1
+      - path: IK Chain004
+        weight: 1
+      - path: IK Chain005
+        weight: 1
+      - path: IK Chain006
+        weight: 1
+      - path: Plane002
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: dog_idle
+      takeName: Take 001
+      firstFrame: 14
+      lastFrame: 33
+      wrapMode: 2
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Bone001
+        weight: 1
+      - path: Bone001/Bone002
+        weight: 1
+      - path: Bone001/Bone002/Bone003
+        weight: 1
+      - path: Bone004
+        weight: 1
+      - path: Bone004/Bone005
+        weight: 1
+      - path: Bone004/Bone005/Bone006
+        weight: 1
+      - path: Bone007
+        weight: 1
+      - path: Bone007/Bone008
+        weight: 1
+      - path: Bone007/Bone008/Bone009
+        weight: 1
+      - path: Bone012
+        weight: 1
+      - path: Bone012/Bone013
+        weight: 1
+      - path: Bone018
+        weight: 1
+      - path: Bone018/Bone015
+        weight: 1
+      - path: Bone018/Bone015/Bone017
+        weight: 1
+      - path: Bone019
+        weight: 1
+      - path: Bone019/Bone014
+        weight: 1
+      - path: Bone019/Bone014/Bone016
+        weight: 1
+      - path: Bone021
+        weight: 1
+      - path: Bone021/Bone022
+        weight: 1
+      - path: Bone021/Bone022/Bone023
+        weight: 1
+      - path: IK Chain001
+        weight: 1
+      - path: IK Chain002
+        weight: 1
+      - path: IK Chain003
+        weight: 1
+      - path: IK Chain004
+        weight: 1
+      - path: IK Chain005
+        weight: 1
+      - path: IK Chain006
+        weight: 1
+      - path: Plane002
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: dog_running
+      takeName: Take 001
+      firstFrame: 34
+      lastFrame: 53
+      wrapMode: 2
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 1
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Bone001
+        weight: 1
+      - path: Bone001/Bone002
+        weight: 1
+      - path: Bone001/Bone002/Bone003
+        weight: 1
+      - path: Bone004
+        weight: 1
+      - path: Bone004/Bone005
+        weight: 1
+      - path: Bone004/Bone005/Bone006
+        weight: 1
+      - path: Bone007
+        weight: 1
+      - path: Bone007/Bone008
+        weight: 1
+      - path: Bone007/Bone008/Bone009
+        weight: 1
+      - path: Bone012
+        weight: 1
+      - path: Bone012/Bone013
+        weight: 1
+      - path: Bone018
+        weight: 1
+      - path: Bone018/Bone015
+        weight: 1
+      - path: Bone018/Bone015/Bone017
+        weight: 1
+      - path: Bone019
+        weight: 1
+      - path: Bone019/Bone014
+        weight: 1
+      - path: Bone019/Bone014/Bone016
+        weight: 1
+      - path: Bone021
+        weight: 1
+      - path: Bone021/Bone022
+        weight: 1
+      - path: Bone021/Bone022/Bone023
+        weight: 1
+      - path: IK Chain001
+        weight: 1
+      - path: IK Chain002
+        weight: 1
+      - path: IK Chain003
+        weight: 1
+      - path: IK Chain004
+        weight: 1
+      - path: IK Chain005
+        weight: 1
+      - path: IK Chain006
+        weight: 1
+      - path: Plane002
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
