@@ -43,6 +43,7 @@ ModelImporter:
     100070: Bip001 Spine3
     100072: //RootNode
     100074: Object001
+    100076: Plane005
     400000: Bip001
     400002: Bip001 Footsteps
     400004: Bip001 Head
@@ -81,7 +82,11 @@ ModelImporter:
     400070: Bip001 Spine3
     400072: //RootNode
     400074: Object001
+    400076: Plane005
+    2300000: Plane005
+    3300000: Plane005
     4300000: Object001
+    4300002: Plane005
     7400000: madlady_walking
     7400002: madlady_idle
     9500000: //RootNode

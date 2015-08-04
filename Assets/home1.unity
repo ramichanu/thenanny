@@ -175,7 +175,7 @@ RectTransform:
   - {fileID: 60300576}
   - {fileID: 643063217}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -1331,7 +1331,7 @@ Transform:
   - {fileID: 969771118}
   - {fileID: 482406585}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
 --- !u!4 &872519230
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: e2b40149977628f47bace11257238e93, type: 2}
@@ -1778,7 +1778,7 @@ Transform:
   m_Children:
   - {fileID: 318346440}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
 --- !u!1001 &1136861591
 Prefab:
   m_ObjectHideFlags: 0
