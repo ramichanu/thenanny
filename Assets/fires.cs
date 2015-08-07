@@ -8,10 +8,11 @@ public class fires : MonoBehaviour {
 	bool removeLastFire = false;
 	bool fireProcessing;
 	int indexPosition = 1;
-	int fireCount = 0;
+	public int fireCount = 0;
+
 	// Use this for initialization
 	void Start () {
-	
+
 	}
 	
 	// Update is called once per frame
@@ -30,10 +31,12 @@ public class fires : MonoBehaviour {
 	{
 		Vector3 newFirePosition;
 		fireProcessing = false;
+		int totalFires = GameObject.FindObjectsOfType<fire> ().Length;
+		fireCount = totalFires;
 
-		if (!fireProcessing && fireObjects.Count > 0) {
+		if (!fireProcessing && fireCount > 0) {
 
-			int randomFireElement = Random.Range(0, fireObjects.Count);
+			int randomFireElement = Random.Range(0, fireCount);
 			GameObject randomFireObject = (GameObject)fireObjects[randomFireElement];
 			if(randomFireObject == null)
 			{
@@ -82,7 +85,8 @@ public class fires : MonoBehaviour {
 
 	public IEnumerator addFire(Vector3 position) {
 		fireProcessing = true;
-		fireCount += 1;
+		int totalFires = GameObject.FindObjectsOfType<fire> ().Length;
+		fireCount = totalFires + 1;
 		GameObject fire = Instantiate(Resources.Load("scenary/fire")) as GameObject;
 		fire.name = "fire" + fireCount;
 		fire.transform.position = position;
@@ -93,11 +97,11 @@ public class fires : MonoBehaviour {
 		yield return new WaitForSeconds(0.5f);
 
 		if (fire.GetComponent<fire> ().isCollidingWithObstacle == true || isThereFireInThisPosition(fire) == true) {
-			fire.GetComponent<MeshRenderer> ().enabled = false;
+			fire.gameObject.GetComponent<ParticleSystem>().enableEmission = false;
 			Destroy(fire);
 			isCurrentFireAdded = false;
 		} else {
-			fire.GetComponent<MeshRenderer> ().enabled = true;
+			fire.gameObject.GetComponent<ParticleSystem>().enableEmission = true;
 			fire.GetComponent<fire>().isFireEnabled = true;
 			fireObjects.Add(fire);
 			isCurrentFireAdded = true;
@@ -117,11 +121,13 @@ public class fires : MonoBehaviour {
 		return false;
 	}
 	public void removeFirstFireItem(){
-		if (fireObjects.Count > 1) {
+		int totalFires = GameObject.FindObjectsOfType<fire> ().Length;
+		fireCount = totalFires;
+		if (fireCount >= 1) {
 			GameObject fireToDestroy = (GameObject)fireObjects[0];
 			fireObjects.RemoveAt(0);
 			Destroy(fireToDestroy);
-		}else if (fireObjects.Count == 0){
+		}else if (fireCount == 0){
 			GameObject heater = GameObject.Find("heater");
 			heater.GetComponent<dangerFurni>().dangerDropped = false;
 			if (GameObject.FindGameObjectsWithTag ("fire").Length == 0) {

@@ -16,6 +16,11 @@ public class CameraScript : MonoBehaviour {
 	float initialRotation;
 	float limitRotationYAxis;
 	float allRotationLimit;
+
+	float cameraDistanceMax = 5f;
+	float cameraDistanceMin = 2f;
+	float cameraDistance = 2f;
+	float scrollSpeed = 3f;
 	
 	// Use this for initialization
 	void Start()
@@ -31,6 +36,11 @@ public class CameraScript : MonoBehaviour {
 	
 	void Update()
 	{
+		cameraDistance += Input.GetAxis("Mouse ScrollWheel") * scrollSpeed;
+		cameraDistance = Mathf.Clamp(cameraDistance, cameraDistanceMin, cameraDistanceMax);
+
+		
+		Camera.main.orthographicSize = cameraDistance;
 		if (target)
 		{
 			if(rotationYAxis> limitRotationYAxis){

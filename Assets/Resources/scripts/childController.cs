@@ -64,23 +64,20 @@ public class childController : MonoBehaviour {
 			}
 			break;
 			case WAITING:
+			if(!gameObject.GetComponent<Animation>().IsPlaying("child_pain")){
 				playAnimation("child_idle", 0.6f);
+			}
+				
 			break;
 		}
 	}
 
 
-	void playAnimation(string animation, float speed){
-		switch(animation){
-		case "child_idle":
-			gameObject.GetComponent<Animation>()[animation].speed = speed;
-			gameObject.GetComponent<Animation>().Play(animation);
-			break;
-		case "child_walking":
-			gameObject.GetComponent<Animation>()[animation].speed = speed;
-			gameObject.GetComponent<Animation>().Play(animation);
-			break;
-		}
+	public void playAnimation(string animation, float speed){
+
+		gameObject.GetComponent<Animation>()[animation].speed = speed;
+		gameObject.GetComponent<Animation>().Play(animation);
+		
 	}
 
 	void childRandomMovement() {
@@ -139,7 +136,7 @@ public class childController : MonoBehaviour {
 
 	void OnTriggerEnter(Collider collision) {
 		if (collision.transform.name == "brokenGlass") {
-			hitAndPain(5);
+				hitAndPain(5);
 		}
 
 		if (collision.transform.tag == "fire") {
@@ -153,16 +150,17 @@ public class childController : MonoBehaviour {
 	}
 
 	public IEnumerator painEffect() {
-		/*Material painMaterial = Resources.Load("materials/painEffect", typeof(Material)) as Material;
-		Material oldMaterial = GetComponent<Renderer>().material;
+		Material painMaterial = Resources.Load("materials/pain", typeof(Material)) as Material;
+		SkinnedMeshRenderer childRenderer = GameObject.Find ("childMesh").GetComponent<SkinnedMeshRenderer> ();
+		Material oldMaterial = Resources.Load("materials/baby", typeof(Material)) as Material;
 
-		GetComponent<Renderer>().material = painMaterial;
+		childRenderer.material = painMaterial;
 		yield return new WaitForSeconds(0.2f);
-		GetComponent<Renderer>().material = oldMaterial;
+		childRenderer.material = oldMaterial;
 		yield return new WaitForSeconds(0.2f);
-		GetComponent<Renderer>().material = painMaterial;
+		childRenderer.material = painMaterial;
 		yield return new WaitForSeconds(0.2f);
-		GetComponent<Renderer>().material = oldMaterial;*/
+		childRenderer.material = oldMaterial;
 		yield return new WaitForSeconds(0.2f);
 	}
 
@@ -234,6 +232,10 @@ public class childController : MonoBehaviour {
 	}
 
 	public void hitAndPain(int damage){
+		if (state != BURNING) {
+			playAnimation("child_pain", 0.5f);
+		}
+
 		lives -= damage;
 		live.text = lives.ToString();
 		StartCoroutine(painEffect());

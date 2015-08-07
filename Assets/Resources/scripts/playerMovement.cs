@@ -29,7 +29,7 @@ public class playerMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
-		if (Input.GetMouseButtonDown (0)) {
+		if (Input.GetMouseButton (0)) {
 			if(isNotRefreshingDestination == false)
 			{
 				Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -222,6 +222,7 @@ public class playerMovement : MonoBehaviour {
 			if(buttonOptions.Count > 0){
 				//to stop child
 				int waitingChildState = 3;
+				StopAllCoroutines();
 				GameObject.Find("child").GetComponent<childController>().agent.Stop ();
 				GameObject.Find("child").GetComponent<childController>().agent.ResetPath ();
 				GameObject.Find("child").GetComponent<childController>().state = waitingChildState;
@@ -282,6 +283,7 @@ public class playerMovement : MonoBehaviour {
 			if(buttonOptions.Count > 0){
 				//to stop madLady
 				int stopMadLadyState = -1;
+				StopAllCoroutines();
 				GameObject.Find("madLady").GetComponent<madLady>().agent.Stop ();
 				GameObject.Find("madLady").GetComponent<madLady>().agent.ResetPath ();
 				GameObject.Find("madLady").GetComponent<madLady>().state = stopMadLadyState;

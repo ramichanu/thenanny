@@ -26,6 +26,7 @@ public class dogController : MonoBehaviour {
 		switch (state) {
 		case WALK:
 			if (!isRunning) {
+				playAnimation("dog_walking", 1.5f);
 				randomMovement ();
 			}
 			break;
@@ -44,7 +45,7 @@ public class dogController : MonoBehaviour {
 			{
 				playAnimation("dog_running", 1.5f);
 
-				agent.SetDestination(target.position);
+				agent.SetDestination(target.position+target.forward*-0.3f);
 				isRunning = true;
 			} else {
 				playAnimation("dog_idle", 1.5f);
@@ -100,4 +101,5 @@ public class dogController : MonoBehaviour {
 		agent.Resume ();
 		isRunning = false;
 	}
+
 }

@@ -164,8 +164,8 @@ public class catController : MonoBehaviour {
 		int seconds = Random.Range (8, 12);
 		yield return new WaitForSeconds(seconds);
 		NavMeshAgent hitAgent = target.gameObject.GetComponent<NavMeshAgent> ();
-		hitAgent.speed -= 2;
-		agent.speed -= 2;
+		hitAgent.speed -= 3;
+		agent.speed -= 3;
 		isRunning = false;
 
 		StartCoroutine(ignoreDogFewSeconds());
@@ -179,15 +179,18 @@ public class catController : MonoBehaviour {
 	void setDangerFurniPosition(){
 		int DangerFurniPosition = Random.Range (0, dangerFurniDestinations.Length);
 		dangerFurniDestination = dangerFurniDestinations [DangerFurniPosition];
-		agent.SetDestination (dangerFurniDestination.transform.position);
-
+		if (!dangerFurniDestination.GetComponent<dangerFurni> ().dangerDropped) {
+			agent.SetDestination (dangerFurniDestination.transform.position);
+		} else {
+			agent.SetDestination (getRandomMeshPosition());
+		}
 	}
 
 	public void launchHuida(GameObject hitObject){
 		state = HUIDA;
-		agent.speed += 2;
+		agent.speed += 3;
 		NavMeshAgent hitAgent = hitObject.GetComponent<NavMeshAgent> ();
-		hitAgent.speed += 2;
+		hitAgent.speed += 3;
 		playAnimation ("cat_running", 3f);
 		
 		StartCoroutine(returnToOriginalState());

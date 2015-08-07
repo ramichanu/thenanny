@@ -10,7 +10,9 @@ public class fire : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		ParticleSystem pS = transform.gameObject.GetComponent<ParticleSystem> ();
+		
+		pS.enableEmission = true;
 	}
 	
 	// Update is called once per frame

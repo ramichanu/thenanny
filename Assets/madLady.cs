@@ -9,6 +9,7 @@ public class madLady : MonoBehaviour {
 	const int RUNAWAY = 4;
 	const int YELLING = 5;
 	const int STOP = 6;
+	const int ATTACK_YELLING = 7;
 
 
 	GameObject childTarget;
@@ -39,6 +40,9 @@ public class madLady : MonoBehaviour {
 			int b1 = 2;
 			break;
 		case STOP:
+			if (!gameObject.GetComponent<Animation> ().isPlaying) {
+				playAnimation("madlady_idle", 0.3f);
+			}
 			if(!isRunning){
 				isRunning = true;
 				int seconds = Random.Range (1, 5);
@@ -70,8 +74,8 @@ public class madLady : MonoBehaviour {
 		case "child":
 			if(state == FOLLOW_CHILD && !isRunning)
 			{
-				playAnimation("madlady_idle", 0.5f);
-				int[] randomChildCollisionActions = new int[] {YELLING, HIT_CHILD, HIT_CHILD, HIT_CHILD};
+				playAnimation("madlady_idle", 0.3f);
+				int[] randomChildCollisionActions = new int[] {YELLING, HIT_CHILD, HIT_CHILD, HIT_CHILD, ATTACK_YELLING};
 				int actionAgainsChild = randomChildCollisionActions[Random.Range(0, randomChildCollisionActions.Length)];
 				switch(actionAgainsChild){
 					case YELLING:
@@ -82,6 +86,10 @@ public class madLady : MonoBehaviour {
 						stopMadLady();
 						hitChild();
 						break;
+					case ATTACK_YELLING:
+						stopMadLady();
+						hitChild(true);
+					break;
 				}
 			}
 			break;
@@ -92,13 +100,21 @@ public class madLady : MonoBehaviour {
 	void yellingChild(){
 		state = YELLING;
 		stopChild ();
+		playAnimation ("madlady_yelling", 0.5f);
 		int seconds = Random.Range (0, 3);
 		StartCoroutine (stopFewSecondsThenMeStopAndChildMoves(seconds));
 	}
-	void hitChild(){
+	void hitChild(bool andYelling = false){
 		state = HIT_CHILD;
 		stopChild();
 		int damageToChild = 2;
+
+		if (andYelling) {
+			playAnimation ("madlady_attack_yelling", 0.7f);
+		} else {
+			playAnimation ("madlady_attack", 1f);
+		}
+
 		GameObject.Find("child").GetComponent<childController>().hitAndPain(damageToChild);
 		StartCoroutine (stopFewSecondsThenMeStopAndChildMoves(1));
 	}
@@ -139,7 +155,8 @@ public class madLady : MonoBehaviour {
 	}
 
 	public void playAnimation(string animation, float speed){
-		gameObject.GetComponent<Animation>()[animation].speed = speed;
-		gameObject.GetComponent<Animation>().Play(animation);
+			gameObject.GetComponent<Animation>()[animation].speed = speed;
+			gameObject.GetComponent<Animation>().Play(animation);
+
 	}
 }
