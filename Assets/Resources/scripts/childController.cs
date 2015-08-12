@@ -22,6 +22,8 @@ public class childController : MonoBehaviour {
 	public bool isRandomState = true;
 
 	public bool isOutside = false;
+	public bool overObject = false;
+	Vector3 point;
 
 
 	// Use this for initialization
@@ -32,10 +34,21 @@ public class childController : MonoBehaviour {
 		hunger = 0;
 		setHungerBarPerSecond (1);
 
+
+	}
+
+
+	void OnMouseEnter() {
+		overObject = true;
+	}
+	
+	void OnMouseExit() {
+		overObject = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		point = Camera.main.WorldToScreenPoint(transform.position);
 		notLivesThenDie ();
 		danger = getDangerElements ();
 
@@ -135,13 +148,18 @@ public class childController : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider collision) {
-		if (collision.transform.name == "brokenGlass") {
+		if (collision.transform.tag == "brokenGlass") {
 				hitAndPain(5);
 		}
 
 		if (collision.transform.tag == "fire") {
 			isRandomState = false;
 			state = BURNING;
+			ParticleSystem fireChild = transform.FindChild("fireChild").GetComponent<ParticleSystem>();
+			if(!fireChild.isPlaying){
+				fireChild.Play();
+			}
+
 		}
 	}
 
@@ -259,4 +277,5 @@ public class childController : MonoBehaviour {
 		}
 		
 	}
+
 }

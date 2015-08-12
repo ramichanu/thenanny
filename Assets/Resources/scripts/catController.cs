@@ -133,17 +133,30 @@ public class catController : MonoBehaviour {
 			if (hits.Count > 0) {
 				foreach(RaycastHit[] raycastArray in hits){
 					foreach(RaycastHit hitItem in raycastArray){
+						Debug.Log(hitItem.transform.name);
 						if ((hitItem.transform.name == "glasses" || hitItem.transform.name == "glasses2")) {
-							bool dangerDropped = hitItem.transform.gameObject.GetComponent<dangerFurni>().dangerDropped;
+
+							bool dangerDropped = hitItem.transform.parent.gameObject.GetComponent<dangerFurni>().dangerDropped;
 							if(!dangerDropped){
-								hitItem.transform.gameObject.GetComponent<dangerFurni>().dangerDropped = true;
-								GameObject brokenGlass = Instantiate(Resources.Load("scenary/brokenGlass")) as GameObject;
-								brokenGlass.name = "brokenGlass";
-								brokenGlass.transform.position = hitItem.transform.position + hitItem.transform.right *0.7f;
-								brokenGlass.GetComponent<dangerItem>().parent = hitItem.transform.gameObject;
+								hitItem.transform.parent.gameObject.GetComponent<Animation>()["shelf_shaking"].speed = 1;
+								hitItem.transform.parent.gameObject.GetComponent<Animation>().Play("shelf_shaking");
+								hitItem.transform.parent.gameObject.GetComponent<dangerFurni>().dangerDropped = true;
+								StartCoroutine(instantiateBrokenGlass(hitItem.transform.gameObject));
 							}
 							
-						} else if(hitItem.transform.name == "heater"){
+						}
+						else if ((hitItem.transform.name == "jartable")) {
+							
+							bool dangerDropped = hitItem.transform.gameObject.GetComponent<dangerFurni>().dangerDropped;
+							if(!dangerDropped){
+								hitItem.transform.gameObject.GetComponent<Animation>()["jartable_anim"].speed = 1;
+								hitItem.transform.gameObject.GetComponent<Animation>().Play("jartable_anim");
+								hitItem.transform.gameObject.GetComponent<dangerFurni>().dangerDropped = true;
+								StartCoroutine(instantiateBrokenJar(hitItem.transform.gameObject));
+							}
+							
+						}
+						else if(hitItem.transform.name == "heater"){
 							bool dangerDropped = hitItem.transform.gameObject.GetComponent<dangerFurni>().dangerDropped;
 							if(!dangerDropped){
 								hitItem.transform.gameObject.GetComponent<dangerFurni>().dangerDropped = true;
@@ -159,7 +172,22 @@ public class catController : MonoBehaviour {
 			}
 		}
 	}
+	IEnumerator instantiateBrokenGlass(GameObject hitItem){
+		yield return new WaitForSeconds (0.8f);
+		GameObject brokenGlass = Instantiate(Resources.Load("scenary/brokenGlass")) as GameObject;
+		brokenGlass.name = "brokenGlass";
+		brokenGlass.transform.position = hitItem.transform.parent.position + hitItem.transform.right *-0.7f;
+		brokenGlass.GetComponent<dangerItem>().parent = hitItem.transform.parent.gameObject;
 
+	}
+	IEnumerator instantiateBrokenJar(GameObject hitItem){
+		yield return new WaitForSeconds (0.5f);
+		GameObject brokenJar = Instantiate(Resources.Load("scenary/brokenJar")) as GameObject;
+		brokenJar.name = "brokenJar";
+		brokenJar.transform.position = hitItem.transform.position + hitItem.transform.right * 0.7f;
+		brokenJar.GetComponent<dangerItem>().parent = hitItem.transform.gameObject;
+		
+	}
 	IEnumerator returnToOriginalState(){
 		int seconds = Random.Range (8, 12);
 		yield return new WaitForSeconds(seconds);

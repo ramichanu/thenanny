@@ -22,6 +22,7 @@ TagManager:
   - terrainHome
   - madLady
   - lightning
+  - brokenJar
   layers:
   - Default
   - TransparentFX

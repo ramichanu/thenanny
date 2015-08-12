@@ -23,7 +23,6 @@ public class playerMovement : MonoBehaviour {
 		agent = GetComponent<NavMeshAgent> ();
 		agentHasPath = false;
 		babbyBottle = false;
-
 	}
 	
 	// Update is called once per frame
@@ -49,6 +48,7 @@ public class playerMovement : MonoBehaviour {
 						case "terrain":
 						case "terrainHome":
 						case "brokenGlass":
+						case "brokenJar":
 						case "babyBottle":
 							agent.SetDestination(new Vector3(hit.point.x, transform.position.y, hit.point.z));
 							break;
@@ -172,9 +172,12 @@ public class playerMovement : MonoBehaviour {
 
 		switch (collision.transform.name) {
 		case "brokenGlass":
+		case "brokenJar":
 			if(hit.transform != null) {
-				if (hit.transform.tag == "brokenGlass") {
+				if (hit.transform.name == "brokenGlass") {
 					collision.gameObject.GetComponent<dangerItem>().parent.GetComponent<dangerFurni>().dangerDropped = false;
+					Destroy(collision.transform.gameObject);
+				}else if(hit.transform.name == "brokenJar"){
 					Destroy(collision.transform.gameObject);
 				}
 			}
@@ -321,6 +324,7 @@ public class playerMovement : MonoBehaviour {
 		
 		button.GetComponent<Button> ().onClick.AddListener (() => {
 			Destroy (GameObject.Find ("characterMenu"));
+			GameObject.Find("madLady").GetComponent<madLady>().StopAllCoroutines();
 			lastButtonClick = buttonType;
 			
 			GameObject canvas = GameObject.Find ("Canvas");
@@ -406,6 +410,10 @@ public class playerMovement : MonoBehaviour {
 		GameObject.Find ("child").GetComponent<childController> ().state = childWalkState;
 		GameObject.Find ("child").GetComponent<childController> ().isRunning = false;
 		GameObject.Find ("child").GetComponent<childController> ().isRandomState = false;
+		ParticleSystem fireChild = GameObject.Find("fireChild").GetComponent<ParticleSystem>();
+		fireChild.Stop();
+		fireChild.Clear();
+
 	}
 
 	void attackMadLady(){

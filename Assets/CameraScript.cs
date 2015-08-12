@@ -20,7 +20,9 @@ public class CameraScript : MonoBehaviour {
 	float cameraDistanceMax = 5f;
 	float cameraDistanceMin = 2f;
 	float cameraDistance = 2f;
-	float scrollSpeed = 3f;
+	float scrollSpeed = 100f;
+
+	float zoomInOut = (float)-0.1;
 	
 	// Use this for initialization
 	void Start()
@@ -32,13 +34,14 @@ public class CameraScript : MonoBehaviour {
 		allRotationLimit = rotationYAxis + (90 * 4);
 
 
+
+
 	}
 	
 	void Update()
 	{
-		cameraDistance += Input.GetAxis("Mouse ScrollWheel") * scrollSpeed;
-		cameraDistance = Mathf.Clamp(cameraDistance, cameraDistanceMin, cameraDistanceMax);
 
+		zoomByMouseScrollWeel ();
 		
 		Camera.main.orthographicSize = cameraDistance;
 		if (target)
@@ -70,7 +73,28 @@ public class CameraScript : MonoBehaviour {
 		}
 		
 	}
-	
+
+	void zoomByMouseScrollWeel(){
+		if (Input.GetAxis ("Mouse ScrollWheel") != 0){
+			zoomInOut = Input.GetAxis ("Mouse ScrollWheel");
+
+			cameraDistance += zoomInOut * scrollSpeed;
+			cameraDistance = Mathf.Clamp(cameraDistance, cameraDistanceMin, cameraDistanceMax);
+		}
+	}
+
+	public void zoom(){
+
+		float zoomPositiveOrNegative = (float)-0.1;
+		if (zoomInOut == (float)-0.1) {
+			zoomPositiveOrNegative = (float)0.1;
+		} 
+
+		zoomInOut = zoomPositiveOrNegative;
+		cameraDistance += zoomPositiveOrNegative * scrollSpeed;
+		cameraDistance = Mathf.Clamp (cameraDistance, cameraDistanceMin, cameraDistanceMax);
+	}
+
 	public static float ClampAngle(float angle, float min, float max)
 	{
 		if (angle < -360F)
@@ -83,4 +107,6 @@ public class CameraScript : MonoBehaviour {
 	public void rotate(){
 		velocityX += xSpeed * 1 *  0.04f;
 	}
+
+
 }
