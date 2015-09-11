@@ -218,10 +218,9 @@ public class childController : MonoBehaviour {
 		hungerBar.GetComponent<Image> ().fillAmount = hunger*(float)0.015;
 		
 		if (hungerBar.GetComponent<Image> ().fillAmount == 1) {
-			lives -= 1;
-			if(lives >= 0){
-				live.text = lives.ToString();
-			}
+			GameObject life = GameObject.Find ("Canvas");
+			life.GetComponent<LifeAndHunger> ().restPercentLife (5);
+
 		}	
 	}
 	void setBurningChild(int seconds) {
@@ -254,10 +253,13 @@ public class childController : MonoBehaviour {
 			playAnimation("child_pain", 0.5f);
 		}
 
-		lives -= damage;
-		live.text = lives.ToString();
+		GameObject life = GameObject.Find ("Canvas");
+		life.GetComponent<LifeAndHunger> ().restPercentLife (10);
+		
 		StartCoroutine(painEffect());
 		StopCoroutine(painEffect());
+
+
 	}
 
 	void OnCollisionEnter(Collision collision) {

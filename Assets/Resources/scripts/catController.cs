@@ -156,6 +156,19 @@ public class catController : MonoBehaviour {
 							}
 							
 						}
+						else if ((hitItem.transform.name == "tvTable")) {
+							
+							bool dangerDropped = hitItem.transform.gameObject.GetComponent<dangerFurni>().dangerDropped;
+							if(!dangerDropped){
+								hitItem.transform.gameObject.GetComponent<Animation>()["tv_falling"].speed = 1;
+								hitItem.transform.gameObject.GetComponent<Animation>().Play("tv_falling");
+								hitItem.transform.gameObject.GetComponent<dangerFurni>().dangerDropped = true;
+								ParticleSystem electricity = GameObject.Find("electricity").GetComponent<ParticleSystem>();
+								electricity.Play();
+
+							}
+							
+						}
 						else if(hitItem.transform.name == "heater"){
 							bool dangerDropped = hitItem.transform.gameObject.GetComponent<dangerFurni>().dangerDropped;
 							if(!dangerDropped){

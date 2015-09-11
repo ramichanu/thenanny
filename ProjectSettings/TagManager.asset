@@ -23,6 +23,10 @@ TagManager:
   - madLady
   - lightning
   - brokenJar
+  - cockroach
+  - nannyHand
+  - brokenTv
+  - heart
   layers:
   - Default
   - TransparentFX

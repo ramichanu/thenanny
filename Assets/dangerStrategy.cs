@@ -7,6 +7,7 @@ public class dangerStrategy : MonoBehaviour {
 	public const int DANGER_LIGHTNING_STORM = 3;
 	const int DANGER_ZOO = 4;
 	const int DANGER_PHONE = 5;
+	const int DANGER_COCKROACH = 6;
 
 	public int childLive;
 	public int currentDanger;
@@ -34,10 +35,13 @@ public class dangerStrategy : MonoBehaviour {
 				launchDangerPets();
 				break;
 			case DANGER_MADLADY:
-				launchDangerMadLady();
+				//launchDangerMadLady();
 				break;
 			case DANGER_LIGHTNING_STORM:
-				launchLightningStorm();
+				//launchLightningStorm();
+				break;
+			case DANGER_COCKROACH:
+				//launchDangerCockroach();
 				break;
 			}
 		}
@@ -72,12 +76,15 @@ public class dangerStrategy : MonoBehaviour {
 	ArrayList getAvailableDangers(){
 		ArrayList availableDangers = new ArrayList ();
 		availableDangers.Add (DANGER_PETS);
+		availableDangers.Add (DANGER_COCKROACH);
 		if (GameObject.Find ("madLady") == null) {
 			availableDangers.Add (DANGER_MADLADY);
 		}
 		if (GameObject.Find ("lightningStorm") == null) {
 			availableDangers.Add (DANGER_LIGHTNING_STORM);
 		}
+
+
 
 		return availableDangers;
 	}
@@ -99,6 +106,15 @@ public class dangerStrategy : MonoBehaviour {
 
 		isLightningStormEnabled = false;
 		Destroy(GameObject.Find ("lightningStorm"));
+	}
+
+	void launchDangerCockroach(){
+		GameObject dog = GameObject.Find ("dog");
+		Vector3 position = dog.GetComponent<dogController>().getRandomMeshPosition();
+		GameObject cockroach = Instantiate(Resources.Load("scenary/cockroach")) as GameObject;
+		cockroach.name = "cockroach";
+		cockroach.transform.position = position;
+
 	}
 
 }

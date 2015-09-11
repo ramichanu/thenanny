@@ -4,19 +4,24 @@ using System.Collections.Specialized;
 using UnityEngine.UI;
 
 public class playerMovement : MonoBehaviour {
+
 	const int FIRE_EXTINGUISH = 1;
+	const int COCKROACH_ATTACK = 2;
+
 	public bool babbyBottle;
-	public bool isExtinguishFire = false;
+	public bool isExtinguishFire = true;
 	public GameObject currentFireToRemove;
 	public string lastButtonClick = null;
 	public GameObject characterMenu = null;
 	bool isNotRefreshingDestination = false;
+	bool noFire = false;
 
 	NavMeshAgent agent;
 	bool agentHasPath;
 	RaycastHit hit;
 	int state = 0;
 	GameObject closestFire = null;
+	public GameObject extinguisher = null;
 
 	// Use this for initialization
 	void Start () {
@@ -42,17 +47,31 @@ public class playerMovement : MonoBehaviour {
 				}
 
 				if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask) && !isOverUI){
-						isExtinguishFire = true;
 
+					if(state == COCKROACH_ATTACK){
+						switch(hit.transform.tag) {
+							case "cockroach":
+							destroyCockroach(hit.transform.gameObject);
+							break;
+						}
+					} else {
 						switch(hit.transform.tag) {
 						case "terrain":
 						case "terrainHome":
 						case "brokenGlass":
+						case "player":
 						case "brokenJar":
+						case "brokenTv":
+						case "cockroach":
 						case "babyBottle":
+							StopAllCoroutines();
+							agent.ResetPath();
+							getExtinguisher(false);
+							noFire = true;
 							agent.SetDestination(new Vector3(hit.point.x, transform.position.y, hit.point.z));
 							break;
 						case "fire":
+							noFire = false;
 							isExtinguishFire = false;
 							state = FIRE_EXTINGUISH;
 							closestFire = hit.transform.gameObject;
@@ -65,9 +84,9 @@ public class playerMovement : MonoBehaviour {
 						case "madLady":
 							agent.SetDestination(new Vector3(hit.point.x, transform.position.y, hit.point.z));
 							createMadLadyClickMenu();
-						break;
+							break;
 						}
-
+					}
 				}
 			}
 		}
@@ -77,40 +96,54 @@ public class playerMovement : MonoBehaviour {
 			case FIRE_EXTINGUISH:
 
 			break;
+			case COCKROACH_ATTACK:
+			playAnimation("nanny_cockroach", 1f);
+			break;
 		}
 	}
 
 	IEnumerator fireExtinguish(GameObject fire){
-		ArrayList fireObjects = GameObject.FindGameObjectWithTag("fires").GetComponent<fires>().fireObjects;
-
-		int fireToRemovePos = fireObjects.IndexOf(fire);
-		if (fireToRemovePos != -1) {
-			fireObjects.RemoveAt(fireToRemovePos);
-			Destroy(fire);
-			isExtinguishFire = true;
-			yield return new WaitForSeconds(0.3f);
-			isExtinguishFire = false;
-			fire = findClosestFire
-				(
-					GameObject.FindGameObjectWithTag("fires").GetComponent<fires>().fireObjects
-					);
-			currentFireToRemove = fire;
-
-			fireObjects = GameObject.FindGameObjectWithTag("fires").GetComponent<fires>().fireObjects;
-			if(fire != null)
-			{
-				agent.SetDestination(fire.transform.position);
-			}
-		} else {
-			if (fireObjects.Count > 0) {
+		if (noFire == false) {
+			ArrayList fireObjects = GameObject.FindGameObjectWithTag("fires").GetComponent<fires>().fireObjects;
+			
+			int fireToRemovePos = fireObjects.IndexOf(fire);
+			if (fireToRemovePos != -1) {
+				fireObjects.RemoveAt(fireToRemovePos);
+				
+				isExtinguishFire = true;
+				var targetRotation = Quaternion.LookRotation(fire.transform.position - transform.position);
+				
+				transform.LookAt(fire.transform.position);
+				yield return new WaitForSeconds(1.5f);
+				getExtinguisher(false);
+				Destroy(fire);
+				playAnimation("nanny_idle", 0.3f);
+				isExtinguishFire = false;
 				fire = findClosestFire
 					(
-						fire.GetComponent<fire> ().parent.GetComponent<fires> ().fireObjects
+						GameObject.FindGameObjectWithTag("fires").GetComponent<fires>().fireObjects
 						);
 				currentFireToRemove = fire;
-				agent.SetDestination(fire.transform.position);
+				
+				fireObjects = GameObject.FindGameObjectWithTag("fires").GetComponent<fires>().fireObjects;
+				if(fire != null)
+				{
+					agent.SetDestination(fire.transform.position);
+				}
 			} else {
-				state = 0;
+				if (fireObjects.Count > 0) {
+					getExtinguisher(true);
+					fire = findClosestFire
+						(
+							fire.GetComponent<fire> ().parent.GetComponent<fires> ().fireObjects
+							);
+					currentFireToRemove = fire;
+					agent.SetDestination(fire.transform.position);
+				} else {
+					getExtinguisher(false);
+					playAnimation("nanny_idle", 0.3f);
+					state = 0;
+				}
 			}
 		}
 	}
@@ -155,23 +188,16 @@ public class playerMovement : MonoBehaviour {
 		}
 	}
 
-	void playAnimation(string animation, float speed){
-		switch(animation){
-		case "nanny_idle":
-			gameObject.GetComponent<Animation>()[animation].speed = speed;
-			gameObject.GetComponent<Animation>().Play(animation);
-			break;
-		case "nanny_walking":
-			gameObject.GetComponent<Animation>()[animation].speed = speed;
-			gameObject.GetComponent<Animation>().Play(animation);
-			break;
-		}
+	public void playAnimation(string animation, float speed){
+		gameObject.GetComponent<Animation>()[animation].speed = speed;
+		gameObject.GetComponent<Animation>().Play(animation);
 	}
 	
 	void OnTriggerStay(Collider collision) {
 
 		switch (collision.transform.name) {
 		case "brokenGlass":
+		case "tv":
 		case "brokenJar":
 			if(hit.transform != null) {
 				if (hit.transform.name == "brokenGlass") {
@@ -179,6 +205,18 @@ public class playerMovement : MonoBehaviour {
 					Destroy(collision.transform.gameObject);
 				}else if(hit.transform.name == "brokenJar"){
 					Destroy(collision.transform.gameObject);
+				}else if(hit.transform.name == "tv"){
+
+					collision.gameObject.GetComponent<dangerItem>().parent.GetComponent<dangerFurni>().dangerDropped = false;
+
+					AnimationState tvFalling = GameObject.Find ("tvTable").GetComponent<Animation>()["tv_falling"];
+					tvFalling.enabled = true;
+					tvFalling.time = 0;
+					tvFalling.speed = 0;
+					GameObject.Find ("tvTable").GetComponent<Animation>().Play();
+
+					ParticleSystem electricity =  GameObject.Find("electricity").GetComponent<ParticleSystem>();
+					electricity.Stop ();
 				}
 			}
 			break;
@@ -195,14 +233,30 @@ public class playerMovement : MonoBehaviour {
 				GameObject.Find ("babyBottleIcon").GetComponent<Image>().sprite = withBabyBottle;
 			}
 			break;
+		case "cockroach":
+			if(state != COCKROACH_ATTACK)
+			{
+				StopAllCoroutines();
+				agent.ResetPath();
+				collision.gameObject.GetComponent<Cockroach>().startCockroachAttack(transform.position);
+				state = COCKROACH_ATTACK;
+			}
+
+			break;
 			
 		}
 
 		switch (collision.transform.tag) {
 			case "fire":
 				if(!isExtinguishFire){
+					
 					StartCoroutine(fireExtinguish(collision.transform.gameObject));	
-				}
+			} else if(noFire == false) {
+					agent.ResetPath();
+					playAnimation("nanny_fireoff", 0.6f);
+
+					getExtinguisher(true);
+			}
 			break;
 
 		}
@@ -421,4 +475,14 @@ public class playerMovement : MonoBehaviour {
 		GameObject.Find("madLady").GetComponent<madLady>().state = runawayState;
 	}
 
+	void destroyCockroach(GameObject cockroach){
+		Destroy (cockroach);
+		playAnimation("nanny_idle", 0.3f);
+		state = 0;
+	}
+
+	void getExtinguisher(bool showExtinguisher){
+		extinguisher.SetActive(showExtinguisher);
+	}
+	
 }
