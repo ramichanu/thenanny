@@ -103,18 +103,19 @@ public class playerMovement : MonoBehaviour {
 	}
 
 	IEnumerator fireExtinguish(GameObject fire){
-		if (noFire == false) {
+		if (noFire == false && !isExtinguishFire) {
 			ArrayList fireObjects = GameObject.FindGameObjectWithTag("fires").GetComponent<fires>().fireObjects;
 			
 			int fireToRemovePos = fireObjects.IndexOf(fire);
-			if (fireToRemovePos != -1) {
-				fireObjects.RemoveAt(fireToRemovePos);
+			if (fireToRemovePos != -1 && !isExtinguishFire) {
+
 				
 				isExtinguishFire = true;
 				var targetRotation = Quaternion.LookRotation(fire.transform.position - transform.position);
 				
 				transform.LookAt(fire.transform.position);
 				yield return new WaitForSeconds(1.5f);
+				fireObjects.RemoveAt(fireToRemovePos);
 				getExtinguisher(false);
 				Destroy(fire);
 				playAnimation("nanny_idle", 0.3f);
@@ -130,7 +131,7 @@ public class playerMovement : MonoBehaviour {
 				{
 					agent.SetDestination(fire.transform.position);
 				}
-			} else {
+			} else if(!isExtinguishFire) {
 				if (fireObjects.Count > 0) {
 					getExtinguisher(true);
 					fire = findClosestFire

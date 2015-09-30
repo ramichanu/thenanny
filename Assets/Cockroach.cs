@@ -14,7 +14,7 @@ public class Cockroach : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
 		agent = GetComponent<NavMeshAgent> ();
-		Invoke ("instanciateMoreCockroach", 3f);
+		//Invoke ("instanciateMoreCockroach", 5f);
 	}
 	
 	// Update is called once per frame

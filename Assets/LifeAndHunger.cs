@@ -17,6 +17,7 @@ public class LifeAndHunger : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		NotificationCenter.DefaultCenter.AddObserver(this, "executeScript");
 		currentLife = totalLife;
 		lifeAndHunger = GameObject.Find("lifeAndHunger");
 		lifeAndHungerPosition = lifeAndHunger.transform.position;
@@ -63,7 +64,7 @@ public class LifeAndHunger : MonoBehaviour {
 
 		if (hearts.Count > 0) {
 			GameObject lastHeart = (GameObject)hearts[hearts.Count-1];
-			heart.transform.position = new Vector3(lastHeart.transform.position.x + 30, lifeAndHunger.transform.position.y, lifeAndHunger.transform.position.z);
+			heart.transform.position = new Vector3(lastHeart.transform.position.x + 20, lifeAndHunger.transform.position.y, lifeAndHunger.transform.position.z);
 		}
 
 		hearts.Add(heart);
@@ -101,4 +102,5 @@ public class LifeAndHunger : MonoBehaviour {
 	void goToMenu(string menuName){
 		Application.LoadLevel(menuName);
 	}
+
 }

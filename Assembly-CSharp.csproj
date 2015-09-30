@@ -48,8 +48,14 @@
   <ItemGroup>
      <Compile Include="Assets\CameraScript.cs" />
      <Compile Include="Assets\Cockroach.cs" />
+     <Compile Include="Assets\CockroachNew.cs" />
+     <Compile Include="Assets\DogControllerNew.cs" />
      <Compile Include="Assets\LifeAndHunger.cs" />
      <Compile Include="Assets\MenuFunctions.cs" />
+     <Compile Include="Assets\Resources\scripts\Event.cs" />
+     <Compile Include="Assets\Resources\scripts\EventDispatcher.cs" />
+     <Compile Include="Assets\Resources\scripts\NotificationCenter.cs" />
+     <Compile Include="Assets\Resources\scripts\PlayerMovementNew.cs" />
      <Compile Include="Assets\Resources\scripts\catController.cs" />
      <Compile Include="Assets\Resources\scripts\childController.cs" />
      <Compile Include="Assets\Resources\scripts\dogController.cs" />
@@ -64,6 +70,7 @@
      <Compile Include="Assets\madLady.cs" />
      <None Include="Assets\Shaders\twoSided-difusse-alpha.shader" />
      <None Include="Assets\Resources\imgs\sketches\black.shader" />
+     <None Include="Assets\Shaders\BlackAlpha.shader" />
      <None Include="Assets\Resources\imgs\sketches\pink.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

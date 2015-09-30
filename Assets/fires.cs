@@ -17,12 +17,11 @@ public class fires : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
 	}
 	public void startFireBehaviour()
 	{
-		InvokeRepeating("launchFire", 2, 1f);
-		InvokeRepeating("removeFirstFireItem", 5, 4f);
+		InvokeRepeating("launchFire", 2, 2f);
+		InvokeRepeating("removeFirstFireItem", 5, 5f);
 	}
 	void launchFire(){
 		StartCoroutine(fireBehaviour());

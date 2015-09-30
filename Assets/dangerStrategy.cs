@@ -35,13 +35,13 @@ public class dangerStrategy : MonoBehaviour {
 				launchDangerPets();
 				break;
 			case DANGER_MADLADY:
-				//launchDangerMadLady();
+				launchDangerMadLady();
 				break;
 			case DANGER_LIGHTNING_STORM:
 				//launchLightningStorm();
 				break;
 			case DANGER_COCKROACH:
-				//launchDangerCockroach();
+				launchDangerCockroach();
 				break;
 			}
 		}

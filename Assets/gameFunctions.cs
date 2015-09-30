@@ -8,7 +8,7 @@ public class gameFunctions : MonoBehaviour {
 	public Text totalMoney;
 	// Use this for initialization
 	void Start () {
-		totalMoney.text = PlayerPrefs.GetInt ("totalMoney").ToString ();
+		//totalMoney.text = PlayerPrefs.GetInt ("totalMoney").ToString ();
 		countdown = initialCountDown;
 
 		GameObject.Find ("countdown").GetComponent<Text>().text = countdown.ToString();
@@ -32,10 +32,10 @@ public class gameFunctions : MonoBehaviour {
 		if (countdown > 0) {
 			countdown -= 1;
 			if(countdown == 0){
-				GameObject child = GameObject.Find ("child");
+				GameObject child = GameObject.Find ("lifeAndHunger");
 
-				int lives = child.GetComponent<childController>().lives;
-				int initialLives = child.GetComponent<childController>().initialLives;
+				int lives = (int)child.GetComponent<LifeAndHunger>().currentLife;
+				int initialLives = (int)child.GetComponent<LifeAndHunger>().totalLife;
 
 				PlayerPrefs.SetInt("lives", lives);
 				PlayerPrefs.SetInt("initialLives", initialLives);
@@ -45,6 +45,7 @@ public class gameFunctions : MonoBehaviour {
 			GameObject.Find ("countdown").GetComponent<Text>().text = countdown.ToString();
 		}
 	}
+
 
 
 

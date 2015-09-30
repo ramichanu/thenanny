@@ -172,12 +172,18 @@ public class childController : MonoBehaviour {
 		SkinnedMeshRenderer childRenderer = GameObject.Find ("childMesh").GetComponent<SkinnedMeshRenderer> ();
 		Material oldMaterial = Resources.Load("materials/baby", typeof(Material)) as Material;
 
+		GameObject childIcon = GameObject.Find ("childIcon");
+		childIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("hub/child_icon_pain");
+
 		childRenderer.material = painMaterial;
 		yield return new WaitForSeconds(0.2f);
+		childIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("hub/child_icon");
 		childRenderer.material = oldMaterial;
 		yield return new WaitForSeconds(0.2f);
+		childIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("hub/child_icon_pain");
 		childRenderer.material = painMaterial;
 		yield return new WaitForSeconds(0.2f);
+		childIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("hub/child_icon");
 		childRenderer.material = oldMaterial;
 		yield return new WaitForSeconds(0.2f);
 	}
@@ -218,7 +224,7 @@ public class childController : MonoBehaviour {
 		hungerBar.GetComponent<Image> ().fillAmount = hunger*(float)0.015;
 		
 		if (hungerBar.GetComponent<Image> ().fillAmount == 1) {
-			GameObject life = GameObject.Find ("Canvas");
+			GameObject life = GameObject.Find ("lifeAndHunger");
 			life.GetComponent<LifeAndHunger> ().restPercentLife (5);
 
 		}	
@@ -236,7 +242,7 @@ public class childController : MonoBehaviour {
 			unsetBurningChild();
 		}
 		isRunning = true;
-		hitAndPain (1);
+		hitAndPain (2);
 		if (state != WAITING) {
 			childRandomMovement ();
 		}
@@ -253,8 +259,8 @@ public class childController : MonoBehaviour {
 			playAnimation("child_pain", 0.5f);
 		}
 
-		GameObject life = GameObject.Find ("Canvas");
-		life.GetComponent<LifeAndHunger> ().restPercentLife (10);
+		GameObject life = GameObject.Find ("lifeAndHunger");
+		life.GetComponent<LifeAndHunger> ().restPercentLife (damage);
 		
 		StartCoroutine(painEffect());
 		StopCoroutine(painEffect());
@@ -268,7 +274,7 @@ public class childController : MonoBehaviour {
 		}
 
 		if (collision.transform.tag == "lightning") {
-			hitAndPain(10);
+			hitAndPain(20);
 		}
 		
 	}
