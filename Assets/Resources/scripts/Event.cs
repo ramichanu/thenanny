@@ -103,7 +103,6 @@ public class Event : MonoBehaviour {
 		Hashtable options = new Hashtable ();
 		options.Add ("methodCalled", currentEventRunning);
 
-
 		methodsToCall = methodsAfterInterrupt;
 
 		NotificationCenter.DefaultCenter.PostNotification(this, "eventIsFinished", options);

@@ -140,8 +140,8 @@ public class CatControllerNew : MonoBehaviour {
 		if (!dangerDropped) {
 			agent.SetDestination (dangerFurniDestination.transform.position+transform.forward*-0.3f);
 		} else {
-			agent.SetDestination (dangerFurniDestination.transform.position+transform.forward*-0.3f);
-			//agent.SetDestination (getRandomMeshPosition());
+			//agent.SetDestination (dangerFurniDestination.transform.position+transform.forward*-0.3f);
+			agent.SetDestination (getRandomMeshPosition());
 		}
 
 		agentHasPath = true;

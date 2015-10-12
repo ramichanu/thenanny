@@ -38,7 +38,7 @@ public class PlayerMovementNew : MonoBehaviour {
 				switch (hit.transform.tag) {
 				case "terrainHome":
 
-					canInterruptBy.Add("moveCharacterToClickedDedstination");
+					canInterruptBy.Add("moveCharacterToClickedDestination");
 					canInterruptBy.Add("goToPlayer");
 
 					methodsToCall.Add("player_playNannyWalking");
@@ -56,6 +56,12 @@ public class PlayerMovementNew : MonoBehaviour {
 					methodsToCall.Add("player_moveCharacterToClickedDestination");
 					methodsToCall.Add("player_removeBrokenGlass");
 					methodsToCall.Add("player_stopPlayerMovement");
+					methodsToCall.Add("player_playNannyIdle");
+
+					canInterruptBy.Add("moveCharacterToClickedDestination");
+					methodsAfterInterrupt.Add("player_stopPlayerMovement");
+					methodsAfterInterrupt.Add("player_playNannyIdle");
+
 					
 					eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
 					break;
@@ -74,6 +80,7 @@ public class PlayerMovementNew : MonoBehaviour {
 					methodsToCall.Add("player_moveCharacterToCockroach");
 					methodsToCall.Add("cockroach_destroyCockroach");
 					methodsToCall.Add("player_stopPlayerMovement");
+					methodsToCall.Add("player_playNannyIdle");
 					
 					eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
 					break;
@@ -216,7 +223,6 @@ public class PlayerMovementNew : MonoBehaviour {
 		agent.Stop ();
 		agent.ResetPath ();
 		hasPath = false;
-		playNannyIdle ();
 		eventFinishedCallback("stopPlayerMovement");
 	}
 

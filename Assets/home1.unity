@@ -6454,27 +6454,6 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &2111454284
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2111454280}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b85a22ac4d608844eb5f3ef4163329df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  initialLives: 50
-  lives: 0
-  hunger: 0
-  agent: {fileID: 0}
-  live: {fileID: 0}
-  isRunning: 0
-  state: 0
-  isRandomState: 1
-  isOutside: 0
-  overObject: 0
 --- !u!111 &2111454285
 Animation:
   m_ObjectHideFlags: 0
@@ -6504,3 +6483,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 106.800003, y: 152.330002, z: 104.300003}
   m_Center: {x: 0, y: 62.8400002, z: 1.86000001}
+--- !u!114 &2111454287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2111454280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b03983bb3e2a05b48bf8ce7e98bb3165, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 0}
