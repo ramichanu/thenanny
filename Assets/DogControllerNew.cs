@@ -7,13 +7,16 @@ public class DogControllerNew : MonoBehaviour {
 	public NavMeshAgent agent;
 	bool agentHasPath;
 	Vector3 randomPosition;
+	Transform target;
 
 	void Start () {
 		NotificationCenter.DefaultCenter.AddObserver(this, "executeScript");
 		agent = GetComponent<NavMeshAgent> ();
 		eventDisp = EventDispatcher.DefaultEventDispatcher;
 
-		InvokeRepeating("dogRandomMovementEvent", 0, 5);
+		target = GameObject.Find ("cat").transform;
+		startDogRandomMovementEvent ();
+
 	}
 	
 	// Update is called once per frame
@@ -21,11 +24,35 @@ public class DogControllerNew : MonoBehaviour {
 		randomMovement ();
 	}
 
+	void startDogRandomMovementEvent(){
+		ArrayList canInterruptBy = new ArrayList();
+		
+		ArrayList methodsToCall = new ArrayList();
+		methodsToCall.Add("dog_startDogRandomMovement");
+		
+		ArrayList methodsAfterInterrupt = new ArrayList();
+		ArrayList methodsDisabledUntilEventFinished = new ArrayList();
+		
+		eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
+	}
+
+	void startDogRandomMovement(){
+		InvokeRepeating("dogRandomMovementEvent", 0, 7);
+		eventFinishedCallback("startDogRandomMovement");
+	}
+
+	void stopDogRandomMovement(){
+		agent.ResetPath ();
+		CancelInvoke("dogRandomMovementEvent");
+		eventFinishedCallback("stopDogRandomMovement");
+	}
+
 	void randomMovement() {
 		if (agent.remainingDistance <= float.Epsilon && agent.pathStatus == NavMeshPathStatus.PathComplete && agentHasPath) {
+			playAnimation("dog_idle", 1.5f);
+			agent.speed = 1.5f;
 			agentHasPath = false;
 			agent.ResetPath();
-			eventFinishedCallback("startRandomMovement");
 		}
 	}
 
@@ -63,21 +90,26 @@ public class DogControllerNew : MonoBehaviour {
 		eventFinishedCallback("dogIdle");
 	}
 
-	void startRandomMovement(){
-		setRandomPosition();
+	void dogRunning(){
+		playAnimation("dog_running", 1.5f);
+		eventFinishedCallback("dogRunning");
 	}
+	
 
 	void dogRandomMovementEvent(){
-		ArrayList canInterruptBy = new ArrayList();
-		
-		ArrayList methodsToCall = new ArrayList();
-		methodsToCall.Add("dog_dogWalking");
-		methodsToCall.Add("dog_startRandomMovement");
-		methodsToCall.Add("dog_dogIdle");
-		
-		ArrayList methodsAfterInterrupt = new ArrayList();
-		
-		eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt);
+		playAnimation("dog_walking", 1.5f);
+		setRandomPosition ();
+	}
+
+	void dogFollowRunning(){
+		agent.speed = 3f;
+		playAnimation("dog_running", 1.5f);
+		agent.SetDestination(target.position+target.forward*-0.3f);
+	}
+
+	void startDogFollowRunning(){
+		InvokeRepeating("dogFollowRunning", 0, 0.01f);
+		eventFinishedCallback("startDogFollowRunning");
 	}
 
 	void eventFinishedCallback(string methodExecuted){

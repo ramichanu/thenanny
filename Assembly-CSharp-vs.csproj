@@ -47,9 +47,11 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\CameraScript.cs" />
+     <Compile Include="Assets\CatControllerNew.cs" />
      <Compile Include="Assets\Cockroach.cs" />
      <Compile Include="Assets\CockroachNew.cs" />
      <Compile Include="Assets\DogControllerNew.cs" />
+     <Compile Include="Assets\LevelManager.cs" />
      <Compile Include="Assets\LifeAndHunger.cs" />
      <Compile Include="Assets\MenuFunctions.cs" />
      <Compile Include="Assets\Resources\scripts\Event.cs" />

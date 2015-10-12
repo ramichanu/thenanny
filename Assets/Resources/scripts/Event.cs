@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Event : MonoBehaviour {
 
+	EventDispatcher eventDisp;
 	public string hash;
 	public bool isFinished = false;
 	public bool isWaiting = true;
@@ -12,13 +13,16 @@ public class Event : MonoBehaviour {
 	public ArrayList methodsToCall = new ArrayList();
 	public ArrayList canInterruptBy = new ArrayList();
 	public ArrayList methodsAfterInterrupt = new ArrayList();
+	public ArrayList methodsDisabledUntilFinishEvent = new ArrayList ();
 
 
-	public void init(ArrayList methodsToCall, ArrayList canInterruptBy, ArrayList methodsAfterInterrupt ) {
+	public void init(ArrayList methodsToCall, ArrayList canInterruptBy, ArrayList methodsAfterInterrupt, ArrayList methodsDisabledUntilEventFinished ) {
+		eventDisp = EventDispatcher.DefaultEventDispatcher;
 
 		this.methodsToCall = methodsToCall;
 		this.canInterruptBy = canInterruptBy;
 		this.methodsAfterInterrupt = methodsAfterInterrupt;
+		this.methodsDisabledUntilFinishEvent = methodsDisabledUntilEventFinished;
 
 		hash = getHash ();
 	}
@@ -43,6 +47,8 @@ public class Event : MonoBehaviour {
 	}
 
 	public void executeScript() {
+		eventDisp.addOrRemoveMethodsDisabled (methodsDisabledUntilFinishEvent, true);
+
 		this.isWaiting = false;
 
 		string currentMethodToCall = methodsToCall[0] as string;
@@ -79,22 +85,28 @@ public class Event : MonoBehaviour {
 		if (methodsToCall.Count>0){
 			executeScript();
 		} else{
+
+			this.isFinished = true;
+			this.isWaiting = false;
+			eventDisp.addOrRemoveMethodsDisabled (methodsDisabledUntilFinishEvent, false);
+
 			if(hasInterruptedBy != null) {
 				Hashtable opt = new Hashtable ();
 				opt.Add ("eventHash", hasInterruptedBy);
 				NotificationCenter.DefaultCenter.PostNotification(this, "enableEventToWaitExecution", opt);
 			}
 
-			this.isFinished = true;
 		}
 	}
 
 	public void replaceMethodsToMethodsAfterInterrupt() {
 		Hashtable options = new Hashtable ();
 		options.Add ("methodCalled", currentEventRunning);
-		NotificationCenter.DefaultCenter.PostNotification(this, "eventIsFinished", options);
+
 
 		methodsToCall = methodsAfterInterrupt;
+
+		NotificationCenter.DefaultCenter.PostNotification(this, "eventIsFinished", options);
 
 	}
 

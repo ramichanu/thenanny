@@ -6,6 +6,7 @@ using System.Linq;
 public class EventDispatcher : MonoBehaviour {
 	
 	public Dictionary<string,GameObject> eventList = new Dictionary<string,GameObject>();
+	public ArrayList methodsDisabledUntilFinishEvent = new ArrayList();
 
 	// Use this for initialization
 	void Start () {
@@ -33,12 +34,14 @@ public class EventDispatcher : MonoBehaviour {
 		}
 	}
 	
-	public void addEvent(ArrayList methodsToCall, ArrayList canInterruptBy, ArrayList methodsAfterInterrupt) {
+	public void addEvent(ArrayList methodsToCall, ArrayList canInterruptBy, ArrayList methodsAfterInterrupt, ArrayList methodsDisabledUntilEventFinished) {
 
 		GameObject eventObject = new GameObject ();
 		eventObject.AddComponent<Event>();
-		((Event)eventObject.GetComponent<Event>()).init(methodsToCall, canInterruptBy, methodsAfterInterrupt);
+		((Event)eventObject.GetComponent<Event>()).init(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
 		string eventObjectKey = eventObject.GetComponent<Event>().hash;
+
+		bool areThereMethodsDisabledUntilEventFinished = disabledMethodsContainsThisMethods (methodsToCall);
 
 		if (eventList.ContainsKey(eventObjectKey)) {
 
@@ -52,11 +55,22 @@ public class EventDispatcher : MonoBehaviour {
 				Destroy(eventObject);
 			}
 
+		} else if(areThereMethodsDisabledUntilEventFinished) {
+			Destroy(eventObject);
 		} else {
 			interrumptEventsByNewEvent(eventObject, eventObjectKey);
 			eventList.Add (eventObjectKey, eventObject);
 		}
 
+	}
+
+	bool disabledMethodsContainsThisMethods(ArrayList newMethods){
+		foreach (string disabledMethod in methodsDisabledUntilFinishEvent) {
+			if(newMethods.Contains(disabledMethod)){
+				return true;
+			}
+		}
+		return false;
 	}
 
 	void interrumptEventsByNewEvent(GameObject newEvent, string eventObjectKey){
@@ -92,6 +106,16 @@ public class EventDispatcher : MonoBehaviour {
 			}
 
 
+		}
+	}
+
+	public void addOrRemoveMethodsDisabled(ArrayList methodsDisabled, bool add = true){
+		foreach (string methodDisabled in methodsDisabled) {
+			if (!methodsDisabledUntilFinishEvent.Contains (methodDisabled) && add) {
+				methodsDisabledUntilFinishEvent.Add(methodDisabled);
+			}else if (methodsDisabledUntilFinishEvent.Contains (methodDisabled) && !add){
+				methodsDisabledUntilFinishEvent.Remove(methodDisabled);
+			}
 		}
 	}
 }

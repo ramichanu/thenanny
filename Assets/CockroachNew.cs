@@ -7,6 +7,7 @@ public class CockroachNew : MonoBehaviour {
 	NavMeshAgent agent;
 	EventDispatcher eventDisp;
 	bool hasPath = false;
+	bool isThisDestroy = false;
 
 	// Use this for initialization
 	void Start () {
@@ -21,15 +22,17 @@ public class CockroachNew : MonoBehaviour {
 	}
 
 	void goToPlayer(){
-		Vector3 playerPosition = GameObject.Find ("player").transform.position;
-		agent.SetDestination(playerPosition);
-		hasPath = true;
+		if (!isThisDestroy) {
+			Vector3 playerPosition = GameObject.Find ("player").transform.position;
+			agent.SetDestination(playerPosition);
+			hasPath = true;
+		}
 	}
 
 	void destinationReachedLogic () {
 		if (agent.remainingDistance <= float.Epsilon && agent.pathStatus == NavMeshPathStatus.PathComplete && hasPath) {
 			hasPath = false;
-			eventFinishedCallback("goToPlayer");
+			//eventFinishedCallback("goToPlayer");
 		}
 	}
 
@@ -38,19 +41,32 @@ public class CockroachNew : MonoBehaviour {
 		switch (collision.transform.name) {
 		case "player":
 			ArrayList canInterruptBy = new ArrayList();
-			
+
 			ArrayList methodsToCall = new ArrayList();
 			methodsToCall.Add("player_playNannyCockroach");
 			methodsToCall.Add("cockroach_goToPlayer");
 
 
 			ArrayList methodsAfterInterrupt = new ArrayList();
-			
-			eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt);
+
+			ArrayList methodsDisabledUntilEventFinished = new ArrayList();
+			methodsDisabledUntilEventFinished.Add ("player_moveCharacterToClickedDestination");
+			eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
 			
 			break;
 		}
 		
+	}
+
+	public void destroyCockroach(){
+		Destroy (transform.gameObject);
+		eventFinishedCallback("destroyCockroach");
+		eventFinishedCallback("goToPlayer");
+	}
+
+	void OnDisable()
+	{
+		isThisDestroy = true;
 	}
 
 	void eventFinishedCallback(string methodExecuted){

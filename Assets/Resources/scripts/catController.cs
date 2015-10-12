@@ -223,7 +223,8 @@ public class catController : MonoBehaviour {
 		if (!dangerFurniDestination.GetComponent<dangerFurni> ().dangerDropped) {
 			agent.SetDestination (dangerFurniDestination.transform.position);
 		} else {
-			agent.SetDestination (getRandomMeshPosition());
+			agent.SetDestination (dangerFurniDestination.transform.position);
+			//agent.SetDestination (getRandomMeshPosition());
 		}
 	}
 

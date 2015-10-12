@@ -12,8 +12,8 @@ Platform assembly: C:\Users\Rami\Documents\TheNanny\epicNanny_Data\Managed\Assem
 Loading C:\Users\Rami\Documents\TheNanny\epicNanny_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
 Platform assembly: C:\Users\Rami\Documents\TheNanny\epicNanny_Data\Managed\UnityEngine.UI.dll (this message is harmless)
 Loading C:\Users\Rami\Documents\TheNanny\epicNanny_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-- Completed reload, in  0.049 seconds
-desktop: 1366x768 50Hz; virtual: 1366x768 at 0,0
+- Completed reload, in  0.047 seconds
+desktop: 1366x768 60Hz; virtual: 1366x768 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
@@ -23,18 +23,4 @@ NullReferenceException: Object reference not set to an instance of an object
   at MenuFunctions.Start () [0x00000] in <filename unknown>:0 
  
 (Filename:  Line: -1)
-
-Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 5.357262 ms
-CharacterController settings are invalid.
- 
-(Filename:  Line: 382)
-
-CharacterController settings are invalid.
- 
-(Filename:  Line: 382)
-
-
-Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 851.
-Total: 0.334012 ms (FindLiveObjects: 0.099364 ms CreateObjectMapping: 0.020992 ms MarkObjects: 0.208524 ms  DeleteObjects: 0.003731 ms)
 
