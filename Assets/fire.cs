@@ -21,7 +21,7 @@ public class fire : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider collision) {
-		if (collision.transform.tag == "wall") {
+		if (collision.transform.tag == "wall" || collision.transform.tag == "fire") {
 			isCollidingWithObstacle = true;
 		}
 		

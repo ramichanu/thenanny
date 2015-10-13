@@ -7,6 +7,7 @@ public class ChildControllerNew : MonoBehaviour {
 	bool agentHasPath;
 	Vector3 randomPosition;
 	Transform target;
+	GameObject[] danger;
 
 	// Use this for initialization
 	void Start () {
@@ -21,6 +22,7 @@ public class ChildControllerNew : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		randomMovement ();
+		danger = getDangerElements ();
 	}
 
 	void startChildRandomMovementEvent(){
@@ -58,9 +60,43 @@ public class ChildControllerNew : MonoBehaviour {
 	}
 
 	void setRandomPosition() {
+		int random = Random.Range (0, 3);
 		randomPosition = getRandomMeshPosition ();
+		if (random > 0 && danger.Length > 0) {
+			randomPosition = getDangerPosition ();
+		}
 		agent.SetDestination (randomPosition);
 		agentHasPath = true;
+	}
+
+	Vector3 getDangerPosition() {
+		int dangerPosition = Random.Range (0, danger.Length);
+		GameObject dangerFurniDestination = danger [dangerPosition];
+		return dangerFurniDestination.transform.position;
+	}
+
+	GameObject[] getDangerElements() {
+		GameObject[] brokenGlassElements = GameObject.FindGameObjectsWithTag("brokenGlass");
+		GameObject[] fireElements = null;
+		
+		GameObject fires = GameObject.Find ("fires");
+		int fireElementsCount = 0;
+		if (fires != null) {
+			fireElementsCount = 1;
+			fireElements = GameObject.FindGameObjectsWithTag("fire");
+			if (fireElements.Length > 0) {
+				int fireElementRandom = Random.Range(0, fireElements.Length);
+				fireElements = new GameObject[1]{fireElements[fireElementRandom]};
+			}
+		}
+		GameObject[] dangerElements = new GameObject[brokenGlassElements.Length + fireElementsCount];
+		
+		brokenGlassElements.CopyTo(dangerElements, 0);
+		if (fires != null) {
+			fireElements.CopyTo(dangerElements, brokenGlassElements.Length);
+		}
+		
+		return dangerElements;
 	}
 	
 	public Vector3 getRandomMeshPosition () {
