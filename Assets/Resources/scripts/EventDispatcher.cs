@@ -78,7 +78,7 @@ public class EventDispatcher : MonoBehaviour {
 		for (int i = eventList.Count -1; i>=0; i--) {
 			GameObject item = eventList.ElementAt(i).Value as GameObject;
 			bool canInterrupt = item.GetComponent<Event>().canInterrupt(methodsToCall);
-			item.GetComponent<Event>().hasInterruptedBy = eventObjectKey;
+			//item.GetComponent<Event>().hasInterruptedBy = eventObjectKey;
 
 			if (canInterrupt) {
 				item.GetComponent<Event>().replaceMethodsToMethodsAfterInterrupt();
@@ -95,9 +95,10 @@ public class EventDispatcher : MonoBehaviour {
 				GameObject item = eventList.ElementAt(i).Value as GameObject;
 				bool isWaiting = item.GetComponent<Event>().isWaiting;
 				bool isFinished = item.GetComponent<Event>().isFinished;
+				bool isRunning = item.GetComponent<Event>().isRunning;
 
 
-				if (isWaiting) {
+				if (isWaiting && !isRunning) {
 					item.GetComponent<Event>().executeScript ();
 				} else if(isFinished) {
 					eventList.Remove(item.GetComponent<Event>().hash);

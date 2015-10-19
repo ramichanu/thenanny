@@ -1,26 +1,27 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\fire.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Resources\scripts\Event.cs">
     <Files>
-      <File FileName="Assets\Resources\scripts\ChildControllerNew.cs" Line="90" Column="5" />
-      <File FileName="Assets\Resources\scripts\childController.cs" Line="213" Column="3" />
-      <File FileName="Assets\DogControllerNew.cs" Line="1" Column="1" />
-      <File FileName="Assets\CatControllerNew.cs" Line="1" Column="1" />
-      <File FileName="Assets\Resources\scripts\EventDispatcher.cs" Line="1" Column="1" />
-      <File FileName="Assets\Resources\scripts\Event.cs" Line="86" Column="1" />
-      <File FileName="Assets\Resources\scripts\PlayerMovementNew.cs" Line="206" Column="1" />
-      <File FileName="Assets\CockroachNew.cs" Line="1" Column="1" />
-      <File FileName="Assets\fires.cs" Line="98" Column="57" />
-      <File FileName="Assets\fire.cs" Line="21" Column="3" />
+      <File FileName="Assets\EventScript.cs" Line="21" Column="40" />
+      <File FileName="Assets\Resources\scripts\ChildControllerNew.cs" Line="42" Column="1" />
+      <File FileName="Assets\madLady.cs" Line="71" Column="16" />
+      <File FileName="Assets\MadladyNew.cs" Line="61" Column="1" />
+      <File FileName="Assets\LevelManager.cs" Line="4" Column="40" />
+      <File FileName="Assets\Resources\scripts\Event.cs" Line="87" Column="14" />
+      <File FileName="Assets\Resources\scripts\EventDispatcher.cs" Line="81" Column="31" />
+      <File FileName="Assets\Resources\scripts\PlayerMovementNew.cs" Line="118" Column="3" />
+      <File FileName="Assets\gameFunctions.cs" Line="125" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="C:\Users\Rami\Documents\TheNanny\Assets\Resources\scripts\EventDispatcher.cs" line="84" />
-      <Breakpoint file="C:\Users\Rami\Documents\TheNanny\Assets\Resources\scripts\PlayerMovementNew.cs" line="223" />
-      <Breakpoint file="C:\Users\Rami\Documents\TheNanny\Assets\Resources\scripts\PlayerMovementNew.cs" line="226" />
-      <Breakpoint file="C:\Users\Rami\Documents\TheNanny\Assets\Resources\scripts\Event.cs" line="106" />
-      <Breakpoint file="C:\Users\Rami\Documents\TheNanny\Assets\Resources\scripts\Event.cs" line="108" />
+      <Breakpoint file="C:\Users\Rami\Documents\TheNanny\Assets\Resources\scripts\ChildControllerNew.cs" line="206" />
+      <Breakpoint file="C:\Users\Rami\Documents\TheNanny\Assets\Resources\scripts\Event.cs" line="111" />
+      <Breakpoint file="C:\Users\Rami\Documents\TheNanny\Assets\Resources\scripts\Event.cs" line="75" />
+      <Breakpoint file="C:\Users\Rami\Documents\TheNanny\Assets\Resources\scripts\ChildControllerNew.cs" line="211" />
+      <Breakpoint file="C:\Users\Rami\Documents\TheNanny\Assets\MadladyNew.cs" line="133" />
+      <Breakpoint file="C:\Users\Rami\Documents\TheNanny\Assets\MadladyNew.cs" line="61" />
+      <Breakpoint file="C:\Users\Rami\Documents\TheNanny\Assets\Resources\scripts\Event.cs" line="91" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

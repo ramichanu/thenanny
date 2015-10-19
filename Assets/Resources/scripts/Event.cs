@@ -7,6 +7,7 @@ public class Event : MonoBehaviour {
 	public string hash;
 	public bool isFinished = false;
 	public bool isWaiting = true;
+	public bool isRunning = false;
 	public string currentEventRunning;
 
 	public string hasInterruptedBy;
@@ -50,6 +51,7 @@ public class Event : MonoBehaviour {
 		eventDisp.addOrRemoveMethodsDisabled (methodsDisabledUntilFinishEvent, true);
 
 		this.isWaiting = false;
+		this.isRunning = true;
 
 		string currentMethodToCall = methodsToCall[0] as string;
 		string[] currentMethodToCallArray = currentMethodToCall.Split('_');
@@ -60,8 +62,9 @@ public class Event : MonoBehaviour {
 		Hashtable options = new Hashtable ();
 		options.Add ("objectName", objectName);
 		options.Add ("scriptMethod", scriptMethod);
-		NotificationCenter.DefaultCenter.PostNotification(this, "executeScript", options);
+		options.Add ("hash", this.hash);
 
+		NotificationCenter.DefaultCenter.PostNotification(this, "executeScript", options);
 	}
 
 	public bool canInterrupt(ArrayList functionsName){
@@ -79,29 +82,35 @@ public class Event : MonoBehaviour {
 	void eventIsFinished(Notification options){
 
 		string methodCalled = options.data ["methodCalled"].ToString();
-
+		string hashFromScript = options.data ["hash"].ToString();
+		this.isRunning = false;
 		methodsToCall.Remove(methodCalled);
 
-		if (methodsToCall.Count>0){
-			executeScript();
-		} else{
-
-			this.isFinished = true;
-			this.isWaiting = false;
-			eventDisp.addOrRemoveMethodsDisabled (methodsDisabledUntilFinishEvent, false);
-
-			if(hasInterruptedBy != null) {
-				Hashtable opt = new Hashtable ();
-				opt.Add ("eventHash", hasInterruptedBy);
-				NotificationCenter.DefaultCenter.PostNotification(this, "enableEventToWaitExecution", opt);
+		if (hashFromScript == this.hash || this.hasInterruptedBy != null) {
+			if (methodsToCall.Count>0){
+				executeScript();
+			} else{
+				
+				this.isFinished = true;
+				this.isWaiting = false;
+				this.isRunning = false;
+				eventDisp.addOrRemoveMethodsDisabled (methodsDisabledUntilFinishEvent, false);
+				
+				if(hasInterruptedBy != null) {
+					Hashtable opt = new Hashtable ();
+					opt.Add ("eventHash", hasInterruptedBy);
+					NotificationCenter.DefaultCenter.PostNotification(this, "enableEventToWaitExecution", opt);
+				}
+				
 			}
-
 		}
+
 	}
 
 	public void replaceMethodsToMethodsAfterInterrupt() {
 		Hashtable options = new Hashtable ();
 		options.Add ("methodCalled", currentEventRunning);
+		options.Add ("hash", this.hash);
 
 		methodsToCall = methodsAfterInterrupt;
 

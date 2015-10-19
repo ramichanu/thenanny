@@ -1,18 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DogControllerNew : MonoBehaviour {
-
-	EventDispatcher eventDisp;
+public class DogControllerNew : EventScript {
+	
 	public NavMeshAgent agent;
 	bool agentHasPath;
 	Vector3 randomPosition;
 	Transform target;
 
 	void Start () {
-		NotificationCenter.DefaultCenter.AddObserver(this, "executeScript");
 		agent = GetComponent<NavMeshAgent> ();
-		eventDisp = EventDispatcher.DefaultEventDispatcher;
 
 		target = GameObject.Find ("cat").transform;
 		startDogRandomMovementEvent ();
@@ -110,20 +107,5 @@ public class DogControllerNew : MonoBehaviour {
 	void startDogFollowRunning(){
 		InvokeRepeating("dogFollowRunning", 0, 0.01f);
 		eventFinishedCallback("startDogFollowRunning");
-	}
-
-	void eventFinishedCallback(string methodExecuted){
-		Hashtable options = new Hashtable ();
-		string methodCalled = transform.name + "_" + methodExecuted;
-		options.Add ("methodCalled", methodCalled);
-		NotificationCenter.DefaultCenter.PostNotification(this, "eventIsFinished", options);
-	}
-
-	void executeScript(Notification options){
-		
-		if(options.data["objectName"].ToString() == transform.name)
-		{
-			Invoke(options.data["scriptMethod"].ToString(), 0);
-		}
 	}
 }

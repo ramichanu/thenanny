@@ -1,19 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerMovementNew : MonoBehaviour {
+public class PlayerMovementNew : EventScript {
 	RaycastHit hit;
 	NavMeshAgent agent;
-	EventDispatcher eventDisp;
 
 	public GameObject extinguisher = null;
 
 	bool hasPath = false;
+	public bool hasBabyBottle = false;
 
 	void Start () {
-		NotificationCenter.DefaultCenter.AddObserver(this, "executeScript");
 		agent = GetComponent<NavMeshAgent> ();
-		eventDisp = EventDispatcher.DefaultEventDispatcher;
 	}
 	
 
@@ -36,54 +34,60 @@ public class PlayerMovementNew : MonoBehaviour {
 				ArrayList methodsDisabledUntilEventFinished = new ArrayList();
 
 				switch (hit.transform.tag) {
-				case "terrainHome":
+					case "terrainHome":
 
-					canInterruptBy.Add("moveCharacterToClickedDestination");
-					canInterruptBy.Add("goToPlayer");
+						canInterruptBy.Add("moveCharacterToClickedDestination");
+						canInterruptBy.Add("goToPlayer");
 
-					methodsToCall.Add("player_playNannyWalking");
-					methodsToCall.Add("player_moveCharacterToClickedDestination");
-					methodsToCall.Add("player_playNannyIdle");
+						methodsToCall.Add("player_playNannyWalking");
+						methodsToCall.Add("player_moveCharacterToClickedDestination");
+						methodsToCall.Add("player_playNannyIdle");
 
-					methodsAfterInterrupt.Add("player_stopPlayerMovement");
-					methodsAfterInterrupt.Add("player_playNannyIdle");
+						methodsAfterInterrupt.Add("player_stopPlayerMovement");
+						methodsAfterInterrupt.Add("player_playNannyIdle");
 
-					eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
-					break;
-				case "brokenGlass":
+						eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
+						break;
+					case "brokenGlass":
 
-					methodsToCall.Add("player_playNannyWalking");
-					methodsToCall.Add("player_moveCharacterToClickedDestination");
-					methodsToCall.Add("player_removeBrokenGlass");
-					methodsToCall.Add("player_stopPlayerMovement");
-					methodsToCall.Add("player_playNannyIdle");
+						methodsToCall.Add("player_playNannyWalking");
+						methodsToCall.Add("player_moveCharacterToClickedDestination");
+						methodsToCall.Add("player_removeBrokenGlass");
+						methodsToCall.Add("player_stopPlayerMovement");
+						methodsToCall.Add("player_playNannyIdle");
 
-					canInterruptBy.Add("moveCharacterToClickedDestination");
-					methodsAfterInterrupt.Add("player_stopPlayerMovement");
-					methodsAfterInterrupt.Add("player_playNannyIdle");
+						canInterruptBy.Add("moveCharacterToClickedDestination");
+						methodsAfterInterrupt.Add("player_stopPlayerMovement");
+						methodsAfterInterrupt.Add("player_playNannyIdle");
 
-					
-					eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
-					break;
+						
+						eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
+						break;
 
-				case "fire":
-					
-					methodsToCall.Add("player_startFireExtinguish");
-					canInterruptBy.Add("playNannyCockroach");
-					methodsAfterInterrupt.Add("player_stopPlayerMovement");
-					
-					eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
-					break;
-				case "cockroach":
+					case "fire":
+						
+						methodsToCall.Add("player_startFireExtinguish");
+						canInterruptBy.Add("playNannyCockroach");
+						methodsAfterInterrupt.Add("player_stopPlayerMovement");
+						
+						eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
+						break;
+					case "cockroach":
 
-					methodsToCall.Add("player_playNannyWalking");
-					methodsToCall.Add("player_moveCharacterToCockroach");
-					methodsToCall.Add("cockroach_destroyCockroach");
-					methodsToCall.Add("player_stopPlayerMovement");
-					methodsToCall.Add("player_playNannyIdle");
-					
-					eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
-					break;
+						methodsToCall.Add("player_playNannyWalking");
+						methodsToCall.Add("player_moveCharacterToCockroach");
+						methodsToCall.Add("cockroach_destroyCockroach");
+						methodsToCall.Add("player_stopPlayerMovement");
+						methodsToCall.Add("player_playNannyIdle");
+						
+						eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
+						break;
+					case "child":
+						GameObject child = hit.transform.gameObject;
+						if(child.GetComponent<ChildControllerNew>().state == ChildControllerNew.BURNING) {
+							GameObject.Find ("Canvas").GetComponent<gameFunctions>().createClickMenu(child);
+						}
+						break;
 				}
 			}
 		}
@@ -173,6 +177,18 @@ public class PlayerMovementNew : MonoBehaviour {
 
 	}
 
+	IEnumerator executeExtinguisher() {
+		playAnimation("nanny_fireoff", 0.6f);
+		extinguisher.SetActive(true);
+		yield return new WaitForSeconds(1.5f);
+		extinguisher.SetActive(false);
+		eventFinishedCallback("executeExtinguisherEvent");
+	}
+
+	void executeExtinguisherEvent(){
+		StartCoroutine ("executeExtinguisher");
+	}
+
 	void moveCharacterToClickedDestination(){
 		agent.SetDestination(new Vector3(hit.point.x, transform.position.y, hit.point.z));
 		hasPath = true;
@@ -226,20 +242,15 @@ public class PlayerMovementNew : MonoBehaviour {
 		eventFinishedCallback("stopPlayerMovement");
 	}
 
-
-
-	void eventFinishedCallback(string methodExecuted){
-		Hashtable options = new Hashtable ();
-		string methodCalled = transform.name + "_" + methodExecuted;
-		options.Add ("methodCalled", methodCalled);
-		NotificationCenter.DefaultCenter.PostNotification(this, "eventIsFinished", options);
+	void helpBurning() {
+		ArrayList canInterruptBy = new ArrayList();
+		ArrayList methodsToCall = new ArrayList();
+		ArrayList methodsAfterInterrupt = new ArrayList();
+		ArrayList methodsDisabledUntilEventFinished = new ArrayList();
+		
+		methodsToCall.Add("child_cancelBurning");
+		methodsToCall.Add("child_stopChildMovement");
+		
+		eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
 	}
-	void executeScript(Notification options){
-
-		if(options.data["objectName"].ToString() == transform.name)
-		{
-			Invoke(options.data["scriptMethod"].ToString(), 0);
-		}
-	}
-
 }

@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CatControllerNew : MonoBehaviour {
-
-	EventDispatcher eventDisp;
+public class CatControllerNew : EventScript {
+	
 	public NavMeshAgent agent;
 	bool agentHasPath;
 	Vector3 randomPosition;
@@ -12,9 +11,7 @@ public class CatControllerNew : MonoBehaviour {
 	GameObject dangerFurniDestination;
 
 	void Start () {
-		NotificationCenter.DefaultCenter.AddObserver(this, "executeScript");
 		agent = GetComponent<NavMeshAgent> ();
-		eventDisp = EventDispatcher.DefaultEventDispatcher;
 
 		setDangerFurniDestinations ();
 		startCatRandomMovementEvent ();
@@ -226,20 +223,5 @@ public class CatControllerNew : MonoBehaviour {
 		brokenJar.transform.position = hitItem.transform.position + hitItem.transform.right * 0.7f;
 		brokenJar.GetComponent<dangerItem>().parent = hitItem.transform.gameObject;
 		
-	}
-
-	void eventFinishedCallback(string methodExecuted){
-		Hashtable options = new Hashtable ();
-		string methodCalled = transform.name + "_" + methodExecuted;
-		options.Add ("methodCalled", methodCalled);
-		NotificationCenter.DefaultCenter.PostNotification(this, "eventIsFinished", options);
-	}
-	
-	void executeScript(Notification options){
-		
-		if(options.data["objectName"].ToString() == transform.name)
-		{
-			Invoke(options.data["scriptMethod"].ToString(), 0);
-		}
 	}
 }

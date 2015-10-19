@@ -1,19 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CockroachNew : MonoBehaviour {
+public class CockroachNew : EventScript {
 
 	RaycastHit hit;
 	NavMeshAgent agent;
-	EventDispatcher eventDisp;
 	bool hasPath = false;
 	bool isThisDestroy = false;
 
 	// Use this for initialization
 	void Start () {
-		NotificationCenter.DefaultCenter.AddObserver(this, "executeScript");
 		agent = GetComponent<NavMeshAgent> ();
-		eventDisp = EventDispatcher.DefaultEventDispatcher;
 	}
 	
 	// Update is called once per frame
@@ -67,20 +64,5 @@ public class CockroachNew : MonoBehaviour {
 	void OnDisable()
 	{
 		isThisDestroy = true;
-	}
-
-	void eventFinishedCallback(string methodExecuted){
-		Hashtable options = new Hashtable ();
-		string methodCalled = transform.name + "_" + methodExecuted;
-		options.Add ("methodCalled", methodCalled);
-		NotificationCenter.DefaultCenter.PostNotification(this, "eventIsFinished", options);
-	}
-
-	void executeScript(Notification options){
-		
-		if(options.data["objectName"].ToString() == transform.name)
-		{
-			Invoke(options.data["scriptMethod"].ToString(), 0);
-		}
 	}
 }

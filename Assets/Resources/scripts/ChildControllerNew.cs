@@ -1,20 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
-public class ChildControllerNew : MonoBehaviour {
-	EventDispatcher eventDisp;
+public class ChildControllerNew : EventScript {
+	public const int IDLE = 0;
+	public const int BURNING = 1;
+
+	public int state = IDLE;
 	public NavMeshAgent agent;
 	bool agentHasPath;
 	Vector3 randomPosition;
 	Transform target;
 	GameObject[] danger;
 
+
 	// Use this for initialization
 	void Start () {
 		agentHasPath = false;
 		agent = GetComponent<NavMeshAgent> ();
-		eventDisp = EventDispatcher.DefaultEventDispatcher;
-		NotificationCenter.DefaultCenter.AddObserver(this, "executeScript");
 
 		startChildRandomMovementEvent ();
 	}
@@ -27,14 +30,16 @@ public class ChildControllerNew : MonoBehaviour {
 
 	void startChildRandomMovementEvent(){
 		ArrayList canInterruptBy = new ArrayList();
-		
 		ArrayList methodsToCall = new ArrayList();
-		methodsToCall.Add("child_startChildRandomMovement");
-		
 		ArrayList methodsAfterInterrupt = new ArrayList();
 		ArrayList methodsDisabledUntilEventFinished = new ArrayList();
-		
-		eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
+
+		canInterruptBy.Add("helpBurning");
+		methodsToCall.Add("child_startChildRandomMovement");
+		methodsAfterInterrupt.Add("child_stopChildMovement");
+
+		base.eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
+		eventFinishedCallback("startChildRandomMovementEvent");
 	}
 	
 	void startChildRandomMovement(){
@@ -117,18 +122,115 @@ public class ChildControllerNew : MonoBehaviour {
 		gameObject.GetComponent<Animation>().Play(animation);
 	}
 
-	void eventFinishedCallback(string methodExecuted){
-		Hashtable options = new Hashtable ();
-		string methodCalled = transform.name + "_" + methodExecuted;
-		options.Add ("methodCalled", methodCalled);
-		NotificationCenter.DefaultCenter.PostNotification(this, "eventIsFinished", options);
-	}
-	
-	void executeScript(Notification options){
+	public void hitAndPain(int damage){
+
+		playAnimation("child_pain", 0.5f);
 		
-		if(options.data["objectName"].ToString() == transform.name)
-		{
-			Invoke(options.data["scriptMethod"].ToString(), 0);
+		GameObject life = GameObject.Find ("lifeAndHunger");
+		life.GetComponent<LifeAndHunger> ().restPercentLife (damage);
+		
+		StartCoroutine(painEffect());
+		StopCoroutine(painEffect());
+		
+		
+	}
+
+	public IEnumerator painEffect() {
+		Material painMaterial = Resources.Load("materials/pain", typeof(Material)) as Material;
+		SkinnedMeshRenderer childRenderer = GameObject.Find ("childMesh").GetComponent<SkinnedMeshRenderer> ();
+		Material oldMaterial = Resources.Load("materials/baby", typeof(Material)) as Material;
+		
+		GameObject childIcon = GameObject.Find ("childIcon");
+		childIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("hub/child_icon_pain");
+		
+		childRenderer.material = painMaterial;
+		yield return new WaitForSeconds(0.2f);
+		childIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("hub/child_icon");
+		childRenderer.material = oldMaterial;
+		yield return new WaitForSeconds(0.2f);
+		childIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("hub/child_icon_pain");
+		childRenderer.material = painMaterial;
+		yield return new WaitForSeconds(0.2f);
+		childIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("hub/child_icon");
+		childRenderer.material = oldMaterial;
+		yield return new WaitForSeconds(0.2f);
+	}
+
+	void OnTriggerEnter(Collider collision) {
+		ArrayList canInterruptBy = new ArrayList();
+		ArrayList methodsToCall = new ArrayList();
+		ArrayList methodsAfterInterrupt = new ArrayList();
+		ArrayList methodsDisabledUntilEventFinished = new ArrayList();
+
+		switch(collision.transform.tag) {
+			case "brokenGlass":
+				methodsToCall.Add("child_painBrokenGlass");
+				eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
+				break;
+			case "fire":
+				state = BURNING;
+				methodsToCall.Add("child_painFire");
+				eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
+				break;
 		}
+	}
+
+	void painBrokenGlass(){
+		hitAndPain(5);
+		eventFinishedCallback("painBrokenGlass");
+	}
+
+	void painFire(){
+		ParticleSystem fireChild = transform.FindChild("fireChild").GetComponent<ParticleSystem>();
+		if(!fireChild.isPlaying){
+			fireChild.Play();
+		}
+		InvokeRepeating("burningChild", 2, 2);
+		eventFinishedCallback("painFire");
+	}
+
+	void burningChild(){
+		hitAndPain (2);	
+	}
+
+	void stopChildMovement(){
+		agent.Stop ();
+		agent.ResetPath ();
+		agentHasPath = false;
+		playAnimation("child_idle", 1.5f);
+		CancelInvoke ("childRandomMovement");
+		eventFinishedCallback("stopChildMovement");
+	}
+
+	void cancelBurning(){
+		CancelInvoke ("burningChild");
+		eventFinishedCallback("cancelBurning");
+	}
+
+	void helpBurning(){
+		ArrayList canInterruptBy = new ArrayList();
+		ArrayList methodsToCall = new ArrayList();
+		ArrayList methodsAfterInterrupt = new ArrayList();
+		ArrayList methodsDisabledUntilEventFinished = new ArrayList();		
+
+		methodsToCall.Add("child_cancelBurning");
+		methodsToCall.Add("child_stopChildMovement");
+		methodsToCall.Add("player_moveCharacterToClickedDestination");
+		methodsToCall.Add("player_executeExtinguisherEvent");
+		methodsToCall.Add("player_playNannyIdle");
+		methodsToCall.Add("child_fireOff");
+		methodsToCall.Add("child_startChildRandomMovementEvent");
+
+		eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
+		eventFinishedCallback("helpBurning");
+	}
+
+	void fireOff() {
+		state = IDLE;
+		ParticleSystem fireChild = GameObject.Find("fireChild").GetComponent<ParticleSystem>();
+		fireChild.Stop();
+		fireChild.Clear();
+
+		eventFinishedCallback("fireOff");
 	}
 }

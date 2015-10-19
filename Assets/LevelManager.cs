@@ -1,11 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class LevelManager : MonoBehaviour {
-	EventDispatcher eventDisp;
+public class LevelManager : EventScript {
+
 	// Use this for initialization
 	void Start () {
-		eventDisp = EventDispatcher.DefaultEventDispatcher;
 		Invoke ("startCatAndDogPersecution", 2f);
 	}
 	
@@ -44,8 +43,15 @@ public class LevelManager : MonoBehaviour {
 
 	}
 
-	void madLadyAttackChild(){
-
+	void madLady(){
+		ArrayList canInterruptBy = new ArrayList();
+		
+		ArrayList methodsToCall = new ArrayList();
+		methodsToCall.Add("madLady_startFollowChildEvent");
+		
+		ArrayList methodsAfterInterrupt = new ArrayList();
+		ArrayList methodsDisabledUntilEventFinished = new ArrayList();
+		eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
 	}
 
 
