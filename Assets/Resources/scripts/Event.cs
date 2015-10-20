@@ -11,6 +11,7 @@ public class Event : MonoBehaviour {
 	public string currentEventRunning;
 
 	public string hasInterruptedBy;
+	public string hasInterruptedTo;
 	public ArrayList methodsToCall = new ArrayList();
 	public ArrayList canInterruptBy = new ArrayList();
 	public ArrayList methodsAfterInterrupt = new ArrayList();
@@ -32,7 +33,8 @@ public class Event : MonoBehaviour {
 		string methodsToCallString = string.Join (",", (string[])methodsToCall.ToArray(typeof(string) ));
 		string canInterruptByString = string.Join (",", (string[])canInterruptBy.ToArray(typeof(string) ));
 		string hash = methodsToCallString + canInterruptByString;
-		string hashstring = hash.GetHashCode ().ToString();
+		//string hashstring = hash.GetHashCode ().ToString();
+		string hashstring = hash;
 
 		return hashstring;
 	}
@@ -86,8 +88,9 @@ public class Event : MonoBehaviour {
 		this.isRunning = false;
 		methodsToCall.Remove(methodCalled);
 
-		if (hashFromScript == this.hash || this.hasInterruptedBy != null) {
+		//if (hashFromScript == this.hash || this.hasInterruptedTo != null) {
 			if (methodsToCall.Count>0){
+				this.isWaiting = true;
 				executeScript();
 			} else{
 				
@@ -103,7 +106,7 @@ public class Event : MonoBehaviour {
 				}
 				
 			}
-		}
+		//}
 
 	}
 

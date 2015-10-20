@@ -38,15 +38,13 @@ public class CockroachNew : EventScript {
 		switch (collision.transform.name) {
 		case "player":
 			ArrayList canInterruptBy = new ArrayList();
-
+			ArrayList methodsAfterInterrupt = new ArrayList();
+			ArrayList methodsDisabledUntilEventFinished = new ArrayList();
 			ArrayList methodsToCall = new ArrayList();
+
 			methodsToCall.Add("player_playNannyCockroach");
 			methodsToCall.Add("cockroach_goToPlayer");
 
-
-			ArrayList methodsAfterInterrupt = new ArrayList();
-
-			ArrayList methodsDisabledUntilEventFinished = new ArrayList();
 			methodsDisabledUntilEventFinished.Add ("player_moveCharacterToClickedDestination");
 			eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
 			
@@ -65,4 +63,6 @@ public class CockroachNew : EventScript {
 	{
 		isThisDestroy = true;
 	}
+
+
 }

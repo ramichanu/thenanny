@@ -34,6 +34,7 @@ public class PlayerMovementNew : EventScript {
 				ArrayList methodsDisabledUntilEventFinished = new ArrayList();
 
 				switch (hit.transform.tag) {
+					case "player":
 					case "terrainHome":
 
 						canInterruptBy.Add("moveCharacterToClickedDestination");
@@ -44,7 +45,6 @@ public class PlayerMovementNew : EventScript {
 						methodsToCall.Add("player_playNannyIdle");
 
 						methodsAfterInterrupt.Add("player_stopPlayerMovement");
-						methodsAfterInterrupt.Add("player_playNannyIdle");
 
 						eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
 						break;
@@ -88,6 +88,10 @@ public class PlayerMovementNew : EventScript {
 							GameObject.Find ("Canvas").GetComponent<gameFunctions>().createClickMenu(child);
 						}
 						break;
+					case "madLady":
+						GameObject madlady = hit.transform.gameObject;
+						GameObject.Find ("Canvas").GetComponent<gameFunctions>().createClickMenu(madlady);
+					break;
 				}
 			}
 		}
@@ -253,4 +257,6 @@ public class PlayerMovementNew : EventScript {
 		
 		eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
 	}
+
+
 }

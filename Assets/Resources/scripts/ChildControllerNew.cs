@@ -233,4 +233,6 @@ public class ChildControllerNew : EventScript {
 
 		eventFinishedCallback("fireOff");
 	}
+
+
 }

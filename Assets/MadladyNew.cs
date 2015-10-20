@@ -8,6 +8,7 @@ public class MadladyNew : EventScript {
 
 	public NavMeshAgent agent;
 	Vector3 startPoint;
+	bool runaway = false;
 	bool agentHasPath = false;
 	bool childReached = false;
 
@@ -38,9 +39,11 @@ public class MadladyNew : EventScript {
 	void startFollowChild(){
 		if (!agentHasPath) {
 			agentHasPath = true;
+			childReached = false;
 
 			ArrayList canInterruptBy = new ArrayList ();
-
+			ArrayList methodsAfterInterrupt = new ArrayList ();
+			ArrayList methodsDisabledUntilEventFinished = new ArrayList ();
 			ArrayList methodsToCall = new ArrayList ();
 			methodsToCall.Add ("madLady_followChild");
 			methodsToCall.Add ("child_stopChildMovement");
@@ -50,14 +53,18 @@ public class MadladyNew : EventScript {
 			methodsToCall.Add ("child_startChildRandomMovementEvent");
 			methodsToCall.Add ("madLady_stopFewSecondsAndFinish");
 			methodsToCall.Add ("madLady_closeLogicToCreateAnotherMadladyEvent");
+			canInterruptBy.Add ("attackOrYellingChild");
+			canInterruptBy.Add ("destroyMadLady");
+			methodsAfterInterrupt.Add ("madLady_stopMadladyMovement");
+			methodsAfterInterrupt.Add ("child_startChildRandomMovementEvent");
 
-			ArrayList methodsAfterInterrupt = new ArrayList ();
-			ArrayList methodsDisabledUntilEventFinished = new ArrayList ();
+
 			eventDisp.addEvent (methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
 		}
 	}
 
 	void followChild(){
+
 		InvokeRepeating("follow", 0, 0.1f);
 	}
 
@@ -143,14 +150,50 @@ public class MadladyNew : EventScript {
 
 	IEnumerator delayFewSecondsAndFinish(){
 		playAnimationQueued("madlady_idle", 0.3f);
-		int seconds = Random.Range (2, 6);
+		int seconds = Random.Range (2, 4);
 		yield return new WaitForSeconds(seconds);
 		eventFinishedCallback("stopFewSecondsAndFinish");
 	}
 
 	void closeLogicToCreateAnotherMadladyEvent(){
 		agentHasPath = false;
-		childReached = false;
+
 		eventFinishedCallback("closeLogicToCreateAnotherMadladyEvent");
 	}
+
+	void kickOut(){
+		ArrayList canInterruptBy = new ArrayList();
+		ArrayList methodsToCall = new ArrayList();
+		ArrayList methodsAfterInterrupt = new ArrayList();
+		ArrayList methodsDisabledUntilEventFinished = new ArrayList();		
+		methodsToCall.Add ("madLady_stopMadladyMovement");
+		methodsToCall.Add ("player_moveCharacterToClickedDestination");
+		methodsToCall.Add ("madLady_moveToInitialPosition");
+		methodsToCall.Add ("madLady_destroyMadLady");
+		
+		eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
+		eventFinishedCallback("kickOut");
+	}
+
+	void destroyMadLady() {
+		Destroy (gameObject);
+		eventFinishedCallback("destroyMadLady");
+	}
+
+	void moveToInitialPosition(){
+		runaway = true;
+		playAnimation("madlady_walking", 1.5f);
+		agent.ResetPath ();
+		agent.SetDestination(startPoint);
+
+		InvokeRepeating ("checkHasReturnedToStartPoint", 0, 0.1f);
+	}
+
+	void checkHasReturnedToStartPoint() {
+		if(transform.position.x == startPoint.x && transform.position.z == startPoint.z){
+			eventFinishedCallback("moveToInitialPosition");
+		}
+	}
+
+
 }

@@ -42,7 +42,7 @@ public class EventDispatcher : MonoBehaviour {
 		string eventObjectKey = eventObject.GetComponent<Event>().hash;
 
 		bool areThereMethodsDisabledUntilEventFinished = disabledMethodsContainsThisMethods (methodsToCall);
-
+		List<string> keyList = new List<string>(this.eventList.Keys);
 		if (eventList.ContainsKey(eventObjectKey)) {
 
 			GameObject eventListItem = (GameObject)(eventList[eventObjectKey]);
@@ -83,6 +83,7 @@ public class EventDispatcher : MonoBehaviour {
 			if (canInterrupt) {
 				item.GetComponent<Event>().replaceMethodsToMethodsAfterInterrupt();
 				newEvent.GetComponent<Event>().isWaiting = false;
+				newEvent.GetComponent<Event>().hasInterruptedTo = eventObjectKey;
 			}
 		}
 	}

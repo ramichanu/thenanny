@@ -224,4 +224,6 @@ public class CatControllerNew : EventScript {
 		brokenJar.GetComponent<dangerItem>().parent = hitItem.transform.gameObject;
 		
 	}
+
+
 }

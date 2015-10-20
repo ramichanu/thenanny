@@ -68,6 +68,9 @@ public class gameFunctions : MonoBehaviour {
 					}
 					
 				break;
+				case "madLady":
+				buttonOptions.Add("kickOut");
+				break;
 			}
 			
 			Vector3 buttonPos = Camera.main.WorldToScreenPoint(hit.transform.position);
@@ -101,6 +104,9 @@ public class gameFunctions : MonoBehaviour {
 				buttonStringType.Add("helpBurning", "Echar agua");
 				
 				break;
+			case "madLady":
+				buttonStringType.Add("kickOut", "Echar");
+			break;
 		}
 		
 		GameObject button = Instantiate(Resources.Load("hub/button")) as GameObject;

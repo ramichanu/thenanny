@@ -108,4 +108,6 @@ public class DogControllerNew : EventScript {
 		InvokeRepeating("dogFollowRunning", 0, 0.01f);
 		eventFinishedCallback("startDogFollowRunning");
 	}
+
+
 }
