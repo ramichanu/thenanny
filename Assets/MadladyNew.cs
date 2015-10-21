@@ -181,12 +181,15 @@ public class MadladyNew : EventScript {
 	}
 
 	void moveToInitialPosition(){
-		runaway = true;
-		playAnimation("madlady_walking", 1.5f);
-		agent.ResetPath ();
-		agent.SetDestination(startPoint);
+		if (!runaway) {
+			runaway = true;
+			playAnimation("madlady_walking", 1.5f);
+			agent.ResetPath ();
+			agent.SetDestination(startPoint);
+			
+			InvokeRepeating ("checkHasReturnedToStartPoint", 0, 0.1f);
 
-		InvokeRepeating ("checkHasReturnedToStartPoint", 0, 0.1f);
+		}
 	}
 
 	void checkHasReturnedToStartPoint() {

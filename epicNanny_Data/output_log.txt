@@ -24,3 +24,79 @@ NullReferenceException: Object reference not set to an instance of an object
  
 (Filename:  Line: -1)
 
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 3.883595 ms
+CharacterController settings are invalid.
+ 
+(Filename:  Line: 382)
+
+CharacterController settings are invalid.
+ 
+(Filename:  Line: 382)
+
+
+Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 961.
+Total: 0.321417 ms (FindLiveObjects: 0.037786 ms CreateObjectMapping: 0.021925 ms MarkObjects: 0.256107 ms  DeleteObjects: 0.005131 ms)
+
+ArgumentOutOfRangeException: Index is less than 0 or more than or equal to the list count.
+Parameter name: index
+3
+  at System.Collections.ArrayList.ThrowNewArgumentOutOfRangeException (System.String name, System.Object actual, System.String message) [0x00000] in <filename unknown>:0 
+  at System.Collections.ArrayList.get_Item (Int32 index) [0x00000] in <filename unknown>:0 
+  at fires+<fireBehaviour>c__IteratorF.MoveNext () [0x00000] in <filename unknown>:0 
+UnityEngine.MonoBehaviour:StartCoroutine_Auto(IEnumerator)
+UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
+fires:launchFire()
+ 
+(Filename:  Line: -1)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 3.795427 ms
+
+Unloading 169 unused Assets to reduce memory usage. Loaded Objects now: 171.
+Total: 1.337449 ms (FindLiveObjects: 0.059245 ms CreateObjectMapping: 0.020525 ms MarkObjects: 0.365267 ms  DeleteObjects: 0.890544 ms)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at MenuFunctions.Start () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.377863 ms
+CharacterController settings are invalid.
+ 
+(Filename:  Line: 382)
+
+CharacterController settings are invalid.
+ 
+(Filename:  Line: 382)
+
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 961.
+Total: 0.276166 ms (FindLiveObjects: 0.031255 ms CreateObjectMapping: 0.019126 ms MarkObjects: 0.221120 ms  DeleteObjects: 0.004198 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 4.302977 ms
+
+Unloading 178 unused Assets to reduce memory usage. Loaded Objects now: 171.
+Total: 2.541481 ms (FindLiveObjects: 0.048049 ms CreateObjectMapping: 0.021925 ms MarkObjects: 0.208991 ms  DeleteObjects: 2.259249 ms)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at MenuFunctions.Start () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.652164 ms
+CharacterController settings are invalid.
+ 
+(Filename:  Line: 382)
+
+CharacterController settings are invalid.
+ 
+(Filename:  Line: 382)
+
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 961.
+Total: 0.290628 ms (FindLiveObjects: 0.032654 ms CreateObjectMapping: 0.020059 ms MarkObjects: 0.232782 ms  DeleteObjects: 0.004664 ms)
+
