@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Specialized;
 
-public class gameFunctions : MonoBehaviour {
+public class gameFunctions : EventScript {
 	public int initialCountDown = 50;
 	public int countdown;
 	public Text totalMoney;
@@ -14,7 +14,6 @@ public class gameFunctions : MonoBehaviour {
 	public GameObject menu = null;
 	// Use this for initialization
 	void Start () {
-		NotificationCenter.DefaultCenter.AddObserver(this, "executeScript");
 		//totalMoney.text = PlayerPrefs.GetInt ("totalMoney").ToString ();
 		eventDisp = EventDispatcher.DefaultEventDispatcher;
 		countdown = initialCountDown;
@@ -137,21 +136,4 @@ public class gameFunctions : MonoBehaviour {
 
 		eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
 	}
-
-	void eventFinishedCallback(string methodExecuted){
-		Hashtable options = new Hashtable ();
-		string methodCalled = transform.name + "_" + methodExecuted;
-		options.Add ("methodCalled", methodCalled);
-		NotificationCenter.DefaultCenter.PostNotification(this, "eventIsFinished", options);
-	}
-	
-	void executeScript(Notification options){
-		
-		if(options.data["objectName"].ToString() == transform.name)
-		{
-			Invoke(options.data["scriptMethod"].ToString(), 0);
-		}
-	}
-
-
 }

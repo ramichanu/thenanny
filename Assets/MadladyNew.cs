@@ -16,15 +16,6 @@ public class MadladyNew : EventScript {
 	void Start () {
 		agent = GetComponent<NavMeshAgent> ();
 		startPoint = transform.position;
-
-		ArrayList canInterruptBy = new ArrayList();
-		
-		ArrayList methodsToCall = new ArrayList();
-		methodsToCall.Add("madLady_startFollowChildEvent");
-		
-		ArrayList methodsAfterInterrupt = new ArrayList();
-		ArrayList methodsDisabledUntilEventFinished = new ArrayList();
-		eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
 	}
 	
 	// Update is called once per frame
@@ -77,6 +68,7 @@ public class MadladyNew : EventScript {
 		}
 	}
 	void stopMadladyMovement(){
+		playAnimation("madlady_idle", 0.3f);
 		agent.Stop ();
 		agent.ResetPath ();
 		CancelInvoke ("follow");
@@ -162,22 +154,29 @@ public class MadladyNew : EventScript {
 	}
 
 	void kickOut(){
+		eventFinishedCallback("kickOut");
 		ArrayList canInterruptBy = new ArrayList();
 		ArrayList methodsToCall = new ArrayList();
 		ArrayList methodsAfterInterrupt = new ArrayList();
 		ArrayList methodsDisabledUntilEventFinished = new ArrayList();		
 		methodsToCall.Add ("madLady_stopMadladyMovement");
+		methodsToCall.Add ("player_playNannyWalking");
 		methodsToCall.Add ("player_moveCharacterToClickedDestination");
-		methodsToCall.Add ("madLady_moveToInitialPosition");
-		methodsToCall.Add ("madLady_destroyMadLady");
+
+		canInterruptBy.Add ("stopPlayerMovement");
+		canInterruptBy.Add ("moveCharacterToClickedDestination");
+		canInterruptBy.Add ("destroyMadLady");
+
+		methodsAfterInterrupt.Add ("madLady_stopMadladyMovement");
+		methodsDisabledUntilEventFinished.Add ("followChild");
 		
 		eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
-		eventFinishedCallback("kickOut");
 	}
 
 	void destroyMadLady() {
-		Destroy (gameObject);
 		eventFinishedCallback("destroyMadLady");
+
+		Destroy (gameObject);
 	}
 
 	void moveToInitialPosition(){
@@ -196,6 +195,24 @@ public class MadladyNew : EventScript {
 		if(transform.position.x == startPoint.x && transform.position.z == startPoint.z){
 			eventFinishedCallback("moveToInitialPosition");
 		}
+	}
+
+	void createMadladyMenu(){
+		GameObject madlady = transform.gameObject;
+		GameObject.Find ("Canvas").GetComponent<gameFunctions>().createClickMenu(madlady);
+		
+		eventFinishedCallback("createMadladyMenu");
+	}
+
+	void enableAgentEvent() {
+		StartCoroutine ("enableAgent");
+
+	}
+
+	IEnumerator enableAgent() {
+		yield return new WaitForSeconds(1f);
+		agent.enabled = true;
+		eventFinishedCallback("enableAgentEvent");
 	}
 
 

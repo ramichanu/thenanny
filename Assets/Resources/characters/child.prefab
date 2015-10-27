@@ -160,12 +160,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b85a22ac4d608844eb5f3ef4163329df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initialLives: 50
+  lives: 0
   hunger: 0
   agent: {fileID: 0}
   live: {fileID: 0}
   isRunning: 0
   state: 0
   isRandomState: 1
+  isOutside: 0
+  overObject: 0
 --- !u!136 &13616830
 CapsuleCollider:
   m_ObjectHideFlags: 1

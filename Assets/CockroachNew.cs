@@ -46,6 +46,7 @@ public class CockroachNew : EventScript {
 			methodsToCall.Add("cockroach_goToPlayer");
 
 			methodsDisabledUntilEventFinished.Add ("player_moveCharacterToClickedDestination");
+			methodsDisabledUntilEventFinished.Add ("madLady_createMadladyMenu");
 			eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
 			
 			break;

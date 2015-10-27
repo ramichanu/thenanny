@@ -18,8 +18,8 @@ public class CameraScript : MonoBehaviour {
 	float allRotationLimit;
 
 	float cameraDistanceMax = 5f;
-	float cameraDistanceMin = 2.5f;
-	float cameraDistance = 2.5f;
+	float cameraDistanceMin = 3f;
+	float cameraDistance = 3f;
 	float scrollSpeed = 100f;
 
 	float zoomInOut = (float)-0.1;

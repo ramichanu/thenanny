@@ -12,7 +12,7 @@ Platform assembly: C:\Users\Rami\Documents\TheNanny\epicNanny_Data\Managed\Assem
 Loading C:\Users\Rami\Documents\TheNanny\epicNanny_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
 Platform assembly: C:\Users\Rami\Documents\TheNanny\epicNanny_Data\Managed\UnityEngine.UI.dll (this message is harmless)
 Loading C:\Users\Rami\Documents\TheNanny\epicNanny_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-- Completed reload, in  0.047 seconds
+- Completed reload, in  0.057 seconds
 desktop: 1366x768 60Hz; virtual: 1366x768 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
@@ -25,7 +25,7 @@ NullReferenceException: Object reference not set to an instance of an object
 (Filename:  Line: -1)
 
 Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 3.883595 ms
+UnloadTime: 7.487825 ms
 CharacterController settings are invalid.
  
 (Filename:  Line: 382)
@@ -35,34 +35,27 @@ CharacterController settings are invalid.
 (Filename:  Line: 382)
 
 
-Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 961.
-Total: 0.321417 ms (FindLiveObjects: 0.037786 ms CreateObjectMapping: 0.021925 ms MarkObjects: 0.256107 ms  DeleteObjects: 0.005131 ms)
-
-ArgumentOutOfRangeException: Index is less than 0 or more than or equal to the list count.
-Parameter name: index
-3
-  at System.Collections.ArrayList.ThrowNewArgumentOutOfRangeException (System.String name, System.Object actual, System.String message) [0x00000] in <filename unknown>:0 
-  at System.Collections.ArrayList.get_Item (Int32 index) [0x00000] in <filename unknown>:0 
-  at fires+<fireBehaviour>c__IteratorF.MoveNext () [0x00000] in <filename unknown>:0 
-UnityEngine.MonoBehaviour:StartCoroutine_Auto(IEnumerator)
-UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator)
-fires:launchFire()
- 
-(Filename:  Line: -1)
-
-Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 3.795427 ms
-
-Unloading 169 unused Assets to reduce memory usage. Loaded Objects now: 171.
-Total: 1.337449 ms (FindLiveObjects: 0.059245 ms CreateObjectMapping: 0.020525 ms MarkObjects: 0.365267 ms  DeleteObjects: 0.890544 ms)
+Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 831.
+Total: 0.309290 ms (FindLiveObjects: 0.034521 ms CreateObjectMapping: 0.019126 ms MarkObjects: 0.249578 ms  DeleteObjects: 0.005131 ms)
 
 NullReferenceException: Object reference not set to an instance of an object
-  at MenuFunctions.Start () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
  
 (Filename:  Line: -1)
 
-Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.377863 ms
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.203108 ms
+
+Unloading 253 unused Assets to reduce memory usage. Loaded Objects now: 212.
+Total: 1.098145 ms (FindLiveObjects: 0.017727 ms CreateObjectMapping: 0.020992 ms MarkObjects: 0.190332 ms  DeleteObjects: 0.868626 ms)
+
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 1e90 -> priority: 1 
+  Thread -> id: 19a8 -> priority: 1 
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.698353 ms
 CharacterController settings are invalid.
  
 (Filename:  Line: 382)
@@ -72,31 +65,34 @@ CharacterController settings are invalid.
 (Filename:  Line: 382)
 
 
-Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 961.
-Total: 0.276166 ms (FindLiveObjects: 0.031255 ms CreateObjectMapping: 0.019126 ms MarkObjects: 0.221120 ms  DeleteObjects: 0.004198 ms)
-
-Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 4.302977 ms
-
-Unloading 178 unused Assets to reduce memory usage. Loaded Objects now: 171.
-Total: 2.541481 ms (FindLiveObjects: 0.048049 ms CreateObjectMapping: 0.021925 ms MarkObjects: 0.208991 ms  DeleteObjects: 2.259249 ms)
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 831.
+Total: 0.486561 ms (FindLiveObjects: 0.083970 ms CreateObjectMapping: 0.020992 ms MarkObjects: 0.340546 ms  DeleteObjects: 0.040119 ms)
 
 NullReferenceException: Object reference not set to an instance of an object
-  at MenuFunctions.Start () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
  
 (Filename:  Line: -1)
 
-Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.652164 ms
-CharacterController settings are invalid.
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
  
-(Filename:  Line: 382)
+(Filename:  Line: -1)
 
-CharacterController settings are invalid.
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
  
-(Filename:  Line: 382)
+(Filename:  Line: -1)
 
-
-Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 961.
-Total: 0.290628 ms (FindLiveObjects: 0.032654 ms CreateObjectMapping: 0.020059 ms MarkObjects: 0.232782 ms  DeleteObjects: 0.004664 ms)
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
 

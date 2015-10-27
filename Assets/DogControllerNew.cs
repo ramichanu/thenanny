@@ -41,6 +41,8 @@ public class DogControllerNew : EventScript {
 	void stopDogRandomMovement(){
 		agent.ResetPath ();
 		CancelInvoke("dogRandomMovementEvent");
+		CancelInvoke("dogFollowRunning");
+
 		eventFinishedCallback("stopDogRandomMovement");
 	}
 

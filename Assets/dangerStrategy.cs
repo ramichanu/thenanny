@@ -62,10 +62,11 @@ public class dangerStrategy : MonoBehaviour {
 	}
 
 	void launchDangerMadLady(){
-		Vector3 portalEnterPosition = getPortalScenaryPosition();
-		GameObject madLady = Instantiate(Resources.Load("characters/madLady")) as GameObject;
+		//Vector3 portalEnterPosition = getPortalScenaryPosition();
+		Vector3 portalEnterPosition = GameObject.Find ("portalEnter").transform.position;
+		GameObject madLady = Instantiate(Resources.Load("characters/madLady"),portalEnterPosition, transform.rotation ) as GameObject;
 		madLady.name = "madLady";
-		madLady.transform.position = portalEnterPosition;
+		//GameObject.Find ("madLady").transform.position = GameObject.Find ("portalEnter").transform.position;
 	}
 
 	Vector3 getPortalScenaryPosition(){

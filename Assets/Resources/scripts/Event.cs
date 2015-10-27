@@ -88,7 +88,7 @@ public class Event : MonoBehaviour {
 		this.isRunning = false;
 		methodsToCall.Remove(methodCalled);
 
-		//if (hashFromScript == this.hash || this.hasInterruptedTo != null) {
+		if (hashFromScript == this.hash || this.hasInterruptedTo != null) {
 			if (methodsToCall.Count>0){
 				this.isWaiting = true;
 				executeScript();
@@ -106,7 +106,7 @@ public class Event : MonoBehaviour {
 				}
 				
 			}
-		//}
+		}
 
 	}
 
