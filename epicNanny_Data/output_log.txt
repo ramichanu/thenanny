@@ -12,7 +12,7 @@ Platform assembly: C:\Users\Rami\Documents\TheNanny\epicNanny_Data\Managed\Assem
 Loading C:\Users\Rami\Documents\TheNanny\epicNanny_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
 Platform assembly: C:\Users\Rami\Documents\TheNanny\epicNanny_Data\Managed\UnityEngine.UI.dll (this message is harmless)
 Loading C:\Users\Rami\Documents\TheNanny\epicNanny_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-- Completed reload, in  0.057 seconds
+- Completed reload, in  0.050 seconds
 desktop: 1366x768 60Hz; virtual: 1366x768 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
@@ -25,7 +25,7 @@ NullReferenceException: Object reference not set to an instance of an object
 (Filename:  Line: -1)
 
 Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 7.487825 ms
+UnloadTime: 4.112682 ms
 CharacterController settings are invalid.
  
 (Filename:  Line: 382)
@@ -36,63 +36,5 @@ CharacterController settings are invalid.
 
 
 Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 831.
-Total: 0.309290 ms (FindLiveObjects: 0.034521 ms CreateObjectMapping: 0.019126 ms MarkObjects: 0.249578 ms  DeleteObjects: 0.005131 ms)
-
-NullReferenceException: Object reference not set to an instance of an object
-  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
-  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
-  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 1.203108 ms
-
-Unloading 253 unused Assets to reduce memory usage. Loaded Objects now: 212.
-Total: 1.098145 ms (FindLiveObjects: 0.017727 ms CreateObjectMapping: 0.020992 ms MarkObjects: 0.190332 ms  DeleteObjects: 0.868626 ms)
-
-Setting up 2 worker threads for Enlighten.
-  Thread -> id: 1e90 -> priority: 1 
-  Thread -> id: 19a8 -> priority: 1 
-Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.698353 ms
-CharacterController settings are invalid.
- 
-(Filename:  Line: 382)
-
-CharacterController settings are invalid.
- 
-(Filename:  Line: 382)
-
-
-Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 831.
-Total: 0.486561 ms (FindLiveObjects: 0.083970 ms CreateObjectMapping: 0.020992 ms MarkObjects: 0.340546 ms  DeleteObjects: 0.040119 ms)
-
-NullReferenceException: Object reference not set to an instance of an object
-  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
-  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
-  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException: Object reference not set to an instance of an object
-  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
-  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
-  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException: Object reference not set to an instance of an object
-  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
-  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
-  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException: Object reference not set to an instance of an object
-  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
-  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
-  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
+Total: 0.377866 ms (FindLiveObjects: 0.093300 ms CreateObjectMapping: 0.060178 ms MarkObjects: 0.210392 ms  DeleteObjects: 0.012129 ms)
 

@@ -783,6 +783,10 @@ Prefab:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 19502288, guid: 69e0ad4b2a17b4744998c244f9cf37a9, type: 2}
+      propertyPath: m_Speed
+      value: 4.5
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 13642822, guid: 69e0ad4b2a17b4744998c244f9cf37a9, type: 2}
     - {fileID: 11414842, guid: 69e0ad4b2a17b4744998c244f9cf37a9, type: 2}
