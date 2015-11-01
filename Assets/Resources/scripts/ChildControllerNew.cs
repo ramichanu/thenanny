@@ -216,10 +216,6 @@ public class ChildControllerNew : EventScript {
 		methodsToCall.Add("child_cancelBurning");
 		methodsToCall.Add("child_stopChildMovement");
 		methodsToCall.Add("player_moveCharacterToClickedDestination");
-		methodsToCall.Add("player_executeExtinguisherEvent");
-		methodsToCall.Add("player_playNannyIdle");
-		methodsToCall.Add("child_fireOff");
-		methodsToCall.Add("child_startChildRandomMovementEvent");
 
 		eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
 		eventFinishedCallback("helpBurning");

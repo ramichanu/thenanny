@@ -12,7 +12,7 @@ Platform assembly: C:\Users\Rami\Documents\TheNanny\epicNanny_Data\Managed\Assem
 Loading C:\Users\Rami\Documents\TheNanny\epicNanny_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
 Platform assembly: C:\Users\Rami\Documents\TheNanny\epicNanny_Data\Managed\UnityEngine.UI.dll (this message is harmless)
 Loading C:\Users\Rami\Documents\TheNanny\epicNanny_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-- Completed reload, in  0.050 seconds
+- Completed reload, in  0.083 seconds
 desktop: 1366x768 60Hz; virtual: 1366x768 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
@@ -25,7 +25,7 @@ NullReferenceException: Object reference not set to an instance of an object
 (Filename:  Line: -1)
 
 Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 4.112682 ms
+UnloadTime: 4.324941 ms
 CharacterController settings are invalid.
  
 (Filename:  Line: 382)
@@ -35,6 +35,6 @@ CharacterController settings are invalid.
 (Filename:  Line: 382)
 
 
-Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 831.
-Total: 0.377866 ms (FindLiveObjects: 0.093300 ms CreateObjectMapping: 0.060178 ms MarkObjects: 0.210392 ms  DeleteObjects: 0.012129 ms)
+Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 842.
+Total: 0.323285 ms (FindLiveObjects: 0.034054 ms CreateObjectMapping: 0.021459 ms MarkObjects: 0.261707 ms  DeleteObjects: 0.004665 ms)
 
