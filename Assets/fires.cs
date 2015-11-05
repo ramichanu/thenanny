@@ -21,7 +21,7 @@ public class fires : MonoBehaviour {
 	public void startFireBehaviour()
 	{
 		InvokeRepeating("launchFire", 2, 2f);
-		InvokeRepeating("removeFirstFireItem", 5, 7f);
+		InvokeRepeating("removeFirstFireItem", 5, 10f);
 	}
 	void launchFire(){
 		StartCoroutine(fireBehaviour());

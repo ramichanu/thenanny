@@ -36,7 +36,7 @@ public class PlayerMovementNew : EventScript {
 				ArrayList methodsToCall = new ArrayList();
 				ArrayList methodsAfterInterrupt = new ArrayList();
 				ArrayList methodsDisabledUntilEventFinished = new ArrayList();
-
+				Debug.Log (hit.transform.tag);
 				switch (hit.transform.tag) {
 					case "player":
 					case "terrain":
@@ -240,6 +240,17 @@ public class PlayerMovementNew : EventScript {
 		}
 	}
 
+	void nannyTakeOut(){
+		StartCoroutine ("playTakeOut");
+	}
+
+	IEnumerator playTakeOut(){
+		playAnimation("nanny_takeout", 0.5f);
+		transform.LookAt (hit.transform);
+		yield return new WaitForSeconds(0.7f);
+		eventFinishedCallback("nannyTakeOut");
+	}
+
 	void removeBrokenJar () {
 		StartCoroutine ("sweepingAnimationAndRemoveBrokenGlass");;
 	}
@@ -296,6 +307,8 @@ public class PlayerMovementNew : EventScript {
 			switch (collision.transform.name) {
 			case "madLady":
 				if(hit.transform.tag == "madLady") {
+					methodsToCall.Add ("player_stopPlayerMovement");
+					methodsToCall.Add ("player_nannyTakeOut");
 					methodsToCall.Add ("player_playNannyIdle");
 					methodsToCall.Add ("madLady_moveToInitialPosition");
 					methodsToCall.Add ("madLady_destroyMadLady");
@@ -306,6 +319,7 @@ public class PlayerMovementNew : EventScript {
 
 			case "child":
 				if(hit.transform.tag == "child") {
+					methodsToCall.Add ("player_stopPlayerMovement");
 					methodsToCall.Add("player_executeExtinguisherEvent");
 					methodsToCall.Add("player_playNannyIdle");
 					methodsToCall.Add("child_fireOff");

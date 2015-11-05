@@ -9,6 +9,7 @@ public class CatControllerNew : EventScript {
 	public GameObject target;
 	GameObject[] dangerFurniDestinations;
 	GameObject dangerFurniDestination;
+	public GameObject sparkles;
 
 	void Start () {
 		agent = GetComponent<NavMeshAgent> ();
@@ -156,6 +157,7 @@ public class CatControllerNew : EventScript {
 		if (hits.Count > 0) {
 			foreach(RaycastHit[] raycastArray in hits){
 				foreach(RaycastHit hitItem in raycastArray){
+
 					if ((hitItem.transform.name == "shelf" || hitItem.transform.name == "shelf2")) {
 						
 						bool dangerDropped = hitItem.transform.gameObject.GetComponent<dangerFurni>().dangerDropped;
@@ -200,6 +202,8 @@ public class CatControllerNew : EventScript {
 							Vector3 firePosition = hitItem.transform.position + hitItem.transform.right *0.7f;
 							StartCoroutine(fires.GetComponent<fires>().addFire(firePosition));
 							fires.GetComponent<fires>().startFireBehaviour();
+							StartCoroutine(startChemneySparkles());
+
 						}
 					}
 				}
@@ -223,6 +227,12 @@ public class CatControllerNew : EventScript {
 		brokenJar.transform.position = hitItem.transform.position + hitItem.transform.right * 0.7f;
 		brokenJar.GetComponent<dangerItem>().parent = hitItem.transform.gameObject;
 		
+	}
+
+	IEnumerator startChemneySparkles(){
+		sparkles.SetActive(true);
+		yield return new WaitForSeconds(0.7f);
+		sparkles.SetActive(false);
 	}
 
 

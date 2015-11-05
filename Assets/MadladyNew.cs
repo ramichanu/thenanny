@@ -168,6 +168,7 @@ public class MadladyNew : EventScript {
 		canInterruptBy.Add ("destroyMadLady");
 
 		methodsAfterInterrupt.Add ("madLady_stopMadladyMovement");
+		methodsAfterInterrupt.Add ("player_stopPlayerMovement");
 		methodsDisabledUntilEventFinished.Add ("followChild");
 		
 		eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);

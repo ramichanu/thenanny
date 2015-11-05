@@ -12,8 +12,8 @@ Platform assembly: C:\Users\Rami\Documents\TheNanny\epicNanny_Data\Managed\Assem
 Loading C:\Users\Rami\Documents\TheNanny\epicNanny_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
 Platform assembly: C:\Users\Rami\Documents\TheNanny\epicNanny_Data\Managed\UnityEngine.UI.dll (this message is harmless)
 Loading C:\Users\Rami\Documents\TheNanny\epicNanny_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-- Completed reload, in  0.083 seconds
-desktop: 1366x768 60Hz; virtual: 1366x768 at 0,0
+- Completed reload, in  0.100 seconds
+desktop: 1366x768 50Hz; virtual: 1366x768 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
@@ -25,7 +25,7 @@ NullReferenceException: Object reference not set to an instance of an object
 (Filename:  Line: -1)
 
 Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 4.324941 ms
+UnloadTime: 3.912086 ms
 CharacterController settings are invalid.
  
 (Filename:  Line: 382)
@@ -35,6 +35,14 @@ CharacterController settings are invalid.
 (Filename:  Line: 382)
 
 
-Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 842.
-Total: 0.323285 ms (FindLiveObjects: 0.034054 ms CreateObjectMapping: 0.021459 ms MarkObjects: 0.261707 ms  DeleteObjects: 0.004665 ms)
+Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 1046.
+Total: 0.419851 ms (FindLiveObjects: 0.118025 ms CreateObjectMapping: 0.077439 ms MarkObjects: 0.219255 ms  DeleteObjects: 0.004198 ms)
+
+terrainHome
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+terrainHome
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 

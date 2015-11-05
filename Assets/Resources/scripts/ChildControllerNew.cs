@@ -217,6 +217,9 @@ public class ChildControllerNew : EventScript {
 		methodsToCall.Add("child_stopChildMovement");
 		methodsToCall.Add("player_moveCharacterToClickedDestination");
 
+		canInterruptBy.Add ("fireOff");
+		methodsAfterInterrupt.Add("player_stopPlayerMovement");
+
 		eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
 		eventFinishedCallback("helpBurning");
 	}
