@@ -165,7 +165,7 @@ public class MadladyNew : EventScript {
 
 		canInterruptBy.Add ("stopPlayerMovement");
 		canInterruptBy.Add ("moveCharacterToClickedDestination");
-		canInterruptBy.Add ("destroyMadLady");
+		canInterruptBy.Add ("nannyTakeOut");
 
 		methodsAfterInterrupt.Add ("madLady_stopMadladyMovement");
 		methodsAfterInterrupt.Add ("player_stopPlayerMovement");

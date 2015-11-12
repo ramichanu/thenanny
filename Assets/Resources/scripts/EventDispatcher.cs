@@ -43,7 +43,7 @@ public class EventDispatcher : MonoBehaviour {
 
 		bool areThereMethodsDisabledUntilEventFinished = disabledMethodsContainsThisMethods (methodsToCall);
 		List<string> keyList = new List<string>(this.eventList.Keys);
-		if (eventList.ContainsKey(eventObjectKey)) {
+		if (eventList.ContainsKey(eventObjectKey) && !areThereMethodsDisabledUntilEventFinished) {
 
 			GameObject eventListItem = (GameObject)(eventList[eventObjectKey]);
 			bool canInterrupt = eventListItem.GetComponent<Event>().canInterrupt(methodsToCall);

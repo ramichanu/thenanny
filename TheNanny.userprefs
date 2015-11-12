@@ -1,36 +1,41 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\fires.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Resources\scripts\PlayerMovementNew.cs">
     <Files>
-      <File FileName="Assets\Resources\scripts\PlayerMovementNew.cs" Line="172" Column="3" />
-      <File FileName="Assets\CatControllerNew.cs" Line="231" Column="1" />
-      <File FileName="Assets\LevelManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\MadladyNew.cs" Line="1" Column="1" />
-      <File FileName="Assets\DogControllerNew.cs" Line="1" Column="1" />
-      <File FileName="Assets\fires.cs" Line="24" Column="47" />
+      <File FileName="Assets\EventScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\MadladyNew.cs" Line="71" Column="1" />
+      <File FileName="Assets\fires.cs" Line="23" Column="37" />
+      <File FileName="Assets\Resources\scripts\EventDispatcher.cs" Line="62" Column="1" />
+      <File FileName="Assets\Resources\scripts\Event.cs" Line="91" Column="1" />
+      <File FileName="Assets\MenuFunctions.cs" Line="24" Column="1" />
+      <File FileName="Assets\Resources\scripts\ChildControllerNew.cs" Line="80" Column="1" />
+      <File FileName="Assets\Resources\scripts\PlayerMovementNew.cs" Line="116" Column="37" />
+      <File FileName="Assets\LevelManager.cs" Line="35" Column="37" />
     </Files>
     <Pads>
       <Pad Id="MonoDevelop.Debugger.WatchPad">
         <State>
-          <Value>hit.transform.name</Value>
-          <Value>hit.transform.rotation</Value>
-          <Value>transform.rotation</Value>
-          <Value>anim.IsPlaying</Value>
-          <Value>anim</Value>
+          <Value>isWaiting</Value>
+          <Value>methodCalled</Value>
+          <Value>Vector3.Distance (transform.position, agent.destination)</Value>
+          <Value>eventObjectKey</Value>
+          <Value>hashFromScript</Value>
+          <Value>this.hash</Value>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="C:\Users\Rami\Documents\TheNanny\Assets\Resources\scripts\ChildControllerNew.cs" line="206" />
-      <Breakpoint file="C:\Users\Rami\Documents\TheNanny\Assets\Resources\scripts\ChildControllerNew.cs" line="211" />
       <Breakpoint file="C:\Users\Rami\Documents\TheNanny\Assets\Resources\scripts\playerMovement.cs" line="44" />
       <Breakpoint file="C:\Users\Rami\Documents\TheNanny\Assets\DogControllerNew.cs" line="89" />
       <Breakpoint file="C:\Users\Rami\Documents\TheNanny\Assets\DogControllerNew.cs" line="84" />
       <Breakpoint file="C:\Users\Rami\Documents\TheNanny\Assets\DogControllerNew.cs" line="93" />
-      <Breakpoint file="C:\Users\Rami\Documents\TheNanny\Assets\MadladyNew.cs" line="156" />
-      <Breakpoint file="C:\Users\Rami\Documents\TheNanny\Assets\Resources\scripts\PlayerMovementNew.cs" line="172" />
+      <Breakpoint file="C:\Users\Rami\Documents\TheNanny\Assets\Resources\scripts\PlayerMovementNew.cs" line="232" />
+      <Breakpoint file="C:\Users\Rami\Documents\TheNanny\Assets\Resources\scripts\PlayerMovementNew.cs" line="237" />
+      <Breakpoint file="C:\Users\Rami\Documents\TheNanny\Assets\Resources\scripts\PlayerMovementNew.cs" line="179" />
+      <Breakpoint file="C:\Users\Rami\Documents\TheNanny\Assets\Resources\scripts\PlayerMovementNew.cs" line="216" />
+      <Breakpoint file="C:\Users\Rami\Documents\TheNanny\Assets\Resources\scripts\Event.cs" line="91" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

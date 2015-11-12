@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: leather
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 3, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _NORMALMAP
   m_LightmapFlags: 5
   m_CustomRenderQueue: -1
@@ -84,6 +84,10 @@ Material:
         second: .5
       data:
         first:
+          name: _Shininess
+        second: .0399999991
+      data:
+        first:
           name: _SrcBlend
         second: 1
       data:
@@ -138,7 +142,11 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: 1, g: .962521136, b: .713725448, a: 1}
+        second: {r: .333625048, g: .352941155, b: .251903087, a: 1}
+      data:
+        first:
+          name: _SpecColor
+        second: {r: 0, g: 0, b: 0, a: 1}
       data:
         first:
           name: _EmissionColorUI
