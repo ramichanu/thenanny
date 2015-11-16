@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class PlayerMovementNew : EventScript {
 	RaycastHit hit;
@@ -50,6 +51,7 @@ public class PlayerMovementNew : EventScript {
 						canInterruptBy.Add("goToPlayer");
 						canInterruptBy.Add("removeBrokenGlass");
 						canInterruptBy.Add("removeBrokenJar");
+						canInterruptBy.Add("takeBabyBottle");
 
 						methodsToCall.Add("player_playNannyWalking");
 						methodsToCall.Add("player_moveCharacterToClickedDestination");
@@ -80,14 +82,31 @@ public class PlayerMovementNew : EventScript {
 						break;
 					case "child":
 						GameObject child = hit.transform.gameObject;
-						if(child.GetComponent<ChildControllerNew>().state == ChildControllerNew.BURNING) {
-							GameObject.Find ("Canvas").GetComponent<gameFunctions>().createClickMenu(child);
-						}
+						GameObject.Find ("Canvas").GetComponent<gameFunctions>().createClickMenu(child);
+						
 						break;
 					case "madLady":
 						methodsToCall.Add("madLady_createMadladyMenu");
 						eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
 
+					break;
+					case "babyBottle":
+					hit.point = hit.transform.position + transform.forward * 0.1f;
+						canInterruptBy.Add("moveCharacterToClickedDestination");
+						canInterruptBy.Add("goToPlayer");
+						canInterruptBy.Add("removeBrokenGlass");
+						canInterruptBy.Add("removeBrokenJar");
+						canInterruptBy.Add("takeBabyBottle");
+						
+						methodsToCall.Add("player_playNannyWalking");
+						methodsToCall.Add("player_moveCharacterToClickedDestination");
+						methodsToCall.Add("player_playNannyIdle");
+						methodsToCall.Add ("player_takeBabyBottle");
+						methodsToCall.Add ("player_playNannyIdle");
+						
+						methodsAfterInterrupt.Add("player_stopPlayerMovement");
+						
+						eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
 					break;
 				}
 			}
@@ -290,7 +309,7 @@ public class PlayerMovementNew : EventScript {
 		eventFinishedCallback("stopPlayerMovement");
 	}
 
-	void helpBurning() {
+	/*void helpBurning() {
 		ArrayList canInterruptBy = new ArrayList();
 		ArrayList methodsToCall = new ArrayList();
 		ArrayList methodsAfterInterrupt = new ArrayList();
@@ -300,6 +319,26 @@ public class PlayerMovementNew : EventScript {
 		methodsToCall.Add("child_stopChildMovement");
 		
 		eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
+	}*/
+
+
+
+	void feedChild() {
+		GameObject babyBottleIcon = GameObject.Find ("babyBottleIcon");
+		babyBottleIcon.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("imgs/hub/babyBottleNOT");
+
+		hasBabyBottle = false;
+		GameObject life = GameObject.Find ("lifeAndHunger");
+		life.GetComponent<LifeAndHunger> ().resetHunger();
+		eventFinishedCallback("feedChild");
+	}
+
+	void takeBabyBottle() {
+		GameObject babyBottleIcon = GameObject.Find ("babyBottleIcon");
+		babyBottleIcon.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("imgs/hub/babyBottle");
+
+		hasBabyBottle = true;
+		eventFinishedCallback("takeBabyBottle");
 	}
 
 	void OnCollisionStay(Collision collision) {
@@ -323,7 +362,7 @@ public class PlayerMovementNew : EventScript {
 				break;
 
 			case "child":
-				if(hit.transform.tag == "child") {
+				if(hit.transform.tag == "child" && hit.transform.GetComponent<ChildControllerNew>().state == ChildControllerNew.BURNING) {
 					methodsToCall.Add ("player_stopPlayerMovement");
 					methodsToCall.Add("player_executeExtinguisherEvent");
 					methodsToCall.Add("player_playNannyIdle");
@@ -391,15 +430,17 @@ public class PlayerMovementNew : EventScript {
 						methodsDisabledUntilEventFinished.Add ("player_removeBrokenJar");
 						methodsDisabledUntilEventFinished.Add ("player_startFireExtinguish");
 						methodsDisabledUntilEventFinished.Add ("madLady_createMadladyMenu");
-						//methodsDisabledUntilEventFinished.Add ("player_removeFire");
+
 						
 						eventDisp.addEvent (methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
 						
 					}
 				}
 				break;
+			
 			}
 		}
 	}
+
 
 }

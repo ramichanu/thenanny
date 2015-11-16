@@ -12,7 +12,7 @@ Platform assembly: C:\Users\Rami\Documents\TheNanny\epicNanny_Data\Managed\Assem
 Loading C:\Users\Rami\Documents\TheNanny\epicNanny_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
 Platform assembly: C:\Users\Rami\Documents\TheNanny\epicNanny_Data\Managed\UnityEngine.UI.dll (this message is harmless)
 Loading C:\Users\Rami\Documents\TheNanny\epicNanny_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-- Completed reload, in  0.059 seconds
+- Completed reload, in  0.096 seconds
 desktop: 1366x768 60Hz; virtual: 1366x768 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
@@ -25,7 +25,7 @@ NullReferenceException: Object reference not set to an instance of an object
 (Filename:  Line: -1)
 
 Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 4.107084 ms
+UnloadTime: 52.614910 ms
 CharacterController settings are invalid.
  
 (Filename:  Line: 382)
@@ -35,16 +35,8 @@ CharacterController settings are invalid.
 (Filename:  Line: 382)
 
 
-Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 1267.
-Total: 0.421251 ms (FindLiveObjects: 0.128288 ms CreateObjectMapping: 0.034987 ms MarkObjects: 0.250978 ms  DeleteObjects: 0.005131 ms)
-
-wall
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 1341.
+Total: 6.813729 ms (FindLiveObjects: 0.088168 ms CreateObjectMapping: 0.038253 ms MarkObjects: 6.679377 ms  DeleteObjects: 0.006531 ms)
 
 terrainHome
  
@@ -59,25 +51,6 @@ fire
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
 fire
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-child
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-NullReferenceException: Object reference not set to an instance of an object
-  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
-  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
-  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-Player
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-Player
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
@@ -91,6 +64,255 @@ NullReferenceException
  
 (Filename:  Line: -1)
 
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:get_transform ()
+  at PlayerMovementNew+<sweepingAnimationAndRemoveBrokenGlass>c__Iterator8.MoveNext () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:get_transform ()
+  at PlayerMovementNew+<sweepingAnimationAndRemoveBrokenGlass>c__Iterator8.MoveNext () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:get_transform ()
+  at PlayerMovementNew+<sweepingAnimationAndRemoveBrokenGlass>c__Iterator8.MoveNext () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+madLady
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+child
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+dangerFurni
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+child
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+terrainHome
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+babyBottle
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+terrainHome
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+cat
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+brokenGlass
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+terrainHome
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+brokenGlass
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 2.352570 ms
+
+Unloading 366 unused Assets to reduce memory usage. Loaded Objects now: 183.
+Total: 2.289592 ms (FindLiveObjects: 0.157211 ms CreateObjectMapping: 0.060645 ms MarkObjects: 0.554204 ms  DeleteObjects: 1.516131 ms)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at MenuFunctions.Start () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.389995 ms
+CharacterController settings are invalid.
+ 
+(Filename:  Line: 382)
+
+CharacterController settings are invalid.
+ 
+(Filename:  Line: 382)
+
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 1353.
+Total: 0.445043 ms (FindLiveObjects: 0.149280 ms CreateObjectMapping: 0.039186 ms MarkObjects: 0.249578 ms  DeleteObjects: 0.006064 ms)
+
+terrainHome
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+terrainHome
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+terrainHome
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+terrainHome
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+fire
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+fire
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+brokenGlass
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+madLady
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+terrainHome
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
 terrainHome
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
@@ -99,6 +321,79 @@ brokenGlass
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+terrainHome
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+babyBottle
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+terrainHome
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+terrainHome
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+terrainHome
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+terrainHome
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
 terrainHome
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
@@ -107,23 +402,123 @@ terrainHome
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-terrain
+terrainHome
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+terrainHome
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+terrainHome
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+child
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
 
 madLady
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-terrain
+NullReferenceException: Object reference not set to an instance of an object
+  at Event.eventIsFinished (.Notification options) [0x00000] in <filename unknown>:0 
+UnityEngine.Component:SendMessage(String, Object, SendMessageOptions)
+NotificationCenter:PostNotification(Notification)
+NotificationCenter:PostNotification(Component, String, Hashtable)
+Event:replaceMethodsToMethodsAfterInterrupt()
+EventDispatcher:interrumptEventsByNewEvent(GameObject, String)
+EventDispatcher:addEvent(ArrayList, ArrayList, ArrayList, ArrayList)
+PlayerMovementNew:OnCollisionStay(Collision)
  
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at Event.eventIsFinished (.Notification options) [0x00000] in <filename unknown>:0 
+UnityEngine.Component:SendMessage(String, Object, SendMessageOptions)
+NotificationCenter:PostNotification(Notification)
+NotificationCenter:PostNotification(Component, String, Hashtable)
+Event:replaceMethodsToMethodsAfterInterrupt()
+EventDispatcher:interrumptEventsByNewEvent(GameObject, String)
+EventDispatcher:addEvent(ArrayList, ArrayList, ArrayList, ArrayList)
+PlayerMovementNew:OnCollisionStay(Collision)
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at Event.eventIsFinished (.Notification options) [0x00000] in <filename unknown>:0 
+UnityEngine.Component:SendMessage(String, Object, SendMessageOptions)
+NotificationCenter:PostNotification(Notification)
+NotificationCenter:PostNotification(Component, String, Hashtable)
+Event:replaceMethodsToMethodsAfterInterrupt()
+EventDispatcher:interrumptEventsByNewEvent(GameObject, String)
+EventDispatcher:addEvent(ArrayList, ArrayList, ArrayList, ArrayList)
+PlayerMovementNew:OnCollisionStay(Collision)
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
 
 terrain
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-terrainHome
+terrain
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
@@ -143,10 +538,6 @@ terrainHome
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-madLady
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
 terrainHome
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
@@ -156,54 +547,6 @@ terrainHome
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
 terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-brokenGlass
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-brokenGlass
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-fire
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-fire
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-fire
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-fire
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
@@ -214,11 +557,28 @@ NullReferenceException: Object reference not set to an instance of an object
  
 (Filename:  Line: -1)
 
-wall
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
  
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+(Filename:  Line: -1)
 
-brokenGlass
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+terrainHome
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
@@ -229,21 +589,49 @@ NullReferenceException: Object reference not set to an instance of an object
  
 (Filename:  Line: -1)
 
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.GameObject:get_transform ()
-  at PlayerMovementNew+<sweepingAnimationAndRemoveBrokenGlass>c__Iterator8.MoveNext () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.GameObject:get_transform ()
-  at PlayerMovementNew+<sweepingAnimationAndRemoveBrokenGlass>c__Iterator8.MoveNext () [0x00000] in <filename unknown>:0 
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
  
 (Filename:  Line: -1)
 
 terrainHome
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+terrainHome
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+terrainHome
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+terrainHome
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
 
 NullReferenceException: Object reference not set to an instance of an object
   at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
@@ -263,34 +651,6 @@ madLady
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-fire
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-fire
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
 NullReferenceException: Object reference not set to an instance of an object
   at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
   at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
@@ -318,204 +678,6 @@ NullReferenceException: Object reference not set to an instance of an object
   at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
  
 (Filename:  Line: -1)
-
-NullReferenceException: Object reference not set to an instance of an object
-  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
-  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
-  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-fire
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-fire
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 1.395774 ms
-
-Unloading 350 unused Assets to reduce memory usage. Loaded Objects now: 224.
-Total: 1.451754 ms (FindLiveObjects: 0.036387 ms CreateObjectMapping: 0.032188 ms MarkObjects: 0.228119 ms  DeleteObjects: 1.153659 ms)
-
-Setting up 2 worker threads for Enlighten.
-  Thread -> id: 256c -> priority: 1 
-  Thread -> id: 1774 -> priority: 1 
-Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.505688 ms
-CharacterController settings are invalid.
- 
-(Filename:  Line: 382)
-
-CharacterController settings are invalid.
- 
-(Filename:  Line: 382)
-
-
-Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 1279.
-Total: 0.469301 ms (FindLiveObjects: 0.137151 ms CreateObjectMapping: 0.064377 ms MarkObjects: 0.243980 ms  DeleteObjects: 0.021925 ms)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-brokenGlass
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-child
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-brokenGlass
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-madLady
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-NullReferenceException: Object reference not set to an instance of an object
-  at Event.eventIsFinished (.Notification options) [0x00000] in <filename unknown>:0 
-UnityEngine.Component:SendMessage(String, Object, SendMessageOptions)
-NotificationCenter:PostNotification(Notification)
-NotificationCenter:PostNotification(Component, String, Hashtable)
-Event:replaceMethodsToMethodsAfterInterrupt()
-EventDispatcher:interrumptEventsByNewEvent(GameObject, String)
-EventDispatcher:addEvent(ArrayList, ArrayList, ArrayList, ArrayList)
-PlayerMovementNew:OnCollisionStay(Collision)
- 
-(Filename:  Line: -1)
-
-NullReferenceException: Object reference not set to an instance of an object
-  at Event.eventIsFinished (.Notification options) [0x00000] in <filename unknown>:0 
-UnityEngine.Component:SendMessage(String, Object, SendMessageOptions)
-NotificationCenter:PostNotification(Notification)
-NotificationCenter:PostNotification(Component, String, Hashtable)
-Event:replaceMethodsToMethodsAfterInterrupt()
-EventDispatcher:interrumptEventsByNewEvent(GameObject, String)
-EventDispatcher:addEvent(ArrayList, ArrayList, ArrayList, ArrayList)
-PlayerMovementNew:OnCollisionStay(Collision)
- 
-(Filename:  Line: -1)
-
-NullReferenceException: Object reference not set to an instance of an object
-  at Event.eventIsFinished (.Notification options) [0x00000] in <filename unknown>:0 
-UnityEngine.Component:SendMessage(String, Object, SendMessageOptions)
-NotificationCenter:PostNotification(Notification)
-NotificationCenter:PostNotification(Component, String, Hashtable)
-Event:replaceMethodsToMethodsAfterInterrupt()
-EventDispatcher:interrumptEventsByNewEvent(GameObject, String)
-EventDispatcher:addEvent(ArrayList, ArrayList, ArrayList, ArrayList)
-PlayerMovementNew:OnCollisionStay(Collision)
- 
-(Filename:  Line: -1)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-brokenGlass
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
 terrainHome
  
@@ -529,23 +691,14 @@ babyBottle
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
 terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-madLady
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-fire
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-fire
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-fire
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
@@ -567,22 +720,7 @@ NullReferenceException: Object reference not set to an instance of an object
  
 (Filename:  Line: -1)
 
-NullReferenceException: Object reference not set to an instance of an object
-  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
-  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
-  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
 terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-madLady
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-madLady
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
@@ -590,7 +728,11 @@ terrainHome
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-fire
+brokenGlass
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+terrainHome
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
@@ -601,39 +743,159 @@ NullReferenceException: Object reference not set to an instance of an object
  
 (Filename:  Line: -1)
 
-terrainHome
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
  
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+(Filename:  Line: -1)
 
-brokenGlass
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
  
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+(Filename:  Line: -1)
 
-terrainHome
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
  
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+(Filename:  Line: -1)
 
-madLady
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
  
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+(Filename:  Line: -1)
 
-brokenGlass
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
  
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+(Filename:  Line: -1)
 
-brokenGlass
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
  
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+(Filename:  Line: -1)
 
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.GameObject:get_transform ()
-  at PlayerMovementNew+<sweepingAnimationAndRemoveBrokenGlass>c__Iterator8.MoveNext () [0x00000] in <filename unknown>:0 
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at ChildControllerNew.getDangerPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.setRandomPosition () [0x00000] in <filename unknown>:0 
+  at ChildControllerNew.childRandomMovement () [0x00000] in <filename unknown>:0 
  
 (Filename:  Line: -1)
 
 Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 1.371516 ms
+UnloadTime: 1.340727 ms
 
-Unloading 350 unused Assets to reduce memory usage. Loaded Objects now: 224.
-Total: 1.196577 ms (FindLiveObjects: 0.020059 ms CreateObjectMapping: 0.031722 ms MarkObjects: 0.208059 ms  DeleteObjects: 0.936269 ms)
+Unloading 366 unused Assets to reduce memory usage. Loaded Objects now: 224.
+Total: 1.351923 ms (FindLiveObjects: 0.022858 ms CreateObjectMapping: 0.046183 ms MarkObjects: 0.191265 ms  DeleteObjects: 1.091148 ms)
+
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 1e58 -> priority: 1 
+  Thread -> id: 2258 -> priority: 1 
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.555137 ms
+CharacterController settings are invalid.
+ 
+(Filename:  Line: 382)
+
+CharacterController settings are invalid.
+ 
+(Filename:  Line: 382)
+
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 1353.
+Total: 0.505221 ms (FindLiveObjects: 0.148347 ms CreateObjectMapping: 0.065776 ms MarkObjects: 0.266839 ms  DeleteObjects: 0.022858 ms)
 

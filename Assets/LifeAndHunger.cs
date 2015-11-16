@@ -14,6 +14,7 @@ public class LifeAndHunger : MonoBehaviour {
 
 	private int totalHeartsCount;
 	private float center = 0;
+	public int hunger = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -22,7 +23,7 @@ public class LifeAndHunger : MonoBehaviour {
 		lifeAndHunger = GameObject.Find("lifeAndHunger");
 		lifeAndHungerPosition = lifeAndHunger.transform.position;
 		printAllHearts ();
-
+		setHungerBarPerSecond (1);
 
 	}
 	
@@ -101,6 +102,37 @@ public class LifeAndHunger : MonoBehaviour {
 
 	void goToMenu(string menuName){
 		Application.LoadLevel(menuName);
+	}
+
+	void setHungerBarPerSecond(int seconds) {
+		InvokeRepeating("setHungerBar", 2, seconds);
+	}
+	
+	void setHungerBar(){
+		hunger += 1;
+		
+		GameObject hungerBar = GameObject.Find("hungerBar");
+		hungerBar.GetComponent<Image> ().fillAmount = hunger*(float)0.015;
+		
+		if (hungerBar.GetComponent<Image> ().fillAmount == 1) {
+			GameObject child = GameObject.Find ("child");
+			child.GetComponent<ChildControllerNew>().hitAndPain(5);
+		}	
+	}
+
+	public void resetHunger() {
+		Sprite withBabyBottle =  Resources.Load <Sprite>("imgs/hub/babyBottleNOT");
+		if (withBabyBottle){
+			GameObject.Find ("babyBottleIcon").GetComponent<Image>().sprite = withBabyBottle;
+		} else {
+			Debug.LogError("Sprite not found", this);
+		};
+		GameObject.Find ("babyBottleIcon").GetComponent<Image>().sprite = withBabyBottle;
+		
+		GameObject hungerBar = GameObject.Find("hungerBar");
+		hungerBar.GetComponent<Image> ().fillAmount = 0;
+		hunger = 0;
+
 	}
 
 }

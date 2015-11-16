@@ -224,6 +224,23 @@ public class ChildControllerNew : EventScript {
 		eventFinishedCallback("helpBurning");
 	}
 
+	void feed() {
+		ArrayList canInterruptBy = new ArrayList();
+		ArrayList methodsToCall = new ArrayList();
+		ArrayList methodsAfterInterrupt = new ArrayList();
+		ArrayList methodsDisabledUntilEventFinished = new ArrayList();
+		
+		methodsToCall.Add ("child_stopChildMovement");
+		methodsToCall.Add("player_moveCharacterToClickedDestination");
+		methodsToCall.Add ("player_feedChild");
+		methodsToCall.Add ("child_startChildRandomMovement");
+		methodsToCall.Add ("player_playNannyIdle");
+
+		
+		eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
+		eventFinishedCallback("feed");
+	}
+
 	void fireOff() {
 		state = IDLE;
 		ParticleSystem fireChild = GameObject.Find("fireChild").GetComponent<ParticleSystem>();
