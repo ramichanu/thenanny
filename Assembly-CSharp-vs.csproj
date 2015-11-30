@@ -49,9 +49,12 @@
      <Compile Include="Assets\CameraScript.cs" />
      <Compile Include="Assets\CatControllerNew.cs" />
      <Compile Include="Assets\Cockroach.cs" />
+     <Compile Include="Assets\CockroachManager.cs" />
      <Compile Include="Assets\CockroachNew.cs" />
      <Compile Include="Assets\DogControllerNew.cs" />
      <Compile Include="Assets\EventScript.cs" />
+     <Compile Include="Assets\FXAA\Scripts\FXAA.cs" />
+     <Compile Include="Assets\FXAA\Scripts\FXAAPostEffectsBase.cs" />
      <Compile Include="Assets\LevelManager.cs" />
      <Compile Include="Assets\LifeAndHunger.cs" />
      <Compile Include="Assets\MadladyNew.cs" />
@@ -65,6 +68,14 @@
      <Compile Include="Assets\Resources\scripts\childController.cs" />
      <Compile Include="Assets\Resources\scripts\dogController.cs" />
      <Compile Include="Assets\Resources\scripts\playerMovement.cs" />
+     <Compile Include="Assets\SMAA-Unity-master\SMAA-Unity-master\SMAA\Scripts\DebugPass.cs" />
+     <Compile Include="Assets\SMAA-Unity-master\SMAA-Unity-master\SMAA\Scripts\EdgeDetectionMethod.cs" />
+     <Compile Include="Assets\SMAA-Unity-master\SMAA-Unity-master\SMAA\Scripts\HDRMode.cs" />
+     <Compile Include="Assets\SMAA-Unity-master\SMAA-Unity-master\SMAA\Scripts\MinAttribute.cs" />
+     <Compile Include="Assets\SMAA-Unity-master\SMAA-Unity-master\SMAA\Scripts\PredicationPreset.cs" />
+     <Compile Include="Assets\SMAA-Unity-master\SMAA-Unity-master\SMAA\Scripts\Preset.cs" />
+     <Compile Include="Assets\SMAA-Unity-master\SMAA-Unity-master\SMAA\Scripts\QualityPreset.cs" />
+     <Compile Include="Assets\SMAA-Unity-master\SMAA-Unity-master\SMAA\Scripts\SMAA.cs" />
      <Compile Include="Assets\dangerFurni.cs" />
      <Compile Include="Assets\dangerItem.cs" />
      <Compile Include="Assets\dangerStrategy.cs" />
@@ -74,8 +85,17 @@
      <Compile Include="Assets\lightningStorm.cs" />
      <Compile Include="Assets\madLady.cs" />
      <None Include="Assets\Shaders\twoSided-difusse-alpha.shader" />
+     <None Include="Assets\Shaders\GlowOutline.shader" />
+     <None Include="Assets\Standard Assets\Effects\Projectors\Guidelines.txt" />
+     <None Include="Assets\SMAA-Unity-master\SMAA-Unity-master\SMAA\Shaders\SMAA.shader" />
+     <None Include="Assets\FXAA\Shaders\Fxaa3.shader" />
+     <None Include="Assets\SMAA-Unity-master\SMAA-Unity-master\SMAA\Shaders\SMAA.cginc" />
+     <None Include="Assets\Standard Assets\Effects\Projectors\Shaders\ProjectorLight.shader" />
+     <None Include="Assets\FXAA\Shaders\Fxaa3_9.cginc" />
      <None Include="Assets\Resources\imgs\sketches\black.shader" />
      <None Include="Assets\Shaders\BlackAlpha.shader" />
+     <None Include="Assets\SMAA-Unity-master\SMAA-Unity-master\LICENSE.txt" />
+     <None Include="Assets\Standard Assets\Effects\Projectors\Shaders\ProjectorMultiply.shader" />
      <None Include="Assets\Resources\imgs\sketches\pink.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

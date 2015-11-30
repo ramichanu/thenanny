@@ -85,10 +85,10 @@ public class Event : MonoBehaviour {
 
 		string methodCalled = options.data ["methodCalled"].ToString();
 		string hashFromScript = options.data ["hash"].ToString();
-		this.isRunning = false;
-		methodsToCall.Remove(methodCalled);
 
 		if (hashFromScript == this.hash || this.hasInterruptedTo != null) {
+			this.isRunning = false;
+			methodsToCall.Remove(methodCalled);
 			if (methodsToCall.Count>0){
 				this.isWaiting = true;
 				executeScript();

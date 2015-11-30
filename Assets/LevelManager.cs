@@ -7,8 +7,8 @@ public class LevelManager : EventScript {
 	bool isMadLadyInvoke = false;
 	// Use this for initialization
 	void Start () {
-		//Invoke ("startCatAndDogPersecution", 2f);
-		//Invoke ("launchDangerMadLady", 2f);
+		Invoke ("startCatAndDogPersecution", 2f);
+		Invoke ("launchDangerMadLady", 2f);
 		startLevel1 ();
 	}
 	
@@ -19,14 +19,20 @@ public class LevelManager : EventScript {
 
 	void startLevel1() {
 
-		InvokeRepeating ("startCatAndDogIA", 5, 15);
+		//InvokeRepeating ("startCatAndDogIA", 5, 15);
 		InvokeRepeating ("startDangerMadLadyIA", 0, 15);
+		//InvokeRepeating ("startDangerCockroach", 15, 50);
 	}
 
 	void startCatAndDogIA() {
 		startCatAndDogPersecution ();
 		int timeToStopPersecution = Random.Range (5, 10);
 		Invoke ("stopCatAndDogPersecution", timeToStopPersecution);
+	}
+
+	void startDangerCockroach() {
+		int randomTime = Random.Range (0, 3);
+		Invoke ("launchDangerCockroach", randomTime);
 	}
 
 	void startDangerMadLadyIA() {
@@ -105,6 +111,27 @@ public class LevelManager : EventScript {
 		return portalScenary.transform.position;
 	}
 
+	void launchDangerCockroach(){
+		GameObject[] cockroachs = GameObject.FindGameObjectsWithTag ("cockroach");
+		if (cockroachs.Length == 0) {
+			Vector3 position = getRandomMeshPosition();
+			GameObject cockroachManager = Instantiate(Resources.Load("scenary/cockroachManager")) as GameObject;
+			cockroachManager.name = "cockroachManager";
+		}
+	}
+
+	public Vector3 getRandomMeshPosition () {
+		GameObject terrain = GameObject.FindWithTag ("terrainHome");
+		float xTerrainMin = terrain.GetComponent<Renderer>().bounds.min.x;
+		float xTerrainMax = terrain.GetComponent<Renderer>().bounds.max.x;
+		float zTerrainMin = terrain.GetComponent<Renderer>().bounds.min.z;
+		float zTerrainMax = terrain.GetComponent<Renderer>().bounds.max.z;
+		Vector3 position = new Vector3(Random.Range(xTerrainMin, xTerrainMax), 0, Random.Range(zTerrainMin, zTerrainMax));
+		NavMeshHit hit2;
+		NavMesh.SamplePosition(position, out hit2, 10f, 1);
+		position = hit2.position;
+		return position;
+	}
 
 
 }

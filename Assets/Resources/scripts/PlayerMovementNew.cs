@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class PlayerMovementNew : EventScript {
-	RaycastHit hit;
+	public RaycastHit hit;
 	NavMeshAgent agent;
 
 	public GameObject extinguisher = null;
@@ -46,6 +46,8 @@ public class PlayerMovementNew : EventScript {
 					case "terrain":
 					case "brokenGlass":
 					case "terrainHome":
+						
+
 
 						canInterruptBy.Add("moveCharacterToClickedDestination");
 						canInterruptBy.Add("goToPlayer");
@@ -66,18 +68,24 @@ public class PlayerMovementNew : EventScript {
 						
 						methodsToCall.Add("player_startFireExtinguish");
 						canInterruptBy.Add("playNannyCockroach");
+						canInterruptBy.Add ("removeFire");
 						methodsAfterInterrupt.Add("player_stopPlayerMovement");
+						
 						
 						eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
 						break;
 					case "cockroach":
-
+						GameObject.Find ("cockroachManager").GetComponent<CockroachManager>().hit = hit.transform.gameObject;
+						methodsToCall.Add("cockroach_stopCockroachMovement");
 						methodsToCall.Add("player_playNannyWalking");
 						methodsToCall.Add("player_moveCharacterToCockroach");
-						methodsToCall.Add("cockroach_destroyCockroach");
+						methodsToCall.Add("cockroachManager_destroyCockroach");
 						methodsToCall.Add("player_stopPlayerMovement");
 						methodsToCall.Add("player_playNannyIdle");
-						methodsDisabledUntilEventFinished.Add ("cockroach_goToPlayer");
+
+						canInterruptBy.Add ("goToPlayer");
+						methodsDisabledUntilEventFinished.Add ("player_moveCharacterToCockroach");
+						methodsDisabledUntilEventFinished.Add ("player_moveCharacterToClickedDestination");
 						eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
 						break;
 					case "child":
@@ -87,6 +95,8 @@ public class PlayerMovementNew : EventScript {
 						break;
 					case "madLady":
 						methodsToCall.Add("madLady_createMadladyMenu");
+						methodsDisabledUntilEventFinished.Add ("player_nannyTakeOut");
+
 						eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
 
 					break;
@@ -101,6 +111,7 @@ public class PlayerMovementNew : EventScript {
 						methodsToCall.Add("player_playNannyWalking");
 						methodsToCall.Add("player_moveCharacterToClickedDestination");
 						methodsToCall.Add("player_playNannyIdle");
+						methodsToCall.Add("player_playNannyTakeBabyBottle");
 						methodsToCall.Add ("player_takeBabyBottle");
 						methodsToCall.Add ("player_playNannyIdle");
 						
@@ -291,9 +302,27 @@ public class PlayerMovementNew : EventScript {
 		eventFinishedCallback("playNannyIdle");
 	}
 
+	public void playNannyTakeBabyBottle() {
+		Vector3 targetPostition = new Vector3( hit.transform.position.x, 
+		                                      this.transform.position.y, 
+		                                      hit.transform.position.z ) ;
+		this.transform.LookAt( targetPostition ) ;
+		gameObject.GetComponent<Animation> ().Stop ();
+		playAnimation("nanny_takeBabyBottle", 1f);
+		eventFinishedCallback("playNannyTakeBabyBottle");
+	}
+
 	public void playNannyCockroach() {
 		playAnimation("nanny_cockroach", 1f);
-		eventFinishedCallback("playNannyCockroach");
+		//eventFinishedCallback("playNannyCockroach");
+	}
+	public void playNannyCockroachFinishEvent() {
+		playAnimation("nanny_cockroach", 1f);
+		eventFinishedCallback("playNannyCockroachFinishEvent");
+	}
+
+	public void eventToClose() {
+		eventFinishedCallback("eventToClose");
 	}
 
 	public void playAnimation(string animation, float speed){
@@ -326,7 +355,7 @@ public class PlayerMovementNew : EventScript {
 	void feedChild() {
 		GameObject babyBottleIcon = GameObject.Find ("babyBottleIcon");
 		babyBottleIcon.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("imgs/hub/babyBottleNOT");
-
+		playNannyCockroach ();
 		hasBabyBottle = false;
 		GameObject life = GameObject.Find ("lifeAndHunger");
 		life.GetComponent<LifeAndHunger> ().resetHunger();
@@ -356,6 +385,8 @@ public class PlayerMovementNew : EventScript {
 					methodsToCall.Add ("player_playNannyIdle");
 					methodsToCall.Add ("madLady_moveToInitialPosition");
 					methodsToCall.Add ("madLady_destroyMadLady");
+
+					methodsDisabledUntilEventFinished.Add ("madLady_stopMadladyMovement");
 					
 					eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
 				}
@@ -421,6 +452,8 @@ public class PlayerMovementNew : EventScript {
 			case "fire":
 				if(hit.transform != null) {
 					if (hit.transform.tag == "fire" && hit.transform == collision.transform) {
+						methodsToCall.Add("player_playNannyWalking");
+						methodsToCall.Add("player_moveCharacterToClickedDestination");
 						methodsToCall.Add ("player_removeFire");
 						methodsToCall.Add ("player_playNannyIdle");
 						

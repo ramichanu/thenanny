@@ -24,6 +24,7 @@ public class gameFunctions : EventScript {
 	
 	// Update is called once per frame
 	void Update () {
+		clickEffectTerrain ();
 	}
 
 	public void pauseGame () {
@@ -135,5 +136,39 @@ public class gameFunctions : EventScript {
 		methodsToCall.Add (hit.transform.tag + "_" + option);
 
 		eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
+	}
+
+	void clickEffectTerrain(){
+		if (Input.GetMouseButtonDown (0)) {
+			bool isOverUI = UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject ();
+			if(isOverUI) {
+				return;
+			}
+			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
+			int layerMask = 1 << 8;
+			layerMask = ~layerMask;
+			
+			
+			if (Input.touchCount > 0) {
+				isOverUI = UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject (Input.GetTouch (0).fingerId);
+			}
+
+			if (Physics.Raycast (ray, out hit, Mathf.Infinity, layerMask) && !isOverUI) {
+				ArrayList canInterruptBy = new ArrayList();
+				ArrayList methodsToCall = new ArrayList();
+				ArrayList methodsAfterInterrupt = new ArrayList();
+				ArrayList methodsDisabledUntilEventFinished = new ArrayList();
+				Debug.Log (hit.transform.tag);
+				switch (hit.transform.tag) {
+				case "player":
+				case "terrain":
+				case "brokenGlass":
+				case "terrainHome":
+					GameObject.Instantiate(Resources.Load("scenary/clickEffectTerrain"), hit.point + new Vector3(0f, 0.03f, 0f), Quaternion.identity);
+				break;
+				}
+			}
+
+		}
 	}
 }

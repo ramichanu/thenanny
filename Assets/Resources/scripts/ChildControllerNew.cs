@@ -5,13 +5,15 @@ using UnityEngine.UI;
 public class ChildControllerNew : EventScript {
 	public const int IDLE = 0;
 	public const int BURNING = 1;
+	public const int ELECTRIFYING = 2;
+	public const int STARVING = 3;
 
 	public int state = IDLE;
 	public NavMeshAgent agent;
 	bool agentHasPath;
 	Vector3 randomPosition;
 	Transform target;
-	GameObject[] danger;
+	ArrayList danger;
 
 
 	// Use this for initialization
@@ -29,6 +31,9 @@ public class ChildControllerNew : EventScript {
 	}
 
 	void startChildRandomMovementEvent(){
+		if (state == ELECTRIFYING) {
+			eventFinishedCallback("startChildRandomMovementEvent");
+		}
 		ArrayList canInterruptBy = new ArrayList();
 		ArrayList methodsToCall = new ArrayList();
 		ArrayList methodsAfterInterrupt = new ArrayList();
@@ -67,7 +72,7 @@ public class ChildControllerNew : EventScript {
 	void setRandomPosition() {
 		int random = Random.Range (0, 3);
 		randomPosition = getRandomMeshPosition ();
-		if (random > 0 && danger.Length > 0) {
+		if (random > 0 && danger.Count > 0) {
 			randomPosition = getDangerPosition ();
 		}
 		agent.SetDestination (randomPosition);
@@ -75,35 +80,11 @@ public class ChildControllerNew : EventScript {
 	}
 
 	Vector3 getDangerPosition() {
-		int dangerPosition = Random.Range (0, danger.Length);
-		GameObject dangerFurniDestination = danger [dangerPosition];
+		int dangerPosition = Random.Range (0, danger.Count);
+		GameObject dangerFurniDestination = (GameObject)danger [dangerPosition];
 		return dangerFurniDestination.transform.position;
 	}
 
-	GameObject[] getDangerElements() {
-		GameObject[] brokenGlassElements = GameObject.FindGameObjectsWithTag("brokenGlass");
-		GameObject[] fireElements = null;
-		
-		GameObject fires = GameObject.Find ("fires");
-		int fireElementsCount = 0;
-		if (fires != null) {
-			fireElementsCount = 1;
-			fireElements = GameObject.FindGameObjectsWithTag("fire");
-			if (fireElements.Length > 0) {
-				int fireElementRandom = Random.Range(0, fireElements.Length);
-				fireElements = new GameObject[1]{fireElements[fireElementRandom]};
-			}
-		}
-		GameObject[] dangerElements = new GameObject[brokenGlassElements.Length + fireElementsCount];
-		
-		brokenGlassElements.CopyTo(dangerElements, 0);
-		if (fires != null) {
-			fireElements.CopyTo(dangerElements, brokenGlassElements.Length);
-		}
-		
-		return dangerElements;
-	}
-	
 	public Vector3 getRandomMeshPosition () {
 		GameObject terrain = GameObject.FindWithTag ("terrainHome");
 		float xTerrainMin = terrain.GetComponent<Renderer>().bounds.min.x;
@@ -131,7 +112,18 @@ public class ChildControllerNew : EventScript {
 		
 		StartCoroutine(painEffect());
 		StopCoroutine(painEffect());
+
+	}
+
+	public void hitAndPainElectrify(int damage){
 		
+		playAnimation("child_pain", 0.5f);
+		
+		GameObject life = GameObject.Find ("lifeAndHunger");
+		life.GetComponent<LifeAndHunger> ().restPercentLife (damage);
+		
+		StartCoroutine(painEffectElectrify());
+		StopCoroutine(painEffectElectrify());
 		
 	}
 
@@ -156,6 +148,62 @@ public class ChildControllerNew : EventScript {
 		yield return new WaitForSeconds(0.2f);
 	}
 
+	public IEnumerator painEffectElectrify() {
+		Material painMaterial = Resources.Load("materials/baby_electrify", typeof(Material)) as Material;
+		SkinnedMeshRenderer childRenderer = GameObject.Find ("childMesh").GetComponent<SkinnedMeshRenderer> ();
+		Material oldMaterial = Resources.Load("materials/baby", typeof(Material)) as Material;
+		
+		GameObject childIcon = GameObject.Find ("childIcon");
+		childIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("hub/child_icon_pain");
+		
+		childRenderer.material = painMaterial;
+		yield return new WaitForSeconds(0.2f);
+		childIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("hub/child_icon");
+		childRenderer.material = oldMaterial;
+		yield return new WaitForSeconds(0.2f);
+		childIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("hub/child_icon_pain");
+		childRenderer.material = painMaterial;
+		yield return new WaitForSeconds(0.2f);
+		childIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("hub/child_icon");
+		childRenderer.material = oldMaterial;
+		yield return new WaitForSeconds(0.2f);
+	}
+
+	ArrayList getDangerElements() {
+		ArrayList dangerElements = new ArrayList ();
+		GameObject[] brokenGlassElements = GameObject.FindGameObjectsWithTag("brokenGlass");
+		GameObject[] fireElements = null;
+
+		GameObject tvTable = GameObject.Find("tvTable");
+		GameObject fires = GameObject.Find ("fires");
+
+		if (tvTable != null) {
+			if(tvTable.GetComponent<dangerFurni>().dangerDropped == true) {
+				GameObject tv = GameObject.Find ("tv");
+				dangerElements.Add(tv);
+			}
+		}
+
+		if (fires != null) {
+			fireElements = GameObject.FindGameObjectsWithTag("fire");
+			if (fireElements.Length > 0) {
+				int fireElementRandom = Random.Range(0, fireElements.Length);
+				fireElements = new GameObject[1]{fireElements[fireElementRandom]};
+			}
+		}
+
+		if (fireElements != null) {
+			dangerElements.AddRange (fireElements);
+		}
+
+		if (brokenGlassElements != null) {
+			//dangerElements.AddRange (brokenGlassElements);
+		}
+
+		dangerElements.AddRange (brokenGlassElements);
+		return dangerElements;
+	}
+
 	void OnTriggerEnter(Collider collision) {
 		ArrayList canInterruptBy = new ArrayList();
 		ArrayList methodsToCall = new ArrayList();
@@ -170,6 +218,16 @@ public class ChildControllerNew : EventScript {
 			case "fire":
 				state = BURNING;
 				methodsToCall.Add("child_painFire");
+				eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
+				break;
+			case "brokenTv":
+				state = ELECTRIFYING;
+				methodsToCall.Add("madLady_stopMadladyMovement");
+				methodsToCall.Add("child_painElectrify");
+				methodsToCall.Add("child_stopAgentRandomMovement");
+
+			methodsDisabledUntilEventFinished.Add ("madLady_attackOrYellingChild");
+
 				eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
 				break;
 		}
@@ -189,8 +247,21 @@ public class ChildControllerNew : EventScript {
 		eventFinishedCallback("painFire");
 	}
 
+	void painElectrify(){
+		ParticleSystem electrifyChild = transform.FindChild("electrify").GetComponent<ParticleSystem>();
+		if(!electrifyChild.isPlaying){
+			electrifyChild.Play();
+		}
+		InvokeRepeating("electrifyChild", 2, 2);
+		eventFinishedCallback("painElectrify");
+	}
+
 	void burningChild(){
 		hitAndPain (2);	
+	}
+
+	void electrifyChild(){
+		hitAndPainElectrify (2);	
 	}
 
 	void stopChildMovement(){
@@ -200,6 +271,12 @@ public class ChildControllerNew : EventScript {
 		playAnimation("child_idle", 1.5f);
 		CancelInvoke ("childRandomMovement");
 		eventFinishedCallback("stopChildMovement");
+	}
+
+	void stopAgentRandomMovement() {
+		agentHasPath = false;
+		CancelInvoke ("childRandomMovement");
+		eventFinishedCallback("stopAgentRandomMovement");
 	}
 
 	void cancelBurning(){
@@ -213,12 +290,15 @@ public class ChildControllerNew : EventScript {
 		ArrayList methodsAfterInterrupt = new ArrayList();
 		ArrayList methodsDisabledUntilEventFinished = new ArrayList();		
 
-		methodsToCall.Add("child_cancelBurning");
+
 		methodsToCall.Add("child_stopChildMovement");
+		methodsToCall.Add("child_cancelBurning");
+		methodsToCall.Add("player_playNannyWalking");
 		methodsToCall.Add("player_moveCharacterToClickedDestination");
 
 		canInterruptBy.Add ("fireOff");
 		methodsAfterInterrupt.Add("player_stopPlayerMovement");
+		methodsAfterInterrupt.Add("child_cancelBurning");
 
 		eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
 		eventFinishedCallback("helpBurning");
@@ -231,7 +311,8 @@ public class ChildControllerNew : EventScript {
 		ArrayList methodsDisabledUntilEventFinished = new ArrayList();
 		
 		methodsToCall.Add ("child_stopChildMovement");
-		methodsToCall.Add("player_moveCharacterToClickedDestination");
+		methodsToCall.Add ("player_playNannyWalking");
+		methodsToCall.Add ("player_moveCharacterToClickedDestination");
 		methodsToCall.Add ("player_feedChild");
 		methodsToCall.Add ("child_startChildRandomMovement");
 		methodsToCall.Add ("player_playNannyIdle");

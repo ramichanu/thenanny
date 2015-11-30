@@ -107,7 +107,7 @@ public class MadladyNew : EventScript {
 	}
 
 	void yellingChild(){
-		playAnimation ("madlady_yelling", 0.5f);
+		playAnimation ("madlady_yelling", 1f);
 	}
 
 	void hitChild(bool andYelling = false){

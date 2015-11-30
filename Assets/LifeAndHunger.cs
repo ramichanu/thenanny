@@ -23,7 +23,7 @@ public class LifeAndHunger : MonoBehaviour {
 		lifeAndHunger = GameObject.Find("lifeAndHunger");
 		lifeAndHungerPosition = lifeAndHunger.transform.position;
 		printAllHearts ();
-		setHungerBarPerSecond (1);
+		setHungerBarPerSecond (0.7f);
 
 	}
 	
@@ -104,7 +104,7 @@ public class LifeAndHunger : MonoBehaviour {
 		Application.LoadLevel(menuName);
 	}
 
-	void setHungerBarPerSecond(int seconds) {
+	void setHungerBarPerSecond(float seconds) {
 		InvokeRepeating("setHungerBar", 2, seconds);
 	}
 	
