@@ -2890,7 +2890,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4919ca67615151a4d978878d04704da1, type: 3}
       propertyPath: m_RootOrder
-      value: 19
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4919ca67615151a4d978878d04704da1, type: 3}
       propertyPath: m_LocalScale.x
@@ -3004,7 +3004,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
 --- !u!1001 &468631966
 Prefab:
   m_ObjectHideFlags: 0

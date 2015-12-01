@@ -1,29 +1,19 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Resources\scripts\ChildControllerNew.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\CatControllerNew.cs">
     <Files>
-      <File FileName="Assets\CatControllerNew.cs" Line="1" Column="1" />
-      <File FileName="Assets\gameFunctions.cs" Line="1" Column="1" />
-      <File FileName="Assets\LevelManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Resources\scripts\PlayerMovementNew.cs" Line="1" Column="1" />
-      <File FileName="Assets\CockroachManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Resources\scripts\ChildControllerNew.cs" Line="25" Column="3" />
-      <File FileName="Assets\Resources\scripts\Event.cs" Line="1" Column="1" />
-      <File FileName="Assets\Resources\scripts\EventDispatcher.cs" Line="1" Column="1" />
-      <File FileName="Assets\MadladyNew.cs" Line="1" Column="1" />
-      <File FileName="Assets\MenuFunctions.cs" Line="1" Column="1" />
+      <File FileName="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonBasicOutline.shader" Line="1" Column="1" />
+      <File FileName="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonBasic.shader" Line="1" Column="1" />
+      <File FileName="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonLit.shader" Line="1" Column="1" />
+      <File FileName="Assets\Shaders\Standard (Outlined).shader" Line="1" Column="1" />
+      <File FileName="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonLitOutline.shader" Line="1" Column="1" />
+      <File FileName="Assets\gameFunctions.cs" Line="36" Column="1" />
+      <File FileName="Assets\CatControllerNew.cs" Line="225" Column="23" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="C:\Users\Rami\Documents\TheNanny\Assets\LevelManager.cs" line="35" />
-      <Breakpoint file="C:\Users\Rami\Documents\TheNanny\Assets\CockroachManager.cs" line="49" />
-      <Breakpoint file="C:\Users\Rami\Documents\TheNanny\Assets\CockroachManager.cs" line="48" />
-      <Breakpoint file="C:\Users\Rami\Documents\TheNanny\Assets\LevelManager.cs" line="118" />
-      <Breakpoint file="C:\Users\Rami\Documents\TheNanny\Assets\Resources\scripts\PlayerMovementNew.cs" line="316" />
-      <Breakpoint file="C:\Users\Rami\Documents\TheNanny\Assets\Resources\scripts\ChildControllerNew.cs" line="42" />
-      <Breakpoint file="C:\Users\Rami\Documents\TheNanny\Assets\Resources\scripts\ChildControllerNew.cs" line="51" />
-      <Breakpoint file="C:\Users\Rami\Documents\TheNanny\Assets\Resources\scripts\ChildControllerNew.cs" line="57" />
+      <Breakpoint file="C:\Users\Rami\Documents\TheNanny\Assets\gameFunctions.cs" line="31" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
