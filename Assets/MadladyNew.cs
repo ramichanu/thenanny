@@ -5,8 +5,11 @@ public class MadladyNew : EventScript {
 	const int ATTACK = 0;
 	const int YELLING = 1;
 	const int ATTACK_YELLING = 2;
+	public const int FOLLOW_CHILD = 3;
+	public const int WAITING_TO_TAKEOUT = 4;
 
 	public NavMeshAgent agent;
+	public int state = FOLLOW_CHILD;
 	Vector3 startPoint;
 	bool runaway = false;
 	bool agentHasPath = false;
@@ -16,6 +19,7 @@ public class MadladyNew : EventScript {
 	void Start () {
 		agent = GetComponent<NavMeshAgent> ();
 		startPoint = transform.position;
+		state = FOLLOW_CHILD;
 	}
 	
 	// Update is called once per frame
@@ -160,16 +164,21 @@ public class MadladyNew : EventScript {
 		ArrayList methodsAfterInterrupt = new ArrayList();
 		ArrayList methodsDisabledUntilEventFinished = new ArrayList();		
 		methodsToCall.Add ("madLady_stopMadladyMovement");
+		methodsToCall.Add ("madLady_setStateWaitingToKickOut");
 		methodsToCall.Add ("player_playNannyWalking");
 		methodsToCall.Add ("player_moveCharacterToClickedDestination");
 
-		canInterruptBy.Add ("stopPlayerMovement");
 		canInterruptBy.Add ("moveCharacterToClickedDestination");
 		canInterruptBy.Add ("nannyTakeOut");
 
-		methodsAfterInterrupt.Add ("madLady_stopMadladyMovement");
-		methodsAfterInterrupt.Add ("player_stopPlayerMovement");
-		methodsDisabledUntilEventFinished.Add ("followChild");
+		//methodsAfterInterrupt.Add("madLady_followChild");
+		//methodsAfterInterrupt.Add ("madLady_stopMadladyMovement");
+		//methodsAfterInterrupt.Add ("player_stopPlayerMovement");
+
+		//methodsDisabledUntilEventFinished.Add ("followChild");
+		methodsDisabledUntilEventFinished.Add ("child_createChildMenu");
+		methodsDisabledUntilEventFinished.Add ("madLady_createMadladyMenu");
+		methodsDisabledUntilEventFinished.Add ("player_moveCharacterToClickedDestination");
 		
 		eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
 	}
@@ -201,13 +210,22 @@ public class MadladyNew : EventScript {
 	void createMadladyMenu(){
 		GameObject madlady = transform.gameObject;
 		GameObject.Find ("Canvas").GetComponent<gameFunctions>().createClickMenu(madlady);
-		
 		eventFinishedCallback("createMadladyMenu");
 	}
 
 	void enableAgentEvent() {
 		StartCoroutine ("enableAgent");
 
+	}
+
+	void setStateWaitingToKickOut(){
+		state = WAITING_TO_TAKEOUT;
+		eventFinishedCallback("setStateWaitingToKickOut");
+	}
+
+	void setStateFollowChild(){
+		state = FOLLOW_CHILD;
+		eventFinishedCallback("setStateFollowChild");
 	}
 
 	IEnumerator enableAgent() {

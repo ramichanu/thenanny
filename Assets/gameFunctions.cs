@@ -77,10 +77,10 @@ public class gameFunctions : EventScript {
 			
 			if(buttonOptions.Count > 0){
 				//to stop child
-
 				GameObject canvas = GameObject.Find ("Canvas");
 				canvas.GetComponent<gameFunctions> ().pauseGame ();
-				
+				disableClickEvent();
+
 				menu = new GameObject();
 				menu.transform.name = "menu";
 				menu.transform.SetParent(canvas.transform, false);
@@ -135,6 +135,17 @@ public class gameFunctions : EventScript {
 
 		methodsToCall.Add (hit.transform.tag + "_" + option);
 
+		eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
+	}
+
+	void disableClickEvent() {
+		ArrayList canInterruptBy = new ArrayList();
+		ArrayList methodsToCall = new ArrayList();
+		ArrayList methodsAfterInterrupt = new ArrayList();
+		ArrayList methodsDisabledUntilEventFinished = new ArrayList();
+		
+		methodsToCall.Add("player_disableClick");
+		
 		eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
 	}
 

@@ -28,6 +28,7 @@ TagManager:
   - brokenTv
   - heart
   - broom
+  - alertDanger
   layers:
   - Default
   - TransparentFX

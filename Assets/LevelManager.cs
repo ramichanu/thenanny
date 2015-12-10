@@ -98,6 +98,9 @@ public class LevelManager : EventScript {
 	}
 
 	void launchDangerMadLady(){
+
+		GameObject.Find ("AlertDangerSystem").GetComponent<DangerAlertSystem> ().addDangerAlerts ("madLady");
+
 		Vector3 portalEnterPosition = getPortalScenaryPosition();
 		GameObject madLady = Instantiate(Resources.Load("characters/madLady")) as GameObject;
 		madLady.name = "madLady";

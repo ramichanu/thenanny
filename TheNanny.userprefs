@@ -1,19 +1,21 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\CatControllerNew.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\DangerAlertSystem.cs">
     <Files>
-      <File FileName="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonBasicOutline.shader" Line="1" Column="1" />
-      <File FileName="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonBasic.shader" Line="1" Column="1" />
-      <File FileName="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonLit.shader" Line="1" Column="1" />
-      <File FileName="Assets\Shaders\Standard (Outlined).shader" Line="1" Column="1" />
-      <File FileName="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonLitOutline.shader" Line="1" Column="1" />
-      <File FileName="Assets\gameFunctions.cs" Line="36" Column="1" />
-      <File FileName="Assets\CatControllerNew.cs" Line="225" Column="23" />
+      <File FileName="Assets\DangerAlertSystem.cs" Line="57" Column="129" />
+      <File FileName="Assets\Resources\scripts\PlayerMovementNew.cs" Line="285" Column="1" />
+      <File FileName="Assets\fires.cs" Line="23" Column="3" />
+      <File FileName="Assets\LevelManager.cs" Line="103" Column="3" />
+      <File FileName="Assets\MenuFunctions.cs" Line="29" Column="3" />
+      <File FileName="Assets\CatControllerNew.cs" Line="230" Column="67" />
+      <File FileName="Assets\MadladyNew.cs" Line="161" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="C:\Users\Rami\Documents\TheNanny\Assets\gameFunctions.cs" line="31" />
+      <Breakpoint file="C:\Users\Rami\Documents\TheNanny\Assets\Resources\scripts\PlayerMovementNew.cs" line="166" />
+      <Breakpoint file="C:\Users\Rami\Documents\TheNanny\Assets\DangerAlertSystem.cs" line="57" />
+      <Breakpoint file="C:\Users\Rami\Documents\TheNanny\Assets\DangerAlertSystem.cs" line="87" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

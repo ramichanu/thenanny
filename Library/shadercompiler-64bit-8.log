@@ -1,28 +1,12 @@
 Base path: C:/Program Files/Unity/Editor/Data
-Pipe name: \\.\pipe\UnityShaderCompiler-64bit-8-6024
+Pipe name: \\.\pipe\UnityShaderCompiler-64bit-8-4700
 Cmd: getPlatforms
 Cmd: compileSnippet
-  api=14 type=0 insize=797 outsize=2604 kw=SHADOWS_DEPTH ok=1
+  api=1 type=0 insize=1228 outsize=212 kw= ok=1
 Cmd: compileSnippet
-  api=14 type=1 insize=797 outsize=766 kw=SHADOWS_DEPTH ok=1
+  api=1 type=1 insize=1011 outsize=30 kw= ok=1
 Cmd: compileSnippet
-  api=9 type=0 insize=6862 outsize=4202 kw=DIRECTIONAL SHADOWS_SCREEN SHADOWS_NATIVE LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF ok=1
-Cmd: compileSnippet
-  api=9 type=0 insize=3686 outsize=3071 kw=POINT_COOKIE ok=1
-Cmd: compileSnippet
-  api=14 type=1 insize=3686 outsize=2314 kw=POINT_COOKIE ok=1
-Cmd: compileSnippet
-  api=14 type=1 insize=6026 outsize=1526 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF HDR_LIGHT_PREPASS_OFF ok=1
-Cmd: compileSnippet
-  api=9 type=1 insize=7308 outsize=7 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF ok=1
-Cmd: compileSnippet
-  api=9 type=0 insize=4732 outsize=4756 kw=SPOT ok=1
-Cmd: compileSnippet
-  api=9 type=1 insize=4732 outsize=7 kw=SPOT ok=1
-Cmd: compileSnippet
-  api=9 type=0 insize=4114 outsize=3444 kw= ok=1
-Cmd: compileSnippet
-  api=9 type=0 insize=6297 outsize=3563 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF UNITY_HDR_ON ok=1
+  api=8 type=1 insize=1228 outsize=1520 kw= ok=1
 Unhandled exception: Readfile from pipe failed. GLE=The pipe has been ended.
 
 

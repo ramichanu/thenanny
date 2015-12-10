@@ -213,11 +213,14 @@ public class CatControllerNew : EventScript {
 	}
 
 	IEnumerator instantiateBrokenGlass(GameObject hitItem){
+
 		yield return new WaitForSeconds (0.8f);
 		GameObject brokenGlass = Instantiate(Resources.Load("scenary/brokenGlass")) as GameObject;
 		brokenGlass.name = "brokenGlass";
 		brokenGlass.transform.position = hitItem.transform.position + hitItem.transform.right * 0.7f;
 		brokenGlass.GetComponent<dangerItem>().parent = hitItem.transform.gameObject;
+
+		GameObject.Find ("AlertDangerSystem").GetComponent<DangerAlertSystem>().addDangerAlerts("brokenGlass");
 		
 	}
 	IEnumerator instantiateBrokenJar(GameObject hitItem){
@@ -226,6 +229,8 @@ public class CatControllerNew : EventScript {
 		brokenJar.name = "brokenJar";
 		brokenJar.transform.position = hitItem.transform.position + hitItem.transform.right * 0.7f;
 		brokenJar.GetComponent<dangerItem>().parent = hitItem.transform.gameObject;
+
+		GameObject.Find ("AlertDangerSystem").GetComponent<DangerAlertSystem>().addDangerAlerts("brokenGlass");
 		
 	}
 

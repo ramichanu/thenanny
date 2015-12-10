@@ -290,7 +290,7 @@ public class ChildControllerNew : EventScript {
 		ArrayList methodsAfterInterrupt = new ArrayList();
 		ArrayList methodsDisabledUntilEventFinished = new ArrayList();		
 
-
+		methodsToCall.Add("player_enableClick");
 		methodsToCall.Add("child_stopChildMovement");
 		methodsToCall.Add("child_cancelBurning");
 		methodsToCall.Add("player_playNannyWalking");
@@ -299,6 +299,7 @@ public class ChildControllerNew : EventScript {
 		canInterruptBy.Add ("fireOff");
 		methodsAfterInterrupt.Add("player_stopPlayerMovement");
 		methodsAfterInterrupt.Add("child_cancelBurning");
+		methodsAfterInterrupt.Add("player_enableClick");
 
 		eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
 		eventFinishedCallback("helpBurning");
@@ -309,17 +310,28 @@ public class ChildControllerNew : EventScript {
 		ArrayList methodsToCall = new ArrayList();
 		ArrayList methodsAfterInterrupt = new ArrayList();
 		ArrayList methodsDisabledUntilEventFinished = new ArrayList();
-		
+
+		methodsToCall.Add ("player_disableClick");
 		methodsToCall.Add ("child_stopChildMovement");
 		methodsToCall.Add ("player_playNannyWalking");
 		methodsToCall.Add ("player_moveCharacterToClickedDestination");
 		methodsToCall.Add ("player_feedChild");
 		methodsToCall.Add ("child_startChildRandomMovement");
 		methodsToCall.Add ("player_playNannyIdle");
+		methodsToCall.Add ("player_enableClick");
 
-		
+		methodsAfterInterrupt.Add("player_enableClick");
+		methodsDisabledUntilEventFinished.Add ("child_createChildMenu");
+		methodsDisabledUntilEventFinished.Add ("madLady_createMadladyMenu");
+
 		eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
 		eventFinishedCallback("feed");
+	}
+
+	void createChildMenu() {
+		GameObject child = transform.gameObject;
+		GameObject.Find ("Canvas").GetComponent<gameFunctions>().createClickMenu(child);
+		eventFinishedCallback("createChildMenu");
 	}
 
 	void fireOff() {

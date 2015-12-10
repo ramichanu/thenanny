@@ -51,7 +51,7 @@
      <Compile Include="Assets\Cockroach.cs" />
      <Compile Include="Assets\CockroachManager.cs" />
      <Compile Include="Assets\CockroachNew.cs" />
-     <Compile Include="Assets\CustomStandardShaderGUI.cs" />
+     <Compile Include="Assets\DangerAlertSystem.cs" />
      <Compile Include="Assets\DogControllerNew.cs" />
      <Compile Include="Assets\EventScript.cs" />
      <Compile Include="Assets\FXAA\Scripts\FXAA.cs" />

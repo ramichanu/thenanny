@@ -12,6 +12,7 @@ public class PlayerMovementNew : EventScript {
 	CharacterController charCtrl;
 
 	bool hasPath = false;
+	public bool isClickEnabled = true;
 	public bool hasBabyBottle = false;
 
 	void Start () {
@@ -21,7 +22,7 @@ public class PlayerMovementNew : EventScript {
 	
 
 	void Update () {
-		if (Input.GetMouseButtonDown (0)) {
+		if (Input.GetMouseButtonDown (0) && isClickEnabled) {
 			bool isOverUI = UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject ();
 			if(isOverUI) {
 				return;
@@ -89,13 +90,20 @@ public class PlayerMovementNew : EventScript {
 						eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
 						break;
 					case "child":
-						GameObject child = hit.transform.gameObject;
-						GameObject.Find ("Canvas").GetComponent<gameFunctions>().createClickMenu(child);
+						methodsToCall.Add("child_createChildMenu");
+
+						methodsDisabledUntilEventFinished.Add ("player_moveCharacterToClickedDestination");
+						methodsDisabledUntilEventFinished.Add ("player_nannyTakeOut");
+						methodsDisabledUntilEventFinished.Add ("child_helpBurning");
+						methodsDisabledUntilEventFinished.Add ("child_fireOff");
+						methodsDisabledUntilEventFinished.Add ("child_createChildMenu");
 						
+						eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
 						break;
 					case "madLady":
 						methodsToCall.Add("madLady_createMadladyMenu");
 						methodsDisabledUntilEventFinished.Add ("player_nannyTakeOut");
+						methodsDisabledUntilEventFinished.Add ("player_moveCharacterToClickedDestination");
 
 						eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
 
@@ -234,6 +242,16 @@ public class PlayerMovementNew : EventScript {
 
 	void moveCharacterToCockroach(){
 		moveCharacterToClickedDestination ();
+	}
+
+	void enableClick() {
+		isClickEnabled = true;
+		eventFinishedCallback("enableClick");
+	}
+
+	void disableClick() {
+		isClickEnabled = false;
+		eventFinishedCallback("disableClick");
 	}
 
 	void destinationReachedLogic () {
@@ -379,14 +397,17 @@ public class PlayerMovementNew : EventScript {
 			
 			switch (collision.transform.name) {
 			case "madLady":
-				if(hit.transform.tag == "madLady") {
+				int madLadyState = collision.transform.gameObject.GetComponent<MadladyNew>().state;
+				if(hit.transform.tag == "madLady" && madLadyState == MadladyNew.WAITING_TO_TAKEOUT) {
 					methodsToCall.Add ("player_stopPlayerMovement");
 					methodsToCall.Add ("player_nannyTakeOut");
+					methodsToCall.Add ("player_enableClick");
 					methodsToCall.Add ("player_playNannyIdle");
 					methodsToCall.Add ("madLady_moveToInitialPosition");
 					methodsToCall.Add ("madLady_destroyMadLady");
 
 					methodsDisabledUntilEventFinished.Add ("madLady_stopMadladyMovement");
+					methodsDisabledUntilEventFinished.Add ("createMadladyMenu");
 					
 					eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
 				}
@@ -404,9 +425,12 @@ public class PlayerMovementNew : EventScript {
 					canInterruptBy.Add("goToPlayer");
 					canInterruptBy.Add("removeBrokenGlass");
 					canInterruptBy.Add("removeBrokenJar");
+					canInterruptBy.Add("createMadladyMenu");
 
-					methodsDisabledUntilEventFinished.Add ("player_moveCharacterToClickedDestination");
+					methodsAfterInterrupt.Add("child_startChildRandomMovementEvent");
+
 					methodsDisabledUntilEventFinished.Add ("madLady_followChild");
+					methodsDisabledUntilEventFinished.Add ("child_createChildMenu");
 
 					eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
 				}
