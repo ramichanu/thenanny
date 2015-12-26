@@ -116,7 +116,7 @@ public class MadladyNew : EventScript {
 
 	void hitChild(bool andYelling = false){
 
-		int damageToChild = 2;
+		float damageToChild = 0.07f;
 		
 		if (andYelling) {
 			playAnimation ("madlady_attack_yelling", 0.7f);

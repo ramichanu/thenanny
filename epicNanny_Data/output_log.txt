@@ -12,8 +12,8 @@ Platform assembly: C:\Users\Rami\Documents\TheNanny\epicNanny_Data\Managed\Assem
 Loading C:\Users\Rami\Documents\TheNanny\epicNanny_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
 Platform assembly: C:\Users\Rami\Documents\TheNanny\epicNanny_Data\Managed\UnityEngine.UI.dll (this message is harmless)
 Loading C:\Users\Rami\Documents\TheNanny\epicNanny_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-- Completed reload, in  0.047 seconds
-desktop: 1366x768 50Hz; virtual: 1366x768 at 0,0
+- Completed reload, in  0.049 seconds
+desktop: 1366x768 60Hz; virtual: 1366x768 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
@@ -25,7 +25,7 @@ NullReferenceException: Object reference not set to an instance of an object
 (Filename:  Line: -1)
 
 Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 437.621582 ms
+UnloadTime: 3.913433 ms
 CharacterController settings are invalid.
  
 (Filename:  Line: 382)
@@ -35,8 +35,8 @@ CharacterController settings are invalid.
 (Filename:  Line: 382)
 
 
-Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 1370.
-Total: 17.448809 ms (FindLiveObjects: 0.142747 ms CreateObjectMapping: 0.067175 ms MarkObjects: 17.230488 ms  DeleteObjects: 0.007463 ms)
+Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 1463.
+Total: 0.722602 ms (FindLiveObjects: 0.074639 ms CreateObjectMapping: 0.037319 ms MarkObjects: 0.602712 ms  DeleteObjects: 0.007463 ms)
 
 terrainHome
  
@@ -45,83 +45,6 @@ terrainHome
 terrainHome
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-madLady
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-madLady
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-brokenGlass
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-brokenGlass
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-brokenGlass
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-brokenGlass
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-brokenGlass
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-brokenGlass
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-ArgumentOutOfRangeException: Index is less than 0 or more than or equal to the list count.
-Parameter name: index
-0
-  at System.Collections.ArrayList.ThrowNewArgumentOutOfRangeException (System.String name, System.Object actual, System.String message) [0x00000] in <filename unknown>:0 
-  at System.Collections.ArrayList.get_Item (Int32 index) [0x00000] in <filename unknown>:0 
-  at DangerAlertSystem.sortAlertsAfterRemove (Vector3 dangerRemovedPosition, Int32 fromDangerAlertMoving) [0x00000] in <filename unknown>:0 
-  at DangerAlertSystem.removeDangerAlert (System.String type) [0x00000] in <filename unknown>:0 
-  at DangerAlertSystem.removeAlertsAuto () [0x00000] in <filename unknown>:0 
-  at DangerAlertSystem.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.GameObject:get_transform ()
-  at DangerAlertSystem.printDangerAlert (System.String type) [0x00000] in <filename unknown>:0 
-  at DangerAlertSystem.addDangerAlerts (System.String type) [0x00000] in <filename unknown>:0 
-  at fires.startFireBehaviour () [0x00000] in <filename unknown>:0 
-  at CatControllerNew.enableCatDangerCollisions () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
 
 fire
  
@@ -131,112 +54,19 @@ fire
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.GameObject:get_transform ()
-  at DangerAlertSystem.printDangerAlert (System.String type) [0x00000] in <filename unknown>:0 
-  at DangerAlertSystem.addDangerAlerts (System.String type) [0x00000] in <filename unknown>:0 
-  at CatControllerNew+<instantiateBrokenGlass>c__Iterator0.MoveNext () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.GameObject:get_transform ()
-  at DangerAlertSystem.printDangerAlert (System.String type) [0x00000] in <filename unknown>:0 
-  at DangerAlertSystem.addDangerAlerts (System.String type) [0x00000] in <filename unknown>:0 
-  at LevelManager.launchDangerMadLady () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-brokenGlass
+fire
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-brokenGlass
+fire
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-ArgumentOutOfRangeException: Index is less than 0 or more than or equal to the list count.
-Parameter name: index
-0
-  at System.Collections.ArrayList.ThrowNewArgumentOutOfRangeException (System.String name, System.Object actual, System.String message) [0x00000] in <filename unknown>:0 
-  at System.Collections.ArrayList.get_Item (Int32 index) [0x00000] in <filename unknown>:0 
-  at DangerAlertSystem.sortAlertsAfterRemove (Vector3 dangerRemovedPosition, Int32 fromDangerAlertMoving) [0x00000] in <filename unknown>:0 
-  at DangerAlertSystem.removeDangerAlert (System.String type) [0x00000] in <filename unknown>:0 
-  at DangerAlertSystem.removeAlertsAuto () [0x00000] in <filename unknown>:0 
-  at DangerAlertSystem.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-terrainHome
+fire
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 16.253647 ms
-
-Unloading 396 unused Assets to reduce memory usage. Loaded Objects now: 222.
-Total: 1.682183 ms (FindLiveObjects: 0.153477 ms CreateObjectMapping: 0.060644 ms MarkObjects: 0.597581 ms  DeleteObjects: 0.867215 ms)
-
-NullReferenceException: Object reference not set to an instance of an object
-  at MenuFunctions.Start () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.650295 ms
-CharacterController settings are invalid.
- 
-(Filename:  Line: 382)
-
-CharacterController settings are invalid.
- 
-(Filename:  Line: 382)
-
-
-Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 1392.
-Total: 0.415181 ms (FindLiveObjects: 0.059244 ms CreateObjectMapping: 0.029855 ms MarkObjects: 0.320482 ms  DeleteObjects: 0.005131 ms)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-brokenGlass
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-brokenGlass
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-brokenGlass
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-brokenGlass
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-dog
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-dog
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
+fire
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
@@ -250,25 +80,31 @@ brokenGlass
 
 NullReferenceException
   at (wrapper managed-to-native) UnityEngine.GameObject:get_transform ()
-  at PlayerMovementNew+<sweepingAnimationAndRemoveBrokenGlass>c__IteratorA.MoveNext () [0x00000] in <filename unknown>:0 
+  at PlayerMovementNew+<sweepingAnimationAndRemoveBrokenGlass>c__IteratorB.MoveNext () [0x00000] in <filename unknown>:0 
  
 (Filename:  Line: -1)
 
 NullReferenceException
   at (wrapper managed-to-native) UnityEngine.GameObject:get_transform ()
-  at PlayerMovementNew+<sweepingAnimationAndRemoveBrokenGlass>c__IteratorA.MoveNext () [0x00000] in <filename unknown>:0 
+  at PlayerMovementNew+<sweepingAnimationAndRemoveBrokenGlass>c__IteratorB.MoveNext () [0x00000] in <filename unknown>:0 
  
 (Filename:  Line: -1)
 
 NullReferenceException
   at (wrapper managed-to-native) UnityEngine.GameObject:get_transform ()
-  at PlayerMovementNew+<sweepingAnimationAndRemoveBrokenGlass>c__IteratorA.MoveNext () [0x00000] in <filename unknown>:0 
+  at PlayerMovementNew+<sweepingAnimationAndRemoveBrokenGlass>c__IteratorB.MoveNext () [0x00000] in <filename unknown>:0 
  
 (Filename:  Line: -1)
 
 NullReferenceException
   at (wrapper managed-to-native) UnityEngine.GameObject:get_transform ()
-  at PlayerMovementNew+<sweepingAnimationAndRemoveBrokenGlass>c__IteratorA.MoveNext () [0x00000] in <filename unknown>:0 
+  at PlayerMovementNew+<sweepingAnimationAndRemoveBrokenGlass>c__IteratorB.MoveNext () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:get_transform ()
+  at PlayerMovementNew+<sweepingAnimationAndRemoveBrokenGlass>c__IteratorB.MoveNext () [0x00000] in <filename unknown>:0 
  
 (Filename:  Line: -1)
 
@@ -277,6 +113,22 @@ terrainHome
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
 terrainHome
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+babyBottle
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+babyBottle
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+babyBottle
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+babyBottle
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
@@ -288,43 +140,29 @@ brokenGlass
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-terrainHome
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:get_transform ()
+  at PlayerMovementNew+<sweepingAnimationAndRemoveBrokenGlass>c__IteratorB.MoveNext () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:get_transform ()
+  at PlayerMovementNew+<sweepingAnimationAndRemoveBrokenGlass>c__IteratorB.MoveNext () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:get_transform ()
+  at PlayerMovementNew+<sweepingAnimationAndRemoveBrokenGlass>c__IteratorB.MoveNext () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+cat
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-fire
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-fire
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-fire
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-fire
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-fire
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-fire
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-fire
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-fire
+cat
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
@@ -336,11 +174,19 @@ child
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-brokenGlass
+Untagged
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-brokenGlass
+Untagged
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+child
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+child
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
@@ -357,6 +203,22 @@ madLady
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
 madLady
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+terrainHome
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+terrainHome
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+brokenGlass
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+brokenGlass
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
@@ -372,19 +234,63 @@ Parameter name: index
  
 (Filename:  Line: -1)
 
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.GameObject:get_transform ()
-  at DangerAlertSystem.printDangerAlert (System.String type) [0x00000] in <filename unknown>:0 
-  at DangerAlertSystem.addDangerAlerts (System.String type) [0x00000] in <filename unknown>:0 
-  at CatControllerNew+<instantiateBrokenGlass>c__Iterator0.MoveNext () [0x00000] in <filename unknown>:0 
+terrainHome
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+terrainHome
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+babyBottle
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+babyBottle
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+brokenGlass
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+brokenGlass
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+ArgumentOutOfRangeException: Index is less than 0 or more than or equal to the list count.
+Parameter name: index
+0
+  at System.Collections.ArrayList.ThrowNewArgumentOutOfRangeException (System.String name, System.Object actual, System.String message) [0x00000] in <filename unknown>:0 
+  at System.Collections.ArrayList.get_Item (Int32 index) [0x00000] in <filename unknown>:0 
+  at DangerAlertSystem.sortAlertsAfterRemove (Vector3 dangerRemovedPosition, Int32 fromDangerAlertMoving) [0x00000] in <filename unknown>:0 
+  at DangerAlertSystem.removeDangerAlert (System.String type) [0x00000] in <filename unknown>:0 
+  at DangerAlertSystem.removeAlertsAuto () [0x00000] in <filename unknown>:0 
+  at DangerAlertSystem.Update () [0x00000] in <filename unknown>:0 
  
 (Filename:  Line: -1)
 
-Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 4.170005 ms
+terrainHome
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-Unloading 396 unused Assets to reduce memory usage. Loaded Objects now: 222.
-Total: 0.864883 ms (FindLiveObjects: 0.056445 ms CreateObjectMapping: 0.031255 ms MarkObjects: 0.241178 ms  DeleteObjects: 0.535070 ms)
+terrainHome
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+terrainHome
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+terrainHome
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 4.624839 ms
+
+Unloading 413 unused Assets to reduce memory usage. Loaded Objects now: 225.
+Total: 1.541302 ms (FindLiveObjects: 0.072306 ms CreateObjectMapping: 0.035920 ms MarkObjects: 0.248642 ms  DeleteObjects: 1.182100 ms)
 
 NullReferenceException: Object reference not set to an instance of an object
   at MenuFunctions.Start () [0x00000] in <filename unknown>:0 
@@ -392,7 +298,7 @@ NullReferenceException: Object reference not set to an instance of an object
 (Filename:  Line: -1)
 
 Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.570990 ms
+UnloadTime: 0.518743 ms
 CharacterController settings are invalid.
  
 (Filename:  Line: 382)
@@ -402,32 +308,8 @@ CharacterController settings are invalid.
 (Filename:  Line: 382)
 
 
-Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 1392.
-Total: 0.405851 ms (FindLiveObjects: 0.058311 ms CreateObjectMapping: 0.040585 ms MarkObjects: 0.301822 ms  DeleteObjects: 0.004198 ms)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-Untagged
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-Untagged
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 1485.
+Total: 0.646563 ms (FindLiveObjects: 0.061110 ms CreateObjectMapping: 0.039185 ms MarkObjects: 0.533671 ms  DeleteObjects: 0.011662 ms)
 
 madLady
  
@@ -437,6 +319,14 @@ madLady
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
+terrainHome
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+terrainHome
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
 brokenGlass
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
@@ -453,11 +343,63 @@ terrainHome
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
+child
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+child
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
 brokenGlass
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
 brokenGlass
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+brokenGlass
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+brokenGlass
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+brokenGlass
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+brokenGlass
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at Event.eventIsFinished (.Notification options) [0x00000] in <filename unknown>:0 
+UnityEngine.Component:SendMessage(String, Object, SendMessageOptions)
+NotificationCenter:PostNotification(Notification)
+NotificationCenter:PostNotification(Component, String, Hashtable)
+Event:replaceMethodsToMethodsAfterInterrupt()
+EventDispatcher:interrumptEventsByNewEvent(GameObject, String)
+EventDispatcher:addEvent(ArrayList, ArrayList, ArrayList, ArrayList)
+PlayerMovementNew:OnTriggerStay(Collider)
+ 
+(Filename:  Line: -1)
+
+terrainHome
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+terrainHome
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+fire
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+fire
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
@@ -489,6 +431,193 @@ PlayerMovementNew:OnTriggerStay(Collider)
  
 (Filename:  Line: -1)
 
+fire
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+fire
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+fire
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+fire
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at Event.eventIsFinished (.Notification options) [0x00000] in <filename unknown>:0 
+UnityEngine.Component:SendMessage(String, Object, SendMessageOptions)
+NotificationCenter:PostNotification(Notification)
+NotificationCenter:PostNotification(Component, String, Hashtable)
+Event:replaceMethodsToMethodsAfterInterrupt()
+EventDispatcher:interrumptEventsByNewEvent(GameObject, String)
+EventDispatcher:addEvent(ArrayList, ArrayList, ArrayList, ArrayList)
+PlayerMovementNew:OnTriggerStay(Collider)
+ 
+(Filename:  Line: -1)
+
+fire
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+fire
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+fire
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+fire
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 3.427811 ms
+
+Unloading 411 unused Assets to reduce memory usage. Loaded Objects now: 225.
+Total: 1.215221 ms (FindLiveObjects: 0.128286 ms CreateObjectMapping: 0.053180 ms MarkObjects: 0.465096 ms  DeleteObjects: 0.564926 ms)
+
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.995035 ms
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 225.
+Total: 0.441305 ms (FindLiveObjects: 0.024724 ms CreateObjectMapping: 0.013528 ms MarkObjects: 0.397454 ms  DeleteObjects: 0.005131 ms)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at MenuFunctions.Start () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.626970 ms
+CharacterController settings are invalid.
+ 
+(Filename:  Line: 382)
+
+CharacterController settings are invalid.
+ 
+(Filename:  Line: 382)
+
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 1485.
+Total: 0.429642 ms (FindLiveObjects: 0.055046 ms CreateObjectMapping: 0.033121 ms MarkObjects: 0.334477 ms  DeleteObjects: 0.006997 ms)
+
+babyBottle
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+babyBottle
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+terrainHome
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+terrainHome
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+brokenGlass
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+brokenGlass
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+madLady
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+madLady
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+terrainHome
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+terrainHome
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+child
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+child
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+brokenGlass
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+brokenGlass
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:get_transform ()
+  at PlayerMovementNew+<sweepingAnimationAndRemoveBrokenGlass>c__IteratorB.MoveNext () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:get_transform ()
+  at PlayerMovementNew+<sweepingAnimationAndRemoveBrokenGlass>c__IteratorB.MoveNext () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+terrainHome
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+terrainHome
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+fire
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+fire
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+fire
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+fire
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at Event.eventIsFinished (.Notification options) [0x00000] in <filename unknown>:0 
+UnityEngine.Component:SendMessage(String, Object, SendMessageOptions)
+NotificationCenter:PostNotification(Notification)
+NotificationCenter:PostNotification(Component, String, Hashtable)
+Event:replaceMethodsToMethodsAfterInterrupt()
+EventDispatcher:interrumptEventsByNewEvent(GameObject, String)
+EventDispatcher:addEvent(ArrayList, ArrayList, ArrayList, ArrayList)
+PlayerMovementNew:OnTriggerStay(Collider)
+ 
+(Filename:  Line: -1)
+
+brokenGlass
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+brokenGlass
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
 ArgumentOutOfRangeException: Index is less than 0 or more than or equal to the list count.
 Parameter name: index
 0
@@ -501,7 +630,11 @@ Parameter name: index
  
 (Filename:  Line: -1)
 
-terrainHome
+babyBottle
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+babyBottle
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
@@ -517,11 +650,35 @@ terrainHome
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.GameObject:get_transform ()
-  at DangerAlertSystem.printDangerAlert (System.String type) [0x00000] in <filename unknown>:0 
-  at DangerAlertSystem.addDangerAlerts (System.String type) [0x00000] in <filename unknown>:0 
-  at CatControllerNew+<instantiateBrokenGlass>c__Iterator0.MoveNext () [0x00000] in <filename unknown>:0 
+terrainHome
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+dangerFurni
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+dangerFurni
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+madLady
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+madLady
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+ArgumentOutOfRangeException: Index is less than 0 or more than or equal to the list count.
+Parameter name: index
+0
+  at System.Collections.ArrayList.ThrowNewArgumentOutOfRangeException (System.String name, System.Object actual, System.String message) [0x00000] in <filename unknown>:0 
+  at System.Collections.ArrayList.get_Item (Int32 index) [0x00000] in <filename unknown>:0 
+  at DangerAlertSystem.sortAlertsAfterRemove (Vector3 dangerRemovedPosition, Int32 fromDangerAlertMoving) [0x00000] in <filename unknown>:0 
+  at DangerAlertSystem.removeDangerAlert (System.String type) [0x00000] in <filename unknown>:0 
+  at DangerAlertSystem.removeAlertsAuto () [0x00000] in <filename unknown>:0 
+  at DangerAlertSystem.Update () [0x00000] in <filename unknown>:0 
  
 (Filename:  Line: -1)
 
@@ -553,9 +710,103 @@ Parameter name: index
  
 (Filename:  Line: -1)
 
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.GameObject:get_transform ()
-  at PlayerMovementNew+<sweepingAnimationAndRemoveBrokenGlass>c__IteratorA.MoveNext () [0x00000] in <filename unknown>:0 
+terrainHome
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+terrainHome
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+child
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+child
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+brokenGlass
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+brokenGlass
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at Event.eventIsFinished (.Notification options) [0x00000] in <filename unknown>:0 
+UnityEngine.Component:SendMessage(String, Object, SendMessageOptions)
+NotificationCenter:PostNotification(Notification)
+NotificationCenter:PostNotification(Component, String, Hashtable)
+Event:replaceMethodsToMethodsAfterInterrupt()
+EventDispatcher:interrumptEventsByNewEvent(GameObject, String)
+EventDispatcher:addEvent(ArrayList, ArrayList, ArrayList, ArrayList)
+PlayerMovementNew:OnTriggerStay(Collider)
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at Event.eventIsFinished (.Notification options) [0x00000] in <filename unknown>:0 
+UnityEngine.Component:SendMessage(String, Object, SendMessageOptions)
+NotificationCenter:PostNotification(Notification)
+NotificationCenter:PostNotification(Component, String, Hashtable)
+Event:replaceMethodsToMethodsAfterInterrupt()
+EventDispatcher:interrumptEventsByNewEvent(GameObject, String)
+EventDispatcher:addEvent(ArrayList, ArrayList, ArrayList, ArrayList)
+PlayerMovementNew:OnTriggerStay(Collider)
+ 
+(Filename:  Line: -1)
+
+terrainHome
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+terrainHome
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+terrainHome
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+terrainHome
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+madLady
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+madLady
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+terrainHome
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+terrainHome
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+brokenGlass
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+brokenGlass
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+ArgumentOutOfRangeException: Index is less than 0 or more than or equal to the list count.
+Parameter name: index
+0
+  at System.Collections.ArrayList.ThrowNewArgumentOutOfRangeException (System.String name, System.Object actual, System.String message) [0x00000] in <filename unknown>:0 
+  at System.Collections.ArrayList.get_Item (Int32 index) [0x00000] in <filename unknown>:0 
+  at DangerAlertSystem.sortAlertsAfterRemove (Vector3 dangerRemovedPosition, Int32 fromDangerAlertMoving) [0x00000] in <filename unknown>:0 
+  at DangerAlertSystem.removeDangerAlert (System.String type) [0x00000] in <filename unknown>:0 
+  at DangerAlertSystem.removeAlertsAuto () [0x00000] in <filename unknown>:0 
+  at DangerAlertSystem.Update () [0x00000] in <filename unknown>:0 
  
 (Filename:  Line: -1)
 
@@ -567,250 +818,21 @@ child
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-terrainHome
+child
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-terrainHome
+child
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.GameObject:get_transform ()
-  at DangerAlertSystem.printDangerAlert (System.String type) [0x00000] in <filename unknown>:0 
-  at DangerAlertSystem.addDangerAlerts (System.String type) [0x00000] in <filename unknown>:0 
-  at CatControllerNew+<instantiateBrokenGlass>c__Iterator0.MoveNext () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.GameObject:get_transform ()
-  at DangerAlertSystem.printDangerAlert (System.String type) [0x00000] in <filename unknown>:0 
-  at DangerAlertSystem.addDangerAlerts (System.String type) [0x00000] in <filename unknown>:0 
-  at LevelManager.launchDangerMadLady () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-terrainHome
+child
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-terrainHome
+child
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 3.535571 ms
-
-Unloading 396 unused Assets to reduce memory usage. Loaded Objects now: 222.
-Total: 0.922728 ms (FindLiveObjects: 0.049915 ms CreateObjectMapping: 0.047116 ms MarkObjects: 0.262637 ms  DeleteObjects: 0.562127 ms)
-
-NullReferenceException: Object reference not set to an instance of an object
-  at MenuFunctions.Start () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.417047 ms
-CharacterController settings are invalid.
- 
-(Filename:  Line: 382)
-
-CharacterController settings are invalid.
- 
-(Filename:  Line: 382)
-
-
-Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 1392.
-Total: 0.420312 ms (FindLiveObjects: 0.057378 ms CreateObjectMapping: 0.040118 ms MarkObjects: 0.307420 ms  DeleteObjects: 0.014927 ms)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-brokenGlass
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-brokenGlass
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-madLady
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-madLady
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-dog
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-dog
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-brokenGlass
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-brokenGlass
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-fire
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-fire
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-NullReferenceException: Object reference not set to an instance of an object
-  at Event.eventIsFinished (.Notification options) [0x00000] in <filename unknown>:0 
-UnityEngine.Component:SendMessage(String, Object, SendMessageOptions)
-NotificationCenter:PostNotification(Notification)
-NotificationCenter:PostNotification(Component, String, Hashtable)
-Event:replaceMethodsToMethodsAfterInterrupt()
-EventDispatcher:interrumptEventsByNewEvent(GameObject, String)
-EventDispatcher:addEvent(ArrayList, ArrayList, ArrayList, ArrayList)
-PlayerMovementNew:OnTriggerStay(Collider)
- 
-(Filename:  Line: -1)
-
-fire
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-fire
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-fire
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-fire
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-fire
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-fire
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-madLady
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-madLady
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-cat
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-cat
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-brokenGlass
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-brokenGlass
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-ArgumentOutOfRangeException: Index is less than 0 or more than or equal to the list count.
-Parameter name: index
-0
-  at System.Collections.ArrayList.ThrowNewArgumentOutOfRangeException (System.String name, System.Object actual, System.String message) [0x00000] in <filename unknown>:0 
-  at System.Collections.ArrayList.get_Item (Int32 index) [0x00000] in <filename unknown>:0 
-  at DangerAlertSystem.sortAlertsAfterRemove (Vector3 dangerRemovedPosition, Int32 fromDangerAlertMoving) [0x00000] in <filename unknown>:0 
-  at DangerAlertSystem.removeDangerAlert (System.String type) [0x00000] in <filename unknown>:0 
-  at DangerAlertSystem.removeAlertsAuto () [0x00000] in <filename unknown>:0 
-  at DangerAlertSystem.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.GameObject:get_transform ()
-  at DangerAlertSystem.printDangerAlert (System.String type) [0x00000] in <filename unknown>:0 
-  at DangerAlertSystem.addDangerAlerts (System.String type) [0x00000] in <filename unknown>:0 
-  at CatControllerNew+<instantiateBrokenGlass>c__Iterator0.MoveNext () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-brokenGlass
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-brokenGlass
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-ArgumentOutOfRangeException: Index is less than 0 or more than or equal to the list count.
-Parameter name: index
-0
-  at System.Collections.ArrayList.ThrowNewArgumentOutOfRangeException (System.String name, System.Object actual, System.String message) [0x00000] in <filename unknown>:0 
-  at System.Collections.ArrayList.get_Item (Int32 index) [0x00000] in <filename unknown>:0 
-  at DangerAlertSystem.sortAlertsAfterRemove (Vector3 dangerRemovedPosition, Int32 fromDangerAlertMoving) [0x00000] in <filename unknown>:0 
-  at DangerAlertSystem.removeDangerAlert (System.String type) [0x00000] in <filename unknown>:0 
-  at DangerAlertSystem.removeAlertsAuto () [0x00000] in <filename unknown>:0 
-  at DangerAlertSystem.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
 
 Untagged
  
@@ -820,31 +842,6 @@ Untagged
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 3.722170 ms
-
-Unloading 396 unused Assets to reduce memory usage. Loaded Objects now: 222.
-Total: 0.685282 ms (FindLiveObjects: 0.040585 ms CreateObjectMapping: 0.032654 ms MarkObjects: 0.221119 ms  DeleteObjects: 0.390456 ms)
-
-NullReferenceException: Object reference not set to an instance of an object
-  at MenuFunctions.Start () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.496351 ms
-CharacterController settings are invalid.
- 
-(Filename:  Line: 382)
-
-CharacterController settings are invalid.
- 
-(Filename:  Line: 382)
-
-
-Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 1392.
-Total: 0.409116 ms (FindLiveObjects: 0.062043 ms CreateObjectMapping: 0.042917 ms MarkObjects: 0.297624 ms  DeleteObjects: 0.005597 ms)
-
 terrainHome
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
@@ -853,356 +850,13 @@ terrainHome
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-brokenGlass
+child
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
-brokenGlass
+child
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.GameObject:get_transform ()
-  at PlayerMovementNew+<sweepingAnimationAndRemoveBrokenGlass>c__IteratorA.MoveNext () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.GameObject:get_transform ()
-  at PlayerMovementNew+<sweepingAnimationAndRemoveBrokenGlass>c__IteratorA.MoveNext () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.GameObject:get_transform ()
-  at PlayerMovementNew+<sweepingAnimationAndRemoveBrokenGlass>c__IteratorA.MoveNext () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-brokenGlass
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-brokenGlass
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.GameObject:get_transform ()
-  at PlayerMovementNew+<sweepingAnimationAndRemoveBrokenGlass>c__IteratorA.MoveNext () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.GameObject:get_transform ()
-  at PlayerMovementNew+<sweepingAnimationAndRemoveBrokenGlass>c__IteratorA.MoveNext () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.GameObject:get_transform ()
-  at PlayerMovementNew+<sweepingAnimationAndRemoveBrokenGlass>c__IteratorA.MoveNext () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-brokenGlass
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-brokenGlass
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-fire
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-fire
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-fire
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-fire
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-fire
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-fire
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-NullReferenceException: Object reference not set to an instance of an object
-  at Event.eventIsFinished (.Notification options) [0x00000] in <filename unknown>:0 
-UnityEngine.Component:SendMessage(String, Object, SendMessageOptions)
-NotificationCenter:PostNotification(Notification)
-NotificationCenter:PostNotification(Component, String, Hashtable)
-Event:replaceMethodsToMethodsAfterInterrupt()
-EventDispatcher:interrumptEventsByNewEvent(GameObject, String)
-EventDispatcher:addEvent(ArrayList, ArrayList, ArrayList, ArrayList)
-PlayerMovementNew:OnTriggerStay(Collider)
- 
-(Filename:  Line: -1)
-
-NullReferenceException: Object reference not set to an instance of an object
-  at Event.eventIsFinished (.Notification options) [0x00000] in <filename unknown>:0 
-UnityEngine.Component:SendMessage(String, Object, SendMessageOptions)
-NotificationCenter:PostNotification(Notification)
-NotificationCenter:PostNotification(Component, String, Hashtable)
-Event:replaceMethodsToMethodsAfterInterrupt()
-EventDispatcher:interrumptEventsByNewEvent(GameObject, String)
-EventDispatcher:addEvent(ArrayList, ArrayList, ArrayList, ArrayList)
-PlayerMovementNew:OnTriggerStay(Collider)
- 
-(Filename:  Line: -1)
-
-fire
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-fire
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-NullReferenceException: Object reference not set to an instance of an object
-  at Event.eventIsFinished (.Notification options) [0x00000] in <filename unknown>:0 
-UnityEngine.Component:SendMessage(String, Object, SendMessageOptions)
-NotificationCenter:PostNotification(Notification)
-NotificationCenter:PostNotification(Component, String, Hashtable)
-Event:replaceMethodsToMethodsAfterInterrupt()
-EventDispatcher:interrumptEventsByNewEvent(GameObject, String)
-EventDispatcher:addEvent(ArrayList, ArrayList, ArrayList, ArrayList)
-PlayerMovementNew:OnTriggerStay(Collider)
- 
-(Filename:  Line: -1)
-
-NullReferenceException: Object reference not set to an instance of an object
-  at Event.eventIsFinished (.Notification options) [0x00000] in <filename unknown>:0 
-UnityEngine.Component:SendMessage(String, Object, SendMessageOptions)
-NotificationCenter:PostNotification(Notification)
-NotificationCenter:PostNotification(Component, String, Hashtable)
-Event:replaceMethodsToMethodsAfterInterrupt()
-EventDispatcher:interrumptEventsByNewEvent(GameObject, String)
-EventDispatcher:addEvent(ArrayList, ArrayList, ArrayList, ArrayList)
-PlayerMovementNew:OnTriggerStay(Collider)
- 
-(Filename:  Line: -1)
-
-fire
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-fire
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-brokenGlass
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-brokenGlass
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-madLady
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-madLady
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-ArgumentOutOfRangeException: Index is less than 0 or more than or equal to the list count.
-Parameter name: index
-0
-  at System.Collections.ArrayList.ThrowNewArgumentOutOfRangeException (System.String name, System.Object actual, System.String message) [0x00000] in <filename unknown>:0 
-  at System.Collections.ArrayList.get_Item (Int32 index) [0x00000] in <filename unknown>:0 
-  at DangerAlertSystem.sortAlertsAfterRemove (Vector3 dangerRemovedPosition, Int32 fromDangerAlertMoving) [0x00000] in <filename unknown>:0 
-  at DangerAlertSystem.removeDangerAlert (System.String type) [0x00000] in <filename unknown>:0 
-  at DangerAlertSystem.removeAlertsAuto () [0x00000] in <filename unknown>:0 
-  at DangerAlertSystem.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 3.656394 ms
-
-Unloading 398 unused Assets to reduce memory usage. Loaded Objects now: 222.
-Total: 0.834560 ms (FindLiveObjects: 0.047116 ms CreateObjectMapping: 0.055513 ms MarkObjects: 0.242577 ms  DeleteObjects: 0.488421 ms)
-
-NullReferenceException: Object reference not set to an instance of an object
-  at MenuFunctions.Start () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.501482 ms
-CharacterController settings are invalid.
- 
-(Filename:  Line: 382)
-
-CharacterController settings are invalid.
- 
-(Filename:  Line: 382)
-
-
-Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 1392.
-Total: 0.408183 ms (FindLiveObjects: 0.057845 ms CreateObjectMapping: 0.049448 ms MarkObjects: 0.295291 ms  DeleteObjects: 0.005131 ms)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-fire
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-fire
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-fire
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-fire
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-NullReferenceException: Object reference not set to an instance of an object
-  at Event.eventIsFinished (.Notification options) [0x00000] in <filename unknown>:0 
-UnityEngine.Component:SendMessage(String, Object, SendMessageOptions)
-NotificationCenter:PostNotification(Notification)
-NotificationCenter:PostNotification(Component, String, Hashtable)
-Event:replaceMethodsToMethodsAfterInterrupt()
-EventDispatcher:interrumptEventsByNewEvent(GameObject, String)
-EventDispatcher:addEvent(ArrayList, ArrayList, ArrayList, ArrayList)
-PlayerMovementNew:OnTriggerStay(Collider)
- 
-(Filename:  Line: -1)
-
-NullReferenceException: Object reference not set to an instance of an object
-  at Event.eventIsFinished (.Notification options) [0x00000] in <filename unknown>:0 
-UnityEngine.Component:SendMessage(String, Object, SendMessageOptions)
-NotificationCenter:PostNotification(Notification)
-NotificationCenter:PostNotification(Component, String, Hashtable)
-Event:replaceMethodsToMethodsAfterInterrupt()
-EventDispatcher:interrumptEventsByNewEvent(GameObject, String)
-EventDispatcher:addEvent(ArrayList, ArrayList, ArrayList, ArrayList)
-PlayerMovementNew:OnTriggerStay(Collider)
- 
-(Filename:  Line: -1)
-
-brokenGlass
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-brokenGlass
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.GameObject:get_transform ()
-  at PlayerMovementNew+<sweepingAnimationAndRemoveBrokenGlass>c__IteratorA.MoveNext () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.GameObject:get_transform ()
-  at PlayerMovementNew+<sweepingAnimationAndRemoveBrokenGlass>c__IteratorA.MoveNext () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.GameObject:get_transform ()
-  at PlayerMovementNew+<sweepingAnimationAndRemoveBrokenGlass>c__IteratorA.MoveNext () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-brokenGlass
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-brokenGlass
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-brokenGlass
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-brokenGlass
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-madLady
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-madLady
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-ArgumentOutOfRangeException: Index is less than 0 or more than or equal to the list count.
-Parameter name: index
-0
-  at System.Collections.ArrayList.ThrowNewArgumentOutOfRangeException (System.String name, System.Object actual, System.String message) [0x00000] in <filename unknown>:0 
-  at System.Collections.ArrayList.get_Item (Int32 index) [0x00000] in <filename unknown>:0 
-  at DangerAlertSystem.sortAlertsAfterRemove (Vector3 dangerRemovedPosition, Int32 fromDangerAlertMoving) [0x00000] in <filename unknown>:0 
-  at DangerAlertSystem.removeDangerAlert (System.String type) [0x00000] in <filename unknown>:0 
-  at DangerAlertSystem.removeAlertsAuto () [0x00000] in <filename unknown>:0 
-  at DangerAlertSystem.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.GameObject:get_transform ()
-  at DangerAlertSystem.printDangerAlert (System.String type) [0x00000] in <filename unknown>:0 
-  at DangerAlertSystem.addDangerAlerts (System.String type) [0x00000] in <filename unknown>:0 
-  at CatControllerNew+<instantiateBrokenGlass>c__Iterator0.MoveNext () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
 
 brokenGlass
  
@@ -1233,99 +887,18 @@ terrainHome
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
 Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 3.998335 ms
+UnloadTime: 4.106562 ms
 
-Unloading 398 unused Assets to reduce memory usage. Loaded Objects now: 222.
-Total: 0.678284 ms (FindLiveObjects: 0.047116 ms CreateObjectMapping: 0.048982 ms MarkObjects: 0.218320 ms  DeleteObjects: 0.362933 ms)
-
-NullReferenceException: Object reference not set to an instance of an object
-  at MenuFunctions.Start () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.395588 ms
-CharacterController settings are invalid.
- 
-(Filename:  Line: 382)
-
-CharacterController settings are invalid.
- 
-(Filename:  Line: 382)
-
-
-Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 1392.
-Total: 0.421245 ms (FindLiveObjects: 0.060644 ms CreateObjectMapping: 0.046183 ms MarkObjects: 0.307887 ms  DeleteObjects: 0.005131 ms)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-fire
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-fire
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-fire
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-fire
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-fire
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-fire
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-fire
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-fire
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-fire
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-fire
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-brokenGlass
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-brokenGlass
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 4.197062 ms
-
-Unloading 387 unused Assets to reduce memory usage. Loaded Objects now: 222.
-Total: 0.793509 ms (FindLiveObjects: 0.044317 ms CreateObjectMapping: 0.048982 ms MarkObjects: 0.231381 ms  DeleteObjects: 0.467895 ms)
+Unloading 413 unused Assets to reduce memory usage. Loaded Objects now: 225.
+Total: 1.111193 ms (FindLiveObjects: 0.104961 ms CreateObjectMapping: 0.041984 ms MarkObjects: 0.358268 ms  DeleteObjects: 0.604112 ms)
 
 NullReferenceException: Object reference not set to an instance of an object
   at MenuFunctions.Start () [0x00000] in <filename unknown>:0 
  
 (Filename:  Line: -1)
 
-Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.409116 ms
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.396054 ms
 CharacterController settings are invalid.
  
 (Filename:  Line: 382)
@@ -1335,62 +908,6 @@ CharacterController settings are invalid.
 (Filename:  Line: 382)
 
 
-Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 1392.
-Total: 0.436640 ms (FindLiveObjects: 0.058778 ms CreateObjectMapping: 0.050848 ms MarkObjects: 0.320949 ms  DeleteObjects: 0.005597 ms)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-brokenGlass
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-brokenGlass
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-brokenGlass
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-brokenGlass
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-fire
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-fire
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-terrainHome
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 1485.
+Total: 0.456699 ms (FindLiveObjects: 0.056445 ms CreateObjectMapping: 0.034054 ms MarkObjects: 0.356402 ms  DeleteObjects: 0.009329 ms)
 

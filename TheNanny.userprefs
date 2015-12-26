@@ -1,21 +1,21 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\DangerAlertSystem.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\NewLifeAndHunger.cs">
     <Files>
-      <File FileName="Assets\DangerAlertSystem.cs" Line="57" Column="129" />
-      <File FileName="Assets\Resources\scripts\PlayerMovementNew.cs" Line="285" Column="1" />
-      <File FileName="Assets\fires.cs" Line="23" Column="3" />
-      <File FileName="Assets\LevelManager.cs" Line="103" Column="3" />
-      <File FileName="Assets\MenuFunctions.cs" Line="29" Column="3" />
-      <File FileName="Assets\CatControllerNew.cs" Line="230" Column="67" />
-      <File FileName="Assets\MadladyNew.cs" Line="161" Column="1" />
+      <File FileName="Assets\NewLifeAndHunger.cs" Line="87" Column="11" />
+      <File FileName="Assets\Resources\scripts\ChildControllerNew.cs" Line="316" Column="66" />
+      <File FileName="Assets\MadladyNew.cs" Line="72" Column="4" />
+      <File FileName="Assets\Resources\scripts\Event.cs" Line="86" Column="1" />
+      <File FileName="Assets\MenuFunctions.cs" Line="24" Column="1" />
+      <File FileName="Assets\DangerAlertSystem.cs" Line="148" Column="1" />
+      <File FileName="Assets\Resources\scripts\PlayerMovementNew.cs" Line="375" Column="34" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="C:\Users\Rami\Documents\TheNanny\Assets\Resources\scripts\PlayerMovementNew.cs" line="166" />
-      <Breakpoint file="C:\Users\Rami\Documents\TheNanny\Assets\DangerAlertSystem.cs" line="57" />
-      <Breakpoint file="C:\Users\Rami\Documents\TheNanny\Assets\DangerAlertSystem.cs" line="87" />
+      <Breakpoint file="C:\Users\Rami\Documents\TheNanny\Assets\MadladyNew.cs" line="79" />
+      <Breakpoint file="C:\Users\Rami\Documents\TheNanny\Assets\Resources\scripts\ChildControllerNew.cs" line="313" />
+      <Breakpoint file="C:\Users\Rami\Documents\TheNanny\Assets\Resources\scripts\PlayerMovementNew.cs" line="380" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

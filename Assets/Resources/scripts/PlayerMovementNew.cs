@@ -375,8 +375,8 @@ public class PlayerMovementNew : EventScript {
 		babyBottleIcon.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("imgs/hub/babyBottleNOT");
 		playNannyCockroach ();
 		hasBabyBottle = false;
-		GameObject life = GameObject.Find ("lifeAndHunger");
-		life.GetComponent<LifeAndHunger> ().resetHunger();
+		GameObject life = GameObject.Find ("lifeHungerBar");
+		life.GetComponent<NewLifeAndHunger> ().resetHunger();
 		eventFinishedCallback("feedChild");
 	}
 

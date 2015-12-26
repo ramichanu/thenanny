@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\AlertDanger.cs" />
      <Compile Include="Assets\CameraScript.cs" />
      <Compile Include="Assets\CatControllerNew.cs" />
      <Compile Include="Assets\Cockroach.cs" />
@@ -60,7 +61,9 @@
      <Compile Include="Assets\LifeAndHunger.cs" />
      <Compile Include="Assets\MadladyNew.cs" />
      <Compile Include="Assets\MenuFunctions.cs" />
+     <Compile Include="Assets\NewLifeAndHunger.cs" />
      <Compile Include="Assets\Resources\scripts\ChildControllerNew.cs" />
+     <Compile Include="Assets\Resources\scripts\CustomCursor.cs" />
      <Compile Include="Assets\Resources\scripts\Event.cs" />
      <Compile Include="Assets\Resources\scripts\EventDispatcher.cs" />
      <Compile Include="Assets\Resources\scripts\NotificationCenter.cs" />

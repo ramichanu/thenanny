@@ -103,24 +103,24 @@ public class ChildControllerNew : EventScript {
 		gameObject.GetComponent<Animation>().Play(animation);
 	}
 
-	public void hitAndPain(int damage){
+	public void hitAndPain(float damage){
 
 		playAnimation("child_pain", 0.5f);
 		
-		GameObject life = GameObject.Find ("lifeAndHunger");
-		life.GetComponent<LifeAndHunger> ().restPercentLife (damage);
+		GameObject life = GameObject.Find ("lifeHungerBar");
+		life.GetComponent<NewLifeAndHunger> ().restLife (damage);
 		
 		StartCoroutine(painEffect());
 		StopCoroutine(painEffect());
 
 	}
 
-	public void hitAndPainElectrify(int damage){
+	public void hitAndPainElectrify(float damage){
 		
 		playAnimation("child_pain", 0.5f);
 		
-		GameObject life = GameObject.Find ("lifeAndHunger");
-		life.GetComponent<LifeAndHunger> ().restPercentLife (damage);
+		GameObject life = GameObject.Find ("lifeHungerBar");
+		life.GetComponent<NewLifeAndHunger> ().restLife (damage);
 		
 		StartCoroutine(painEffectElectrify());
 		StopCoroutine(painEffectElectrify());
@@ -132,18 +132,18 @@ public class ChildControllerNew : EventScript {
 		SkinnedMeshRenderer childRenderer = GameObject.Find ("childMesh").GetComponent<SkinnedMeshRenderer> ();
 		Material oldMaterial = Resources.Load("materials/baby", typeof(Material)) as Material;
 		
-		GameObject childIcon = GameObject.Find ("childIcon");
-		childIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("hub/child_icon_pain");
+		GameObject childIcon = GameObject.Find ("babyIcon");
+		childIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("imgs/hub/babyIcon_pain");
 		
 		childRenderer.material = painMaterial;
 		yield return new WaitForSeconds(0.2f);
-		childIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("hub/child_icon");
+		childIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("imgs/hub/babyIcon");
 		childRenderer.material = oldMaterial;
 		yield return new WaitForSeconds(0.2f);
-		childIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("hub/child_icon_pain");
+		childIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("imgs/hub/babyIcon_pain");
 		childRenderer.material = painMaterial;
 		yield return new WaitForSeconds(0.2f);
-		childIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("hub/child_icon");
+		childIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("imgs/hub/babyIcon");
 		childRenderer.material = oldMaterial;
 		yield return new WaitForSeconds(0.2f);
 	}
@@ -153,18 +153,18 @@ public class ChildControllerNew : EventScript {
 		SkinnedMeshRenderer childRenderer = GameObject.Find ("childMesh").GetComponent<SkinnedMeshRenderer> ();
 		Material oldMaterial = Resources.Load("materials/baby", typeof(Material)) as Material;
 		
-		GameObject childIcon = GameObject.Find ("childIcon");
-		childIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("hub/child_icon_pain");
+		GameObject childIcon = GameObject.Find ("babyIcon");
+		childIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("imgs/hub/babyIcon_pain");
 		
 		childRenderer.material = painMaterial;
 		yield return new WaitForSeconds(0.2f);
-		childIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("hub/child_icon");
+		childIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("imgs/hub/babyIcon");
 		childRenderer.material = oldMaterial;
 		yield return new WaitForSeconds(0.2f);
-		childIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("hub/child_icon_pain");
+		childIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("imgs/hub/babyIcon_pain");
 		childRenderer.material = painMaterial;
 		yield return new WaitForSeconds(0.2f);
-		childIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("hub/child_icon");
+		childIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("imgs/hub/babyIcon");
 		childRenderer.material = oldMaterial;
 		yield return new WaitForSeconds(0.2f);
 	}
@@ -222,7 +222,6 @@ public class ChildControllerNew : EventScript {
 				break;
 			case "brokenTv":
 				state = ELECTRIFYING;
-				methodsToCall.Add("madLady_stopMadladyMovement");
 				methodsToCall.Add("child_painElectrify");
 				methodsToCall.Add("child_stopAgentRandomMovement");
 
@@ -234,7 +233,7 @@ public class ChildControllerNew : EventScript {
 	}
 
 	void painBrokenGlass(){
-		hitAndPain(5);
+		hitAndPain(0.07f);
 		eventFinishedCallback("painBrokenGlass");
 	}
 
@@ -257,11 +256,11 @@ public class ChildControllerNew : EventScript {
 	}
 
 	void burningChild(){
-		hitAndPain (2);	
+		hitAndPain (0.03f);	
 	}
 
 	void electrifyChild(){
-		hitAndPainElectrify (2);	
+		hitAndPainElectrify (0.03f);	
 	}
 
 	void stopChildMovement(){
