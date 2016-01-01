@@ -7,7 +7,8 @@ public class CockroachManager : EventScript {
 	bool isCockroachAnnoying = false;
 	// Use this for initialization
 	void Start () {
-		InvokeRepeating ("instanciateCockroach", 0f, 8f);
+		GameObject.Find ("AlertDangerSystem").GetComponent<DangerAlertSystem>().addDangerAlerts("cockroach");
+		InvokeRepeating ("instanciateCockroach", 0f, 10f);
 		NotificationCenter.DefaultCenter.AddObserver(this, "cockroachReachsTarget");
 		//Invoke ("instanciateCockroach", 2f);
 
@@ -41,13 +42,28 @@ public class CockroachManager : EventScript {
 	
 	public void destroyCockroach(){
 
+		StartCoroutine ("playInsecticideAndDestroyCockroach");
+
+	}
+
+	IEnumerator playInsecticideAndDestroyCockroach(){
+		GameObject.Find ("player").GetComponent<PlayerMovementNew>().insecticide.SetActive(true);
+		GameObject.Find ("player").GetComponent<PlayerMovementNew>().playAnimation("nanny_kill_cockroach", 0.7f);
+
+		yield return new WaitForSeconds(3f);
+
+		GameObject.Find ("player").GetComponent<PlayerMovementNew>().insecticide.SetActive(false);
+
 		Destroy (hit);
 		isCockroachAnnoying = false;
-		eventFinishedCallback("destroyCockroach");
+
 		GameObject[] cockroachs = GameObject.FindGameObjectsWithTag ("cockroach");
-		if (cockroachs.Length == 1) {
+		if (cockroachs.Length == 0) {
+			CancelInvoke ("instanciateCockroach");
 			Destroy (gameObject);
 		}
+
+		eventFinishedCallback("destroyCockroach");
 	}
 
 	public void gotoPlayerEvent() {
@@ -66,6 +82,7 @@ public class CockroachManager : EventScript {
 	
 				methodsDisabledUntilEventFinished.Add ("player_moveCharacterToClickedDestination");
 				methodsDisabledUntilEventFinished.Add ("madLady_createMadladyMenu");
+				methodsDisabledUntilEventFinished.Add ("child_createChildMenu");
 				methodsDisabledUntilEventFinished.Add ("cockroachManager_goToPlayer");
 
 				eventDisp.addEvent (methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);

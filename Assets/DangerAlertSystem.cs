@@ -27,8 +27,15 @@ public class DangerAlertSystem : EventScript {
 	}
 
 	void removeAlertsAuto() {
+
+		GameObject tv = GameObject.Find ("tvTable");
+
 		if (GameObject.FindGameObjectsWithTag ("fire").Length == 0 && GameObject.Find ("dangerAlert_fire") != null) {
 			GameObject.Find ("AlertDangerSystem").GetComponent<DangerAlertSystem> ().removeDangerAlert ("fire");
+		}
+
+		if (tv.GetComponent<dangerFurni> ().dangerDropped == false) {
+			GameObject.Find ("AlertDangerSystem").GetComponent<DangerAlertSystem> ().removeDangerAlert ("electricity");
 		}
 
 		if (GameObject.FindGameObjectsWithTag ("madLady").Length == 0 && GameObject.Find ("dangerAlert_madLady") != null) {
@@ -37,6 +44,10 @@ public class DangerAlertSystem : EventScript {
 
 		if (GameObject.FindGameObjectsWithTag ("brokenGlass").Length == 0 && GameObject.Find ("dangerAlert_brokenGlass") != null) {
 			GameObject.Find ("AlertDangerSystem").GetComponent<DangerAlertSystem> ().removeDangerAlert ("brokenGlass");
+		}
+
+		if (GameObject.Find("cockroachManager") == null && GameObject.Find ("dangerAlert_cockroach") != null) {
+			GameObject.Find ("AlertDangerSystem").GetComponent<DangerAlertSystem> ().removeDangerAlert ("cockroach");
 		}
 	}
 
@@ -84,12 +95,20 @@ public class DangerAlertSystem : EventScript {
 			GameObject[] fires = GameObject.FindGameObjectsWithTag("fire");
 			target = fires[0];
 			break;
+		case "electricity":
+			GameObject[] brokenTv = GameObject.FindGameObjectsWithTag("brokenTv");
+			target = brokenTv[0];
+			break;
 		case "brokenGlass":
 			GameObject[] brokenGlasses = GameObject.FindGameObjectsWithTag("brokenGlass");
 			target = brokenGlasses[0];
 			break;
 		case "madLady":
 			target = GameObject.Find ("madLady");
+			break;
+		case "cockroach":
+			GameObject[] cockroach = GameObject.FindGameObjectsWithTag("cockroach");
+			target = cockroach[0];
 			break;
 		}
 		
@@ -101,10 +120,13 @@ public class DangerAlertSystem : EventScript {
 		dangerAlerts.Remove (type);
 		GameObject dangerAlert = GameObject.Find ("dangerAlert_" + type);
 
-		Vector3 dangerAlertToRemovePosition = dangerAlert.transform.position;
-		Destroy(dangerAlert);
+		if (dangerAlert != null) {
+			Vector3 dangerAlertToRemovePosition = dangerAlert.transform.position;
+			Destroy(dangerAlert);
+			
+			sortAlertsAfterRemove (dangerAlertToRemovePosition, dangerAlertArrayPosition);
+		}
 
-		sortAlertsAfterRemove (dangerAlertToRemovePosition, dangerAlertArrayPosition);
 	}
 
 	void sortAlertsAfterRemove(Vector3 dangerRemovedPosition, int fromDangerAlertMoving) {

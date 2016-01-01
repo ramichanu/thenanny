@@ -157,16 +157,16 @@ public class ChildControllerNew : EventScript {
 		childIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("imgs/hub/babyIcon_pain");
 		
 		childRenderer.material = painMaterial;
-		yield return new WaitForSeconds(0.2f);
+		yield return new WaitForSeconds(0.1f);
 		childIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("imgs/hub/babyIcon");
 		childRenderer.material = oldMaterial;
-		yield return new WaitForSeconds(0.2f);
+		yield return new WaitForSeconds(0.1f);
 		childIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("imgs/hub/babyIcon_pain");
 		childRenderer.material = painMaterial;
-		yield return new WaitForSeconds(0.2f);
+		yield return new WaitForSeconds(0.1f);
 		childIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("imgs/hub/babyIcon");
 		childRenderer.material = oldMaterial;
-		yield return new WaitForSeconds(0.2f);
+		yield return new WaitForSeconds(0.1f);
 	}
 
 	ArrayList getDangerElements() {
@@ -221,13 +221,18 @@ public class ChildControllerNew : EventScript {
 				eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
 				break;
 			case "brokenTv":
-				state = ELECTRIFYING;
-				methodsToCall.Add("child_painElectrify");
-				methodsToCall.Add("child_stopAgentRandomMovement");
+				if (collision.transform.parent.GetComponent<dangerFurni>().dangerDropped == true){
 
-			methodsDisabledUntilEventFinished.Add ("madLady_attackOrYellingChild");
+					state = ELECTRIFYING;
+					methodsToCall.Add("child_painElectrify");
+					methodsToCall.Add("child_stopChildMovement");
+					methodsToCall.Add("child_stopAgentRandomMovement");
 
-				eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
+					methodsDisabledUntilEventFinished.Add ("madLady_attackOrYellingChild");
+
+					eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
+					
+				}
 				break;
 		}
 	}
@@ -242,7 +247,7 @@ public class ChildControllerNew : EventScript {
 		if(!fireChild.isPlaying){
 			fireChild.Play();
 		}
-		InvokeRepeating("burningChild", 2, 2);
+		InvokeRepeating("burningChild", 0, 2);
 		eventFinishedCallback("painFire");
 	}
 
@@ -251,16 +256,16 @@ public class ChildControllerNew : EventScript {
 		if(!electrifyChild.isPlaying){
 			electrifyChild.Play();
 		}
-		InvokeRepeating("electrifyChild", 2, 2);
+		InvokeRepeating("electrifyChild", 2, 1);
 		eventFinishedCallback("painElectrify");
 	}
 
 	void burningChild(){
-		hitAndPain (0.03f);	
+		hitAndPain (0.01f);	
 	}
 
 	void electrifyChild(){
-		hitAndPainElectrify (0.03f);	
+		hitAndPainElectrify (0.01f);	
 	}
 
 	void stopChildMovement(){
@@ -304,6 +309,26 @@ public class ChildControllerNew : EventScript {
 		eventFinishedCallback("helpBurning");
 	}
 
+	void helpElectrifying(){
+		ArrayList canInterruptBy = new ArrayList();
+		ArrayList methodsToCall = new ArrayList();
+		ArrayList methodsAfterInterrupt = new ArrayList();
+		ArrayList methodsDisabledUntilEventFinished = new ArrayList();
+
+		methodsToCall.Add ("player_disableClick");
+		methodsToCall.Add ("player_playNannyWalking");
+		methodsToCall.Add ("player_moveCharacterToClickedDestination");
+		methodsToCall.Add ("child_cancelElectrifying");
+		methodsToCall.Add ("child_startChildRandomMovement");
+		methodsToCall.Add ("player_playNannyIdle");
+		methodsToCall.Add ("player_enableClick");
+
+		methodsAfterInterrupt.Add("player_enableClick");
+		
+		eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
+		eventFinishedCallback("helpElectrifying");
+	}
+
 	void feed() {
 		ArrayList canInterruptBy = new ArrayList();
 		ArrayList methodsToCall = new ArrayList();
@@ -333,6 +358,17 @@ public class ChildControllerNew : EventScript {
 		eventFinishedCallback("createChildMenu");
 	}
 
+	void cancelElectrifying() {
+		state = IDLE;
+		ParticleSystem electrifyChild = transform.FindChild("electrify").GetComponent<ParticleSystem>();
+		if(electrifyChild.isPlaying){
+			electrifyChild.Stop();
+			electrifyChild.Clear();
+		}
+		CancelInvoke("electrifyChild");
+		eventFinishedCallback("cancelElectrifying");
+	}
+
 	void fireOff() {
 		state = IDLE;
 		ParticleSystem fireChild = GameObject.Find("fireChild").GetComponent<ParticleSystem>();
@@ -342,5 +378,17 @@ public class ChildControllerNew : EventScript {
 		eventFinishedCallback("fireOff");
 	}
 
+	public void cancelBurningAndElectrifying(){
+		ArrayList canInterruptBy = new ArrayList();
+		ArrayList methodsToCall = new ArrayList();
+		ArrayList methodsAfterInterrupt = new ArrayList();
+		ArrayList methodsDisabledUntilEventFinished = new ArrayList();
+		
+		methodsToCall.Add ("child_cancelElectrifying");
+		methodsToCall.Add ("child_fireOff");
+		methodsToCall.Add ("child_cancelBurning");
+		
+		eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
+	}
 
 }

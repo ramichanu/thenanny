@@ -184,6 +184,8 @@ public class CatControllerNew : EventScript {
 						
 						bool dangerDropped = hitItem.transform.gameObject.GetComponent<dangerFurni>().dangerDropped;
 						if(!dangerDropped){
+							GameObject.Find ("AlertDangerSystem").GetComponent<DangerAlertSystem>().addDangerAlerts("electricity");
+
 							hitItem.transform.gameObject.GetComponent<Animation>()["tv_falling"].speed = 1;
 							hitItem.transform.gameObject.GetComponent<Animation>().Play("tv_falling");
 							hitItem.transform.gameObject.GetComponent<dangerFurni>().dangerDropped = true;

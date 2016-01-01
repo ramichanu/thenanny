@@ -61,7 +61,9 @@ public class NewLifeAndHunger : MonoBehaviour {
 				isStarving = true;
 				InvokeRepeating("childStarving", 0f, 2f);
 			}
-		}	
+		}else {
+			CancelInvoke("childStarving");
+		}
 	}
 
 	void childStarving(){

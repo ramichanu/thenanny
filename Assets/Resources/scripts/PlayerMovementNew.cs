@@ -8,6 +8,8 @@ public class PlayerMovementNew : EventScript {
 
 	public GameObject extinguisher = null;
 	public GameObject broom = null;
+	public GameObject wrench = null;
+	public GameObject insecticide = null;
 
 	CharacterController charCtrl;
 
@@ -46,15 +48,15 @@ public class PlayerMovementNew : EventScript {
 					case "player":
 					case "terrain":
 					case "brokenGlass":
+					case "brokenTv":
 					case "terrainHome":
-						
-
 
 						canInterruptBy.Add("moveCharacterToClickedDestination");
 						canInterruptBy.Add("goToPlayer");
 						canInterruptBy.Add("removeBrokenGlass");
 						canInterruptBy.Add("removeBrokenJar");
 						canInterruptBy.Add("takeBabyBottle");
+						canInterruptBy.Add("repair");
 
 						methodsToCall.Add("player_playNannyWalking");
 						methodsToCall.Add("player_moveCharacterToClickedDestination");
@@ -373,7 +375,6 @@ public class PlayerMovementNew : EventScript {
 	void feedChild() {
 		GameObject babyBottleIcon = GameObject.Find ("babyBottleIcon");
 		babyBottleIcon.GetComponent<Image> ().sprite = Resources.Load<Sprite> ("imgs/hub/babyBottleNOT");
-		playNannyCockroach ();
 		hasBabyBottle = false;
 		GameObject life = GameObject.Find ("lifeHungerBar");
 		life.GetComponent<NewLifeAndHunger> ().resetHunger();
@@ -407,14 +408,16 @@ public class PlayerMovementNew : EventScript {
 					methodsToCall.Add ("madLady_destroyMadLady");
 
 					methodsDisabledUntilEventFinished.Add ("madLady_stopMadladyMovement");
-					methodsDisabledUntilEventFinished.Add ("createMadladyMenu");
+					methodsDisabledUntilEventFinished.Add ("madLady_createMadladyMenu");
 					
 					eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
 				}
 				break;
 
 			case "child":
-				if(hit.transform.tag == "child" && hit.transform.GetComponent<ChildControllerNew>().state == ChildControllerNew.BURNING) {
+				GameObject canvas = GameObject.Find ("Canvas");
+				bool isLastButtonHelpBurning = canvas.GetComponent<gameFunctions>().lastButtonClicked == "helpBurning";
+				if(hit.transform.tag == "child" && hit.transform.GetComponent<ChildControllerNew>().state == ChildControllerNew.BURNING && isLastButtonHelpBurning) {
 					methodsToCall.Add ("player_stopPlayerMovement");
 					methodsToCall.Add("player_executeExtinguisherEvent");
 					methodsToCall.Add("player_playNannyIdle");
@@ -448,56 +451,116 @@ public class PlayerMovementNew : EventScript {
 			ArrayList methodsDisabledUntilEventFinished = new ArrayList ();
 
 			switch (collision.transform.tag) {
-			case "brokenGlass":
-				if(isShortDistance && hit.transform == collision.transform) {
-					
-					if (hit.transform.name == "brokenGlass" && hit.transform.name == "brokenGlass") {
-						methodsToCall.Add ("player_stopPlayerMovement");
-						methodsToCall.Add ("player_playNannyIdle");
-						methodsToCall.Add ("player_removeBrokenGlass");
-					} else if (hit.transform.name == "brokenJar" && hit.transform.name == "brokenJar") {
-						methodsToCall.Add ("player_stopPlayerMovement");
-						methodsToCall.Add ("player_playNannyIdle");
-						methodsToCall.Add ("player_removeBrokenJar");
+				case "brokenGlass":
+					if (isShortDistance && hit.transform == collision.transform) {
+		
+							if (hit.transform.name == "brokenGlass" && hit.transform.name == "brokenGlass") {
+									methodsToCall.Add ("player_stopPlayerMovement");
+									methodsToCall.Add ("player_playNannyIdle");
+									methodsToCall.Add ("player_removeBrokenGlass");
+							} else if (hit.transform.name == "brokenJar" && hit.transform.name == "brokenJar") {
+									methodsToCall.Add ("player_stopPlayerMovement");
+									methodsToCall.Add ("player_playNannyIdle");
+									methodsToCall.Add ("player_removeBrokenJar");
+							}
+							methodsToCall.Add ("player_playNannyIdle");
+		
+							methodsDisabledUntilEventFinished.Add ("player_moveCharacterToClickedDestination");
+							methodsDisabledUntilEventFinished.Add ("madLady_goToPlayer");
+							methodsDisabledUntilEventFinished.Add ("player_removeBrokenGlass");
+							methodsDisabledUntilEventFinished.Add ("player_removeBrokenJar");
+							methodsDisabledUntilEventFinished.Add ("player_startFireExtinguish");
+							methodsDisabledUntilEventFinished.Add ("madLady_createMadladyMenu");
+		
+							eventDisp.addEvent (methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
 					}
-					methodsToCall.Add ("player_playNannyIdle");
-					
-					methodsDisabledUntilEventFinished.Add ("player_moveCharacterToClickedDestination");
-					methodsDisabledUntilEventFinished.Add ("madLady_goToPlayer");
-					methodsDisabledUntilEventFinished.Add ("player_removeBrokenGlass");
-					methodsDisabledUntilEventFinished.Add ("player_removeBrokenJar");
-					methodsDisabledUntilEventFinished.Add ("player_startFireExtinguish");
-					methodsDisabledUntilEventFinished.Add ("madLady_createMadladyMenu");
-					
-					eventDisp.addEvent (methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
-				}
-				break;
+					break;
 
-			case "fire":
-				if(hit.transform != null) {
-					if (hit.transform.tag == "fire" && hit.transform == collision.transform) {
-						methodsToCall.Add("player_playNannyWalking");
-						methodsToCall.Add("player_moveCharacterToClickedDestination");
-						methodsToCall.Add ("player_removeFire");
-						methodsToCall.Add ("player_playNannyIdle");
-						
-						methodsDisabledUntilEventFinished.Add ("player_moveCharacterToClickedDestination");
-						//methodsDisabledUntilEventFinished.Add ("madLady_goToPlayer");
-						methodsDisabledUntilEventFinished.Add ("player_removeBrokenGlass");
-						methodsDisabledUntilEventFinished.Add ("player_removeBrokenJar");
-						methodsDisabledUntilEventFinished.Add ("player_startFireExtinguish");
-						methodsDisabledUntilEventFinished.Add ("madLady_createMadladyMenu");
-
-						
-						eventDisp.addEvent (methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
-						
-					}
-				}
-				break;
+				case "fire":
+					if (hit.transform != null) {
+							if (hit.transform.tag == "fire" && hit.transform == collision.transform) {
+									methodsToCall.Add ("player_playNannyWalking");
+									methodsToCall.Add ("player_moveCharacterToClickedDestination");
+									methodsToCall.Add ("player_removeFire");
+									methodsToCall.Add ("player_playNannyIdle");
 			
+									methodsDisabledUntilEventFinished.Add ("player_moveCharacterToClickedDestination");
+									//methodsDisabledUntilEventFinished.Add ("madLady_goToPlayer");
+									methodsDisabledUntilEventFinished.Add ("player_removeBrokenGlass");
+									methodsDisabledUntilEventFinished.Add ("player_removeBrokenJar");
+									methodsDisabledUntilEventFinished.Add ("player_startFireExtinguish");
+									methodsDisabledUntilEventFinished.Add ("madLady_createMadladyMenu");
+
+			
+									eventDisp.addEvent (methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
+			
+							}
+					}
+					break;
+
+				case "brokenTv":
+					if (hit.transform != null) {
+							if (hit.transform.tag == "brokenTv" && hit.transform == collision.transform) {
+								if (hit.transform.parent.GetComponent<dangerFurni>().dangerDropped == true){
+									//methodsToCall.Add ("player_stopPlayerMovement");
+									methodsToCall.Add ("player_disableClick");		
+									methodsToCall.Add ("player_repair");
+									methodsToCall.Add ("child_cancelElectrifying");
+									methodsToCall.Add ("child_startChildRandomMovement");
+									methodsToCall.Add ("player_playNannyIdle");
+									methodsToCall.Add ("player_putTvCorrectly");
+									methodsToCall.Add ("player_enableClick");
+		
+									methodsDisabledUntilEventFinished.Add ("player_moveCharacterToClickedDestination");
+									//methodsDisabledUntilEventFinished.Add ("madLady_goToPlayer");
+									methodsDisabledUntilEventFinished.Add ("player_removeBrokenGlass");
+									methodsDisabledUntilEventFinished.Add ("player_removeBrokenJar");
+									methodsDisabledUntilEventFinished.Add ("player_startFireExtinguish");
+									methodsDisabledUntilEventFinished.Add ("madLady_createMadladyMenu");
+		
+									eventDisp.addEvent (methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
+								}
+							}
+					}
+					break;
 			}
 		}
 	}
 
+	void repair() {
+
+		StartCoroutine ("repairing");
+	}
+
+	IEnumerator repairing() {
+
+		GameObject tv = GameObject.Find ("tv");
+		transform.LookAt (tv.transform);
+
+		playAnimation("nanny_repair", 0.7f);
+		wrench.SetActive(true);
+
+		yield return new WaitForSeconds(2.5f);
+		GameObject tvTable = GameObject.Find ("tvTable");
+		tvTable.GetComponent<dangerFurni> ().dangerDropped = false;
+		wrench.SetActive(false);
+		eventFinishedCallback("repair");
+	}
+
+	void putTvCorrectly(){
+		GameObject tvTable = GameObject.Find ("tvTable");
+		tvTable.GetComponent<dangerFurni> ().dangerDropped = false;
+		tvTable.GetComponent<Animation> ().Stop ();
+		tvTable.GetComponent<Animation> ().Rewind();
+		tvTable.GetComponent<Animation> () ["tv_falling"].time = 1f;
+		tvTable.GetComponent<Animation> () ["tv_falling"].speed = -1.3f;
+		tvTable.GetComponent<Animation> ().Play ();
+		
+		ParticleSystem tvElectricity = GameObject.Find("electricity").GetComponent<ParticleSystem>();
+		tvElectricity.Stop();
+		tvElectricity.Clear();
+
+		eventFinishedCallback("putTvCorrectly");
+	}
 
 }

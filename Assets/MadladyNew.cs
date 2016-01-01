@@ -123,8 +123,10 @@ public class MadladyNew : EventScript {
 		} else {
 			playAnimation ("madlady_attack", 0.7f);
 		}
-		
-		GameObject.Find("child").GetComponent<ChildControllerNew>().hitAndPain(damageToChild);
+
+		GameObject child = GameObject.Find ("child");
+		child.GetComponent<ChildControllerNew>().hitAndPain(damageToChild);
+		child.GetComponent<ChildControllerNew> ().cancelBurningAndElectrifying ();
 	}
 
 	void OnCollisionStay(Collision collision) {

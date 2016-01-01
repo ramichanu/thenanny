@@ -21,7 +21,7 @@ public class fires : MonoBehaviour {
 	public void startFireBehaviour()
 	{
 		GameObject.Find ("AlertDangerSystem").GetComponent<DangerAlertSystem>().addDangerAlerts("fire");
-		InvokeRepeating("launchFire", 2, 4f);
+		InvokeRepeating("launchFire", 2, 6f);
 		//InvokeRepeating("removeFirstFireItem", 5, 10f);
 	}
 	void launchFire(){

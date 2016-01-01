@@ -8,6 +8,7 @@ public class gameFunctions : EventScript {
 	public int initialCountDown = 50;
 	public int countdown;
 	public Text totalMoney;
+	public string lastButtonClicked = "";
 	RaycastHit hit;
 	EventDispatcher eventDisp;
 
@@ -39,18 +40,17 @@ public class gameFunctions : EventScript {
 	void restCountdown(){
 		if (countdown > 0) {
 			countdown -= 1;
-			if(countdown == 0){
-				GameObject child = GameObject.Find ("lifeAndHunger");
-
-				int lives = (int)child.GetComponent<LifeAndHunger>().currentLife;
-				int initialLives = (int)child.GetComponent<LifeAndHunger>().totalLife;
-
-				PlayerPrefs.SetInt("lives", lives);
-				PlayerPrefs.SetInt("initialLives", initialLives);
-
-				Application.LoadLevel("endMenu");
-			}
 			GameObject.Find ("countdown").GetComponent<Text>().text = countdown.ToString();
+		} else {
+			GameObject lifeHungerBar = GameObject.Find ("lifeHungerBar");
+			
+			int lives = (int)lifeHungerBar.GetComponent<NewLifeAndHunger>().currentLife;
+			int initialLives = (int)lifeHungerBar.GetComponent<NewLifeAndHunger>().totalLife;
+			
+			PlayerPrefs.SetInt("lives", lives * 100);
+			PlayerPrefs.SetInt("initialLives", initialLives * 100);
+			
+			Application.LoadLevel("endMenu");
 		}
 	}
 
@@ -59,6 +59,12 @@ public class gameFunctions : EventScript {
 		if(hit.transform != null){
 			switch(hit.transform.tag){
 				case "child":
+
+					if(hit.transform.gameObject.GetComponent<ChildControllerNew>().state == ChildControllerNew.ELECTRIFYING) {
+						buttonOptions.Add("helpElectrifying");
+						break;
+					}
+
 					if(hit.transform.gameObject.GetComponent<ChildControllerNew>().state == ChildControllerNew.BURNING) {
 						buttonOptions.Add("helpBurning");
 					}
@@ -103,6 +109,7 @@ public class gameFunctions : EventScript {
 			case "child":
 				buttonStringType.Add("feed", "Dar biberon");
 				buttonStringType.Add("helpBurning", "Echar agua");
+				buttonStringType.Add("helpElectrifying", "¡Apartar!");
 				
 				break;
 			case "madLady":
@@ -119,6 +126,7 @@ public class gameFunctions : EventScript {
 		button.GetComponent<Button> ().onClick.AddListener (() => {
 			Destroy (GameObject.Find ("menu"));
 			callSelectedOption(hit, buttonType);
+			lastButtonClicked = buttonType;
 			GameObject canvas = GameObject.Find ("Canvas");
 			canvas.GetComponent<gameFunctions> ().pauseGame ();
 			

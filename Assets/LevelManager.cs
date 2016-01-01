@@ -7,8 +7,8 @@ public class LevelManager : EventScript {
 	bool isMadLadyInvoke = false;
 	// Use this for initialization
 	void Start () {
-		Invoke ("startCatAndDogPersecution", 2f);
-		Invoke ("launchDangerMadLady", 2f);
+		//Invoke ("startCatAndDogPersecution", 2f);
+		//Invoke ("launchDangerMadLady", 2f);
 		startLevel1 ();
 	}
 	
@@ -19,9 +19,9 @@ public class LevelManager : EventScript {
 
 	void startLevel1() {
 
-		//InvokeRepeating ("startCatAndDogIA", 5, 15);
-		InvokeRepeating ("startDangerMadLadyIA", 0, 15);
-		//InvokeRepeating ("startDangerCockroach", 15, 50);
+		InvokeRepeating ("startCatAndDogIA", 5, 15);
+		//InvokeRepeating ("startDangerMadLadyIA", 0, 15);
+		InvokeRepeating ("startDangerCockroach", 15, 50);
 	}
 
 	void startCatAndDogIA() {
