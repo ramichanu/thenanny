@@ -8,7 +8,7 @@ public class CockroachManager : EventScript {
 	// Use this for initialization
 	void Start () {
 		GameObject.Find ("AlertDangerSystem").GetComponent<DangerAlertSystem>().addDangerAlerts("cockroach");
-		InvokeRepeating ("instanciateCockroach", 0f, 10f);
+		InvokeRepeating ("instanciateCockroach", 0f, 15f);
 		NotificationCenter.DefaultCenter.AddObserver(this, "cockroachReachsTarget");
 		//Invoke ("instanciateCockroach", 2f);
 
@@ -83,6 +83,7 @@ public class CockroachManager : EventScript {
 				methodsDisabledUntilEventFinished.Add ("player_moveCharacterToClickedDestination");
 				methodsDisabledUntilEventFinished.Add ("madLady_createMadladyMenu");
 				methodsDisabledUntilEventFinished.Add ("child_createChildMenu");
+				methodsDisabledUntilEventFinished.Add ("child_repair");
 				methodsDisabledUntilEventFinished.Add ("cockroachManager_goToPlayer");
 
 				eventDisp.addEvent (methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);

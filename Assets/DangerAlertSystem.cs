@@ -42,6 +42,10 @@ public class DangerAlertSystem : EventScript {
 			GameObject.Find ("AlertDangerSystem").GetComponent<DangerAlertSystem> ().removeDangerAlert ("madLady");
 		}
 
+		if (GameObject.Find ("lightningStorm") == null && GameObject.Find ("dangerAlert_storm") != null) {
+			GameObject.Find ("AlertDangerSystem").GetComponent<DangerAlertSystem> ().removeDangerAlert ("storm");
+		}
+
 		if (GameObject.FindGameObjectsWithTag ("brokenGlass").Length == 0 && GameObject.Find ("dangerAlert_brokenGlass") != null) {
 			GameObject.Find ("AlertDangerSystem").GetComponent<DangerAlertSystem> ().removeDangerAlert ("brokenGlass");
 		}
@@ -105,6 +109,9 @@ public class DangerAlertSystem : EventScript {
 			break;
 		case "madLady":
 			target = GameObject.Find ("madLady");
+			break;
+		case "storm":
+			target = GameObject.Find ("player");
 			break;
 		case "cockroach":
 			GameObject[] cockroach = GameObject.FindGameObjectsWithTag("cockroach");

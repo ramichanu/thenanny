@@ -11,6 +11,7 @@ public class ChildControllerNew : EventScript {
 	public int state = IDLE;
 	public NavMeshAgent agent;
 	bool agentHasPath;
+	public bool isOutside = false;
 	Vector3 randomPosition;
 	Transform target;
 	ArrayList danger;
@@ -86,7 +87,21 @@ public class ChildControllerNew : EventScript {
 	}
 
 	public Vector3 getRandomMeshPosition () {
-		GameObject terrain = GameObject.FindWithTag ("terrainHome");
+
+		string terrainKind = "terrainHome";
+		int randomNumberUntil = 5;
+		bool isStormLightningActive = GameObject.Find ("lightningStorm") != null;
+
+		if (isStormLightningActive) {
+			randomNumberUntil = 1;
+		}
+		int insideOutsideHomeRandom = Random.Range (1, 10);
+
+		if (insideOutsideHomeRandom > randomNumberUntil && isStormLightningActive) {
+			terrainKind = "terrain";
+		}
+
+		GameObject terrain = GameObject.FindWithTag (terrainKind);
 		float xTerrainMin = terrain.GetComponent<Renderer>().bounds.min.x;
 		float xTerrainMax = terrain.GetComponent<Renderer>().bounds.max.x;
 		float zTerrainMin = terrain.GetComponent<Renderer>().bounds.min.z;
@@ -103,31 +118,33 @@ public class ChildControllerNew : EventScript {
 		gameObject.GetComponent<Animation>().Play(animation);
 	}
 
-	public void hitAndPain(float damage){
+	public void hitAndPain(float damage, bool stopChild){
 
 		playAnimation("child_pain", 0.5f);
 		
 		GameObject life = GameObject.Find ("lifeHungerBar");
 		life.GetComponent<NewLifeAndHunger> ().restLife (damage);
 		
-		StartCoroutine(painEffect());
-		StopCoroutine(painEffect());
-
+		StartCoroutine(painEffect(stopChild));
+		StopCoroutine(painEffect(stopChild));
 	}
 
-	public void hitAndPainElectrify(float damage){
+	public void hitAndPainElectrify(float damage, bool stopChild){
 		
 		playAnimation("child_pain", 0.5f);
 		
 		GameObject life = GameObject.Find ("lifeHungerBar");
 		life.GetComponent<NewLifeAndHunger> ().restLife (damage);
 		
-		StartCoroutine(painEffectElectrify());
-		StopCoroutine(painEffectElectrify());
-		
+		StartCoroutine(painEffectElectrify(stopChild));
+		StopCoroutine(painEffectElectrify(stopChild));	
 	}
 
-	public IEnumerator painEffect() {
+	public IEnumerator painEffect(bool stopChild) {
+		if (stopChild) {
+			stopChildMovement ();
+		}
+
 		Material painMaterial = Resources.Load("materials/pain", typeof(Material)) as Material;
 		SkinnedMeshRenderer childRenderer = GameObject.Find ("childMesh").GetComponent<SkinnedMeshRenderer> ();
 		Material oldMaterial = Resources.Load("materials/baby", typeof(Material)) as Material;
@@ -146,9 +163,17 @@ public class ChildControllerNew : EventScript {
 		childIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("imgs/hub/babyIcon");
 		childRenderer.material = oldMaterial;
 		yield return new WaitForSeconds(0.2f);
+
+		if (stopChild) {
+			startChildRandomMovement ();
+		}
 	}
 
-	public IEnumerator painEffectElectrify() {
+	public IEnumerator painEffectElectrify(bool stopChild) {
+		if (stopChild) {
+			stopChildMovement ();
+		}
+
 		Material painMaterial = Resources.Load("materials/baby_electrify", typeof(Material)) as Material;
 		SkinnedMeshRenderer childRenderer = GameObject.Find ("childMesh").GetComponent<SkinnedMeshRenderer> ();
 		Material oldMaterial = Resources.Load("materials/baby", typeof(Material)) as Material;
@@ -167,6 +192,10 @@ public class ChildControllerNew : EventScript {
 		childIcon.GetComponent<Image>().sprite = Resources.Load<Sprite>("imgs/hub/babyIcon");
 		childRenderer.material = oldMaterial;
 		yield return new WaitForSeconds(0.1f);
+
+		if (stopChild) {
+			startChildRandomMovement ();
+		}
 	}
 
 	ArrayList getDangerElements() {
@@ -234,11 +263,15 @@ public class ChildControllerNew : EventScript {
 					
 				}
 				break;
+			case "terrainHome":
+				isOutside = false;
+			break;
+
 		}
 	}
 
 	void painBrokenGlass(){
-		hitAndPain(0.07f);
+		hitAndPain(0.07f, false);
 		eventFinishedCallback("painBrokenGlass");
 	}
 
@@ -260,12 +293,36 @@ public class ChildControllerNew : EventScript {
 		eventFinishedCallback("painElectrify");
 	}
 
+	void launchElectrifyChildSeconds(){
+		StartCoroutine (electrifyChildSeconds(0.5f));
+
+		playAnimation("child_pain", 0.5f);
+		
+		GameObject life = GameObject.Find ("lifeHungerBar");
+		life.GetComponent<NewLifeAndHunger> ().restLife (0.3f);
+		
+		StartCoroutine(painEffect(true));
+		StopCoroutine(painEffect(true));
+	}
+
+	IEnumerator electrifyChildSeconds(float seconds){
+		ParticleSystem electrifyChild = transform.FindChild("electrify").GetComponent<ParticleSystem>();
+		if(!electrifyChild.isPlaying){
+			electrifyChild.Play();
+		}
+
+		yield return new WaitForSeconds (seconds);
+
+		electrifyChild.Stop();
+		electrifyChild.Clear();
+	}
+
 	void burningChild(){
-		hitAndPain (0.01f);	
+		hitAndPain (0.01f, true);	
 	}
 
 	void electrifyChild(){
-		hitAndPainElectrify (0.01f);	
+		hitAndPainElectrify (0.01f, false);	
 	}
 
 	void stopChildMovement(){
@@ -389,6 +446,56 @@ public class ChildControllerNew : EventScript {
 		methodsToCall.Add ("child_cancelBurning");
 		
 		eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
+	}
+
+	void OnTriggerExit(Collider collision) {
+		if (collision.transform.tag == "terrainHome") {
+			isOutside = true;
+		}
+	}
+
+	void OnCollisionEnter(Collision collision) {
+		if (collision.transform.tag == "lightning") {
+			launchElectrifyChildSeconds();
+		}
+	}
+
+	void goBack(){
+		ArrayList canInterruptBy = new ArrayList();
+		ArrayList methodsToCall = new ArrayList();
+		ArrayList methodsAfterInterrupt = new ArrayList();
+		ArrayList methodsDisabledUntilEventFinished = new ArrayList();
+
+		methodsToCall.Add ("player_disableClick");
+		methodsToCall.Add ("child_stopChildMovement");
+		methodsToCall.Add ("player_playNannyWalking");
+		methodsToCall.Add ("player_moveCharacterToClickedDestination");
+		methodsToCall.Add ("player_playNannyIdle");
+		methodsToCall.Add ("child_goBackHome");
+		methodsToCall.Add ("player_enableClick");
+		
+		eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
+		eventFinishedCallback("goBack");
+	}
+
+	void goBackHome(){
+		string terrainKind = "terrainHome";
+		
+		GameObject terrain = GameObject.FindWithTag (terrainKind);
+		float xTerrainMin = terrain.GetComponent<Renderer>().bounds.min.x;
+		float xTerrainMax = terrain.GetComponent<Renderer>().bounds.max.x;
+		float zTerrainMin = terrain.GetComponent<Renderer>().bounds.min.z;
+		float zTerrainMax = terrain.GetComponent<Renderer>().bounds.max.z;
+		Vector3 position = new Vector3(Random.Range(xTerrainMin, xTerrainMax), 0, Random.Range(zTerrainMin, zTerrainMax));
+		NavMeshHit hit;
+		NavMesh.SamplePosition(position, out hit, 10f, 1);
+		position = hit.position;
+
+		agent.SetDestination (position);
+		agentHasPath = true;
+
+		playAnimation("child_walking", 2.5f);
+		eventFinishedCallback("goBackHome");
 	}
 
 }

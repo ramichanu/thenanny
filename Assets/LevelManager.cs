@@ -20,8 +20,9 @@ public class LevelManager : EventScript {
 	void startLevel1() {
 
 		InvokeRepeating ("startCatAndDogIA", 5, 15);
-		//InvokeRepeating ("startDangerMadLadyIA", 0, 15);
-		InvokeRepeating ("startDangerCockroach", 15, 50);
+		InvokeRepeating ("startDangerMadLadyIA", 0, 15);
+		//InvokeRepeating ("startDangerCockroach", 15, 50);
+		InvokeRepeating ("startLightningStorm", 15, 50);
 	}
 
 	void startCatAndDogIA() {
@@ -31,8 +32,13 @@ public class LevelManager : EventScript {
 	}
 
 	void startDangerCockroach() {
-		int randomTime = Random.Range (0, 3);
+		int randomTime = Random.Range (0, 20);
 		Invoke ("launchDangerCockroach", randomTime);
+	}
+
+	void startLightningStorm() {
+		int randomTime = Random.Range (0, 3);
+		Invoke ("launchLightningStorm", randomTime);
 	}
 
 	void startDangerMadLadyIA() {
@@ -136,5 +142,19 @@ public class LevelManager : EventScript {
 		return position;
 	}
 
+	void launchLightningStorm(){
 
+		Vector3 portalEnterPosition = getPortalScenaryPosition();
+		GameObject lightningStorm = Instantiate(Resources.Load("scenary/lightningStorm")) as GameObject;
+		lightningStorm.name = "lightningStorm";
+		lightningStorm.transform.position = portalEnterPosition;
+		Invoke("removeLightingStorm", Random.Range (30, 50));
+	}
+
+	void removeLightingStorm(){
+		GameObject directionalLight = GameObject.Find ("directionalLight");
+
+		directionalLight.GetComponent<Light> ().intensity = 1;
+		Destroy(GameObject.Find ("lightningStorm"));
+	}
 }

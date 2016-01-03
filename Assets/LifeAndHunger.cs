@@ -116,7 +116,7 @@ public class LifeAndHunger : MonoBehaviour {
 		
 		if (hungerBar.GetComponent<Image> ().fillAmount == 1) {
 			GameObject child = GameObject.Find ("child");
-			child.GetComponent<ChildControllerNew>().hitAndPain(5);
+			child.GetComponent<ChildControllerNew>().hitAndPain(5, true);
 		}	
 	}
 

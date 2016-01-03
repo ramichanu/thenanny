@@ -68,7 +68,7 @@ public class NewLifeAndHunger : MonoBehaviour {
 
 	void childStarving(){
 		GameObject child = GameObject.Find ("child");
-		child.GetComponent<ChildControllerNew>().hitAndPain(0.03f);
+		child.GetComponent<ChildControllerNew>().hitAndPain(0.03f, true);
 	}
 
 	public void restLife(float restPercent){

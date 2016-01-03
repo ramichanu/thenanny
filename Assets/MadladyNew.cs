@@ -125,7 +125,7 @@ public class MadladyNew : EventScript {
 		}
 
 		GameObject child = GameObject.Find ("child");
-		child.GetComponent<ChildControllerNew>().hitAndPain(damageToChild);
+		child.GetComponent<ChildControllerNew>().hitAndPain(damageToChild, false);
 		child.GetComponent<ChildControllerNew> ().cancelBurningAndElectrifying ();
 	}
 

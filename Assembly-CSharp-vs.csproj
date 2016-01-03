@@ -80,6 +80,7 @@
      <Compile Include="Assets\SMAA-Unity-master\SMAA-Unity-master\SMAA\Scripts\Preset.cs" />
      <Compile Include="Assets\SMAA-Unity-master\SMAA-Unity-master\SMAA\Scripts\QualityPreset.cs" />
      <Compile Include="Assets\SMAA-Unity-master\SMAA-Unity-master\SMAA\Scripts\SMAA.cs" />
+     <Compile Include="Assets\Weather.cs" />
      <Compile Include="Assets\dangerFurni.cs" />
      <Compile Include="Assets\dangerItem.cs" />
      <Compile Include="Assets\dangerStrategy.cs" />

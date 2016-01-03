@@ -60,6 +60,11 @@ public class gameFunctions : EventScript {
 			switch(hit.transform.tag){
 				case "child":
 
+					if(hit.transform.gameObject.GetComponent<ChildControllerNew>().isOutside) {
+						buttonOptions.Add("goBack");
+						break;
+					}
+
 					if(hit.transform.gameObject.GetComponent<ChildControllerNew>().state == ChildControllerNew.ELECTRIFYING) {
 						buttonOptions.Add("helpElectrifying");
 						break;
@@ -110,6 +115,7 @@ public class gameFunctions : EventScript {
 				buttonStringType.Add("feed", "Dar biberon");
 				buttonStringType.Add("helpBurning", "Echar agua");
 				buttonStringType.Add("helpElectrifying", "¡Apartar!");
+				buttonStringType.Add("goBack", "Entra en casa :)");
 				
 				break;
 			case "madLady":
@@ -178,7 +184,7 @@ public class gameFunctions : EventScript {
 				ArrayList methodsToCall = new ArrayList();
 				ArrayList methodsAfterInterrupt = new ArrayList();
 				ArrayList methodsDisabledUntilEventFinished = new ArrayList();
-				Debug.Log (hit.transform.tag);
+
 				switch (hit.transform.tag) {
 				case "player":
 				case "terrain":

@@ -43,7 +43,7 @@ public class PlayerMovementNew : EventScript {
 				ArrayList methodsToCall = new ArrayList();
 				ArrayList methodsAfterInterrupt = new ArrayList();
 				ArrayList methodsDisabledUntilEventFinished = new ArrayList();
-				Debug.Log (hit.transform.tag);
+
 				switch (hit.transform.tag) {
 					case "player":
 					case "terrain":

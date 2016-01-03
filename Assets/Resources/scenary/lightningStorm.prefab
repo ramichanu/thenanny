@@ -1,14 +1,14 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &143774
+--- !u!1 &192564
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 416772}
-  - 114: {fileID: 11489680}
+  - 4: {fileID: 435202}
+  - 114: {fileID: 11464878}
   m_Layer: 0
   m_Name: lightningStorm
   m_TagString: Untagged
@@ -16,24 +16,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &416772
+--- !u!4 &435202
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 143774}
+  m_GameObject: {fileID: 192564}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.90999985, y: -.219999999, z: -.479999989}
+  m_LocalPosition: {x: -10.7143469, y: 39.1821365, z: -17.8755875}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11489680
+--- !u!114 &11464878
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 143774}
+  m_GameObject: {fileID: 192564}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9cf60d00d057ad94fbc9c423f52a4cf2, type: 3}
@@ -48,5 +48,5 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 143774}
+  m_RootGameObject: {fileID: 192564}
   m_IsPrefabParent: 1
