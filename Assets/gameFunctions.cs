@@ -112,14 +112,14 @@ public class gameFunctions : EventScript {
 
 		switch(hit.transform.tag){
 			case "child":
-				buttonStringType.Add("feed", "Dar biberon");
-				buttonStringType.Add("helpBurning", "Echar agua");
-				buttonStringType.Add("helpElectrifying", "¡Apartar!");
-				buttonStringType.Add("goBack", "Entra en casa :)");
+				buttonStringType.Add("feed", "Alimentar");
+				buttonStringType.Add("helpBurning", "Apagar fuego");
+				buttonStringType.Add("helpElectrifying", "Apartar");
+				buttonStringType.Add("goBack", "Vuelve a casa");
 				
 				break;
 			case "madLady":
-				buttonStringType.Add("kickOut", "Echar");
+				buttonStringType.Add("kickOut", "¡Fuera!");
 			break;
 		}
 		

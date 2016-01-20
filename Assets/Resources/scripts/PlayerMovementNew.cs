@@ -50,7 +50,6 @@ public class PlayerMovementNew : EventScript {
 					case "brokenGlass":
 					case "brokenTv":
 					case "terrainHome":
-
 						canInterruptBy.Add("moveCharacterToClickedDestination");
 						canInterruptBy.Add("goToPlayer");
 						canInterruptBy.Add("removeBrokenGlass");
@@ -238,6 +237,10 @@ public class PlayerMovementNew : EventScript {
 	}
 
 	void moveCharacterToClickedDestination(){
+		if (Camera.main.GetComponent<CameraScript> ().target == null) {
+			eventCameraToNanny ();
+		}
+
 		agent.SetDestination(new Vector3(hit.point.x, transform.position.y, hit.point.z));
 		hasPath = true;
 	}
@@ -562,5 +565,17 @@ public class PlayerMovementNew : EventScript {
 
 		eventFinishedCallback("putTvCorrectly");
 	}
+
+	void eventCameraToNanny(){
+		ArrayList canInterruptBy = new ArrayList();
+		ArrayList methodsToCall = new ArrayList();
+		ArrayList methodsAfterInterrupt = new ArrayList();
+		
+		methodsToCall.Add("camera_moveCamToNanny");
+		
+		ArrayList methodsDisabledUntilEventFinished = new ArrayList();
+		eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
+	}
+
 
 }

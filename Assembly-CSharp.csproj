@@ -53,7 +53,10 @@
      <Compile Include="Assets\CockroachManager.cs" />
      <Compile Include="Assets\CockroachNew.cs" />
      <Compile Include="Assets\DangerAlertSystem.cs" />
+     <Compile Include="Assets\Depth Mask Example\Scripts\Animation\BobbingBoat.cs" />
+     <Compile Include="Assets\Depth Mask Example\Scripts\SetRenderQueue.cs" />
      <Compile Include="Assets\DogControllerNew.cs" />
+     <Compile Include="Assets\DragCamera.cs" />
      <Compile Include="Assets\EventScript.cs" />
      <Compile Include="Assets\FXAA\Scripts\FXAA.cs" />
      <Compile Include="Assets\FXAA\Scripts\FXAAPostEffectsBase.cs" />
@@ -95,6 +98,8 @@
      <None Include="Assets\Standard Assets\Effects\Projectors\Guidelines.txt" />
      <None Include="Assets\SMAA-Unity-master\SMAA-Unity-master\SMAA\Shaders\SMAA.shader" />
      <None Include="Assets\FXAA\Shaders\Fxaa3.shader" />
+     <None Include="Assets\Shaders\DepthMask.shader" />
+     <None Include="Assets\Depth Mask Example\Shaders\DepthMask.shader" />
      <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonBasicOutline.shader" />
      <None Include="Assets\SMAA-Unity-master\SMAA-Unity-master\SMAA\Shaders\SMAA.cginc" />
      <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonLitOutline.shader" />

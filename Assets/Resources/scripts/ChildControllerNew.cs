@@ -141,7 +141,7 @@ public class ChildControllerNew : EventScript {
 	}
 
 	public IEnumerator painEffect(bool stopChild) {
-		if (stopChild) {
+		if (stopChild && state != ELECTRIFYING) {
 			stopChildMovement ();
 		}
 
@@ -164,13 +164,13 @@ public class ChildControllerNew : EventScript {
 		childRenderer.material = oldMaterial;
 		yield return new WaitForSeconds(0.2f);
 
-		if (stopChild) {
+		if (stopChild && state != ELECTRIFYING) {
 			startChildRandomMovement ();
 		}
 	}
 
 	public IEnumerator painEffectElectrify(bool stopChild) {
-		if (stopChild) {
+		if (stopChild && state != ELECTRIFYING) {
 			stopChildMovement ();
 		}
 
@@ -193,7 +193,7 @@ public class ChildControllerNew : EventScript {
 		childRenderer.material = oldMaterial;
 		yield return new WaitForSeconds(0.1f);
 
-		if (stopChild) {
+		if (stopChild && state != ELECTRIFYING) {
 			startChildRandomMovement ();
 		}
 	}

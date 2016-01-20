@@ -120,6 +120,8 @@ public class DangerAlertSystem : EventScript {
 		}
 		
 		moveCameraToTarget(target);
+		
+		eventFinishedCallback("moveCameraToAlertClicked");
 	}
 
 	public void removeDangerAlert(string type){
@@ -164,7 +166,7 @@ public class DangerAlertSystem : EventScript {
 	}
 	
 	public void moveCameraToTarget(GameObject target) {
-		Transform originalTarget = Camera.main.GetComponent<CameraScript> ().target;
+		Transform originalTarget = transform;
 		Camera.main.GetComponent<CameraScript> ().target = null;
 		StartCoroutine(moveCameraToTargetSlowly(Camera.main.gameObject, target.transform.tag, originalTarget));
 	}
@@ -180,16 +182,5 @@ public class DangerAlertSystem : EventScript {
 			yield return null;
 
 		}
-
-		if (needsReturnToOriginalPosition) {
-			needsReturnToOriginalPosition = false;
-			StopCoroutine("moveCameraToTargetSlowly");
-			StartCoroutine(moveCameraToTargetSlowly(objectToMove, originalTarget.tag, originalTarget.transform));
-		} else {
-			needsReturnToOriginalPosition = true;
-			Camera.main.GetComponent<CameraScript> ().target = originalTarget.transform;
-			eventFinishedCallback("moveCameraToAlertClicked");
-		}
-
 	}
 }

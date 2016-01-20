@@ -12,7 +12,7 @@ Platform assembly: C:\Users\Rami\Documents\TheNanny\epicNanny_Data\Managed\Assem
 Loading C:\Users\Rami\Documents\TheNanny\epicNanny_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
 Platform assembly: C:\Users\Rami\Documents\TheNanny\epicNanny_Data\Managed\UnityEngine.UI.dll (this message is harmless)
 Loading C:\Users\Rami\Documents\TheNanny\epicNanny_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-- Completed reload, in  0.051 seconds
+- Completed reload, in  0.049 seconds
 desktop: 1366x768 60Hz; virtual: 1366x768 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
@@ -25,7 +25,7 @@ NullReferenceException: Object reference not set to an instance of an object
 (Filename:  Line: -1)
 
 Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 3.929294 ms
+UnloadTime: 34.399559 ms
 CharacterController settings are invalid.
  
 (Filename:  Line: 382)
@@ -35,8 +35,8 @@ CharacterController settings are invalid.
 (Filename:  Line: 382)
 
 
-Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 1826.
-Total: 0.490287 ms (FindLiveObjects: 0.064376 ms CreateObjectMapping: 0.055979 ms MarkObjects: 0.363400 ms  DeleteObjects: 0.006064 ms)
+Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 1984.
+Total: 7.887654 ms (FindLiveObjects: 0.059712 ms CreateObjectMapping: 0.062511 ms MarkObjects: 7.750035 ms  DeleteObjects: 0.014928 ms)
 
 NullReferenceException: Object reference not set to an instance of an object
   at Event.eventIsFinished (.Notification options) [0x00000] in <filename unknown>:0 
@@ -50,30 +50,17 @@ PlayerMovementNew:OnTriggerStay(Collider)
  
 (Filename:  Line: -1)
 
-Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 2.049782 ms
-
-Unloading 462 unused Assets to reduce memory usage. Loaded Objects now: 213.
-Total: 1.113525 ms (FindLiveObjects: 0.076038 ms CreateObjectMapping: 0.034520 ms MarkObjects: 0.292492 ms  DeleteObjects: 0.708607 ms)
-
 NullReferenceException: Object reference not set to an instance of an object
-  at MenuFunctions.Start () [0x00000] in <filename unknown>:0 
+  at Event.eventIsFinished (.Notification options) [0x00000] in <filename unknown>:0 
+UnityEngine.Component:SendMessage(String, Object, SendMessageOptions)
+NotificationCenter:PostNotification(Notification)
+NotificationCenter:PostNotification(Component, String, Hashtable)
+Event:replaceMethodsToMethodsAfterInterrupt()
+EventDispatcher:interrumptEventsByNewEvent(GameObject, String)
+EventDispatcher:addEvent(ArrayList, ArrayList, ArrayList, ArrayList)
+PlayerMovementNew:OnTriggerStay(Collider)
  
 (Filename:  Line: -1)
-
-Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.771117 ms
-CharacterController settings are invalid.
- 
-(Filename:  Line: 382)
-
-CharacterController settings are invalid.
- 
-(Filename:  Line: 382)
-
-
-Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 1838.
-Total: 0.473493 ms (FindLiveObjects: 0.062043 ms CreateObjectMapping: 0.046183 ms MarkObjects: 0.359201 ms  DeleteObjects: 0.005597 ms)
 
 NullReferenceException: Object reference not set to an instance of an object
   at Event.eventIsFinished (.Notification options) [0x00000] in <filename unknown>:0 
@@ -87,57 +74,27 @@ PlayerMovementNew:OnTriggerStay(Collider)
  
 (Filename:  Line: -1)
 
-ArgumentOutOfRangeException: Index is less than 0 or more than or equal to the list count.
-Parameter name: index
-0
-  at System.Collections.ArrayList.ThrowNewArgumentOutOfRangeException (System.String name, System.Object actual, System.String message) [0x00000] in <filename unknown>:0 
-  at System.Collections.ArrayList.get_Item (Int32 index) [0x00000] in <filename unknown>:0 
-  at DangerAlertSystem.sortAlertsAfterRemove (Vector3 dangerRemovedPosition, Int32 fromDangerAlertMoving) [0x00000] in <filename unknown>:0 
-  at DangerAlertSystem.removeDangerAlert (System.String type) [0x00000] in <filename unknown>:0 
-  at DangerAlertSystem.removeAlertsAuto () [0x00000] in <filename unknown>:0 
-  at DangerAlertSystem.Update () [0x00000] in <filename unknown>:0 
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:get_transform ()
+  at PlayerMovementNew+<sweepingAnimationAndRemoveBrokenGlass>c__Iterator11.MoveNext () [0x00000] in <filename unknown>:0 
  
 (Filename:  Line: -1)
 
-Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-NullReferenceException: Object reference not set to an instance of an object
-  at lightningStorm.OnDestroy () [0x00000] in <filename unknown>:0 
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:get_transform ()
+  at PlayerMovementNew+<sweepingAnimationAndRemoveBrokenGlass>c__Iterator11.MoveNext () [0x00000] in <filename unknown>:0 
  
 (Filename:  Line: -1)
 
-UnloadTime: 3.183833 ms
-
-Unloading 460 unused Assets to reduce memory usage. Loaded Objects now: 213.
-Total: 1.847323 ms (FindLiveObjects: 0.182866 ms CreateObjectMapping: 0.064376 ms MarkObjects: 0.755723 ms  DeleteObjects: 0.839692 ms)
-
-NullReferenceException: Object reference not set to an instance of an object
-  at MenuFunctions.Start () [0x00000] in <filename unknown>:0 
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:get_transform ()
+  at PlayerMovementNew+<sweepingAnimationAndRemoveBrokenGlass>c__Iterator11.MoveNext () [0x00000] in <filename unknown>:0 
  
 (Filename:  Line: -1)
 
-Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.471160 ms
-CharacterController settings are invalid.
- 
-(Filename:  Line: 382)
-
-CharacterController settings are invalid.
- 
-(Filename:  Line: 382)
-
-
-Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 1838.
-Total: 0.468828 ms (FindLiveObjects: 0.057378 ms CreateObjectMapping: 0.048049 ms MarkObjects: 0.357335 ms  DeleteObjects: 0.005597 ms)
-
-NullReferenceException: Object reference not set to an instance of an object
-  at Event.eventIsFinished (.Notification options) [0x00000] in <filename unknown>:0 
-UnityEngine.Component:SendMessage(String, Object, SendMessageOptions)
-NotificationCenter:PostNotification(Notification)
-NotificationCenter:PostNotification(Component, String, Hashtable)
-Event:replaceMethodsToMethodsAfterInterrupt()
-EventDispatcher:interrumptEventsByNewEvent(GameObject, String)
-EventDispatcher:addEvent(ArrayList, ArrayList, ArrayList, ArrayList)
-PlayerMovementNew:OnTriggerStay(Collider)
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:get_transform ()
+  at PlayerMovementNew+<sweepingAnimationAndRemoveBrokenGlass>c__Iterator11.MoveNext () [0x00000] in <filename unknown>:0 
  
 (Filename:  Line: -1)
 
@@ -147,18 +104,18 @@ NullReferenceException: Object reference not set to an instance of an object
  
 (Filename:  Line: -1)
 
-UnloadTime: 3.876580 ms
+UnloadTime: 2.922182 ms
 
-Unloading 451 unused Assets to reduce memory usage. Loaded Objects now: 213.
-Total: 1.788078 ms (FindLiveObjects: 0.182399 ms CreateObjectMapping: 0.073706 ms MarkObjects: 0.705808 ms  DeleteObjects: 0.822432 ms)
+Unloading 494 unused Assets to reduce memory usage. Loaded Objects now: 219.
+Total: 0.922745 ms (FindLiveObjects: 0.121291 ms CreateObjectMapping: 0.060645 ms MarkObjects: 0.293431 ms  DeleteObjects: 0.446911 ms)
 
 NullReferenceException: Object reference not set to an instance of an object
   at MenuFunctions.Start () [0x00000] in <filename unknown>:0 
  
 (Filename:  Line: -1)
 
-Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.375995 ms
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.376935 ms
 CharacterController settings are invalid.
  
 (Filename:  Line: 382)
@@ -168,6 +125,22 @@ CharacterController settings are invalid.
 (Filename:  Line: 382)
 
 
-Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 1838.
-Total: 0.494485 ms (FindLiveObjects: 0.059711 ms CreateObjectMapping: 0.047116 ms MarkObjects: 0.380660 ms  DeleteObjects: 0.006064 ms)
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 1996.
+Total: 0.506623 ms (FindLiveObjects: 0.083970 ms CreateObjectMapping: 0.059712 ms MarkObjects: 0.356875 ms  DeleteObjects: 0.005598 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+NullReferenceException: Object reference not set to an instance of an object
+  at lightningStorm.OnDestroy () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+UnloadTime: 2.862003 ms
+
+Unloading 494 unused Assets to reduce memory usage. Loaded Objects now: 219.
+Total: 0.875628 ms (FindLiveObjects: 0.050848 ms CreateObjectMapping: 0.048982 ms MarkObjects: 0.236051 ms  DeleteObjects: 0.539278 ms)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at MenuFunctions.Start () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
 
