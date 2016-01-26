@@ -80,7 +80,7 @@ NavMeshSettings:
     agentRadius: .119999997
     agentHeight: 2
     agentSlope: 0
-    agentClimb: .400000006
+    agentClimb: .0299999993
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     accuratePlacement: 0
@@ -11257,7 +11257,7 @@ Prefab:
       objectReference: {fileID: 1509348382}
     - target: {fileID: 11484550, guid: 90c5bed823e702646a640d2e8dc375d5, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: rotate
+      value: rotateEvent
       objectReference: {fileID: 0}
     - target: {fileID: 11484550, guid: 90c5bed823e702646a640d2e8dc375d5, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -14510,7 +14510,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1224365248}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.230000004, y: .93900001, z: -3.67000008}
+  m_LocalPosition: {x: .25999999, y: .93900001, z: -3.67000008}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 197051025}
@@ -14525,7 +14525,7 @@ Light:
   serializedVersion: 6
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 5.30000019
+  m_Intensity: 3.47000003
   m_Range: 2.43053198
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -14840,7 +14840,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 140810, guid: ae298e0c44772a04ba50db4882bf9019, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 140810, guid: ae298e0c44772a04ba50db4882bf9019, type: 2}
       propertyPath: m_Layer
@@ -14953,7 +14953,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 6508786, guid: 4654ac6515bd48743a44340c874b09cf, type: 2}
       propertyPath: m_Size.x
-      value: 99.4300003
+      value: 117.400002
       objectReference: {fileID: 0}
     - target: {fileID: 6508786, guid: 4654ac6515bd48743a44340c874b09cf, type: 2}
       propertyPath: m_Size.z
@@ -16613,7 +16613,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1509348376}
   m_LocalRotation: {x: .351731658, y: -.303404868, z: .121660523, w: .877171099}
-  m_LocalPosition: {x: 2.31999993, y: 4.59000015, z: -6.23000002}
+  m_LocalPosition: {x: 2.38000011, y: 4.88999987, z: -6.46999979}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -16629,10 +16629,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ffe3f63c75a1524e8647362548c31d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1745279066}
-  distance: 5
+  target: {fileID: 0}
+  distance: 10
   xSpeed: 120
   isRotating: 0
+  isCamFollowPlayer: 0
 --- !u!54 &1509348384
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -18098,7 +18099,7 @@ MeshRenderer:
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
+  m_ReflectionProbeUsage: 0
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 1
@@ -18320,7 +18321,7 @@ Light:
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 1
     m_Resolution: 0
     m_Strength: .479999989
     m_Bias: 0
@@ -20053,6 +20054,22 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: a0587e6a6e1b53c4799c925c2920546e, type: 3}
       propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300002, guid: a0587e6a6e1b53c4799c925c2920546e, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: a0587e6a6e1b53c4799c925c2920546e, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: a0587e6a6e1b53c4799c925c2920546e, type: 3}
+      propertyPath: m_UseLightProbes
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: a0587e6a6e1b53c4799c925c2920546e, type: 3}
+      propertyPath: m_CastShadows
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -23193,6 +23210,18 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 54d480b603d1d114eab6ee333c746ecd, type: 2}
+    - target: {fileID: 100002, guid: 96cf4c7a38dc3044bbca5c2bcb9d3f8d, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 96cf4c7a38dc3044bbca5c2bcb9d3f8d, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 96cf4c7a38dc3044bbca5c2bcb9d3f8d, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 96cf4c7a38dc3044bbca5c2bcb9d3f8d, type: 3}
   m_IsPrefabParent: 0
@@ -24335,8 +24364,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 92.0899963, y: 22, z: 53.8800011}
-  m_Center: {x: 0, y: 7.30999994, z: 0}
+  m_Size: {x: 92.0899963, y: 22, z: 47.9000015}
+  m_Center: {x: 0, y: 7.30999994, z: -4.30000019}
 --- !u!1 &1890765589
 GameObject:
   m_PrefabParentObject: {fileID: 100006, guid: 5d331b23ed09d4b4fab4018623c1f393, type: 3}

@@ -42,7 +42,7 @@ public class DangerAlertSystem : EventScript {
 			GameObject.Find ("AlertDangerSystem").GetComponent<DangerAlertSystem> ().removeDangerAlert ("madLady");
 		}
 
-		if (GameObject.Find ("lightningStorm") == null && GameObject.Find ("dangerAlert_storm") != null) {
+		if (GameObject.Find ("lightningStorm") != null && GameObject.Find ("child").GetComponent<ChildControllerNew>().isOutside == false) {
 			GameObject.Find ("AlertDangerSystem").GetComponent<DangerAlertSystem> ().removeDangerAlert ("storm");
 		}
 
@@ -84,15 +84,20 @@ public class DangerAlertSystem : EventScript {
 			
 			ArrayList methodsToCall = new ArrayList();
 			methodsToCall.Add("AlertDangerSystem_moveCameraToAlertClicked");
+			canInterruptBy.Add ("moveCharacterToClickedDestination");
+			canInterruptBy.Add ("moveCameraToAlertClicked");
 			
 			ArrayList methodsAfterInterrupt = new ArrayList();
 			ArrayList methodsDisabledUntilEventFinished = new ArrayList();
+			methodsAfterInterrupt.Add ("AlertDangerSystem_removeAllCoroutines");
 			
 			eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);		
 		});
 	}
 
 	void moveCameraToAlertClicked() {
+		Camera.main.GetComponent<CamFunctions> ().target = null;
+		Camera.main.GetComponent<CamFunctions> ().isCamFollowPlayer = false;
 		GameObject target = new GameObject();
 		switch(alertClicked){
 		case "fire":
@@ -111,7 +116,7 @@ public class DangerAlertSystem : EventScript {
 			target = GameObject.Find ("madLady");
 			break;
 		case "storm":
-			target = GameObject.Find ("player");
+			target = GameObject.Find ("child");
 			break;
 		case "cockroach":
 			GameObject[] cockroach = GameObject.FindGameObjectsWithTag("cockroach");
@@ -120,8 +125,7 @@ public class DangerAlertSystem : EventScript {
 		}
 		
 		moveCameraToTarget(target);
-		
-		eventFinishedCallback("moveCameraToAlertClicked");
+
 	}
 
 	public void removeDangerAlert(string type){
@@ -167,20 +171,27 @@ public class DangerAlertSystem : EventScript {
 	
 	public void moveCameraToTarget(GameObject target) {
 		Transform originalTarget = transform;
-		Camera.main.GetComponent<CameraScript> ().target = null;
-		StartCoroutine(moveCameraToTargetSlowly(Camera.main.gameObject, target.transform.tag, originalTarget));
+		Camera.main.GetComponent<CamFunctions> ().target = null;
+		StartCoroutine(moveCameraToTargetSlowly(target.transform.tag, originalTarget));
 	}
 
-	IEnumerator moveCameraToTargetSlowly(GameObject objectToMove, string targetGameObjectName, Transform originalTarget){
+	IEnumerator moveCameraToTargetSlowly(string targetGameObjectName, Transform originalTarget){
 		float t = 0f;
-		Vector3 initialPosition = objectToMove.transform.position;
-		while(t < 5 && objectToMove.transform.position != originalTarget.position)
+		while(t < 5)
 		{
+			Vector3 initialPosition = Camera.main.transform.position;
 			Transform targetTransform = GameObject.FindWithTag (targetGameObjectName).gameObject.transform;
 			t += Time.deltaTime / 0.5f;
-			objectToMove.transform.position = Vector3.Lerp(initialPosition, targetTransform.position, t);
+			Camera.main.transform.position = Vector3.Lerp(initialPosition, targetTransform.position + Camera.main.transform.forward * -10f, t);
 			yield return null;
 
 		}
+		
+		eventFinishedCallback("moveCameraToAlertClicked");
+		int r = 1;
+	}
+	void removeAllCoroutines(){
+		StopAllCoroutines ();
+		eventFinishedCallback("removeAllCoroutines");
 	}
 }

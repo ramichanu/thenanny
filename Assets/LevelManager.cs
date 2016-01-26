@@ -22,7 +22,7 @@ public class LevelManager : EventScript {
 		InvokeRepeating ("startCatAndDogIA", 5, 15);
 		InvokeRepeating ("startDangerMadLadyIA", 0, 15);
 		//InvokeRepeating ("startDangerCockroach", 15, 50);
-		InvokeRepeating ("startLightningStorm", 15, 50);
+		//InvokeRepeating ("startLightningStorm", 15, 50);
 	}
 
 	void startCatAndDogIA() {

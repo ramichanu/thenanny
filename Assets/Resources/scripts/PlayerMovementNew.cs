@@ -44,6 +44,7 @@ public class PlayerMovementNew : EventScript {
 				ArrayList methodsAfterInterrupt = new ArrayList();
 				ArrayList methodsDisabledUntilEventFinished = new ArrayList();
 
+
 				switch (hit.transform.tag) {
 					case "player":
 					case "terrain":
@@ -58,7 +59,9 @@ public class PlayerMovementNew : EventScript {
 						canInterruptBy.Add("repair");
 
 						methodsToCall.Add("player_playNannyWalking");
+						methodsToCall.Add("camera_moveCamToNanny");
 						methodsToCall.Add("player_moveCharacterToClickedDestination");
+						//methodsToCall.Add("camera_disableCamFollowPlayer");
 						methodsToCall.Add("player_playNannyIdle");
 
 						methodsAfterInterrupt.Add("player_stopPlayerMovement");
@@ -67,7 +70,7 @@ public class PlayerMovementNew : EventScript {
 						break;
 
 					case "fire":
-						
+						methodsToCall.Add("camera_moveCamToNanny");
 						methodsToCall.Add("player_startFireExtinguish");
 						canInterruptBy.Add("playNannyCockroach");
 						canInterruptBy.Add ("removeFire");
@@ -78,6 +81,7 @@ public class PlayerMovementNew : EventScript {
 						break;
 					case "cockroach":
 						GameObject.Find ("cockroachManager").GetComponent<CockroachManager>().hit = hit.transform.gameObject;
+						methodsToCall.Add("camera_moveCamToNanny");
 						methodsToCall.Add("cockroach_stopCockroachMovement");
 						methodsToCall.Add("player_playNannyWalking");
 						methodsToCall.Add("player_moveCharacterToCockroach");
@@ -92,6 +96,7 @@ public class PlayerMovementNew : EventScript {
 						break;
 					case "child":
 						methodsToCall.Add("child_createChildMenu");
+						methodsToCall.Add("camera_moveCamToNanny");
 
 						methodsDisabledUntilEventFinished.Add ("player_moveCharacterToClickedDestination");
 						methodsDisabledUntilEventFinished.Add ("player_nannyTakeOut");
@@ -103,6 +108,8 @@ public class PlayerMovementNew : EventScript {
 						break;
 					case "madLady":
 						methodsToCall.Add("madLady_createMadladyMenu");
+						methodsToCall.Add("camera_moveCamToNanny");
+
 						methodsDisabledUntilEventFinished.Add ("player_nannyTakeOut");
 						methodsDisabledUntilEventFinished.Add ("player_moveCharacterToClickedDestination");
 
@@ -111,6 +118,7 @@ public class PlayerMovementNew : EventScript {
 					break;
 					case "babyBottle":
 					hit.point = hit.transform.position + transform.forward * 0.1f;
+						methodsToCall.Add("camera_moveCamToNanny");
 						canInterruptBy.Add("moveCharacterToClickedDestination");
 						canInterruptBy.Add("goToPlayer");
 						canInterruptBy.Add("removeBrokenGlass");
@@ -237,10 +245,6 @@ public class PlayerMovementNew : EventScript {
 	}
 
 	void moveCharacterToClickedDestination(){
-		if (Camera.main.GetComponent<CameraScript> ().target == null) {
-			eventCameraToNanny ();
-		}
-
 		agent.SetDestination(new Vector3(hit.point.x, transform.position.y, hit.point.z));
 		hasPath = true;
 	}
@@ -262,7 +266,7 @@ public class PlayerMovementNew : EventScript {
 	void destinationReachedLogic () {
 
 		if (
-			(agent.remainingDistance <= float.Epsilon && agent.pathStatus == NavMeshPathStatus.PathComplete && hasPath)
+			(agent.remainingDistance <= float.Epsilon && agent.pathStatus == NavMeshPathStatus.PathComplete && hasPath && !agent.pathPending)
 			|| (Vector3.Distance (transform.position, agent.destination) == 0.4f)
 		    ) {
 			hasPath = false;
@@ -564,17 +568,6 @@ public class PlayerMovementNew : EventScript {
 		tvElectricity.Clear();
 
 		eventFinishedCallback("putTvCorrectly");
-	}
-
-	void eventCameraToNanny(){
-		ArrayList canInterruptBy = new ArrayList();
-		ArrayList methodsToCall = new ArrayList();
-		ArrayList methodsAfterInterrupt = new ArrayList();
-		
-		methodsToCall.Add("camera_moveCamToNanny");
-		
-		ArrayList methodsDisabledUntilEventFinished = new ArrayList();
-		eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
 	}
 
 

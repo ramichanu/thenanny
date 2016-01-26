@@ -47,7 +47,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\AlertDanger.cs" />
-     <Compile Include="Assets\CameraScript.cs" />
+     <Compile Include="Assets\CamFunctions.cs" />
      <Compile Include="Assets\CatControllerNew.cs" />
      <Compile Include="Assets\Cockroach.cs" />
      <Compile Include="Assets\CockroachManager.cs" />

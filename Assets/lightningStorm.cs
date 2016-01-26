@@ -15,7 +15,6 @@ public class lightningStorm : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		GameObject.Find ("weather").GetComponent<Weather> ().raining (true);
-		GameObject.Find ("AlertDangerSystem").GetComponent<DangerAlertSystem>().addDangerAlerts("storm");
 		GameObject directionalLight = GameObject.Find ("directionalLight");
 		//GameObject playerLight = GameObject.Find ("playerLight");
 
@@ -27,7 +26,7 @@ public class lightningStorm : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-	
+		launchAlertStorm ();
 	}
 
 	public class VertexConnection
@@ -103,6 +102,11 @@ public class lightningStorm : MonoBehaviour {
 			time += Time.deltaTime;
 			flash.GetComponent<Light> ().intensity = Mathf.Lerp(fadeStart, fadeEnd, time / fadeTime);
 			yield return null;
+		}
+	}
+	public void launchAlertStorm(){
+		if(GameObject.Find ("child").GetComponent<ChildControllerNew>().isOutside) {
+			GameObject.Find ("AlertDangerSystem").GetComponent<DangerAlertSystem>().addDangerAlerts("storm");
 		}
 	}
 }

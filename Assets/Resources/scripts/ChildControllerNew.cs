@@ -245,9 +245,11 @@ public class ChildControllerNew : EventScript {
 				eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
 				break;
 			case "fire":
-				state = BURNING;
-				methodsToCall.Add("child_painFire");
-				eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
+				if(state != BURNING) {
+					state = BURNING;
+					methodsToCall.Add("child_painFire");
+					eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
+				}
 				break;
 			case "brokenTv":
 				if (collision.transform.parent.GetComponent<dangerFurni>().dangerDropped == true){
