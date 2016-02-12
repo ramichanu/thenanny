@@ -55,6 +55,7 @@ public class CamFunctions: EventScript {
 		zoomByMouseScrollWeel ();
 		rotationCamera ();
 		limitScreenMovement ();
+		Debug.DrawLine (Camera.main.transform.position, Camera.main.transform.forward);
 		ray = new Ray (Camera.main.transform.position, Camera.main.transform.forward);
 	}
 
@@ -95,6 +96,8 @@ public class CamFunctions: EventScript {
 	void outsideSceneThenMoveCam(){
 		if (!Physics.Raycast(ray, out hit)) {
 			moveCamToNanny();
+		}else {
+			//Debug.Log (hit.transform.tag);
 		}
 	}
 
@@ -113,9 +116,19 @@ public class CamFunctions: EventScript {
 
 	IEnumerator moveToTargetSlowly(Vector3 targetPosition){
 		targetPosition = Camera.main.WorldToScreenPoint (targetPosition);
+		/*targetPosition = Camera.main.WorldToScreenPoint (targetPosition);
 		Vector3 initialPosition = Camera.main.WorldToScreenPoint (transform.position);
 		transform.position = Camera.main.ScreenToWorldPoint(Vector3.Lerp(initialPosition, targetPosition, Time.deltaTime*0.3f));
-		yield return null;
+		yield return null;*/
+
+		float t = 0f;
+		while(t < 2)
+		{
+			t += Time.deltaTime / 0.2f;
+			Vector3 initialPosition = Camera.main.WorldToScreenPoint (transform.position);
+			transform.position = Camera.main.ScreenToWorldPoint(Vector3.Lerp(initialPosition, targetPosition, Time.deltaTime*0.02f));
+			yield return null;
+		}
 	}
 
 

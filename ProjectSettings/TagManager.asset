@@ -29,6 +29,7 @@ TagManager:
   - heart
   - broom
   - alertDanger
+  - door
   layers:
   - Default
   - TransparentFX
@@ -40,7 +41,7 @@ TagManager:
   - 
   - ignoreLayer
   - blockRaycast
-  - 
+  - terrain
   - 
   - 
   - 

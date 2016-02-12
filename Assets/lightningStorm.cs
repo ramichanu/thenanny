@@ -39,6 +39,7 @@ public class lightningStorm : MonoBehaviour {
 			Mesh mesh = (Mesh)GameObject.Find ("lightningTerrain").GetComponent<MeshFilter> ().mesh;
 			mesh.RecalculateBounds ();
 			Vector3[] vertices = mesh.vertices;
+			Debug.Log ("rayacoplaca");
 			GameObject lightning = Instantiate (Resources.Load ("scenary/lightning"), Vector3.zero, Quaternion.identity) as GameObject;
 			Vector3 randomVertice = vertices [Random.Range (0, vertices.Length)];
 			lightning.transform.name = "lightning" + Random.Range (1, 50);

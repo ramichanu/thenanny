@@ -42,10 +42,11 @@ public class CockroachNew : EventScript {
 		switch (collision.transform.name) {
 		case "player":
 			if(isShortDistance) {
-				GameObject.Find ("cockroachManager").GetComponent<CockroachManager>().hit = gameObject;
-				GameObject.Find ("cockroachManager").GetComponent<CockroachManager>().gotoPlayerEvent();
-			
-				isHitPlayer = true;
+				if (!GameObject.Find ("cockroachManager").GetComponent<CockroachManager>().isCockroachAnnoying) {
+					GameObject.Find ("cockroachManager").GetComponent<CockroachManager>().hit = gameObject;
+					GameObject.Find ("cockroachManager").GetComponent<CockroachManager>().gotoPlayerEvent();
+					isHitPlayer = true;
+				}
 			}
 			break;
 		}

@@ -21,8 +21,8 @@ public class LevelManager : EventScript {
 
 		InvokeRepeating ("startCatAndDogIA", 5, 15);
 		InvokeRepeating ("startDangerMadLadyIA", 0, 15);
-		//InvokeRepeating ("startDangerCockroach", 15, 50);
-		//InvokeRepeating ("startLightningStorm", 15, 50);
+		//InvokeRepeating ("startDangerCockroach", 10, 30);
+		InvokeRepeating ("startLightningStorm", 1, 50);
 	}
 
 	void startCatAndDogIA() {
@@ -37,7 +37,7 @@ public class LevelManager : EventScript {
 	}
 
 	void startLightningStorm() {
-		int randomTime = Random.Range (0, 3);
+		int randomTime = Random.Range (15, 50);
 		Invoke ("launchLightningStorm", randomTime);
 	}
 

@@ -1,10 +1,12 @@
-﻿Shader "Outlined/Silhouetted Bumped Diffuse" {
+﻿Shader "Outlined/Silhouetted With Glow In" {
 	Properties {
-		_Color ("Main Color", Color) = (.5,.5,.5,1)
+		_Color ("Color Tint", Color) = (.5,.5,.5,1)
 		_OutlineColor ("Outline Color", Color) = (0,0,0,1)
 		_Outline ("Outline width", Range (0.0, 0.03)) = .005
 		_MainTex ("Base (RGB)", 2D) = "white" { }
 		_BumpMap ("Bumpmap", 2D) = "bump" {}
+		_RimColor ("Rim Color", Color) = (0.26,0.19,0.16,0.0)
+      	_RimPower ("Rim Power", Range(0.5,8.0)) = 3.0
 	}
  
 CGINCLUDE
@@ -31,7 +33,7 @@ v2f vert(appdata v) {
 	float3 norm   = mul ((float3x3)UNITY_MATRIX_IT_MV, v.normal);
 	float2 offset = TransformViewToProjection(norm.xy);
  
-	o.pos.xy += offset * _Outline;
+	o.pos.xy += offset * o.pos.z * _Outline;
 	o.color = _OutlineColor;
 	return o;
 }
@@ -39,19 +41,25 @@ ENDCG
  
 	SubShader {
 		Tags { "Queue" = "Transparent" }
+		
  
 		// note that a vertex shader is specified here but its using the one above
 		Pass {
 			Name "OUTLINE"
 			Tags { "LightMode" = "Always" }
-			Cull Off
+			Lighting On
+			Cull Back
 			ZWrite Off
 			ZTest Always
+			
+			Material {
+               Emission [_Color]
+            }
  
 			// you can choose what kind of blending mode you want for the outline
-			Blend SrcAlpha OneMinusSrcAlpha // Normal
+			//Blend SrcAlpha OneMinusSrcAlpha // Normal
 			//Blend One One // Additive
-			//Blend One OneMinusDstColor // Soft Additive
+			Blend One OneMinusDstColor // Soft Additive
 			//Blend DstColor Zero // Multiplicative
 			//Blend DstColor SrcColor // 2x Multiplicative
  
@@ -71,13 +79,18 @@ CGPROGRAM
 struct Input {
 	float2 uv_MainTex;
 	float2 uv_BumpMap;
+	float3 viewDir;
 };
 sampler2D _MainTex;
 sampler2D _BumpMap;
+float4 _RimColor;
+float _RimPower;
 uniform float3 _Color;
 void surf(Input IN, inout SurfaceOutput o) {
 	o.Albedo = tex2D(_MainTex, IN.uv_MainTex).rgb * _Color;
 	o.Normal = UnpackNormal(tex2D(_BumpMap, IN.uv_BumpMap));
+	half rim = 1.0 - saturate(dot (normalize(IN.viewDir), o.Normal));
+    o.Emission = _RimColor.rgb * pow (rim, _RimPower);
 }
 ENDCG
  
@@ -95,9 +108,9 @@ ENDCG
 			Offset 15,15
  
 			// you can choose what kind of blending mode you want for the outline
-			Blend SrcAlpha OneMinusSrcAlpha // Normal
+			//Blend SrcAlpha OneMinusSrcAlpha // Normal
 			//Blend One One // Additive
-			//Blend One OneMinusDstColor // Soft Additive
+			Blend One OneMinusDstColor // Soft Additive
 			//Blend DstColor Zero // Multiplicative
 			//Blend DstColor SrcColor // 2x Multiplicative
  

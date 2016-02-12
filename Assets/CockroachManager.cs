@@ -4,7 +4,7 @@ using System.Collections;
 public class CockroachManager : EventScript {
 
 	public GameObject hit;
-	bool isCockroachAnnoying = false;
+	public bool isCockroachAnnoying = false;
 	// Use this for initialization
 	void Start () {
 		GameObject.Find ("AlertDangerSystem").GetComponent<DangerAlertSystem>().addDangerAlerts("cockroach");
@@ -55,10 +55,11 @@ public class CockroachManager : EventScript {
 		GameObject.Find ("player").GetComponent<PlayerMovementNew>().insecticide.SetActive(false);
 
 		Destroy (hit);
+		StopAllCoroutines ();
 		isCockroachAnnoying = false;
 
 		GameObject[] cockroachs = GameObject.FindGameObjectsWithTag ("cockroach");
-		if (cockroachs.Length == 0) {
+		if (cockroachs.Length == 1) {
 			CancelInvoke ("instanciateCockroach");
 			Destroy (gameObject);
 		}

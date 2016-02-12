@@ -34,7 +34,7 @@ public class DangerAlertSystem : EventScript {
 			GameObject.Find ("AlertDangerSystem").GetComponent<DangerAlertSystem> ().removeDangerAlert ("fire");
 		}
 
-		if (tv.GetComponent<dangerFurni> ().dangerDropped == false) {
+		if (tv != null && tv.GetComponent<dangerFurni> ().dangerDropped == false) {
 			GameObject.Find ("AlertDangerSystem").GetComponent<DangerAlertSystem> ().removeDangerAlert ("electricity");
 		}
 
@@ -42,7 +42,7 @@ public class DangerAlertSystem : EventScript {
 			GameObject.Find ("AlertDangerSystem").GetComponent<DangerAlertSystem> ().removeDangerAlert ("madLady");
 		}
 
-		if (GameObject.Find ("lightningStorm") != null && GameObject.Find ("child").GetComponent<ChildControllerNew>().isOutside == false) {
+		if (GameObject.Find ("lightningStorm") == null || GameObject.Find ("child").GetComponent<ChildControllerNew>().isOutside == false) {
 			GameObject.Find ("AlertDangerSystem").GetComponent<DangerAlertSystem> ().removeDangerAlert ("storm");
 		}
 

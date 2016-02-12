@@ -117,14 +117,15 @@ public class MadladyNew : EventScript {
 	void hitChild(bool andYelling = false){
 
 		float damageToChild = 0.07f;
-		
+		GameObject child = GameObject.Find ("child");
+		StartCoroutine (child.GetComponent<ChildControllerNew>().throwBloodCoroutine());
 		if (andYelling) {
 			playAnimation ("madlady_attack_yelling", 0.7f);
 		} else {
 			playAnimation ("madlady_attack", 0.7f);
 		}
 
-		GameObject child = GameObject.Find ("child");
+
 		child.GetComponent<ChildControllerNew>().hitAndPain(damageToChild, false);
 		child.GetComponent<ChildControllerNew> ().cancelBurningAndElectrifying ();
 	}
@@ -148,7 +149,7 @@ public class MadladyNew : EventScript {
 
 	IEnumerator delayFewSecondsAndFinish(){
 		playAnimationQueued("madlady_idle", 0.3f);
-		int seconds = Random.Range (2, 4);
+		int seconds = Random.Range (4, 6);
 		yield return new WaitForSeconds(seconds);
 		eventFinishedCallback("stopFewSecondsAndFinish");
 	}

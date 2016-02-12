@@ -3,12 +3,9 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class ChildControllerNew : EventScript {
-	public const int IDLE = 0;
-	public const int BURNING = 1;
-	public const int ELECTRIFYING = 2;
-	public const int STARVING = 3;
-
-	public int state = IDLE;
+	public bool isBurning = false;
+	public bool isElectrifying = false;
+	
 	public NavMeshAgent agent;
 	bool agentHasPath;
 	public bool isOutside = false;
@@ -16,7 +13,7 @@ public class ChildControllerNew : EventScript {
 	Transform target;
 	ArrayList danger;
 
-
+	private bool hasCollision = false;
 	// Use this for initialization
 	void Start () {
 		agentHasPath = false;
@@ -32,7 +29,7 @@ public class ChildControllerNew : EventScript {
 	}
 
 	void startChildRandomMovementEvent(){
-		if (state == ELECTRIFYING) {
+		if (isElectrifying) {
 			eventFinishedCallback("startChildRandomMovementEvent");
 		}
 		ArrayList canInterruptBy = new ArrayList();
@@ -141,7 +138,7 @@ public class ChildControllerNew : EventScript {
 	}
 
 	public IEnumerator painEffect(bool stopChild) {
-		if (stopChild && state != ELECTRIFYING) {
+		if (stopChild && !isElectrifying) {
 			stopChildMovement ();
 		}
 
@@ -164,13 +161,13 @@ public class ChildControllerNew : EventScript {
 		childRenderer.material = oldMaterial;
 		yield return new WaitForSeconds(0.2f);
 
-		if (stopChild && state != ELECTRIFYING) {
+		if (stopChild && !isElectrifying) {
 			startChildRandomMovement ();
 		}
 	}
 
 	public IEnumerator painEffectElectrify(bool stopChild) {
-		if (stopChild && state != ELECTRIFYING) {
+		if (stopChild && !isElectrifying) {
 			stopChildMovement ();
 		}
 
@@ -193,7 +190,7 @@ public class ChildControllerNew : EventScript {
 		childRenderer.material = oldMaterial;
 		yield return new WaitForSeconds(0.1f);
 
-		if (stopChild && state != ELECTRIFYING) {
+		if (stopChild && !isElectrifying) {
 			startChildRandomMovement ();
 		}
 	}
@@ -242,11 +239,12 @@ public class ChildControllerNew : EventScript {
 		switch(collision.transform.tag) {
 			case "brokenGlass":
 				methodsToCall.Add("child_painBrokenGlass");
+				methodsToCall.Add("child_throwBlood");
 				eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
 				break;
 			case "fire":
-				if(state != BURNING) {
-					state = BURNING;
+				if(!isBurning) {
+					isBurning = true;
 					methodsToCall.Add("child_painFire");
 					eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
 				}
@@ -254,7 +252,7 @@ public class ChildControllerNew : EventScript {
 			case "brokenTv":
 				if (collision.transform.parent.GetComponent<dangerFurni>().dangerDropped == true){
 
-					state = ELECTRIFYING;
+					isElectrifying = true;
 					methodsToCall.Add("child_painElectrify");
 					methodsToCall.Add("child_stopChildMovement");
 					methodsToCall.Add("child_stopAgentRandomMovement");
@@ -267,6 +265,7 @@ public class ChildControllerNew : EventScript {
 				break;
 			case "terrainHome":
 				isOutside = false;
+
 			break;
 
 		}
@@ -275,6 +274,29 @@ public class ChildControllerNew : EventScript {
 	void painBrokenGlass(){
 		hitAndPain(0.07f, false);
 		eventFinishedCallback("painBrokenGlass");
+	}
+
+	public void throwBlood(){
+		StartCoroutine ("throwBloodCoroutine");
+		eventFinishedCallback("throwBlood");
+	}
+
+	public IEnumerator throwBloodCoroutine() {
+		yield return new WaitForSeconds (0.2f);
+		ParticleSystem babyBlood = GameObject.Find("babyBlood").GetComponent<ParticleSystem>();
+		ParticleSystem babyBloodSplat = GameObject.Find("babyBloodSplat").GetComponent<ParticleSystem>();
+
+		babyBlood.Play();
+		babyBloodSplat.Play();
+
+
+		yield return new WaitForSeconds (0.5f);
+
+		babyBlood.Stop();
+		babyBlood.Clear();
+
+		babyBloodSplat.Stop();
+
 	}
 
 	void painFire(){
@@ -418,7 +440,7 @@ public class ChildControllerNew : EventScript {
 	}
 
 	void cancelElectrifying() {
-		state = IDLE;
+		isElectrifying = false;
 		ParticleSystem electrifyChild = transform.FindChild("electrify").GetComponent<ParticleSystem>();
 		if(electrifyChild.isPlaying){
 			electrifyChild.Stop();
@@ -429,7 +451,7 @@ public class ChildControllerNew : EventScript {
 	}
 
 	void fireOff() {
-		state = IDLE;
+		isBurning = false;
 		ParticleSystem fireChild = GameObject.Find("fireChild").GetComponent<ParticleSystem>();
 		fireChild.Stop();
 		fireChild.Clear();
@@ -457,9 +479,16 @@ public class ChildControllerNew : EventScript {
 	}
 
 	void OnCollisionEnter(Collision collision) {
-		if (collision.transform.tag == "lightning") {
+		if (collision.transform.tag == "lightning" && !hasCollision) {
+			hasCollision = true;
+			StartCoroutine("resetCollision");
 			launchElectrifyChildSeconds();
 		}
+	}
+
+	IEnumerator resetCollision() {
+		yield return new WaitForSeconds (2f);
+		hasCollision = false;
 	}
 
 	void goBack(){
@@ -473,7 +502,8 @@ public class ChildControllerNew : EventScript {
 		methodsToCall.Add ("player_playNannyWalking");
 		methodsToCall.Add ("player_moveCharacterToClickedDestination");
 		methodsToCall.Add ("player_playNannyIdle");
-		methodsToCall.Add ("child_goBackHome");
+		//methodsToCall.Add ("child_goBackHome");
+		methodsToCall.Add ("player_carryChild");
 		methodsToCall.Add ("player_enableClick");
 		
 		eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
@@ -499,5 +529,4 @@ public class ChildControllerNew : EventScript {
 		playAnimation("child_walking", 2.5f);
 		eventFinishedCallback("goBackHome");
 	}
-
 }

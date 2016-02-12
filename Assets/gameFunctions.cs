@@ -56,21 +56,24 @@ public class gameFunctions : EventScript {
 
 	public void createClickMenu(GameObject hit){
 		ArrayList buttonOptions = new ArrayList();
+		Vector3 buttonPos = new Vector3 ();
+
 		if(hit.transform != null){
 			switch(hit.transform.tag){
 				case "child":
-
 					if(hit.transform.gameObject.GetComponent<ChildControllerNew>().isOutside) {
 						buttonOptions.Add("goBack");
+						buttonPos = Camera.main.WorldToScreenPoint(hit.transform.position);
 						break;
 					}
 
-					if(hit.transform.gameObject.GetComponent<ChildControllerNew>().state == ChildControllerNew.ELECTRIFYING) {
+					if(hit.transform.gameObject.GetComponent<ChildControllerNew>().isElectrifying) {
 						buttonOptions.Add("helpElectrifying");
+						buttonPos = Camera.main.WorldToScreenPoint(hit.transform.position);
 						break;
 					}
 
-					if(hit.transform.gameObject.GetComponent<ChildControllerNew>().state == ChildControllerNew.BURNING) {
+					if(hit.transform.gameObject.GetComponent<ChildControllerNew>().isBurning) {
 						buttonOptions.Add("helpBurning");
 					}
 
@@ -78,14 +81,20 @@ public class gameFunctions : EventScript {
 					if(playerHasBabbyBottle) {
 						buttonOptions.Add("feed");
 					}
+				buttonPos = Camera.main.WorldToScreenPoint(hit.transform.position);
 					
 				break;
 				case "madLady":
 				buttonOptions.Add("kickOut");
+				buttonPos = Camera.main.WorldToScreenPoint(hit.transform.position);
+				break;
+				case "player":
+				buttonOptions.Add("putDown");
+				buttonPos = Input.mousePosition;
 				break;
 			}
 			
-			Vector3 buttonPos = Camera.main.WorldToScreenPoint(hit.transform.position);
+
 			
 			if(buttonOptions.Count > 0){
 				//to stop child
@@ -120,6 +129,9 @@ public class gameFunctions : EventScript {
 				break;
 			case "madLady":
 				buttonStringType.Add("kickOut", "¡Fuera!");
+			break;
+			case "player":
+				buttonStringType.Add("putDown", "Dejar en el suelo");
 			break;
 		}
 		
@@ -190,12 +202,18 @@ public class gameFunctions : EventScript {
 				case "terrain":
 				case "brokenGlass":
 				case "terrainHome":
-					GameObject.Instantiate(Resources.Load("scenary/clickEffectTerrain"), hit.point + new Vector3(0f, 0.03f, 0f), Quaternion.identity);
-				break;
+					StartCoroutine("clickEffect");
+					break;
 				}
 			}
 
 		}
+	}
+
+	IEnumerator clickEffect(){
+		GameObject clickEffect = (GameObject)GameObject.Instantiate(Resources.Load("scenary/clickEffectTerrain"), hit.point + new Vector3(0f, 0.03f, 0f), Quaternion.identity);
+		yield return new WaitForSeconds(1);
+		Destroy(clickEffect);
 	}
 
 

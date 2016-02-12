@@ -16,6 +16,7 @@ public class PlayerMovementNew : EventScript {
 	bool hasPath = false;
 	public bool isClickEnabled = true;
 	public bool hasBabyBottle = false;
+	public bool isCarryingChild = false;
 
 	void Start () {
 		agent = GetComponent<NavMeshAgent> ();
@@ -24,6 +25,7 @@ public class PlayerMovementNew : EventScript {
 	
 
 	void Update () {
+
 		if (Input.GetMouseButtonDown (0) && isClickEnabled) {
 			bool isOverUI = UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject ();
 			if(isOverUI) {
@@ -44,98 +46,144 @@ public class PlayerMovementNew : EventScript {
 				ArrayList methodsAfterInterrupt = new ArrayList();
 				ArrayList methodsDisabledUntilEventFinished = new ArrayList();
 
-
-				switch (hit.transform.tag) {
+				if(isCarryingChild)
+				{
+					switch (hit.transform.tag) {
 					case "player":
-					case "terrain":
 					case "brokenGlass":
 					case "brokenTv":
 					case "terrainHome":
+						methodsToCall.Add("player_createPlayerMenu");
+						break;
+					case "terrain":
 						canInterruptBy.Add("moveCharacterToClickedDestination");
 						canInterruptBy.Add("goToPlayer");
 						canInterruptBy.Add("removeBrokenGlass");
 						canInterruptBy.Add("removeBrokenJar");
 						canInterruptBy.Add("takeBabyBottle");
 						canInterruptBy.Add("repair");
-
+						
 						methodsToCall.Add("player_playNannyWalking");
 						methodsToCall.Add("camera_moveCamToNanny");
 						methodsToCall.Add("player_moveCharacterToClickedDestination");
 						//methodsToCall.Add("camera_disableCamFollowPlayer");
 						methodsToCall.Add("player_playNannyIdle");
-
-						methodsAfterInterrupt.Add("player_stopPlayerMovement");
-
-						eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
-						break;
-
-					case "fire":
-						methodsToCall.Add("camera_moveCamToNanny");
-						methodsToCall.Add("player_startFireExtinguish");
-						canInterruptBy.Add("playNannyCockroach");
-						canInterruptBy.Add ("removeFire");
-						methodsAfterInterrupt.Add("player_stopPlayerMovement");
-						
-						
-						eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
-						break;
-					case "cockroach":
-						GameObject.Find ("cockroachManager").GetComponent<CockroachManager>().hit = hit.transform.gameObject;
-						methodsToCall.Add("camera_moveCamToNanny");
-						methodsToCall.Add("cockroach_stopCockroachMovement");
-						methodsToCall.Add("player_playNannyWalking");
-						methodsToCall.Add("player_moveCharacterToCockroach");
-						methodsToCall.Add("cockroachManager_destroyCockroach");
-						methodsToCall.Add("player_stopPlayerMovement");
-						methodsToCall.Add("player_playNannyIdle");
-
-						canInterruptBy.Add ("goToPlayer");
-						methodsDisabledUntilEventFinished.Add ("player_moveCharacterToCockroach");
-						methodsDisabledUntilEventFinished.Add ("player_moveCharacterToClickedDestination");
-						eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
-						break;
-					case "child":
-						methodsToCall.Add("child_createChildMenu");
-						methodsToCall.Add("camera_moveCamToNanny");
-
-						methodsDisabledUntilEventFinished.Add ("player_moveCharacterToClickedDestination");
-						methodsDisabledUntilEventFinished.Add ("player_nannyTakeOut");
-						methodsDisabledUntilEventFinished.Add ("child_helpBurning");
-						methodsDisabledUntilEventFinished.Add ("child_fireOff");
-						methodsDisabledUntilEventFinished.Add ("child_createChildMenu");
-						
-						eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
-						break;
-					case "madLady":
-						methodsToCall.Add("madLady_createMadladyMenu");
-						methodsToCall.Add("camera_moveCamToNanny");
-
-						methodsDisabledUntilEventFinished.Add ("player_nannyTakeOut");
-						methodsDisabledUntilEventFinished.Add ("player_moveCharacterToClickedDestination");
-
-						eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
-
-					break;
-					case "babyBottle":
-					hit.point = hit.transform.position + transform.forward * 0.1f;
-						methodsToCall.Add("camera_moveCamToNanny");
-						canInterruptBy.Add("moveCharacterToClickedDestination");
-						canInterruptBy.Add("goToPlayer");
-						canInterruptBy.Add("removeBrokenGlass");
-						canInterruptBy.Add("removeBrokenJar");
-						canInterruptBy.Add("takeBabyBottle");
-						
-						methodsToCall.Add("player_playNannyWalking");
-						methodsToCall.Add("player_moveCharacterToClickedDestination");
-						methodsToCall.Add("player_playNannyIdle");
-						methodsToCall.Add("player_playNannyTakeBabyBottle");
-						methodsToCall.Add ("player_takeBabyBottle");
-						methodsToCall.Add ("player_playNannyIdle");
 						
 						methodsAfterInterrupt.Add("player_stopPlayerMovement");
-						
-						eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
-					break;
+						break;
+					}
+					eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
+
+				} else {
+
+					switch (hit.transform.tag) {
+						case "player":
+						case "terrain":
+						case "brokenGlass":
+						case "brokenTv":
+						case "terrainHome":
+							canInterruptBy.Add("moveCharacterToClickedDestination");
+							canInterruptBy.Add("goToPlayer");
+							canInterruptBy.Add("removeBrokenGlass");
+							canInterruptBy.Add("removeBrokenJar");
+							canInterruptBy.Add("takeBabyBottle");
+							canInterruptBy.Add("repair");
+
+							methodsToCall.Add("player_playNannyWalking");
+							methodsToCall.Add("camera_moveCamToNanny");
+							methodsToCall.Add("player_moveCharacterToClickedDestination");
+							//methodsToCall.Add("camera_disableCamFollowPlayer");
+							methodsToCall.Add("player_playNannyIdle");
+
+							methodsAfterInterrupt.Add("player_stopPlayerMovement");
+
+							eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
+							break;
+
+						case "fire":
+							methodsToCall.Add("camera_moveCamToNanny");
+							methodsToCall.Add("player_startFireExtinguish");
+							canInterruptBy.Add("playNannyCockroach");
+							canInterruptBy.Add ("removeFire");
+							methodsAfterInterrupt.Add("player_stopPlayerMovement");
+							
+							
+							eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
+							break;
+						case "cockroach":
+							if(GameObject.Find ("cockroachManager").GetComponent<CockroachManager>().hit != hit.transform.gameObject
+						   	&& !GameObject.Find ("cockroachManager").GetComponent<CockroachManager>().isCockroachAnnoying) {
+						   		methodsToCall.Add("camera_moveCamToNanny");
+								methodsToCall.Add("cockroach_stopCockroachMovement");
+								methodsToCall.Add("player_playNannyWalking");
+								methodsToCall.Add("player_moveCharacterToCockroach");
+								methodsToCall.Add("cockroachManager_destroyCockroach");
+								methodsToCall.Add("player_stopPlayerMovement");
+								methodsToCall.Add("player_playNannyIdle");
+								
+								canInterruptBy.Add ("goToPlayer");
+								methodsDisabledUntilEventFinished.Add ("player_moveCharacterToCockroach");
+								methodsDisabledUntilEventFinished.Add ("player_playNannyCockroach");
+								methodsDisabledUntilEventFinished.Add ("player_moveCharacterToClickedDestination");
+								eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
+
+							}
+							if(GameObject.Find ("cockroachManager").GetComponent<CockroachManager>().isCockroachAnnoying
+						   	&& GameObject.Find ("cockroachManager").GetComponent<CockroachManager>().hit == hit.transform.gameObject){
+								methodsToCall.Add("cockroachManager_destroyCockroach");
+								methodsToCall.Add("player_stopPlayerMovement");
+								methodsToCall.Add("player_playNannyIdle");
+
+								canInterruptBy.Add ("goToPlayer");
+								methodsDisabledUntilEventFinished.Add ("player_moveCharacterToCockroach");
+								methodsDisabledUntilEventFinished.Add ("player_playNannyCockroach");
+								methodsDisabledUntilEventFinished.Add ("player_moveCharacterToClickedDestination");
+								eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
+							}
+							break;
+						case "child":
+							methodsToCall.Add("child_createChildMenu");
+							methodsToCall.Add("camera_moveCamToNanny");
+
+							methodsDisabledUntilEventFinished.Add ("player_moveCharacterToClickedDestination");
+							methodsDisabledUntilEventFinished.Add ("player_nannyTakeOut");
+							methodsDisabledUntilEventFinished.Add ("child_helpBurning");
+							methodsDisabledUntilEventFinished.Add ("child_fireOff");
+							methodsDisabledUntilEventFinished.Add ("child_createChildMenu");
+							
+							eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
+							break;
+						case "madLady":
+							methodsToCall.Add("madLady_createMadladyMenu");
+							methodsToCall.Add("camera_moveCamToNanny");
+
+							methodsDisabledUntilEventFinished.Add ("player_nannyTakeOut");
+							methodsDisabledUntilEventFinished.Add ("player_moveCharacterToClickedDestination");
+
+							eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
+
+						break;
+						case "babyBottle":
+						hit.point = hit.transform.position + transform.forward * 0.1f;
+							methodsToCall.Add("camera_moveCamToNanny");
+							canInterruptBy.Add("moveCharacterToClickedDestination");
+							canInterruptBy.Add("goToPlayer");
+							canInterruptBy.Add("removeBrokenGlass");
+							canInterruptBy.Add("removeBrokenJar");
+							canInterruptBy.Add("takeBabyBottle");
+							
+							methodsToCall.Add("player_playNannyWalking");
+							methodsToCall.Add("player_moveCharacterToClickedDestination");
+							methodsToCall.Add("player_playNannyIdle");
+							methodsToCall.Add("player_playNannyTakeBabyBottle");
+							methodsToCall.Add ("player_takeBabyBottle");
+							methodsToCall.Add ("player_playNannyIdle");
+							
+							methodsAfterInterrupt.Add("player_stopPlayerMovement");
+							
+							eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
+						break;
+					}
 				}
 			}
 		}
@@ -319,13 +367,24 @@ public class PlayerMovementNew : EventScript {
 
 	public void playNannyWalking() {
 		gameObject.GetComponent<Animation> ().Stop ();
-		playAnimation("nanny_walking", 3f);
+
+		if (isCarryingChild) {
+			playAnimation("nanny_walking_pickup", 3f);
+		} else {
+			playAnimation("nanny_walking", 3f);
+		}
 		eventFinishedCallback("playNannyWalking");
 	}
 
 	public void playNannyIdle() {
 		gameObject.GetComponent<Animation> ().Stop ();
-		playAnimation("nanny_idle", 0.3f);
+
+		if (isCarryingChild) {
+			playAnimation("nanny_idle_pickup", 0.3f);
+		} else {
+			playAnimation("nanny_idle", 0.3f);
+		}
+
 		eventFinishedCallback("playNannyIdle");
 	}
 
@@ -424,7 +483,7 @@ public class PlayerMovementNew : EventScript {
 			case "child":
 				GameObject canvas = GameObject.Find ("Canvas");
 				bool isLastButtonHelpBurning = canvas.GetComponent<gameFunctions>().lastButtonClicked == "helpBurning";
-				if(hit.transform.tag == "child" && hit.transform.GetComponent<ChildControllerNew>().state == ChildControllerNew.BURNING && isLastButtonHelpBurning) {
+				if(hit.transform.tag == "child" && hit.transform.GetComponent<ChildControllerNew>().isBurning && isLastButtonHelpBurning) {
 					methodsToCall.Add ("player_stopPlayerMovement");
 					methodsToCall.Add("player_executeExtinguisherEvent");
 					methodsToCall.Add("player_playNannyIdle");
@@ -569,6 +628,67 @@ public class PlayerMovementNew : EventScript {
 
 		eventFinishedCallback("putTvCorrectly");
 	}
+	void carryChild() {
+		playAnimation("nanny_pickup_child", 0.7f);
+		GameObject child = GameObject.Find ("child");
+		GameObject pickUpChild = GameObject.Find ("pickUpChild");
 
+		isCarryingChild = true;
+		child.GetComponent<NavMeshAgent>().enabled = false;
+		child.transform.parent = pickUpChild.transform;
+		child.transform.position = pickUpChild.transform.position;
+		eventFinishedCallback("carryChild");
+	}
+
+	void createPlayerMenu() {
+		GameObject child = transform.gameObject;
+		GameObject.Find ("Canvas").GetComponent<gameFunctions>().createClickMenu(gameObject);
+		eventFinishedCallback("createPlayerMenu");
+	}
+
+	void putDown() {
+		ArrayList canInterruptBy = new ArrayList ();
+		ArrayList methodsToCall = new ArrayList ();
+		ArrayList methodsAfterInterrupt = new ArrayList ();
+		ArrayList methodsDisabledUntilEventFinished = new ArrayList ();
+
+		methodsToCall.Add("player_playNannyWalking");
+		methodsToCall.Add("camera_moveCamToNanny");
+		methodsToCall.Add("player_moveCharacterToClickedDestination");
+		methodsToCall.Add("player_playNannyPutdown");
+		methodsToCall.Add("child_startChildRandomMovement");
+		methodsToCall.Add ("player_enableClick");
+
+		eventDisp.addEvent(methodsToCall, canInterruptBy, methodsAfterInterrupt, methodsDisabledUntilEventFinished);
+		eventFinishedCallback("putDown");
+	}
+
+	void playNannyPutdown() {
+		if(isCarryingChild) {
+			StartCoroutine ("putBabyOnTheFloor");
+		}
+	}
+
+	IEnumerator putBabyOnTheFloor() {
+		isCarryingChild = false;
+
+		GameObject child = GameObject.Find ("child");
+		GameObject characters = GameObject.Find ("Characters");
+		//GetComponent<Animation> ().Stop ();
+		//GetComponent<Animation> ().Rewind("nanny_pickup_child");
+		GetComponent<Animation> () ["nanny_pickup_child"].time = 0.3f;
+		GetComponent<Animation> () ["nanny_pickup_child"].wrapMode = WrapMode.Once;
+		GetComponent<Animation> () ["nanny_pickup_child"].speed = -1.5f;
+		GetComponent<Animation> ().Play ("nanny_pickup_child");
+
+		yield return new WaitForSeconds (0.3f);
+
+		child.GetComponent<NavMeshAgent>().enabled = true;
+		child.transform.parent = characters.transform;
+		playNannyIdle ();
+		StopAllCoroutines ();
+
+		eventFinishedCallback("playNannyPutdown");
+	}
 
 }
